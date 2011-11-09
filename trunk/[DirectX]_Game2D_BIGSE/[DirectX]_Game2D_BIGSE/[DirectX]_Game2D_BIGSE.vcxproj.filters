@@ -13,105 +13,153 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Environment">
+      <UniqueIdentifier>{7ba840e7-e765-43ae-8bcb-3e01c698e8ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork">
+      <UniqueIdentifier>{ba612442-023c-4f1e-bf4d-b31503747472}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Global">
+      <UniqueIdentifier>{57866ac6-b89e-43df-b693-f3b5aadcb7d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object">
+      <UniqueIdentifier>{75be8449-e884-46b1-ac51-2d648bff05b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameScreen">
+      <UniqueIdentifier>{d9d824c0-0523-4604-9ffb-fce82dd91431}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\InfoSprite">
+      <UniqueIdentifier>{73e9e1dc-f844-4fa2-8229-74de2e79fd16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\IPlay&amp;IState">
+      <UniqueIdentifier>{0057cd52-2e84-4607-8f63-081c614baee1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameWork\Sprite">
+      <UniqueIdentifier>{2c3c1730-0927-4593-8579-ca438b787ccc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameScreen\GamePlay">
+      <UniqueIdentifier>{1d6e1e68-eb8d-4ad3-9c13-f08e36bdc75f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameScreen\GameState">
+      <UniqueIdentifier>{a51dc307-0769-4377-8861-dc54ad26a167}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Character">
+      <UniqueIdentifier>{04b830e5-a58c-4b6f-9c47-80e92d86e71d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Skill">
+      <UniqueIdentifier>{8a069f0b-7080-41b6-8d46-5802a4dbb721}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Environment\GameApp">
+      <UniqueIdentifier>{e2bb0e4b-631a-4508-a1a5-a3cdd55f38b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Environment\Graphics">
+      <UniqueIdentifier>{d24582ce-402c-45f0-8f13-ec947a9d8cb8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Environment\InputManager">
+      <UniqueIdentifier>{945f04e0-02de-4fc6-8b2f-46ed91c25315}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Environment\Winform">
+      <UniqueIdentifier>{ed1b0bdd-0313-4629-be84-c3518b751d32}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Character.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="GameApp.cpp">
+      <Filter>Environment\GameApp</Filter>
     </ClCompile>
     <ClCompile Include="DXDevice.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GameApp.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GamePlay.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="InfoSprite.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Environment\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="InputManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="iPlay.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="iState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MyObject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RSMainGame.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Skill.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Sprite.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="State_Game.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="State_Play.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Environment\InputManager</Filter>
     </ClCompile>
     <ClCompile Include="Winform.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Environment\Winform</Filter>
     </ClCompile>
     <ClCompile Include="WinMain.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Environment</Filter>
+    </ClCompile>
+    <ClCompile Include="InfoSprite.cpp">
+      <Filter>FrameWork\InfoSprite</Filter>
+    </ClCompile>
+    <ClCompile Include="iPlay.cpp">
+      <Filter>FrameWork\IPlay&amp;IState</Filter>
+    </ClCompile>
+    <ClCompile Include="iState.cpp">
+      <Filter>FrameWork\IPlay&amp;IState</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>FrameWork\Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="GamePlay.cpp">
+      <Filter>GameScreen\GamePlay</Filter>
+    </ClCompile>
+    <ClCompile Include="State_Play.cpp">
+      <Filter>GameScreen\GameState</Filter>
+    </ClCompile>
+    <ClCompile Include="State_Game.cpp">
+      <Filter>GameScreen\GameState</Filter>
+    </ClCompile>
+    <ClCompile Include="Character.cpp">
+      <Filter>Object\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="MyObject.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="RSMainGame.cpp">
+      <Filter>FrameWork</Filter>
+    </ClCompile>
+    <ClCompile Include="Skill.cpp">
+      <Filter>Object\Skill</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Character.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="GameApp.h">
+      <Filter>Environment\GameApp</Filter>
     </ClInclude>
     <ClInclude Include="DXDevice.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GameApp.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GamePlay.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Global.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="InfoSprite.h">
-      <Filter>Header Files</Filter>
+      <Filter>Environment\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="InputManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="iPlay.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="iState.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MyObject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RSMainGame.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Skill.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Sprite.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="State_Game.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="State_Play.h">
-      <Filter>Header Files</Filter>
+      <Filter>Environment\InputManager</Filter>
     </ClInclude>
     <ClInclude Include="Winform.h">
-      <Filter>Header Files</Filter>
+      <Filter>Environment\Winform</Filter>
+    </ClInclude>
+    <ClInclude Include="InfoSprite.h">
+      <Filter>FrameWork\InfoSprite</Filter>
+    </ClInclude>
+    <ClInclude Include="iState.h">
+      <Filter>FrameWork\IPlay&amp;IState</Filter>
+    </ClInclude>
+    <ClInclude Include="iPlay.h">
+      <Filter>FrameWork\IPlay&amp;IState</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>FrameWork\Sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="Global.h">
+      <Filter>Global</Filter>
+    </ClInclude>
+    <ClInclude Include="GamePlay.h">
+      <Filter>GameScreen\GamePlay</Filter>
+    </ClInclude>
+    <ClInclude Include="State_Play.h">
+      <Filter>GameScreen\GameState</Filter>
+    </ClInclude>
+    <ClInclude Include="State_Game.h">
+      <Filter>GameScreen\GameState</Filter>
+    </ClInclude>
+    <ClInclude Include="Character.h">
+      <Filter>Object\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="MyObject.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="RSMainGame.h">
+      <Filter>FrameWork</Filter>
+    </ClInclude>
+    <ClInclude Include="Skill.h">
+      <Filter>Object\Skill</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
