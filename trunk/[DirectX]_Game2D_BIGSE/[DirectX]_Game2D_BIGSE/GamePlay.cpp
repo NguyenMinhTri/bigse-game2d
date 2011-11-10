@@ -1,10 +1,12 @@
+#pragma once
 #include "GamePlay.h"
+#include "State_Game.h"
 #include "State_Play.h"
 
 GamePlay::GamePlay(LPDIRECT3DDEVICE9 Device):iPlay(Device)
 {
-	m_CurState = new State_Play(this);
-	m_NextState = new State_Play (this);
+	m_CurState = new MainGame(this);
+	m_NextState = new MainGame (this);
 }
 GamePlay::~GamePlay(void)
 {

@@ -128,7 +128,7 @@ void MainGame::Draw()
 
 		D3DXVECTOR2 Center (g_SCREEN_WIDTH/2,g_SCREEN_HEIGHT/2);
 		D3DXVECTOR2 MTScale(m_ScaleX,m_ScaleY);
-		D3DXVECTOR2 MTTran (0,0);
+		D3DXVECTOR2 MTTran (0,0); //
 
 		float Rota = (float)(m_Ro*2*D3DX_PI)/(float)(360);
 

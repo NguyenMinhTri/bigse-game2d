@@ -43,7 +43,7 @@ void State_Play::Init()
 	m_Terrain=new int*[16];
 	for(int i=0;i<16;i++)
 	{
-		m_Terrain[i]=new int[14];
+		m_Terrain[i]=new int[12];
 	}
 
 
@@ -113,7 +113,7 @@ void State_Play::Draw()
 		m_Handle->Begin(D3DXSPRITE_SORT_DEPTH_FRONTTOBACK|D3DXSPRITE_ALPHABLEND);
 		
 		for (int i =0 ; i< 16; i++)	{
-			for (int j = 0 ; j<14; j++)	{
+			for (int j = 0 ; j<12; j++)	{
 				if(m_Terrain[i][j] == 1){
 					RSMainGame::get()->getTerrain()->Draw(i*g_CELL,j*g_CELL-10,0,m_Handle);
 				}

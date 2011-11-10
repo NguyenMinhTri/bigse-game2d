@@ -16,7 +16,7 @@ Character::~Character(void)
 void Character::ActiveSkill(){
 	
 	m_HIT->Active(m_X,m_Y,m_Dir);
-	if (m_Vy < 0)
+	if (m_Vy < 0) //nhay len
 	{
 		m_Vy = fabs (m_Vy);
 	}
@@ -45,11 +45,12 @@ void Character::Move(float _Time, int** _Terrain){
 	
 	#pragma region RIGHT
 if (m_Vx > 0){
-		NextX =m_X + _Time* g_VX;
+		NextX =m_X + _Time* g_VX; //thoi gian thuc
 		
 
 			bool iColTer = false;
-			for (int i = (m_X+m_Width)/g_CELL; i <  (NextX+m_Width)/g_CELL;i++){
+			for (int i = (m_X + m_Width)/g_CELL ; i <  (NextX+m_Width)/g_CELL;i++)
+			{
 				for (int j = m_Y/g_CELL;j < (int)((m_Y+m_Height-1)/g_CELL) +1;j++ ){
 					if (_Terrain[i][j]!=0){
 						iColTer = true;
@@ -73,31 +74,30 @@ if (m_Vx > 0){
 		if (m_Vx<0){
 
 			NextX= m_X - _Time* g_VX;
-			int n = (NextX/g_CELL);
-			int m = (m_X/g_CELL);
-			if (n!=m ){
 
 				bool iColTer = false;
-				for (int i = m_X/g_CELL-1; i >  NextX/g_CELL-1;i--){
-					for (int j = m_Y/g_CELL;j < int((m_Y+m_Height-1)/g_CELL) +1;j++ ){
+				for (int i = m_X/g_CELL-1; i >  NextX/g_CELL-1;i--) // 
+				{
+					for (int j = m_Y/g_CELL ;j < int((m_Y+m_Height-1)/g_CELL) +1 ; j++ )
+					{
 						if (_Terrain[i][j]!=0){
 							iColTer = true;
 							m_X = g_CELL * (i+1);
 							break;
 						}
-					}
-					if (iColTer == true){
+					} 
+					if (iColTer == true)
+					{
 						break;
 					}
 				}
 
-				if (iColTer == false){
+				if (iColTer == false)
+				{
 					m_X = NextX;
 				}
 
-			}else{
-				m_X = NextX;
-			}
+			
 			
 		}		
 	}

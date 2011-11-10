@@ -92,6 +92,7 @@
     <ClCompile Include="WinMain.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="Character.h" />
     <ClInclude Include="DXDevice.h" />
     <ClInclude Include="GameApp.h" />
@@ -107,6 +108,7 @@
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="State_Game.h" />
     <ClInclude Include="State_Play.h" />
+    <ClInclude Include="Terrain.h" />
     <ClInclude Include="Winform.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
