@@ -130,12 +130,13 @@ public:
 
 	float getDepth () {return m_Depth;}
 
-	D3DXMATRIX getMatrixTransform (){
-		D3DXMATRIX MaTrix;
+	D3DXMATRIX getMatrixTransform () // bien doi truc toa do thut. lui`
+	{
+		D3DXMATRIX MaTrix; //
 		
-		D3DXVECTOR2 Center((float)((m_Width)/2),(float)((m_Height)/2));
-		D3DXVECTOR2 MTScale(m_ScaleX,m_ScaleY);
-		D3DXVECTOR2 MTTran (m_X,m_Y);
+		D3DXVECTOR2 Center((float)((m_Width)/2),(float)((m_Height)/2));//
+		D3DXVECTOR2 MTScale(m_ScaleX,m_ScaleY); //
+		D3DXVECTOR2 MTTran (m_X,m_Y); 
 		float Rota = (float)(m_Rotation*2*D3DX_PI)/(float)(360);
 
 		D3DXMatrixTransformation2D(&MaTrix,&Center,0,&MTScale,&Center,Rota,&MTTran);

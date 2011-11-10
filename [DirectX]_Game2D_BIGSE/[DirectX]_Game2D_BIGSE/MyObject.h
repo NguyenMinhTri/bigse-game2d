@@ -50,6 +50,14 @@ public:
 	float getX () { return m_X;}
 	float getY () { return m_Y;}
 
+	float getWidth()
+	{
+		return m_Width ;
+	}
+	float getHeight()
+	{
+		return m_Height ;
+	}
 	int getSTT () {return m_STT;}
 	int getOldSTT () {return m_OldSTT;}
 

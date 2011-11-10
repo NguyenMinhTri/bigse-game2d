@@ -37,8 +37,10 @@ Sprite::~Sprite(void)
 }
 void Sprite::Transform(LPD3DXSPRITE Sprite_Handler)
 {
+
 }
-RECT Sprite::getRect(int Curframe){
+RECT Sprite::getRect(int Curframe)
+{
 	RECT rect;
 	rect.top = (Curframe/m_ColFrame)*m_Height;
 	rect.bottom = rect.top + m_Height;
@@ -67,6 +69,7 @@ void Sprite::Draw(InfoSprite _info,LPD3DXSPRITE _Handler){
 
 	
 }
+
 void Sprite::Draw(D3DMATRIX _World,InfoSprite _info,LPD3DXSPRITE _Handler)
 {
 	

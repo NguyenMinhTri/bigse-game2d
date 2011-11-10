@@ -17,9 +17,10 @@ enum STATE {
 enum ID {
 	PLAYER,
 };
-enum STT {
+enum STT 
+{
 	READY,
-	ACTIVE,	
+	ACTIVE,	//di chuyen skill,dung nguyen
 	INVI,
 	FRENZY,
 	DELAY,
