@@ -38,7 +38,7 @@ bool Character::iCollision(MyObject* _Obj){
 void Character::ProcessCollision(MyObject* _Obj){
 
 }
-void Character::Move(float _Time, int** _Terrain){
+void Character::Move(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight){
 	if(m_HIT->getSTT()== ACTIVE) return;
 
 	float NextX,NextY;
@@ -46,7 +46,10 @@ void Character::Move(float _Time, int** _Terrain){
 	#pragma region RIGHT
 if (m_Vx > 0){
 		NextX =m_X + _Time* g_VX; //thoi gian thuc
-		
+		if (NextX >= _MaxWidth - m_Width)
+		{
+			NextX = _MaxWidth - m_Width;
+		}
 
 			bool iColTer = false;
 			for (int i = (m_X + m_Width)/g_CELL ; i <  (NextX+m_Width)/g_CELL;i++)
@@ -74,7 +77,10 @@ if (m_Vx > 0){
 		if (m_Vx<0){
 
 			NextX= m_X - _Time* g_VX;
-
+			if (NextX <= 0)
+			{
+				NextX = 0;
+			}
 				bool iColTer = false;
 				for (int i = m_X/g_CELL-1; i >  NextX/g_CELL-1;i--) // 
 				{
@@ -112,7 +118,16 @@ if (m_Vx > 0){
 	#pragma region DOWN
 m_Vy+= _Time*g_GAVITY;
 	NextY = m_Y + m_Vy*_Time/* + 0.5*(_Time*_Time)*g_GAVITY*/;
-
+	if (NextY >= (_MaxHeight - m_Height))
+	{
+		NextY =  _MaxHeight - m_Height;
+	}
+	if (NextY <= 0)
+	{
+		NextY = 0;
+		m_Vy = fabs(m_Vy);
+	}
+	
 	if (m_Vy >= 0){
 				
 		bool iColTer = false;
@@ -211,14 +226,14 @@ void Character::Draw(D3DXMATRIX _MWorld,LPD3DXSPRITE _Handler){
 
 		m_HIT->Draw(_MWorld,_Handler);
 	}else{
-
+		/*m_InfoSprite.setRotation(m_InfoSprite.getRotation()+1);*/
 		if (m_Dir<0){
 			m_InfoSprite.setScaleX(1);
 		}else{
 			m_InfoSprite.setScaleX(-1);
 		}
 		m_InfoSprite.setXY(-125+m_X,-54+m_Y);
-		m_SCharater->Draw(m_InfoSprite,_Handler);
+		m_SCharater->Draw(_MWorld,m_InfoSprite,_Handler);
 	}
 	
 

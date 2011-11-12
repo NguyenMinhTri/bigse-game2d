@@ -5,8 +5,8 @@
 
 GamePlay::GamePlay(LPDIRECT3DDEVICE9 Device):iPlay(Device)
 {
-	m_CurState = new MainGame(this);
-	m_NextState = new MainGame (this);
+	m_CurState = new State_Play(this);
+	m_NextState = m_CurState;
 }
 GamePlay::~GamePlay(void)
 {

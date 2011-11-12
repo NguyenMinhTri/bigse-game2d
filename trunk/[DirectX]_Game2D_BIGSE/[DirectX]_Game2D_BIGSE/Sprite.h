@@ -32,8 +32,8 @@ public:
 	int GetCurFrame () {return m_CurFrame;}	
 	
 	RECT getRect (int Curframe);
-
-	void Transform (LPD3DXSPRITE Sprite_Handler);	
+	void Draw (LPD3DXSPRITE _Handler,D3DMATRIX _mtWorld, float _X,float _Y, int _Index,
+		float _depth = 0.0f,D3DXCOLOR _color =D3DXCOLOR(1,1,1,1));
 	void Draw (float X,float Y,int Index,LPD3DXSPRITE Sprite_Handler);
 	void Draw (D3DMATRIX _World,InfoSprite _info,LPD3DXSPRITE _Handler);
 	void Draw (InfoSprite _info,LPD3DXSPRITE _Handler);

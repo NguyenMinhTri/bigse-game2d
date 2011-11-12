@@ -1,12 +1,16 @@
 #pragma once
 #include "istate.h"
 #include "Character.h"
+#include "Terrain.h"
+#include "Camera.h"
 class State_Play :
 	public iState
 {
 	Character* m_char;
 	LPD3DXSPRITE m_Handle;
-	int** m_Terrain;
+	Terrain* m_Map;
+	Camera* m_Camera;
+	D3DXMATRIX m_mtWorld;
 public:
 	State_Play(iPlay* GamePlay);
 	~State_Play(void);
