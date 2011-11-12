@@ -1,6 +1,7 @@
 #pragma once
 #include "InfoSprite.h"
 #include "Sprite.h"
+/*#include "Terrain.h"*/
 class MyObject
 {
 protected:
@@ -71,7 +72,10 @@ public:
 	virtual bool iCollision (MyObject* _Obj) = 0;
 
 	/* Update Move and check Collision with Terrain */
-	virtual void Move (float _Time, int** _Terrain) = 0;
+	virtual void Move (float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight) = 0;
+
+	/* Update Move and check Collision with Terrain */
+	//virtual void Move (float _Time, Terrain* _Map){} ;
 
 	/* Update Animation */
 	virtual void Animation (float _Time) = 0;

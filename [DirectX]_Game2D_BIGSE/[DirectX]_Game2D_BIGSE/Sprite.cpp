@@ -35,10 +35,7 @@ Sprite::~Sprite(void)
 {
 	m_Image->Release();
 }
-void Sprite::Transform(LPD3DXSPRITE Sprite_Handler)
-{
 
-}
 RECT Sprite::getRect(int Curframe)
 {
 	RECT rect;
@@ -58,7 +55,22 @@ void Sprite::Draw(float X,float Y,int Index,LPD3DXSPRITE _Handler)
 	_Handler->Draw(m_Image,&this->getRect(Index),
 		NULL,&D3DXVECTOR3(X,Y,0),D3DCOLOR_ARGB(255,255,255,255));
 }
+void Sprite::Draw(LPD3DXSPRITE _Handler,D3DMATRIX _mtWorld, float _X,float _Y, int _Index,float _Depth,D3DXCOLOR _color)
+{
+	D3DXMATRIX MaTrix,mtFinal; //
+	
+	D3DXMatrixIdentity(&mtFinal);
+	D3DXVECTOR2 MTTran (_X,_Y); 
 
+	D3DXMatrixTransformation2D(&MaTrix,NULL,0,NULL,NULL,NULL,&MTTran);
+
+	mtFinal = MaTrix*_mtWorld;
+
+	_Handler->SetTransform(&mtFinal);
+
+	_Handler->Draw(m_Image,&this->getRect(_Index),NULL,
+		&D3DXVECTOR3(0,0,_Depth),_color);
+}
 void Sprite::Draw(InfoSprite _info,LPD3DXSPRITE _Handler){
 
 	

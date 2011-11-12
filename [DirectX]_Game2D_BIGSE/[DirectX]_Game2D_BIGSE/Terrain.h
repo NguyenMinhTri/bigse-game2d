@@ -1,22 +1,22 @@
 #pragma once
-#include <Windows.h>
-#include <d3d9.h>
-#include <d3dx9.h>
-#include "Sprite.h"
 #include "MyObject.h"
-#include "Character.h"
+#include "RSMainGame.h"
+#include "Global.h"
+
+class Camera;
 
 class Terrain
 {
+private:
 	int **m_Terrain ;
 	int m_Width;
-	int m_Height ;
-	Terrain (int** _Terrain, int _Width,int _Height )
-	{
-		m_Terrain = _Terrain ;
-		m_Width = _Width ;
-		m_Height = _Height;
-	}
+	int m_Height;
+	Sprite* m_Sprite;
+public:
+	Terrain(void);
+	~Terrain(void);
+	Terrain (int** _Terrain, int _Width,int _Height );
+	
 	int getWidth ()
 	{
 		return m_Width;
@@ -25,6 +25,10 @@ class Terrain
 	{
 		return m_Height;
 	}
-
-
+	int** getTerrain ()
+	{
+		return m_Terrain;
+	}
+	void Draw (Camera* _Camera,D3DXMATRIX _mtWorld,LPD3DXSPRITE _Handler);
 };
+

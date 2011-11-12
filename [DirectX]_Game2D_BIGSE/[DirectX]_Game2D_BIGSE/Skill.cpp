@@ -65,7 +65,7 @@ void Skill::ProcessCollision(MyObject* _Obj){
 
 }
 
-void Skill::Move(float _Time, int** _Terrain){
+void Skill::Move(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight){
 
 }
 
@@ -162,7 +162,7 @@ void Skill::Draw(D3DXMATRIX _MWorld,LPD3DXSPRITE _Handler){
 		m_InfoSprite.setScaleX(-1);
 	}
 	m_InfoSprite.setXY(-125+m_X,-54+m_Y);
-	m_SSkill->Draw(m_InfoSprite,_Handler);
+	m_SSkill->Draw(_MWorld,m_InfoSprite,_Handler);
 }
 
 void Skill::Release(){
