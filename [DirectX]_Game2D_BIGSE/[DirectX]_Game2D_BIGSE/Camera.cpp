@@ -72,7 +72,6 @@ D3DXMATRIX Camera::getMatrixTransform ()
 
 	D3DXVECTOR2 TransCamera (-m_X,-m_Y); //
 	D3DXMatrixTransformation2D(&mtCamera,NULL,0,NULL,NULL,NULL,&TransCamera);
-
 	
 
 	mtFinal = mtEffect*mtCamera;

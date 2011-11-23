@@ -1,6 +1,9 @@
 #pragma once
+#include <list>
+
 #include "InfoSprite.h"
 #include "Sprite.h"
+#include "Effect.h"
 /*#include "Terrain.h"*/
 class MyObject
 {
@@ -30,6 +33,7 @@ protected:
 	InfoSprite m_InfoSprite;
 	/*Sprite m_Sprite;*/
 
+	Effect m_Effect;
 public:
 	MyObject(void);
 	virtual ~MyObject(void);
@@ -43,9 +47,9 @@ public:
 		m_X = _X;
 		m_Y = _Y;
 	}
-	void setSize (float _SizeX, float _SizeY){
-		m_Width = _SizeX;
-		m_Height = _SizeY;
+	void setSize (float _width, float _height){
+		m_Width = _width;
+		m_Height = _height;
 	}
 
 	float getX () { return m_X;}
@@ -59,6 +63,7 @@ public:
 	{
 		return m_Height ;
 	}
+
 	int getSTT () {return m_STT;}
 	int getOldSTT () {return m_OldSTT;}
 

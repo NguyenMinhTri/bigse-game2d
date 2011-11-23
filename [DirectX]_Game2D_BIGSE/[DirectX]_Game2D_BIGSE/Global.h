@@ -1,6 +1,8 @@
 #pragma  once
-#define  g_SCREEN_HEIGHT	 600
-#define  g_SCREEN_WIDTH		 800
+
+#define  g_SCREEN_WIDTH		 1024
+#define  g_SCREEN_HEIGHT	 720
+
 #define  g_CELL				 50
 
 #define  g_VY_JUMP			 300
