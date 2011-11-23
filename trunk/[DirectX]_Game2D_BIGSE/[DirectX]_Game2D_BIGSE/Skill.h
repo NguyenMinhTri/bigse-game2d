@@ -1,8 +1,12 @@
 #pragma once
+#include <list>
 #include "MyObject.h"
+using namespace std;
 class Skill : public MyObject
 {
 protected:
+
+	
 	int m_Combo;
 	bool m_NextCombo;
 	int m_Dir;
@@ -16,7 +20,7 @@ public:
 
 	/* Get damage for collision 
 	Random from Damage to Damage+Offset */
-	virtual int getDamageEX (int _Damage, int _Offset){return 0;};
+	virtual int getDamageEX (int _Damage, int _Offset);
 
 	virtual void Init () ;
 	/* Processing collision */
@@ -38,7 +42,7 @@ public:
 	virtual void Update (float _Time) ;
 
 	/* Draw Object */
-	virtual void Draw (D3DXMATRIX _MWorld,LPD3DXSPRITE _Handler);
+	virtual void Draw (D3DXMATRIX _mtWorld,LPD3DXSPRITE _Handler);
 
 	/* Release */
 	virtual void Release () ;

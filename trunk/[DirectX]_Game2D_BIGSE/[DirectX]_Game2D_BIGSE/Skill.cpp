@@ -65,6 +65,13 @@ void Skill::ProcessCollision(MyObject* _Obj){
 
 }
 
+
+
+int Skill::getDamageEX(int _Damage, int _Offset)
+{
+	return _Damage+ rand()%_Offset;
+}
+
 void Skill::Move(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight){
 
 }
@@ -75,9 +82,9 @@ void Skill::Animation(float _Time)
 	if (m_STT == ACTIVE)
 	{
 		m_TimeAni+= _Time;
-		if (m_TimeAni>=0.15f)
+		if (m_TimeAni>=0.12f)
 		{
-			m_TimeAni-= 0.15f;
+			m_TimeAni-= 0.12f;
 			switch(m_Combo)
 			{
 			case 0:
@@ -110,6 +117,7 @@ void Skill::Animation(float _Time)
 					}					
 				}
 				break;
+
 			case 2:
 				m_InfoSprite.NextFrame(20,4);
 				if (m_InfoSprite.getCurFrame()>22) {
@@ -125,7 +133,6 @@ void Skill::Animation(float _Time)
 				break;
 
 			case 3:
-
 				m_InfoSprite.NextFrame(24,5);
 				if (m_InfoSprite.getCurFrame()>27) {
 					
@@ -137,11 +144,7 @@ void Skill::Animation(float _Time)
 				}
 				break;
 
-			}		
-		
-		
-
-			
+			}					
 		}
 	}
 }
@@ -163,6 +166,7 @@ void Skill::Draw(D3DXMATRIX _MWorld,LPD3DXSPRITE _Handler){
 	}
 	m_InfoSprite.setXY(-125+m_X,-54+m_Y);
 	m_SSkill->Draw(_MWorld,m_InfoSprite,_Handler);
+
 }
 
 void Skill::Release(){
