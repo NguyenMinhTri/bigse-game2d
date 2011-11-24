@@ -13,6 +13,10 @@ Camera::Camera(float _X, float _Y,float _Width,float _Height)
 	m_Dy = 0;
 	m_VDy = 1;
 	m_SC = 1;
+
+	m_rung = 1;
+	m_rung1 =1;
+
 }
 
 Camera::~Camera(void)
@@ -21,35 +25,29 @@ Camera::~Camera(void)
 void  Camera::Update(Character* _Character,float _MaxWidth,float _MaxHeight)
 {
 
-	m_X = _Character->getX() - (g_SCREEN_WIDTH - _Character->getWidth())/2 ;
-	if (m_X<=0)
+/*	m_X = _Character->getX() - (g_SCREEN_WIDTH - _Character->getWidth())/2 ;*/
+	m_X = _Character->getX() + _Character->getWidth()/2;
+	if (m_X<=g_SCREEN_WIDTH)
 	{
-		m_X = 0;
+		m_X = g_SCREEN_WIDTH;
 	}
-	if (m_X >= (_MaxWidth-m_Width))
+	if (m_X >= _MaxWidth - g_SCREEN_WIDTH)
 	{
-		m_X = (_MaxWidth-m_Width)-1;
+		m_X = _MaxWidth - g_SCREEN_WIDTH  ;
 	}
-	m_Y = _Character->getY() - (g_SCREEN_HEIGHT - _Character->getHeight())/2 ;
-	if (m_Y<=0)
+	m_Y = _Character->getY() + _Character->getHeight()/2;
+	if (m_Y<=g_SCREEN_HEIGHT)
 	{
-		m_Y = 0;
+		m_Y = g_SCREEN_HEIGHT;
 	}
-	if (m_Y >= (_MaxHeight-m_Height))
+	if (m_X >= _MaxWidth - g_SCREEN_HEIGHT)
 	{
-		m_Y = (_MaxHeight-m_Height)-1;
+		m_X = _MaxWidth - g_SCREEN_HEIGHT  ;
 	}
 }
+
 void Camera::UpdateEffect(float _Time)
 {
-	if (timeGetTime()%400 >200)
-	{
-		m_Dy = 3;
-	} 
-	else
-	{
-		m_Dy = -3;
-	}
 	m_SC += m_VDy*0.3*_Time;
 	if (m_SC > 1.1f)
 	{
@@ -61,21 +59,32 @@ void Camera::UpdateEffect(float _Time)
 	}
 }
 
+void Camera::UpdateEffect2(float _Time)
+{
+	if (timeGetTime() >200)
+	{
+		m_Dy = 3;
+	} 
+	else
+	{
+		m_Dy = -3;
+	}
+
+}
+
 D3DXMATRIX Camera::getMatrixTransform ()
 {
 	D3DXMATRIX mtFinal,mtCamera,mtEffect;
 
 	D3DXVECTOR2 CenterEffect (m_X + g_SCREEN_WIDTH/2,m_Y +g_SCREEN_HEIGHT/2);
 	D3DXVECTOR2 TranEffect (0,0); 
+	D3DXVECTOR2 ShakeEffect(m_Dy,0);
 	D3DXVECTOR2 ScaleEffect (m_SC,m_SC);
-	D3DXMatrixTransformation2D(&mtEffect,&CenterEffect,1,&ScaleEffect,NULL,NULL,&TranEffect);
+ 	D3DXMatrixTransformation2D(&mtEffect,NULL,NULL,NULL,NULL,NULL,&ShakeEffect);
 
-	D3DXVECTOR2 TransCamera (-m_X,-m_Y); //
-	D3DXMatrixTransformation2D(&mtCamera,NULL,0,NULL,NULL,NULL,&TransCamera);
-	
-
+	D3DXVECTOR2 TransCamera (-m_X,-m_Y); 
+	//D3DXMatrixTransformation2D(&mtCamera,&CenterEffect,1,&ScaleEffect,NULL,NULL,&TransCamera);
+	D3DXMatrixTransformation2D(&mtCamera,NULL,NULL,NULL,NULL,NULL,&TransCamera);
 	mtFinal = mtEffect*mtCamera;
-
-
 	return mtFinal;		
 }
