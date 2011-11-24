@@ -37,7 +37,7 @@ void  Camera::Update(Character* _Character,float _MaxWidth,float _MaxHeight)
 	}
 	if (m_Y >= (_MaxHeight-m_Height))
 	{
-		m_X = _MaxWidth - g_SCREEN_HEIGHT  ;
+		m_Y = (_MaxHeight-m_Height)-1;
 	}
 }
 
