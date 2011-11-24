@@ -16,15 +16,26 @@ void Skill::Init(){
 	m_Combo = 0;
 	m_STT = READY;
 	m_InfoSprite.setSize(300,200);
+	setSize(150,150);
 	m_SSkill = RSMainGame::get()->getCharacter();
 }
 void Skill::Active (float _X,float _Y,int _Dir)
 {
 	if (m_STT != ACTIVE) //chua tung skill
 	{
-		m_X = _X;
-		m_Y = _Y;
-		m_Dir = _Dir;
+		if (_Dir>0)
+		{
+			m_X = _X;
+			m_Y = _Y;
+			m_Dir = _Dir;
+		} 
+		else
+		{
+			m_X = _X+50- m_Width ;
+			m_Y = _Y;
+			m_Dir = _Dir;
+		}
+		
 		m_STT = ACTIVE;
 		m_InfoSprite.setCurFrame(12);
 		m_Combo = 0;
@@ -58,11 +69,35 @@ void Skill::Active (float _X,float _Y,int _Dir)
 
 
 }
+
 bool Skill::iCollision (MyObject* _Obj) {
 	return false;
 }
-void Skill::ProcessCollision(MyObject* _Obj){
 
+void Skill::ProcessCollision(MyObject* _Obj){
+	if ( m_STT!= ACTIVE ) 
+	{
+		return;
+	}
+	if(!getRect().iCollision(_Obj->getRect()))
+	{
+		return ;
+	}
+	else {
+		if(_Obj->getActive() == false )
+
+		{
+			return ;
+		}//true la chua trung
+		_Obj->setActive(false);
+		_Obj->setHp(_Obj->getHp() -  );
+		if(_Obj->getHp() == 0)
+		{
+			_Obj->setLife(false); 
+		}
+
+
+	}
 }
 
 

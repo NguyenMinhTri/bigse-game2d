@@ -28,6 +28,12 @@ m_char = new Character();
 	m_char->Init();
 	m_char->setXY(200,0);
 	m_char->setSize(50,85);
+
+	m_Monster = new Character();
+	m_Monster->Init();
+	m_Monster->setXY(200,0);
+	m_Monster->setSize(50,85);
+
 #pragma endregion Init Character
 
 	#pragma region Init Map Terrain
@@ -75,22 +81,34 @@ void State_Play::IsKeyDown(int KeyCode){
 	case DIK_RIGHT:
 		m_char->setMove(1);
 		break;
-	case DIK_SPACE:
+	case DIK_UP:
 		m_char->setJump();
 		break;
-	
+
+	case DIK_A:
+		m_Monster->setMove(-1);
+		break;
+	case DIK_D:
+		m_Monster->setMove(1);
+		break;
+	case DIK_W:
+		m_Monster->setJump();
+		break;
+
 	case DIK_DOWN:
 		break;
 	}
 }
 
-
 void State_Play::OnKeyDown(int KeyCode)
 {
 	switch(KeyCode)
 	{
-	case DIK_V:
+	case DIK_NUMPAD1:
 		m_char->ActiveSkill();
+		break;
+	case DIK_SPACE:
+		m_Monster->ActiveSkill();
 		break;
 	}
 }
@@ -113,6 +131,14 @@ void State_Play::Update(float _Time)
 	
 	m_char->Update(_Time);
 	m_char->UpdateStatus(_Time);
+
+	m_Monster->Animation(_Time);
+	m_Monster->Move(_Time,m_Map->getTerrain(),m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL);
+
+	m_Monster->Update(_Time);
+	m_Monster->UpdateStatus(_Time);
+	m_char->ProcessCollision(m_Monster);
+	m_Monster->ProcessCollision(m_char);
 }
 void State_Play::Draw()
 {	
@@ -126,6 +152,8 @@ void State_Play::Draw()
 		m_Map->Draw(m_Camera,m_mtWorld,m_Handle);
 
 		m_char->Draw(m_mtWorld,m_Handle);
+		m_Monster->Draw(m_mtWorld,m_Handle);
+
 
 		
 

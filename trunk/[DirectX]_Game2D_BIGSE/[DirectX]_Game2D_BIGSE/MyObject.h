@@ -2,6 +2,7 @@
 #include <list>
 
 #include "InfoSprite.h"
+#include "RECT.h"
 #include "Sprite.h"
 #include "Effect.h"
 /*#include "Terrain.h"*/
@@ -10,6 +11,10 @@ class MyObject
 protected:
 	/* ID of Object */
 	int m_ID;
+
+    int m_HP;
+    int m_Damage;
+
 
 	/* Status */
 	int m_STT,m_OldSTT;
@@ -32,11 +37,34 @@ protected:
 	/* All information sprite for render*/
 	InfoSprite m_InfoSprite;
 	/*Sprite m_Sprite;*/
+	bool m_iFrenzy;
+	bool m_iFire;
+	bool m_iLife;
+	bool m_iActive ;
 
 	Effect m_Effect;
 public:
 	MyObject(void);
 	virtual ~MyObject(void);
+ 	CRECT getRect(){
+		CRECT r;
+		r.Left = m_X ;
+		r.Top = m_Y ;
+		r.Right = m_X + m_Width;
+		r.Bottom = m_Y + m_Height ;
+
+		return r;
+	}
+
+	int getHp ()
+	{
+		return m_HP;
+	}
+
+	void setHp (int _hp)
+	{
+		m_HP = _hp ;
+	}
 
 	void setID (int _id) { m_ID = _id;}
 	void setX (float _X) { m_X = _X;}
@@ -69,6 +97,39 @@ public:
 
 	int getID () { return m_ID;}
 
+	bool getFrenzy(){
+		return m_iFrenzy ;
+	}
+	void setFrenzey(bool _frenzy){
+		m_iFrenzy = _frenzy ;
+	}
+	bool getFire(){
+		return m_iFire ;
+	}
+
+	void setFire (bool _Fire){
+		m_iFire = _Fire;
+	}
+
+	bool getActive(){
+		return m_iActive;
+	}
+
+	void setActive (bool _active){
+		m_iActive = _active ;
+	}
+
+	bool getLife(){
+		return m_iLife;
+	}
+
+	void setLife (bool _Life){
+		m_iLife = _Life;
+	}
+	InfoSprite getInfoSprite ()
+	{
+		return m_InfoSprite;
+	}
 	virtual void Init () = 0;
 	/* Processing collision */
 	virtual void ProcessCollision (MyObject* _Obj) = 0;

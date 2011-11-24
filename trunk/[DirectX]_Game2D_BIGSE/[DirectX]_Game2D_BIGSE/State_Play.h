@@ -6,6 +6,7 @@
 class State_Play :
 	public iState
 {
+	Character* m_Monster ;
 	Character* m_char;
 	LPD3DXSPRITE m_Handle;
 	Terrain* m_Map;

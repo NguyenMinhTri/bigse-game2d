@@ -6,10 +6,11 @@ class Character :
 	public MyObject
 {
 private:
-	int m_HP;
+
 	int m_Dir;
 	Sprite* m_SCharater;
 	Skill* m_HIT;
+
 public:
 	Character(void);
 	virtual ~Character(void);

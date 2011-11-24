@@ -9,14 +9,16 @@
 #define  g_GAVITY			 400
 #define  g_VX				 100
 
-enum STATE {
+enum STATE 
+{
 	PLAY,
 	MENU,
 	ABOUT,
 	EXIT
 };
 
-enum ID {
+enum ID
+{
 	PLAYER,
 };
 enum STT 
