@@ -5,7 +5,8 @@
 
 Character::Character(void)
 {
-	
+	m_HP = 20; 
+	m_Damage = 1;
 }
 
 
@@ -36,6 +37,7 @@ bool Character::iCollision(MyObject* _Obj){
 }
 
 void Character::ProcessCollision(MyObject* _Obj){
+	m_HIT->ProcessCollision(_Obj);
 
 }
 void Character::Move(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight){
@@ -212,20 +214,47 @@ void Character::Animation(float _Time){
 	m_HIT->Animation(_Time);
 }
 
-void Character::UpdateStatus(float _Time){
+void Character::UpdateStatus(float _Time)
+{
+	 if(!m_iActive )
+	 {
+		 m_TimeUpdate += _Time;
+		 if(m_TimeUpdate > 1 )
+		 {
+			 m_iActive = true ;
+			 m_TimeUpdate =0;
+
+		 }
+
+	 }
+}
+
+void Character::Update(float _Time)
+{
 
 }
 
-void Character::Update(float _Time){
+void Character::Draw(D3DXMATRIX _MWorld,LPD3DXSPRITE _Handler)
+{
+	if(getLife() == false)
+	{
+		return ;
+	}
 
-}
+	if( getActive() ==false)
+	{
+		if (timeGetTime()%400 >200)
+		{
+			return ;
+		}
+	}
 
-void Character::Draw(D3DXMATRIX _MWorld,LPD3DXSPRITE _Handler){
-	
 	if (m_HIT->getSTT()==ACTIVE){
 
-		m_HIT->Draw(_MWorld,_Handler);
-	}else{
+		/*m_HIT->Draw(_MWorld,_Handler);*/
+		m_InfoSprite.setCurFrame(m_HIT->getInfoSprite().getCurFrame());
+	}
+	
 		/*m_InfoSprite.setRotation(m_InfoSprite.getRotation()+1);*/
 		if (m_Dir<0){
 			m_InfoSprite.setScaleX(1);
@@ -234,7 +263,7 @@ void Character::Draw(D3DXMATRIX _MWorld,LPD3DXSPRITE _Handler){
 		}
 		m_InfoSprite.setXY(-125+m_X,-54+m_Y);
 		m_SCharater->Draw(_MWorld,m_InfoSprite,_Handler);
-	}
+	
 	
 
 }
