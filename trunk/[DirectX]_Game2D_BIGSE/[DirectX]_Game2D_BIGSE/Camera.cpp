@@ -48,6 +48,7 @@ void  Camera::Update(Character* _Character,float _MaxWidth,float _MaxHeight)
 
 void Camera::UpdateEffect(float _Time)
 {
+/*
 	m_SC += m_VDy*0.3*_Time;
 	if (m_SC > 1.1f)
 	{
@@ -56,7 +57,7 @@ void Camera::UpdateEffect(float _Time)
 	if(m_SC<1)
 	{
 		m_VDy = 1;
-	}
+	}*/
 }
 
 void Camera::UpdateEffect2(float _Time)
