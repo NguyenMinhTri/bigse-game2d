@@ -105,7 +105,8 @@ int Skill::getDamageEX(int _Damage, int _Offset)
 	return _Damage+ rand()%_Offset;
 }
 
-void Skill::Move(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight){
+void Skill::Move(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight)
+{
 
 }
 

@@ -28,7 +28,7 @@ m_char = new Character();
 	m_char->Init();
 	m_char->setXY(200,0);
 	m_char->setSize(50,85);
-
+	
 	m_Monster = new Character();
 	m_Monster->Init();
 	m_Monster->setXY(200,0);
@@ -112,8 +112,14 @@ void State_Play::OnKeyDown(int KeyCode)
 	case DIK_NUMPAD2:
 		m_char->ActiveSkill(1);
 		break;
+	case DIK_NUMPAD3:
+		m_char->ActiveSkill(2);
+		break;
 	case DIK_J:
 		m_Monster->ActiveSkill(1);
+		break;
+	case DIK_K:
+		m_Monster->ActiveSkill(2);
 		break;
 	case DIK_SPACE:
 		m_Monster->ActiveSkill(0);
