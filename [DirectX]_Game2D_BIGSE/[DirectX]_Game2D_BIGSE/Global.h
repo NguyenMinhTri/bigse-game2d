@@ -25,8 +25,5 @@ enum STT
 {
 	READY,
 	ACTIVE,	//di chuyen skill,dung nguyen
-	INVI,
-	FRENZY,
-	DELAY,
-	DEAD
+	COOLDOWN 
 };

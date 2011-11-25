@@ -11,6 +11,7 @@ protected:
 	bool m_NextCombo;
 	int m_Dir;
 	Sprite* m_SSkill;
+
 public:
 	Skill(void);
 	virtual ~Skill(void);
@@ -39,7 +40,7 @@ public:
 	virtual void UpdateStatus (float _Time) ;
 
 	/* Update all */
-	virtual void Update (float _Time) ;
+	virtual void Update (float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight) ;
 
 	/* Draw Object */
 	virtual void Draw (D3DXMATRIX _mtWorld,LPD3DXSPRITE _Handler);

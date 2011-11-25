@@ -9,6 +9,7 @@ private:
 	static RSMainGame* instance ; 
 	Sprite* m_Character;
 	Sprite* m_Terrain;
+	Sprite* m_Frenzy;
 	RSMainGame(void);
 public:
 	
@@ -28,6 +29,9 @@ public:
 	}
 	Sprite* getTerrain (){
 		return m_Terrain;
+	}
+	Sprite* getFrenzy(){
+		return m_Frenzy;
 	}
 };
 
