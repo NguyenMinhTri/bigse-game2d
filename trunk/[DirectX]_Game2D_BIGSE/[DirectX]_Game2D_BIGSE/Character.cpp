@@ -1,10 +1,11 @@
 #include "Character.h"
 #include "RSMainGame.h"
 #include "Global.h"
-
+#include "Frenzy.h"
 
 Character::Character(void)
 {
+
 	m_HP = 20; 
 	m_Damage = 1;
 }
@@ -14,9 +15,9 @@ Character::~Character(void)
 {
 }
 
-void Character::ActiveSkill(){
+void Character::ActiveSkill(int _Index){
 	
-	m_HIT->Active(m_X,m_Y,m_Dir);
+	m_skillManager->ActiveSkill(_Index,m_X,m_Y,m_Dir);
 	if (m_Vy < 0) //nhay len
 	{
 		m_Vy = fabs (m_Vy);
@@ -27,8 +28,12 @@ void Character::Init(){
 	m_InfoSprite.setSize(300,200);
 	m_STT = ACTIVE;
 
-	m_HIT = new Skill();
-	m_HIT->Init();
+	m_skillManager = new SkillManager();
+		m_skillManager->AddSkill(new Skill());
+	m_skillManager->AddSkill(new Frenzy());
+
+// 	m_HIT = new Frenzy();
+// 	m_HIT->Init();
 
 }
 
@@ -37,11 +42,10 @@ bool Character::iCollision(MyObject* _Obj){
 }
 
 void Character::ProcessCollision(MyObject* _Obj){
-	m_HIT->ProcessCollision(_Obj);
+	m_skillManager->ProcessCollision(_Obj);
 
 }
-void Character::Move(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight){
-	if(m_HIT->getSTT()== ACTIVE) return;
+void Character::Move(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight){	
 
 	float NextX,NextY;
 	
@@ -210,8 +214,7 @@ void Character::Animation(float _Time){
 		}
 		break;
 	}
-
-	m_HIT->Animation(_Time);
+		
 }
 
 void Character::UpdateStatus(float _Time)
@@ -229,9 +232,13 @@ void Character::UpdateStatus(float _Time)
 	 }
 }
 
-void Character::Update(float _Time)
+void Character::Update(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight)
 {
+	Animation(_Time);
+	Move(_Time,_Terrain,_MaxWidth,_MaxHeight);	
+	UpdateStatus(_Time);
 
+	m_skillManager->Update(_Time,_Terrain,_MaxWidth,_MaxHeight);
 }
 
 void Character::Draw(D3DXMATRIX _MWorld,LPD3DXSPRITE _Handler)
@@ -241,6 +248,8 @@ void Character::Draw(D3DXMATRIX _MWorld,LPD3DXSPRITE _Handler)
 		return ;
 	}
 
+	m_skillManager->Draw(_MWorld,_Handler);
+
 	if( getActive() ==false)
 	{
 		if (timeGetTime()%400 >200)
@@ -248,24 +257,20 @@ void Character::Draw(D3DXMATRIX _MWorld,LPD3DXSPRITE _Handler)
 			return ;
 		}
 	}
-
-	if (m_HIT->getSTT()==ACTIVE){
-
-		/*m_HIT->Draw(_MWorld,_Handler);*/
-		m_InfoSprite.setCurFrame(m_HIT->getInfoSprite().getCurFrame());
+	if (m_skillManager->getSkill(0)->getSTT()==ACTIVE)
+	{
+		m_InfoSprite.setCurFrame(m_skillManager->getSkill(0)->getInfoSprite().getCurFrame());
 	}
-	
-		/*m_InfoSprite.setRotation(m_InfoSprite.getRotation()+1);*/
+
 		if (m_Dir<0){
 			m_InfoSprite.setScaleX(1);
 		}else{
 			m_InfoSprite.setScaleX(-1);
 		}
 		m_InfoSprite.setXY(-125+m_X,-54+m_Y);
-		m_SCharater->Draw(_MWorld,m_InfoSprite,_Handler);
-	
-	
 
+		m_SCharater->Draw(_MWorld,m_InfoSprite,_Handler);
+		
 }
 
 void Character::Release(){
@@ -273,15 +278,15 @@ void Character::Release(){
 }
 
 void Character::setMove(int _move){
-	if(m_HIT->getSTT()!= ACTIVE){
+	/*if(m_HIT->getSTT()!= ACTIVE){*/
 		m_Vx = _move;
 		m_Dir = _move;
-	}
+	/*}*/
 }
 
 void Character::setJump(){
 
-	if ((m_Vy== 0) && (m_HIT->getSTT()!= ACTIVE))
+	if ((m_Vy== 0) && (m_skillManager->getSkill(0)->getSTT()!= ACTIVE))
 	{
 		m_Vy = -1* g_VY_JUMP;
 	}

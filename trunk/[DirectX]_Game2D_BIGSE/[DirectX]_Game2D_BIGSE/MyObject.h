@@ -66,6 +66,16 @@ public:
 		m_HP = _hp ;
 	}
 
+	int getDamage ()
+	{
+		return m_Damage;
+	}
+	void setDamage(int _damage)
+	{
+		m_Damage = _damage ;
+	}
+
+
 	void setID (int _id) { m_ID = _id;}
 	void setX (float _X) { m_X = _X;}
 	void setY (float _Y){
@@ -150,7 +160,7 @@ public:
 	virtual void UpdateStatus (float _Time) = 0;
 
 	/* Update all */
-	virtual void Update (float _Time) =0 ;
+	virtual void Update (float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight) =0 ;
 
 	/* Draw Object */
 	virtual void Draw (D3DXMATRIX _MWorld,LPD3DXSPRITE _Handler) = 0;

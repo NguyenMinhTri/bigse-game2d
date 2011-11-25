@@ -17,4 +17,8 @@ void RSMainGame::IntRS(LPDIRECT3DDEVICE9 _Device){
 
 	m_Terrain = new Sprite(_Device,
 		"data\\image\\ter.png",50,70,1);
+
+	m_Frenzy = new Sprite(_Device,
+		"data\\image\\Frenzy.png",421,394,1);
+	
 }

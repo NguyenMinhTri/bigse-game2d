@@ -1,7 +1,7 @@
 #pragma once
 #include "myobject.h"
 #include "Skill.h"
-
+#include "SkillManager.h"
 class Character :
 	public MyObject
 {
@@ -9,7 +9,8 @@ private:
 
 	int m_Dir;
 	Sprite* m_SCharater;
-	Skill* m_HIT;
+
+	SkillManager *m_skillManager ;
 
 public:
 	Character(void);
@@ -32,7 +33,7 @@ public:
 	virtual void UpdateStatus (float _Time) ;
 
 	/* Update all */
-	virtual void Update (float _Time) ;
+	virtual void Update (float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight) ;
 
 	/* Draw Object */
 	virtual void Draw (D3DXMATRIX _MWorld,LPD3DXSPRITE _Handler) ;
@@ -40,7 +41,7 @@ public:
 	/* Release */
 	virtual void Release () ;
 
-	virtual void ActiveSkill ();
+	virtual void ActiveSkill (int _Index);
 
 	/* Set move LEFT or RIGHT
 	-1 LEFT

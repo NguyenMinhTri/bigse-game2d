@@ -5,6 +5,8 @@
 
 Skill::Skill(void)
 {
+	//m_ID = ;
+	Init();
 }
 
 
@@ -13,6 +15,7 @@ Skill::~Skill(void)
 }
 
 void Skill::Init(){
+	m_Damage = 1;
 	m_Combo = 0;
 	m_STT = READY;
 	m_InfoSprite.setSize(300,200);
@@ -65,8 +68,6 @@ void Skill::Active (float _X,float _Y,int _Dir)
 			break;
 		}
 	}
-	
-
 
 }
 
@@ -85,18 +86,15 @@ void Skill::ProcessCollision(MyObject* _Obj){
 	}
 	else {
 		if(_Obj->getActive() == false )
-
 		{
 			return ;
 		}//true la chua trung
 		_Obj->setActive(false);
-		_Obj->setHp(_Obj->getHp() -  );
+		_Obj->setHp(_Obj->getHp() - getDamage()  );
 		if(_Obj->getHp() == 0)
 		{
 			_Obj->setLife(false); 
-		}
-
-
+		}		
 	}
 }
 
@@ -188,8 +186,10 @@ void Skill::UpdateStatus(float _Time){
 
 }
 
-void Skill::Update(float _Time){
-
+void Skill::Update(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight){
+	Animation(_Time);
+	//Move(_Time,_Terrain,_MaxWidth,_MaxHeight);	
+	UpdateStatus(_Time);
 }
 
 void Skill::Draw(D3DXMATRIX _MWorld,LPD3DXSPRITE _Handler){
@@ -200,7 +200,7 @@ void Skill::Draw(D3DXMATRIX _MWorld,LPD3DXSPRITE _Handler){
 		m_InfoSprite.setScaleX(-1);
 	}
 	m_InfoSprite.setXY(-125+m_X,-54+m_Y);
-	m_SSkill->Draw(_MWorld,m_InfoSprite,_Handler);
+/*	m_SSkill->Draw(_MWorld,m_InfoSprite,_Handler);*/
 
 }
 

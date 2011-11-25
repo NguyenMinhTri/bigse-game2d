@@ -132,6 +132,9 @@
     <ClCompile Include="RECT.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Frenzy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApp.h">
@@ -195,6 +198,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="RECT.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Frenzy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

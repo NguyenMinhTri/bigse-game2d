@@ -84,10 +84,12 @@ void State_Play::IsKeyDown(int KeyCode){
 	case DIK_UP:
 		m_char->setJump();
 		break;
+	
 
 	case DIK_A:
 		m_Monster->setMove(-1);
 		break;
+	
 	case DIK_D:
 		m_Monster->setMove(1);
 		break;
@@ -105,10 +107,16 @@ void State_Play::OnKeyDown(int KeyCode)
 	switch(KeyCode)
 	{
 	case DIK_NUMPAD1:
-		m_char->ActiveSkill();
+		m_char->ActiveSkill(0);
+		break;
+	case DIK_NUMPAD2:
+		m_char->ActiveSkill(1);
+		break;
+	case DIK_J:
+		m_Monster->ActiveSkill(1);
 		break;
 	case DIK_SPACE:
-		m_Monster->ActiveSkill();
+		m_Monster->ActiveSkill(0);
 		break;
 	}
 }
@@ -126,17 +134,15 @@ void State_Play::Update(float _Time)
 	m_Camera->UpdateEffect(_Time);
 	m_mtWorld = m_Camera->getMatrixTransform();
 
-	m_char->Animation(_Time);
-	m_char->Move(_Time,m_Map->getTerrain(),m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL);
 	
-	m_char->Update(_Time);
-	m_char->UpdateStatus(_Time);
+	
+	m_char->Update(_Time,m_Map->getTerrain(),m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL);
+	
+	
+	m_Monster->Update(_Time,m_Map->getTerrain(),m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL);
 
-	m_Monster->Animation(_Time);
-	m_Monster->Move(_Time,m_Map->getTerrain(),m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL);
+	
 
-	m_Monster->Update(_Time);
-	m_Monster->UpdateStatus(_Time);
 	m_char->ProcessCollision(m_Monster);
 	m_Monster->ProcessCollision(m_char);
 }
