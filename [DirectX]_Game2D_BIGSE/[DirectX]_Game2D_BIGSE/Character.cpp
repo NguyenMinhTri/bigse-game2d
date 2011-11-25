@@ -2,6 +2,7 @@
 #include "RSMainGame.h"
 #include "Global.h"
 #include "Frenzy.h"
+#include "CallPet.h"
 
 Character::Character(void)
 {
@@ -29,12 +30,9 @@ void Character::Init(){
 	m_STT = ACTIVE;
 
 	m_skillManager = new SkillManager();
-		m_skillManager->AddSkill(new Skill());
+	m_skillManager->AddSkill(new Skill());
 	m_skillManager->AddSkill(new Frenzy());
-
-// 	m_HIT = new Frenzy();
-// 	m_HIT->Init();
-
+	m_skillManager->AddSkill(new CallPet());
 }
 
 bool Character::iCollision(MyObject* _Obj){

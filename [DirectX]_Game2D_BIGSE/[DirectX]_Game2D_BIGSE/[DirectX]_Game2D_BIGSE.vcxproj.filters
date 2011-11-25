@@ -135,6 +135,9 @@
     <ClCompile Include="Frenzy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CallPet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApp.h">
@@ -203,5 +206,13 @@
     <ClInclude Include="Frenzy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="CallPet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="data\image\callThu.png">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

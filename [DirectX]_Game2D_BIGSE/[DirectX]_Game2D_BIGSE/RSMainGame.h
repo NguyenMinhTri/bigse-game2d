@@ -10,6 +10,7 @@ private:
 	Sprite* m_Character;
 	Sprite* m_Terrain;
 	Sprite* m_Frenzy;
+	Sprite* m_Pet ;
 	RSMainGame(void);
 public:
 	
@@ -32,6 +33,9 @@ public:
 	}
 	Sprite* getFrenzy(){
 		return m_Frenzy;
+	}
+	Sprite* getPet(){
+		return m_Pet;
 	}
 };
 
