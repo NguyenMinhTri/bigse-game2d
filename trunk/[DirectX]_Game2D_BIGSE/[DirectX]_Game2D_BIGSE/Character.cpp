@@ -120,7 +120,7 @@ if (m_Vx > 0){
 
 	#pragma region DOWN
 m_Vy+= _Time*g_GAVITY;
-	NextY = m_Y + m_Vy*_Time/* + 0.5*(_Time*_Time)*g_GAVITY*/;
+	NextY = m_Y + m_Vy*_Time + 0.5*(_Time*_Time)*g_GAVITY;
 	if (NextY >= (_MaxHeight - m_Height))
 	{
 		NextY =  _MaxHeight - m_Height;
