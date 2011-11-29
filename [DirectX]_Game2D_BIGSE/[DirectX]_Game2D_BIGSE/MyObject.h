@@ -8,7 +8,7 @@
 /*#include "Terrain.h"*/
 class MyObject
 {
-protected:
+protected :
 	/* ID of Object */
 	int m_ID;
 
