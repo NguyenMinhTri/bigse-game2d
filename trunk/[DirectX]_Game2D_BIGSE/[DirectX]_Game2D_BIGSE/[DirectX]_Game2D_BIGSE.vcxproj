@@ -86,6 +86,7 @@
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="iPlay.cpp" />
     <ClCompile Include="iState.cpp" />
+    <ClCompile Include="Monster.cpp" />
     <ClCompile Include="MyObject.cpp" />
     <ClCompile Include="RECT.cpp" />
     <ClCompile Include="RSMainGame.cpp" />
@@ -112,6 +113,7 @@
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="iPlay.h" />
     <ClInclude Include="iState.h" />
+    <ClInclude Include="Monster.h" />
     <ClInclude Include="MyObject.h" />
     <ClInclude Include="RECT.h" />
     <ClInclude Include="RSMainGame.h" />

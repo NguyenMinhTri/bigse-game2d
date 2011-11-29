@@ -3,11 +3,15 @@
 #include "Character.h"
 #include "Terrain.h"
 #include "Camera.h"
+#include "Monster.h"
 class State_Play :
 	public iState
 {
 	Character* m_Monster ;
 	Character* m_char;
+
+	Monster* m_Monster1;
+
 	LPD3DXSPRITE m_Handle;
 	Terrain* m_Map;
 	Camera* m_Camera;

@@ -7,7 +7,7 @@
 Character::Character(void)
 {
 
-	m_HP = 20; 
+	m_HP = 3; 
 	m_Damage = 1;
 }
 
@@ -41,7 +41,6 @@ bool Character::iCollision(MyObject* _Obj){
 
 void Character::ProcessCollision(MyObject* _Obj){
 	m_skillManager->ProcessCollision(_Obj);
-
 }
 void Character::Move(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight){	
 

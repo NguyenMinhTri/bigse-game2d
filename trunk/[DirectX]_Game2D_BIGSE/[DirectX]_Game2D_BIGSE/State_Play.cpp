@@ -24,7 +24,7 @@ void State_Play::Init()
 	m_Camera = new Camera(0,0,g_SCREEN_WIDTH,g_SCREEN_HEIGHT);
 
 	#pragma region Init Character
-m_char = new Character();
+    m_char = new Character();
 	m_char->Init();
 	m_char->setXY(200,0);
 	m_char->setSize(50,85);
@@ -33,6 +33,12 @@ m_char = new Character();
 	m_Monster->Init();
 	m_Monster->setXY(200,0);
 	m_Monster->setSize(50,85);
+
+	m_Monster1 = new Monster();
+	m_Monster1->Init();
+	m_Monster1->setXY(60,460);
+	m_Monster1->setSize(50,85);
+
 
 #pragma endregion Init Character
 
@@ -49,7 +55,7 @@ int _Terrain [] = {
 		1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, //7
 		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, //8
 		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, //9
-		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, //10		
+		1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, //10		
 		1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, //11
 		1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, //12
 		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, //13
@@ -146,11 +152,15 @@ void State_Play::Update(float _Time)
 	
 	
 	m_Monster->Update(_Time,m_Map->getTerrain(),m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL);
+	m_Monster1->Update(_Time,m_Map->getTerrain(),m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL);
 
 	
 
 	m_char->ProcessCollision(m_Monster);
 	m_Monster->ProcessCollision(m_char);
+	m_Monster1->ProcessCollision(m_char);
+	m_Monster1->ProcessCollision(m_Monster);
+
 }
 void State_Play::Draw()
 {	
@@ -165,6 +175,8 @@ void State_Play::Draw()
 
 		m_char->Draw(m_mtWorld,m_Handle);
 		m_Monster->Draw(m_mtWorld,m_Handle);
+		m_Monster1->Draw(m_mtWorld,m_Handle);
+	
 
 
 		
