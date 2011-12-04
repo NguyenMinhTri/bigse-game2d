@@ -39,6 +39,13 @@ void State_Play::Init()
 	m_Monster1->setXY(60,460);
 	m_Monster1->setSize(50,85);
 
+	m_Archer = new Archer();
+	m_Archer->Init();
+	m_Archer->setXY( 200,0);
+	m_Archer->setSize(50,85);
+
+	
+
 
 #pragma endregion Init Character
 
@@ -51,8 +58,8 @@ int _Terrain [] = {
 		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, //3
 		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, //4
 		0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, //5
-		0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, //6
-		1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, //7
+		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, //6
+		1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, //7
 		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, //8
 		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, //9
 		1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, //10		
@@ -82,15 +89,25 @@ void State_Play::IsKeyDown(int KeyCode){
 	switch(KeyCode)
 	{
 	case DIK_LEFT:
-		m_char->setMove(-1);
+		m_Archer->setMove(-1);
 		break;
 	case DIK_RIGHT:
-		m_char->setMove(1);
+		m_Archer->setMove(1);
 		break;
 	case DIK_UP:
+		m_Archer->setJump();
+		break;
+
+	case DIK_NUMPAD7:
+		m_char->setMove(-1);
+		break;
+
+	case DIK_NUMPAD8:
+		m_char->setMove(1);
+		break;
+	case DIK_NUMPAD9:
 		m_char->setJump();
 		break;
-	
 
 	case DIK_A:
 		m_Monster->setMove(-1);
@@ -113,13 +130,10 @@ void State_Play::OnKeyDown(int KeyCode)
 	switch(KeyCode)
 	{
 	case DIK_NUMPAD1:
-		m_char->ActiveSkill(0);
+		m_Archer->ActiveSkill(0);
 		break;
-	case DIK_NUMPAD2:
-		m_char->ActiveSkill(1);
-		break;
-	case DIK_NUMPAD3:
-		m_char->ActiveSkill(2);
+	case DIK_NUMPAD4:
+		m_Archer->ActiveSkill(1);
 		break;
 	case DIK_J:
 		m_Monster->ActiveSkill(1);
@@ -132,18 +146,19 @@ void State_Play::OnKeyDown(int KeyCode)
 		break;
 	}
 }
+
 void State_Play::OnKeyUp(int KeyCode)
 {
 	switch(KeyCode)
 	{
-
+	
 	}
 }
 
 void State_Play::Update(float _Time)
 {
 	m_Camera->Update(m_char,m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL);
-	m_Camera->UpdateEffect(_Time);
+	//m_Camera->UpdateEffect(_Time);
 	m_mtWorld = m_Camera->getMatrixTransform();
 
 	
@@ -154,7 +169,14 @@ void State_Play::Update(float _Time)
 	m_Monster->Update(_Time,m_Map->getTerrain(),m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL);
 	m_Monster1->Update(_Time,m_Map->getTerrain(),m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL);
 
+	m_Archer->Update(_Time,m_Map->getTerrain(),m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL);	
 	
+	m_Archer->ProcessCollision(m_Monster);
+	m_Archer->ProcessCollision(m_Monster1);
+
+	m_Monster->ProcessCollision(m_Archer);
+
+
 
 	m_char->ProcessCollision(m_Monster);
 	m_Monster->ProcessCollision(m_char);
@@ -176,10 +198,8 @@ void State_Play::Draw()
 		m_char->Draw(m_mtWorld,m_Handle);
 		m_Monster->Draw(m_mtWorld,m_Handle);
 		m_Monster1->Draw(m_mtWorld,m_Handle);
-	
 
-
-		
+		m_Archer->Draw(m_mtWorld,m_Handle);
 
 		m_Handle->End();
 		m_Device->EndScene();

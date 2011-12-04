@@ -6,18 +6,16 @@ Frenzy::Frenzy(void)
 {
 	Init();
 }
-
-
 Frenzy::~Frenzy(void)
 {
 }
-
 void Frenzy::Init(){
 	m_Damage = 1;
 	m_Combo = 0;
 	m_STT = READY;
-	m_InfoSprite.setSize(421,394);
-	setSize(421,394);
+	m_InfoSprite.setSize(435,419);
+
+	setSize(435,419);
 	m_SSkill = RSMainGame::get()->getFrenzy();
 }
 
@@ -39,8 +37,7 @@ void Frenzy::Active (float _X,float _Y,int _Dir)
 		}
 
 		m_STT = ACTIVE;
-		m_InfoSprite.setCurFrame(0);
-		
+		m_InfoSprite.setCurFrame(0);	
 		m_TimeAni = 0;
 
 	}
@@ -86,9 +83,21 @@ void Frenzy::Move(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight){
 }
 
 void Frenzy::Animation(float _Time){
-
+	if (m_STT == ACTIVE)
+	{
+		m_TimeAni+= _Time;
+		if (m_TimeAni>=0.16f)
+		{
+			m_TimeAni-= 0.16f;
+			m_InfoSprite.NextFrame(0,12);
+			if(m_InfoSprite.getCurFrame()>12)
+			{
+					m_STT=READY;
+					m_TimeAni=0;
+			}
+		}
+	}
 }
-
 void Frenzy::UpdateStatus(float _Time)
 {
 	switch (m_STT)

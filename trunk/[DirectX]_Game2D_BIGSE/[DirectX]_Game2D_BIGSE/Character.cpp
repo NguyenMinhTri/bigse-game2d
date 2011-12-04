@@ -7,7 +7,7 @@
 Character::Character(void)
 {
 
-	m_HP = 3; 
+	m_HP = 20; 
 	m_Damage = 1;
 }
 
@@ -200,6 +200,7 @@ void Character::Animation(float _Time){
 
 			if (m_Vy != 0){
 				m_InfoSprite.setCurFrame(4);
+
 			}else{
 				if (m_Vx == 0){
 					m_InfoSprite.NextFrame(8,4);

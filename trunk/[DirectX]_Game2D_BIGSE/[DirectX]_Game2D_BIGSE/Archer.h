@@ -1,21 +1,21 @@
 #pragma once
+#include "character.h"
 #include "myobject.h"
 #include "Skill.h"
 #include "SkillManager.h"
-class Character :
-	public MyObject
+
+class Archer :
+
+	public Character
 {
 protected:
-
-	int m_Dir;
-	Sprite* m_SCharater;
-
-	SkillManager *m_skillManager ;
-
+	Sprite *m_Archer;
+	bool arrow;
+	bool COOLDOWN;
 public:
-	Character(void);
-	virtual ~Character(void);
-
+	Archer(void);
+	~Archer(void);
+	
 	virtual void Init () ;
 	/* Processing collision */
 	virtual void ProcessCollision (MyObject* _Obj);
@@ -24,7 +24,7 @@ public:
 	virtual bool iCollision (MyObject* _Obj) ;
 
 	/* Update Move and check Collision with Terrain */
-	virtual void Move (float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight);
+	
 
 	/* Update Animation */
 	virtual void Animation (float _Time) ;
