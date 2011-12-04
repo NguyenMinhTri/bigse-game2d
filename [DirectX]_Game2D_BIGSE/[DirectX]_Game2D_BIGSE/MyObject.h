@@ -107,6 +107,7 @@ public:
 
 	int getID () { return m_ID;}
 
+
 	bool getFrenzy(){
 		return m_iFrenzy ;
 	}

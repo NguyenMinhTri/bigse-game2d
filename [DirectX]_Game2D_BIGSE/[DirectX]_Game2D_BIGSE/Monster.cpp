@@ -26,7 +26,7 @@ void Monster::Init()
 	m_skillManager = new SkillManager();
 	m_skillManager->AddSkill(new Skill());
 	m_skillManager->AddSkill(new CallPet());
-
+	
 }
 
 void Monster::ActiveSkill(int _Index)
@@ -46,7 +46,7 @@ bool Monster::iCollision(MyObject* _Obj)
 }
 void Monster :: Move (float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight)
 {
-
+	
 	float NextX, NextY ;
 #pragma  region RIGHT 
 	if(m_Dir > 0 )
@@ -150,8 +150,8 @@ void Monster :: Move (float _Time, int** _Terrain,float _MaxWidth,float _MaxHeig
 			m_Y = NextY;
 		}
 #pragma endregion DOWN
-	}
 }
+	}
 
 void Monster::ProcessCollision(MyObject* _Obj)
 {
@@ -162,18 +162,18 @@ void Monster::ProcessCollision(MyObject* _Obj)
 		{
 			return ;
 		}
-		ActiveSkill(0);		
-		int a = m_X;
-		if(m_X >a || m_X<a)
-		{
-			m_X = a ;
-		}
+        	ActiveSkill(0);		
+			int a = m_X;
+			if(m_X >a || m_X<a)
+			{
+				m_X = a ;
+			}
 	}
-	// 	if(m_skillManager->getSkill(0)->getRect().iCollision(_Obj->getRect()))
-	// 	{
-	// 
-	// 		ActiveSkill(1);	
-	// 	}		
+// 	if(m_skillManager->getSkill(0)->getRect().iCollision(_Obj->getRect()))
+// 	{
+// 
+// 		ActiveSkill(1);	
+// 	}		
 
 }
 void Monster::Animation(float _Time){
@@ -191,7 +191,7 @@ void Monster::Animation(float _Time){
 			}
 			else
 			{
-				m_InfoSprite.NextFrame(0,4);
+					m_InfoSprite.NextFrame(0,4);
 			}
 		}
 		break;

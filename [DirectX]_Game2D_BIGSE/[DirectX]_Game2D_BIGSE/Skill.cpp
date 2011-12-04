@@ -18,7 +18,6 @@ void Skill::Init(){
 	m_Damage = 1;
 	m_Combo = 0;
 	m_STT = READY;
-	m_InfoSprite.setSize(300,200);
 	setSize(150,150);
 	m_SSkill = RSMainGame::get()->getCharacter();
 }
@@ -34,7 +33,7 @@ void Skill::Active (float _X,float _Y,int _Dir)
 		} 
 		else
 		{
-			m_X = _X+50- m_Width ;
+			m_X = _X + 50- m_Width ;
 			m_Y = _Y;
 			m_Dir = _Dir;
 		}
@@ -190,7 +189,7 @@ void Skill::UpdateStatus(float _Time){
 void Skill::Update(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight){
 	Animation(_Time);
 	//Move(_Time,_Terrain,_MaxWidth,_MaxHeight);	
-	UpdateStatus(_Time);
+	//UpdateStatus(_Time);
 }
 
 void Skill::Draw(D3DXMATRIX _MWorld,LPD3DXSPRITE _Handler){
@@ -200,7 +199,7 @@ void Skill::Draw(D3DXMATRIX _MWorld,LPD3DXSPRITE _Handler){
 	}else{
 		m_InfoSprite.setScaleX(-1);
 	}
-	m_InfoSprite.setXY(-125+m_X,-54+m_Y);
+	m_InfoSprite.setXY(m_X,m_Y);
 /*	m_SSkill->Draw(_MWorld,m_InfoSprite,_Handler);*/
 
 }

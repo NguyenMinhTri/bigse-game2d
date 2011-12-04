@@ -4,11 +4,14 @@
 #include "Terrain.h"
 #include "Camera.h"
 #include "Monster.h"
+#include "Archer.h"
+
 class State_Play :
 	public iState
 {
 	Character* m_Monster ;
 	Character* m_char;
+    Archer *m_Archer; 
 
 	Monster* m_Monster1;
 

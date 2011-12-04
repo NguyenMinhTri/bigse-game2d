@@ -74,6 +74,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Archer.cpp" />
+    <ClCompile Include="Arrow.cpp" />
     <ClCompile Include="CallPet.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Character.cpp" />
@@ -91,6 +93,7 @@
     <ClCompile Include="RECT.cpp" />
     <ClCompile Include="RSMainGame.cpp" />
     <ClCompile Include="Skill.cpp" />
+    <ClCompile Include="SkillArcher.cpp" />
     <ClCompile Include="SkillManager.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="State_Game.cpp" />
@@ -100,6 +103,8 @@
     <ClCompile Include="WinMain.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Archer.h" />
+    <ClInclude Include="Arrow.h" />
     <ClInclude Include="CallPet.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Character.h" />
@@ -118,6 +123,7 @@
     <ClInclude Include="RECT.h" />
     <ClInclude Include="RSMainGame.h" />
     <ClInclude Include="Skill.h" />
+    <ClInclude Include="SkillArcher.h" />
     <ClInclude Include="SkillManager.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="State_Game.h" />
