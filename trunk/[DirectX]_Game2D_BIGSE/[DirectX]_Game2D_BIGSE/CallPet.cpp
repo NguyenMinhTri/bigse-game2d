@@ -31,14 +31,14 @@ void CallPet::Active (float _X,float _Y,int _Dir)
 			m_X = _X  + 50;
 			/*m_Y = _Y-(394-85);*/
 			m_Y = _Y-(189-85);
-			m_Dir = _Dir;
+			m_Direct = _Dir;
 		} 
 		else
 		{
 			m_X = _X -m_Width ;
 			/*	m_Y = _Y-(394-85);*/
 			m_Y = _Y-(189 - 85);	
-			m_Dir = _Dir;
+			m_Direct = _Dir;
 		}
 
 		m_STT = ACTIVE;
@@ -104,11 +104,11 @@ void CallPet::Animation(float _Time)
 			if(m_InfoSprite.getCurFrame() > 11  && m_InfoSprite.getCurFrame() <13 )
 			{
 				/*m_InfoSprite.setX(m_InfoSprite.getX() + 30 );*/
-				if(m_Dir >0)
+				if(m_Direct >0)
 				{
 			     	m_X +=400;
 				}
-				else if(m_Dir < 0)
+				else if(m_Direct < 0)
 				{
 					m_X -= 400;
 				}
@@ -153,7 +153,7 @@ void CallPet::Update(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeigh
 
 void CallPet::Draw(D3DXMATRIX _MWorld,LPD3DXSPRITE _Handler){
 
-	if (m_Dir<0){
+	if (m_Direct<0){
 		m_InfoSprite.setScaleX(1);
 	}else{
 		m_InfoSprite.setScaleX(-1);

@@ -4,10 +4,7 @@
 #include <stdlib.h>
 #include "Skill.h"
 using namespace std;
-/*
-Iterator skill
-*/
-//typedef vector<Skill*>::const_iterator siter;
+
 class SkillManager
 {
 protected:

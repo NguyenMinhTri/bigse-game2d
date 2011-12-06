@@ -7,7 +7,7 @@ class Character :
 {
 protected:
 
-	int m_Dir;
+	
 	Sprite* m_SCharater;
 
 	SkillManager *m_skillManager ;
@@ -23,9 +23,7 @@ public:
 	/* Check collision with other Object */
 	virtual bool iCollision (MyObject* _Obj) ;
 
-	/* Update Move and check Collision with Terrain */
-	virtual void Move (float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight);
-
+	
 	/* Update Animation */
 	virtual void Animation (float _Time) ;
 
@@ -43,13 +41,6 @@ public:
 
 	virtual void ActiveSkill (int _Index);
 
-	/* Set move LEFT or RIGHT
-	-1 LEFT
-	 1 RIGHT
-	*/
-	void setMove (int _move);
-
-	/* Set Jump */
-	void setJump ();
+	
 };
 

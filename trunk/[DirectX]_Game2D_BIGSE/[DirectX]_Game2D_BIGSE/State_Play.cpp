@@ -186,7 +186,7 @@ void State_Play::Update(float _Time)
 }
 void State_Play::Draw()
 {	
-	m_Device->Clear(0,NULL,D3DCLEAR_TARGET,D3DCOLOR_XRGB(0,0,255),1.0f,0);
+	m_Device->Clear(0,NULL,D3DCLEAR_TARGET,D3DCOLOR_XRGB(0,0,0),1.0f,0);
 
 	
 	if(m_Device->BeginScene())

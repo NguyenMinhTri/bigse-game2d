@@ -15,6 +15,7 @@ protected :
     int m_HP;
     int m_Damage;
 
+	int m_Direct;
 
 	/* Status */
 	int m_STT,m_OldSTT;
@@ -24,6 +25,12 @@ protected :
 
 	/* Velocity */
 	float m_Vx, m_Vy;
+
+	/* Gravity */
+	float m_Gravity;
+
+	/* Direct move X */
+	float m_VxDirect;
 
 	/* Size */
 	float m_Width,m_Height;
@@ -149,7 +156,16 @@ public:
 	virtual bool iCollision (MyObject* _Obj) = 0;
 
 	/* Update Move and check Collision with Terrain */
-	virtual void Move (float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight) = 0;
+	virtual void Move (float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight);
+
+	/* Set move LEFT or RIGHT
+	-1 LEFT
+	 1 RIGHT
+	*/
+	virtual void setMove (int _move);
+
+	/* Set Jump */
+	virtual void setJump ();
 
 	/* Update Move and check Collision with Terrain */
 	//virtual void Move (float _Time, Terrain* _Map){} ;
@@ -168,5 +184,6 @@ public:
 
 	/* Release */
 	virtual void Release () = 0;
+
 };
 

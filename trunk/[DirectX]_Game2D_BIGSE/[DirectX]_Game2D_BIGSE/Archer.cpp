@@ -19,7 +19,7 @@ Archer::~Archer(void)
 }
 
 void Archer ::ActiveSkill(int _Index){
-		m_skillManager->ActiveSkill(_Index,m_X,m_Y,m_Dir);
+		m_skillManager->ActiveSkill(_Index,m_X,m_Y,m_Direct);
 		if (m_Vy < 0) //nhay len
 		{
 			m_Vy = fabs (m_Vy);
@@ -37,12 +37,7 @@ void Archer ::Init()
 	
 }
 
-bool Archer::iCollision(MyObject* _Obj){
-	return false;
-}
-void Archer::ProcessCollision(MyObject* _Obj){
-	m_skillManager->ProcessCollision(_Obj);
-}
+
 
 void Archer::Animation(float _Time){//1 walk,  2 jump, 3 alert, 4 hit, 5 skill
 	m_TimeAni += _Time ;
@@ -69,7 +64,7 @@ void Archer::Animation(float _Time){//1 walk,  2 jump, 3 alert, 4 hit, 5 skill
 					}
 				}
 				else{
-					if (m_Vx == 0){
+					if (m_VxDirect == 0){
 						m_InfoSprite.NextFrame(8,4);
 					} 
 					else{
@@ -104,7 +99,7 @@ void Archer::Draw(D3DXMATRIX _MWorld,LPD3DXSPRITE _Handler)
 		m_InfoSprite.setCurFrame(m_skillManager->getSkill(0)->getInfoSprite().getCurFrame());
 	}
 
-	if (m_Dir<0){
+	if (m_Direct<0){
 		m_InfoSprite.setScaleX(1);
 	}else{
 		m_InfoSprite.setScaleX(-1);
@@ -115,41 +110,17 @@ void Archer::Draw(D3DXMATRIX _MWorld,LPD3DXSPRITE _Handler)
 
 }
 
-void Archer::UpdateStatus(float _Time)
-{
-	if(!m_iActive )
-	{
-		m_TimeUpdate += _Time;
-		if(m_TimeUpdate > 1 )
-		{
-			m_iActive = true ;
-			m_TimeUpdate =0;
 
-		}
-	}
-}
 
-void Archer::Update(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight)
-{
-	Animation(_Time);
-	Move(_Time,_Terrain,_MaxWidth,_MaxHeight);	
-	UpdateStatus(_Time);
 
-	m_skillManager->Update(_Time,_Terrain,_MaxWidth,_MaxHeight);
-}
 void Archer::Release(){
 
 }
-void Archer::setMove(int _move){
-	/*if(m_HIT->getSTT()!= ACTIVE){*/
-	m_Vx = _move;
-	m_Dir = _move;
-	/*}*/
-}
+
 void Archer::setJump(){
 
 	if ((m_Vy== 0) && (m_skillManager->getSkill(0)->getSTT()!= ACTIVE))
 	{
-		m_Vy = -1* g_VY_JUMP;
+		MyObject::setJump();
 	}
 }
