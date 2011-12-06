@@ -44,6 +44,7 @@ bool Monster::iCollision(MyObject* _Obj)
 {
 	return false;
 }
+
 void Monster :: Move (float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight)
 {
 	
@@ -117,7 +118,7 @@ void Monster :: Move (float _Time, int** _Terrain,float _MaxWidth,float _MaxHeig
 #pragma endregion LEFT
 
 #pragma region DOWN
-	m_Vy+= _Time*g_GAVITY;
+	m_Vy+= _Time*g_GRAVITY;
 	NextY = m_Y + m_Vy*_Time/* + 0.5*(_Time*_Time)*g_GAVITY*/;
 	if (NextY >= (_MaxHeight - m_Height))
 	{

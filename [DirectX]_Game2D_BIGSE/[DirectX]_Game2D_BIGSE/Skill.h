@@ -7,7 +7,7 @@ class Skill : public MyObject
 protected:
 	int m_Combo;
 	bool m_NextCombo;
-	int m_Dir;
+
 	Sprite* m_SSkill;
 	bool timeshoot;
 
