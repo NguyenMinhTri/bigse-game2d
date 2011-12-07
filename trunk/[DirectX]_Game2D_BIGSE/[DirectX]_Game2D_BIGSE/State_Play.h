@@ -5,6 +5,7 @@
 #include "Camera.h"
 #include "Monster.h"
 #include "Archer.h"
+#include "Magician.h"
 
 class State_Play :
 	public iState
@@ -14,7 +15,7 @@ class State_Play :
     Archer *m_Archer; 
 
 	Monster* m_Monster1;
-
+	Magician* m_Magician;
 	LPD3DXSPRITE m_Handle;
 	Terrain* m_Map;
 	Camera* m_Camera;

@@ -44,6 +44,11 @@ void State_Play::Init()
 	m_Archer->setXY( 200,0);
 	m_Archer->setSize(50,85);
 
+	m_Magician = new Magician();
+	m_Magician->Init();
+	m_Magician->setXY( 200,0);
+	m_Magician->setSize(50,85);
+
 	
 
 
@@ -97,6 +102,15 @@ void State_Play::IsKeyDown(int KeyCode){
 	case DIK_UP:
 		m_Archer->setJump();
 		break;
+// 	case DIK_LEFT:
+// 		m_Magician->setMove(-1);
+// 		break;
+// 	case DIK_RIGHT:
+// 		m_Magician->setMove(1);
+// 		break;
+// 	case DIK_UP:
+// 		m_Magician->setJump();
+// 		break;
 
 	case DIK_NUMPAD7:
 		m_char->setMove(-1);
@@ -135,6 +149,9 @@ void State_Play::OnKeyDown(int KeyCode)
 	case DIK_NUMPAD4:
 		m_Archer->ActiveSkill(1);
 		break;
+// 	case DIK_NUMPAD4:
+// 		 m_Magician->ActiveSkill(0);
+// 		 break;
 	case DIK_J:
 		m_Monster->ActiveSkill(1);
 		break;
@@ -170,11 +187,13 @@ void State_Play::Update(float _Time)
 	m_Monster1->Update(_Time,m_Map->getTerrain(),m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL);
 
 	m_Archer->Update(_Time,m_Map->getTerrain(),m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL);	
-	
+	m_Magician->Update(_Time,m_Map->getTerrain(),m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL);		
 	m_Archer->ProcessCollision(m_Monster);
 	m_Archer->ProcessCollision(m_Monster1);
 
 	m_Monster->ProcessCollision(m_Archer);
+	m_Magician->ProcessCollision(m_Monster);
+	m_Magician->ProcessCollision(m_char);
 
 
 
@@ -200,6 +219,7 @@ void State_Play::Draw()
 		m_Monster1->Draw(m_mtWorld,m_Handle);
 
 		m_Archer->Draw(m_mtWorld,m_Handle);
+		m_Magician->Draw(m_mtWorld,m_Handle);
 
 		m_Handle->End();
 		m_Device->EndScene();
