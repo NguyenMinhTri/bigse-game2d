@@ -9,7 +9,6 @@
 
 Archer::Archer(void)
 {
-	arrow = false ;
 	m_HP = 10; 
 	m_Damage = 1;
 }
@@ -18,16 +17,9 @@ Archer::~Archer(void)
 {
 }
 
-void Archer ::ActiveSkill(int _Index){
-		m_skillManager->ActiveSkill(_Index,m_X,m_Y,m_Direct);
-		if (m_Vy < 0) //nhay len
-		{
-			m_Vy = fabs (m_Vy);
-		}
-}
 void Archer ::Init()
 {
-	m_Archer= RSMainGame ::get()->getArcher();
+	m_SCharater= RSMainGame ::get()->getArcher();
 	m_InfoSprite.setSize(300,200);
 	m_STT = ACTIVE ;
 
@@ -36,8 +28,6 @@ void Archer ::Init()
 	m_skillManager->AddSkill(new Arrow());
 	
 }
-
-
 
 void Archer::Animation(float _Time){//1 walk,  2 jump, 3 alert, 4 hit, 5 skill
 	m_TimeAni += _Time ;
@@ -64,7 +54,7 @@ void Archer::Animation(float _Time){//1 walk,  2 jump, 3 alert, 4 hit, 5 skill
 					}
 				}
 				else{
-					if (m_VxDirect == 0){
+					if (m_Vx == 0){
 						m_InfoSprite.NextFrame(8,4);
 					} 
 					else{
@@ -77,50 +67,4 @@ void Archer::Animation(float _Time){//1 walk,  2 jump, 3 alert, 4 hit, 5 skill
 		break;
 	}
 }
-void Archer::Draw(D3DXMATRIX _MWorld,LPD3DXSPRITE _Handler)
-{
-	if(getLife() == false)
-	{
-		return ;
-	}
 
-	m_skillManager->Draw(_MWorld,_Handler);
-
-	if( getActive() ==false)
-	{
-		if (timeGetTime()%400 >200)
-		{
-			return ;
-		}
-	}
-
-	if (m_skillManager->getSkill(0)->getSTT()==ACTIVE)
-	{
-		m_InfoSprite.setCurFrame(m_skillManager->getSkill(0)->getInfoSprite().getCurFrame());
-	}
-
-	if (m_Direct<0){
-		m_InfoSprite.setScaleX(1);
-	}else{
-		m_InfoSprite.setScaleX(-1);
-	}
-	m_InfoSprite.setXY(-125+m_X,-54+m_Y);
-
-	m_Archer->Draw(_MWorld,m_InfoSprite,_Handler);
-
-}
-
-
-
-
-void Archer::Release(){
-
-}
-
-void Archer::setJump(){
-
-	if ((m_Vy== 0) && (m_skillManager->getSkill(0)->getSTT()!= ACTIVE))
-	{
-		MyObject::setJump();
-	}
-}
