@@ -25,5 +25,6 @@ void RSMainGame::IntRS(LPDIRECT3DDEVICE9 _Device){
 	m_Archer = new Sprite(_Device,"data\\image\\cungthu.png",300,200,4);
 
 	m_Arrow = new Sprite(_Device,"data\\image\\Arrow.png",232,67,4);
+	m_Magician = new Sprite(_Device,"data\\image\\Magician.png",300,200,4);
 	
 }
