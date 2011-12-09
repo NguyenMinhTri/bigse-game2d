@@ -8,8 +8,6 @@
 Sprite::Sprite(LPDIRECT3DDEVICE9 _Device,char* filename,int _width,int _height,
 	int _col,D3DCOLOR _tran )
 {
-	
-	
 	m_Width = _width;
 	m_Height = _height;
 	m_ColFrame = _col;

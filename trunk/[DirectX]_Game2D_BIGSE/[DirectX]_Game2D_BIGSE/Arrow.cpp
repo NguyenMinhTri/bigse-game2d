@@ -21,7 +21,7 @@ void Arrow::Init(){
 	m_SSkill = RSMainGame::get()->getArrow();
 
 	m_Gravity = 0;
-	m_Vx = 1000;
+	m_Vx = 2000;
 }
 void Arrow::Active (float _X,float _Y,int _Dir)
 {
