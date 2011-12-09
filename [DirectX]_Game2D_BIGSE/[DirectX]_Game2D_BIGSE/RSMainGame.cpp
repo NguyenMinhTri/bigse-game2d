@@ -19,8 +19,8 @@ void RSMainGame::IntRS(LPDIRECT3DDEVICE9 _Device){
 		"data\\image\\ter.png",50,70,1);
 
 	m_Frenzy = new Sprite(_Device,
-		"data\\image\\ice.png",435,419,1);
-	m_Pet = new Sprite(_Device,"data\\image\\callThu.png",283,189,21 );
+		"data\\image\\ice.png",435,419,2);
+	m_Pet = new Sprite(_Device,"data\\image\\callPet.png",520,385,6 );
 
 	m_Archer = new Sprite(_Device,"data\\image\\cungthu.png",300,200,4);
 

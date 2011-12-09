@@ -6,118 +6,56 @@ CallPet::CallPet(void)
 {
 	Init();
 }
-
-
 CallPet::~CallPet(void)
 {
 }
-
 void CallPet::Init()
 {
 	m_Damage = 1;
-	m_Combo = 0;
 	m_STT = READY;
-	m_InfoSprite.setSize(283,214);
-	setSize(283,189);
+	m_InfoSprite.setSize(520,385);
+	setSize(520,385);
 	m_SSkill = RSMainGame::get()->getPet();
 }
 
 void CallPet::Active (float _X,float _Y,int _Dir)
 {
-	if (m_STT == READY) //chua tung CallPet
+	if (m_STT == READY) 
 	{
 		if (_Dir>0)
 		{
-			m_X = _X  + 50;
-			/*m_Y = _Y-(394-85);*/
-			m_Y = _Y-(189-85);
+			m_X = _X ;
+			m_Y = _Y - 250;
 			m_Direct = _Dir;
 		} 
 		else
 		{
-			m_X = _X -m_Width ;
-			/*	m_Y = _Y-(394-85);*/
-			m_Y = _Y-(189 - 85);	
+			m_X = _X  - 400;
+			m_Y = _Y -250;	
 			m_Direct = _Dir;
 		}
 
 		m_STT = ACTIVE;
 		m_InfoSprite.setCurFrame(0);
-
 		m_TimeAni = 0;
-
-	}
-
-}
-
-bool CallPet::iCollision (MyObject* _Obj) {
-	return false;
-}
-
-void CallPet::ProcessCollision(MyObject* _Obj){
-	if ( m_STT!= ACTIVE ) 
-	{
-		return;
-	}
-	if(!getRect().iCollision(_Obj->getRect()))
-	{
-		return ;
-	}
-	else {
-		if(_Obj->getActive() == false )
-		{
-			return ;
-		}//true la chua trung
-		_Obj->setActive(false);
-		_Obj->setHp(_Obj->getHp() - getDamage()  );
-		if(_Obj->getHp() == 0)
-		{
-			_Obj->setLife(false); 
-		}		
 	}
 }
 
-
-
-int CallPet::getDamageEX(int _Damage, int _Offset)
-{
-	return _Damage+ rand()%_Offset;
-}
-
-void CallPet::Move(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight)
-{
-	//       if(m_InfoSprite.getCurFrame() == 11  )
-	// 	  {
-	// 		  m_InfoSprite.setX(m_InfoSprite.getX() +3 );
-	// 	  }
-}
-
-void CallPet::Animation(float _Time)
-{
+void CallPet::Animation(float _Time){
 	if (m_STT == ACTIVE)
 	{
 		m_TimeAni+= _Time;
-		if (m_TimeAni>=0.12f)
+		if (m_TimeAni>=0.10f)
 		{
-			m_TimeAni-= 0.12f;
-			m_InfoSprite.NextFrame(0,21);
-			if(m_InfoSprite.getCurFrame() > 11  && m_InfoSprite.getCurFrame() <13 )
+			m_TimeAni-= 0.10f;
+			m_InfoSprite.NextFrame(0,33);
+			if(m_InfoSprite.getCurFrame()>33)
 			{
-				/*m_InfoSprite.setX(m_InfoSprite.getX() + 30 );*/
-				if(m_Direct >0)
-				{
-			     	m_X +=400;
-				}
-				else if(m_Direct < 0)
-				{
-					m_X -= 400;
-				}
-
+				m_STT=READY;
+				m_TimeAni=0;
 			}
-
 		}
 	}
-
 }
 
 void CallPet::UpdateStatus(float _Time)
@@ -126,7 +64,7 @@ void CallPet::UpdateStatus(float _Time)
 	{
 	case ACTIVE:
 		m_TimeUpdate+= _Time;
-		if(m_TimeUpdate > 2.52)
+		if(m_TimeUpdate > 3.3)
 		{
 			m_STT = COOLDOWN;
 			m_TimeUpdate = 0;
@@ -134,7 +72,7 @@ void CallPet::UpdateStatus(float _Time)
 		break;
 	case COOLDOWN:
 		m_TimeUpdate+= _Time;
-		if(m_TimeUpdate > 2)
+		if(m_TimeUpdate > 4)
 		{
 			m_STT = READY;
 			m_TimeUpdate = 0;
@@ -160,7 +98,6 @@ void CallPet::Draw(D3DXMATRIX _MWorld,LPD3DXSPRITE _Handler){
 	}
 	m_InfoSprite.setXY(m_X,m_Y);
 	m_SSkill->Draw(_MWorld,m_InfoSprite,_Handler);
-
 }
 
 void CallPet::Release()

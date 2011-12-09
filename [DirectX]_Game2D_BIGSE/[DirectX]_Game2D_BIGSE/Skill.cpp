@@ -188,8 +188,7 @@ void Skill::UpdateStatus(float _Time){
 
 void Skill::Update(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight){
 	Animation(_Time);
-	//Move(_Time,_Terrain,_MaxWidth,_MaxHeight);	
-	//UpdateStatus(_Time);
+	UpdateStatus(_Time);
 }
 
 void Skill::Draw(D3DXMATRIX _MWorld,LPD3DXSPRITE _Handler){
