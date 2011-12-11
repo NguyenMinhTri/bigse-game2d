@@ -43,7 +43,7 @@ void Magician::Animation(float _Time){//1 walk,  2 jump, 3 alert, 4 hit, 5 skill
 					}
 				}
 				else{
-					if (m_Vx == 0){
+					if (m_VxDirect == 0){
 						m_InfoSprite.NextFrame(8,4);
 					} 
 					else{
