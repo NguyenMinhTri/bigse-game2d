@@ -156,6 +156,9 @@
     <ClCompile Include="SkillMagician.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ManagerObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApp.h">
@@ -243,6 +246,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SkillMagician.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ManagerObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

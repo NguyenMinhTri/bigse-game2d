@@ -1,5 +1,4 @@
 #pragma once
-#include <list>
 #include <vector>
 #include <stdlib.h>
 #include "Skill.h"
