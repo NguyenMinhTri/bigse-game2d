@@ -16,6 +16,7 @@ class State_Play :
 
 	Monster* m_Monster1;
 	Magician* m_Magician;
+
 	LPD3DXSPRITE m_Handle;
 	Terrain* m_Map;
 	Camera* m_Camera;

@@ -10,6 +10,7 @@ Frenzy::~Frenzy(void)
 {
 }
 void Frenzy::Init(){
+	m_iCollision = false;
 	m_Damage = 1;
 	m_Combo = 0;
 	m_STT = READY;
@@ -39,49 +40,15 @@ void Frenzy::Active (float _X,float _Y,int _Dir)
 		m_STT = ACTIVE;
 		m_InfoSprite.setCurFrame(0);	
 		m_TimeAni = 0;
-
+		m_iCollision = false ;
 	}
 	
 }
-
-bool Frenzy::iCollision (MyObject* _Obj) {
-	return false;
-}
-
-void Frenzy::ProcessCollision(MyObject* _Obj){
-	if ( m_STT!= ACTIVE ) 
-	{
-		return;
-	}
-	if(!getRect().iCollision(_Obj->getRect()))
-	{
-		return ;
-	}
-	else {
-		if(_Obj->getActive() == false )
-		{
-			return ;
-		}//true la chua trung
-		_Obj->setActive(false);
-		_Obj->setHp(_Obj->getHp() - getDamage()  );
-		if(_Obj->getHp() == 0)
-		{
-			_Obj->setLife(false); 
-		}		
-	}
-}
-
-
 
 int Frenzy::getDamageEX(int _Damage, int _Offset)
 {
 	return _Damage+ rand()%_Offset;
 }
-
-void Frenzy::Move(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight){
-
-}
-
 void Frenzy::Animation(float _Time){
 	if (m_STT == ACTIVE)
 	{
@@ -89,30 +56,27 @@ void Frenzy::Animation(float _Time){
 		if (m_TimeAni>=0.16f)
 		{
 			m_TimeAni-= 0.16f;
-			m_InfoSprite.NextFrame(0,12);
-			if(m_InfoSprite.getCurFrame()>12)
+			m_InfoSprite.NextFrame(0,13);
+			if(m_InfoSprite.getCurFrame() ==5)
 			{
-					m_STT=READY;
+				m_iCollision = true;
+			}
+			if(m_InfoSprite.getCurFrame()>=12)
+			{
+					m_STT= COOLDOWN ;
 					m_TimeAni=0;
 			}
 		}
 	}
 }
+
 void Frenzy::UpdateStatus(float _Time)
 {
 	switch (m_STT)
 	{
-	case ACTIVE:
-		m_TimeUpdate+= _Time;
-		if(m_TimeUpdate > 1)
-		{
-			m_STT = COOLDOWN;
-			m_TimeUpdate = 0;
-		}
-		break;
 	case COOLDOWN:
 		m_TimeUpdate+= _Time;
-		if(m_TimeUpdate > 2)
+		if(m_TimeUpdate > 4)
 		{
 			m_STT = READY;
 			m_TimeUpdate = 0;

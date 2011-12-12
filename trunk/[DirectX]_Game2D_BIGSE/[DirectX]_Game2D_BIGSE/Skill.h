@@ -10,6 +10,7 @@ protected:
 
 	Sprite* m_SSkill;
 	bool timeshoot;
+	bool m_iCollision;
 
 public:
 	Skill(void);

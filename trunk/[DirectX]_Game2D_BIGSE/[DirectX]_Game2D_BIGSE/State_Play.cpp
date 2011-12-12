@@ -198,7 +198,9 @@ void State_Play::Update(float _Time)
 
 
 	m_char->ProcessCollision(m_Monster);
+	m_char->ProcessCollision(m_Archer);
 	m_Monster->ProcessCollision(m_char);
+	m_Monster->ProcessCollision(m_Monster1);
 	m_Monster1->ProcessCollision(m_char);
 	m_Monster1->ProcessCollision(m_Monster);
 

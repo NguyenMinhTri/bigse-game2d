@@ -11,8 +11,6 @@ public:
 	virtual void Active (float _X,float _Y,int _Dir);
 
 	virtual void Init () ;
-
-
 	/* Update Animation */
 	virtual void Animation (float _Time) ;
 

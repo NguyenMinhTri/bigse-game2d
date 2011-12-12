@@ -3,9 +3,11 @@
 #include "Global.h"
 #include "Frenzy.h"
 #include "CallPet.h"
-
+#include "Item.h"
 Monster::Monster(void)
 {
+	m_HP =2;
+	Init();
 
 }
 
@@ -14,10 +16,9 @@ Monster::~Monster(void)
 {
 
 }
-
 void Monster::Init()
 {
-	m_Dir = 1;
+	m_Direct = 1;
 	m_STT = ACTIVE;
 	m_Monster = RSMainGame::get()->getCharacter();
 	m_InfoSprite.setSize(300,200);
@@ -26,17 +27,17 @@ void Monster::Init()
 	m_skillManager = new SkillManager();
 	m_skillManager->AddSkill(new Skill());
 	m_skillManager->AddSkill(new CallPet());
-	
+
+	m_itemManager = new ItemManager();
+	m_itemManager->AddItem(new Item());
 }
 
 void Monster::ActiveSkill(int _Index)
 {
-
-	m_skillManager->ActiveSkill(_Index,m_X,m_Y,m_Dir);
+	m_skillManager->ActiveSkill(_Index,m_X,m_Y,m_Direct);
 	if (m_Vy < 0) //nhay len
 	{
 		m_Vy = fabs (m_Vy);
-		m_skillManager->AddSkill(new Skill());
 	}
 }
 
@@ -50,14 +51,14 @@ void Monster :: Move (float _Time, int** _Terrain,float _MaxWidth,float _MaxHeig
 	
 	float NextX, NextY ;
 #pragma  region RIGHT 
-	if(m_Dir > 0 )
+	if(m_Direct > 0 )
 	{
 		NextX =m_X + _Time * g_VX;
 
 		if (NextX >= _MaxWidth - m_Width) 
 		{
 			NextX = _MaxWidth - m_Width;
-			m_Dir =- 1;
+			m_Direct =- 1;
 		}
 		bool iColTer = false;
 		for (int i = (m_X + m_Width)/g_CELL ; i <  (NextX+m_Width)/g_CELL;i++)
@@ -66,13 +67,13 @@ void Monster :: Move (float _Time, int** _Terrain,float _MaxWidth,float _MaxHeig
 				if (_Terrain[i][j]!=0){
 					iColTer = true;
 					m_X = g_CELL * (i) - m_Width;
-					m_Dir = -1 ;
+					m_Direct = -1 ;
 					break;
 				}
 			}
 			if (iColTer == true)
 			{
-				m_Dir = -1 ;
+				m_Direct = -1 ;
 				break;
 			}
 		}
@@ -83,7 +84,7 @@ void Monster :: Move (float _Time, int** _Terrain,float _MaxWidth,float _MaxHeig
 		}
 	}
 #pragma  region LEFT
-	else if(m_Dir <0){
+	else if(m_Direct <0){
 		NextX= m_X - _Time* g_VX;
 		if (NextX <= 0)
 		{
@@ -97,13 +98,13 @@ void Monster :: Move (float _Time, int** _Terrain,float _MaxWidth,float _MaxHeig
 				if (_Terrain[i][j]!=0){
 					iColTer = true;
 					m_X = g_CELL * (i+1);
-					m_Dir = 1;
+					m_Direct = 1;
 					break;
 				}
 			} 
 			if (iColTer == true)
 			{
-				m_Dir =1;
+				m_Direct =1;
 				break;
 			}
 		}
@@ -153,29 +154,32 @@ void Monster :: Move (float _Time, int** _Terrain,float _MaxWidth,float _MaxHeig
 #pragma endregion DOWN
 }
 	}
-
 void Monster::ProcessCollision(MyObject* _Obj)
 {
-	m_skillManager->ProcessCollision(_Obj);
-	if(getRect().iCollision(_Obj->getRect()))
+	m_itemManager->ProcessCollision(_Obj);
+	if(getLife() == true)
 	{
-		if(!_Obj->getLife())
+		m_skillManager->ProcessCollision(_Obj);
+	
+		if(getRect().iCollision(_Obj->getRect()))
 		{
-			return ;
-		}
-        	ActiveSkill(0);		
-			int a = m_X;
-			if(m_X >a || m_X<a)
+			if(!_Obj->getLife())
 			{
-				m_X = a ;
+				return ;
 			}
+        		ActiveSkill(0);		
+				int a = m_X;
+				if(m_X >a || m_X<a)
+				{
+					m_X = a ;
+				}
+		}
 	}
 // 	if(m_skillManager->getSkill(0)->getRect().iCollision(_Obj->getRect()))
 // 	{
 // 
 // 		ActiveSkill(1);	
 // 	}		
-
 }
 void Monster::Animation(float _Time){
 	m_TimeAni += _Time ;
@@ -216,18 +220,19 @@ void Monster::UpdateStatus(float _Time)
 
 void Monster::Update(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight)
 {
-	Animation(_Time);
-	Move(_Time,_Terrain,_MaxWidth,_MaxHeight);	
-	UpdateStatus(_Time);
-
-	m_skillManager->Update(_Time,_Terrain,_MaxWidth,_MaxHeight);
+	if(getLife() ==true)
+	{
+		Animation(_Time);
+		Move(_Time,_Terrain,_MaxWidth,_MaxHeight);	
+		UpdateStatus(_Time);
+		m_skillManager->Update(_Time,_Terrain,_MaxWidth,_MaxHeight);
+	}
 }
-
-
 void Monster::Draw(D3DXMATRIX _MWorld,LPD3DXSPRITE _Handler)
 {
 	if(getLife() == false)
 	{
+		m_itemManager->Draw(_MWorld,_Handler,m_X,m_Y);
 		return ;
 	}
 
@@ -246,7 +251,7 @@ void Monster::Draw(D3DXMATRIX _MWorld,LPD3DXSPRITE _Handler)
 		m_InfoSprite.setCurFrame(m_skillManager->getSkill(0)->getInfoSprite().getCurFrame());
 	}
 
-	if (m_Dir<0){
+	if (m_Direct<0){
 		m_InfoSprite.setScaleX(1);
 	}else{
 		m_InfoSprite.setScaleX(-1);

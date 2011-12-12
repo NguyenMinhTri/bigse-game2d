@@ -14,14 +14,8 @@ public:
 	virtual int getDamageEX (int _Damage, int _Offset);
 
 	virtual void Init () ;
-	/* Processing collision */
-	virtual void ProcessCollision (MyObject* _Obj) ;
 
-	/* Check collision with other Object */
-	virtual bool iCollision (MyObject* _Obj) ;
 
-	/* Update Move and check Collision with Terrain */
-	virtual void Move (float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight) ;
 
 	/* Update Animation */
 	virtual void Animation (float _Time) ;

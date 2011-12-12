@@ -14,6 +14,7 @@ private:
 	Sprite* m_Archer ;
 	Sprite* m_Arrow ;
 	Sprite* m_Magician;
+	Sprite* m_medicine;
 	RSMainGame(void);
 public:
 	
@@ -48,6 +49,10 @@ public:
 	}
 	Sprite* getMagician(){
 		return m_Magician ;
+	}
+	Sprite* getMedicine()
+	{
+		return m_medicine;
 	}
 };
 

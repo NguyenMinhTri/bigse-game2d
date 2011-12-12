@@ -6,10 +6,7 @@ class Character :
 	public MyObject
 {
 protected:
-
-	
 	Sprite* m_SCharater;
-
 	SkillManager *m_skillManager ;
 
 public:
