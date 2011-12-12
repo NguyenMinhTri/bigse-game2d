@@ -9,7 +9,7 @@
 
 Archer::Archer(void)
 {
-	m_HP = 10; 
+	m_HP = 2; 
 	m_Damage = 1;
 }
 

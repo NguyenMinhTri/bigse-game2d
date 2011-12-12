@@ -3,16 +3,18 @@
 #include "Global.h"
 #include "Skill.h"
 #include "SkillManager.h"
+#include "Item.h"
+#include "ItemManager.h"
+#include "Character.h"
 
-class Monster :
-	public MyObject
+class Monster : public Character
 {
 protected:
-	int m_Dir ;
-	int m_Hp ;
 	int m_Damage ;
 	int m_Mana ;
 	Sprite* m_Monster ;
+
+	ItemManager  *m_itemManager;
 	SkillManager *m_skillManager ; //tam. thoi`
 
 public:

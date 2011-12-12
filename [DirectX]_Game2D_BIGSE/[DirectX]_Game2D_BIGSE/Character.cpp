@@ -7,7 +7,7 @@
 Character::Character(void)
 {
 
-	m_HP = 20; 
+	m_HP = 2; 
 	m_Damage = 1;
 }
 
@@ -24,6 +24,7 @@ void Character::ActiveSkill(int _Index){
 		m_Vy = fabs (m_Vy);
 	}
 }
+
 void Character::Init(){
 	m_SCharater = RSMainGame::get()->getCharacter();
 	m_InfoSprite.setSize(300,200);

@@ -15,6 +15,7 @@ Skill::~Skill(void)
 }
 
 void Skill::Init(){
+	m_iCollision = false ;
 	m_Damage = 1;
 	m_Combo = 0;
 	m_STT = READY;
@@ -43,6 +44,7 @@ void Skill::Active (float _X,float _Y,int _Dir)
 		m_Combo = 0;
 		m_NextCombo = false;
 		m_TimeAni = 0;
+		m_iCollision = true;
 
 	}
 	else // dang skill
@@ -84,7 +86,7 @@ void Skill::ProcessCollision(MyObject* _Obj){
 		return ;
 	}
 	else {
-		if(_Obj->getActive() == false )
+		if(_Obj->getActive() == false  || m_iCollision == false )
 		{
 			return ;
 		}//true la chua trung

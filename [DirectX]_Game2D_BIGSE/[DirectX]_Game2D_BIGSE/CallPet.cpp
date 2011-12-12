@@ -11,6 +11,7 @@ CallPet::~CallPet(void)
 }
 void CallPet::Init()
 {
+	
 	m_Damage = 1;
 	m_STT = READY;
 	m_InfoSprite.setSize(520,385);
@@ -38,20 +39,27 @@ void CallPet::Active (float _X,float _Y,int _Dir)
 		m_STT = ACTIVE;
 		m_InfoSprite.setCurFrame(0);
 		m_TimeAni = 0;
+		m_iCollision = false;
 	}
 }
+
+
 
 void CallPet::Animation(float _Time){
 	if (m_STT == ACTIVE)
 	{
 		m_TimeAni+= _Time;
-		if (m_TimeAni>=0.10f)
+		if (m_TimeAni>=0.07f)
 		{
-			m_TimeAni-= 0.10f;
-			m_InfoSprite.NextFrame(0,33);
-			if(m_InfoSprite.getCurFrame()>33)
+			m_TimeAni-= 0.07f;
+			m_InfoSprite.NextFrame(0,34);
+			if(m_InfoSprite.getCurFrame() ==23 )
 			{
-				m_STT=READY;
+				m_iCollision= true;
+			}
+			if(m_InfoSprite.getCurFrame() == 33)
+			{	
+				m_STT=COOLDOWN;
 				m_TimeAni=0;
 			}
 		}
@@ -62,14 +70,6 @@ void CallPet::UpdateStatus(float _Time)
 {
 	switch (m_STT)
 	{
-	case ACTIVE:
-		m_TimeUpdate+= _Time;
-		if(m_TimeUpdate > 3.3)
-		{
-			m_STT = COOLDOWN;
-			m_TimeUpdate = 0;
-		}
-		break;
 	case COOLDOWN:
 		m_TimeUpdate+= _Time;
 		if(m_TimeUpdate > 4)
@@ -79,8 +79,6 @@ void CallPet::UpdateStatus(float _Time)
 		}
 		break;
 	}
-
-
 }
 
 void CallPet::Update(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight)

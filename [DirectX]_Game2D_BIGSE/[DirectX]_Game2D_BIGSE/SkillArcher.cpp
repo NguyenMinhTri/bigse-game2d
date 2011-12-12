@@ -64,7 +64,7 @@ void SkillArcher::Update(float _Time, int** _Terrain,float _MaxWidth,float _MaxH
 	Animation(_Time);
 	
 }
-
+// 
 void SkillArcher::Draw(D3DXMATRIX _MWorld,LPD3DXSPRITE _Handler){
 
 	if (m_Direct<0){
@@ -72,7 +72,7 @@ void SkillArcher::Draw(D3DXMATRIX _MWorld,LPD3DXSPRITE _Handler){
 	}else{
 		m_InfoSprite.setScaleX(-1);
 	}
-	m_InfoSprite.setXY( m_X,m_Y);
+	m_InfoSprite.setXY( m_X+200,m_Y);
 
 
 }
