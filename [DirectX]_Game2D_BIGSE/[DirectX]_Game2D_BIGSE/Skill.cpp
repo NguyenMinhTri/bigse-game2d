@@ -1,6 +1,8 @@
 #include "Skill.h"
 #include "Global.h"
 #include "RSMainGame.h"
+#include "ManagerObject.h"
+#include "Item.h"
 
 
 Skill::Skill(void)
@@ -95,6 +97,7 @@ void Skill::ProcessCollision(MyObject* _Obj){
 		if(_Obj->getHp() == 0)
 		{
 			_Obj->setLife(false); 
+			
 		}		
 	}
 }

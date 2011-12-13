@@ -1,6 +1,7 @@
 #include "State_Play.h"
 #include "Global.h"
 #include "RSMainGame.h"
+#include "ManagerObject.h"
 
 
 State_Play::State_Play(iPlay* GamePlay)
@@ -18,6 +19,10 @@ void State_Play::Init()
 {
 
 	RSMainGame::get()->IntRS(m_Device);
+
+	
+	ManagerObject::Instance()->setListObject(&m_ListItem);
+
 
 	D3DXCreateSprite(m_Device,&m_Handle);
 
@@ -178,7 +183,28 @@ void State_Play::Update(float _Time)
 	//m_Camera->UpdateEffect(_Time);
 	m_mtWorld = m_Camera->getMatrixTransform();
 
-	
+	for (std::vector<MyObject*>::iterator i = m_ListItem.begin();i!= m_ListItem.end();)
+	{
+		(*i)->Update(_Time,m_Map->getTerrain(),m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL);
+		if ((*i)->getLife()==false)
+		{
+			m_ListItem.erase(i);
+
+		}else
+		{
+			i++;
+		}
+	}
+	/*for (int i=0; i < m_ListItem.size();)
+	{
+	  MyObject *t = m_ListItem[i]/ *->Update(_Time,m_Map->getTerrain(),m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL)* /;
+	  t->Update(_Time,m_Map->getTerrain(),m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL);
+	  if (t->getLife() == false)
+	  {
+		  m_ListItem.erase(m_ListItem.begin());
+	  }
+
+	}*/
 	
 	m_char->Update(_Time,m_Map->getTerrain(),m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL);
 	
@@ -222,6 +248,20 @@ void State_Play::Draw()
 
 		m_Archer->Draw(m_mtWorld,m_Handle);
 		m_Magician->Draw(m_mtWorld,m_Handle);
+
+		for (std::vector<MyObject*>::iterator i = m_ListItem.begin();i!= m_ListItem.end();)
+		{
+			(*i)->Draw(m_mtWorld,m_Handle);
+			if ((*i)->getLife()==false)
+			{
+				m_ListItem.erase(i);
+
+			}else
+			{
+				i++;
+			}
+		}
+
 
 		m_Handle->End();
 		m_Device->EndScene();

@@ -48,7 +48,8 @@ void Item ::Animation(float _Time)
 }
 void Item::Draw(D3DXMATRIX _MWorld,LPD3DXSPRITE _Handler)
 {
-
+	m_InfoSprite.setXY(m_X,m_Y);
+	m_Item->Draw(_MWorld,m_InfoSprite,_Handler);
 }
 void Item ::UpdateStatus(float _Time)
 {
