@@ -6,10 +6,13 @@
 #include "Monster.h"
 #include "Archer.h"
 #include "Magician.h"
+#include <vector>
 
+using namespace std;
 class State_Play :
 	public iState
 {
+	std::vector<MyObject*> m_ListItem;
 	Character* m_Monster ;
 	Character* m_char;
     Archer *m_Archer; 
