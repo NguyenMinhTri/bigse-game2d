@@ -92,7 +92,6 @@
     <ClCompile Include="iPlay.cpp" />
     <ClCompile Include="iState.cpp" />
     <ClCompile Include="Item.cpp" />
-    <ClCompile Include="ItemManager.cpp" />
     <ClCompile Include="Magician.cpp" />
     <ClCompile Include="ManagerObject.cpp" />
     <ClCompile Include="Monster.cpp" />
@@ -127,7 +126,6 @@
     <ClInclude Include="iPlay.h" />
     <ClInclude Include="iState.h" />
     <ClInclude Include="Item.h" />
-    <ClInclude Include="ItemManager.h" />
     <ClInclude Include="Magician.h" />
     <ClInclude Include="ManagerObject.h" />
     <ClInclude Include="Monster.h" />
@@ -143,6 +141,18 @@
     <ClInclude Include="State_Play.h" />
     <ClInclude Include="Terrain.h" />
     <ClInclude Include="Winform.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="data\image\Arrow.png" />
+    <None Include="data\image\callpet.png" />
+    <None Include="data\image\character.png" />
+    <None Include="data\image\character1.png" />
+    <None Include="data\image\cungthu.png" />
+    <None Include="data\image\Ice.png" />
+    <None Include="data\image\Magician.png" />
+    <None Include="data\image\mario.png" />
+    <None Include="data\image\Medicine.png" />
+    <None Include="data\image\ter.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
