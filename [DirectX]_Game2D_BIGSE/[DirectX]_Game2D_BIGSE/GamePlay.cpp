@@ -1,6 +1,6 @@
 #pragma once
 #include "GamePlay.h"
-#include "State_Game.h"
+
 #include "State_Play.h"
 
 GamePlay::GamePlay(LPDIRECT3DDEVICE9 Device):iPlay(Device)
@@ -31,16 +31,7 @@ void GamePlay::Update(float _Time)
 void GamePlay::Draw()
 {
 	m_CurState->Draw();
-	/*m_Device->Clear(0,NULL,D3DCLEAR_TARGET,D3DCOLOR_XRGB(255,0,255),1.0f,0);
-	if(m_Device->BeginScene())
-	{
-		/ *_Device->Clear(0,NULL,D3DCLEAR_TARGET,D3DCOLOR_XRGB(1,0,0),1.0f,0);* /
-		Sprite_Handler->Begin(D3DXSPRITE_ALPHABLEND);
-		m_CurState->Render(Sprite_Handler);
-		Sprite_Handler->End();
-		m_Device->EndScene();
-	}
-	m_Device->Present(NULL,NULL,NULL,NULL);*/
+	
 }
 void GamePlay::Release()
 {

@@ -105,7 +105,6 @@
     <ClCompile Include="SkillMagician.cpp" />
     <ClCompile Include="SkillManager.cpp" />
     <ClCompile Include="Sprite.cpp" />
-    <ClCompile Include="State_Game.cpp" />
     <ClCompile Include="State_Play.cpp" />
     <ClCompile Include="Terrain.cpp" />
     <ClCompile Include="Winform.cpp" />
@@ -141,7 +140,6 @@
     <ClInclude Include="SkillMagician.h" />
     <ClInclude Include="SkillManager.h" />
     <ClInclude Include="Sprite.h" />
-    <ClInclude Include="State_Game.h" />
     <ClInclude Include="State_Play.h" />
     <ClInclude Include="Terrain.h" />
     <ClInclude Include="Winform.h" />

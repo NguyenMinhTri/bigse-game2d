@@ -1,6 +1,5 @@
 #pragma once
 #include "iPlay.h"
-#include "State_Game.h"
 class GamePlay:public iPlay
 {
 public:
