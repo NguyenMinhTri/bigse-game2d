@@ -39,6 +39,7 @@ void SkillArcher::Active (float _X,float _Y,int _Dir)
 		m_InfoSprite.setCurFrame(12);
 		m_TimeAni = 0;	
 		m_STT = ACTIVE;
+		m_iCollision = true;
 	}
 }
 

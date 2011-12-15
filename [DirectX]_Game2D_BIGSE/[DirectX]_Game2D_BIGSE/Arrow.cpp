@@ -42,6 +42,7 @@ void Arrow::Active (float _X,float _Y,int _Dir)
 		m_TimeAni = 0;	
 		m_STT = ACTIVE;
 		m_InfoSprite.setCurFrame(0);
+		m_iCollision = false;
 	}
 }
 void Arrow::Animation(float _Time)
@@ -57,6 +58,7 @@ void Arrow::Animation(float _Time)
 			if(m_InfoSprite.getCurFrame() >0 && m_InfoSprite.getCurFrame() <3)
 			{
 				setShoot(true);
+				m_iCollision = true;
 			}
 			
 		}

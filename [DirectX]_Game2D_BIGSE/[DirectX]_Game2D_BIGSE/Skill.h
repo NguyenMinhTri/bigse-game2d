@@ -24,6 +24,14 @@ public:
 	{
 		timeshoot = q;
 	}
+	bool getiCollision()
+	{
+		return m_iCollision;
+	}
+	void setiCollision(bool _iCollision)
+	{
+		m_iCollision = _iCollision;
+	}
 
 	/* Active skill */
 	virtual void Active (float _X,float _Y,int _Dir);

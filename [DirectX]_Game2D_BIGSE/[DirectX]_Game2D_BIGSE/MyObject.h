@@ -62,7 +62,10 @@ public:
 
 		return r;
 	}
-
+	int getDirection ()
+	{
+		return m_Direct;
+	}
 	int getHp ()
 	{
 		return m_HP;

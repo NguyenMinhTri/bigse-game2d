@@ -101,6 +101,7 @@
     <ClCompile Include="RSMainGame.cpp" />
     <ClCompile Include="Skill.cpp" />
     <ClCompile Include="SkillArcher.cpp" />
+    <ClCompile Include="SkillHit.cpp" />
     <ClCompile Include="SkillMagician.cpp" />
     <ClCompile Include="SkillManager.cpp" />
     <ClCompile Include="Sprite.cpp" />
@@ -136,6 +137,7 @@
     <ClInclude Include="RSMainGame.h" />
     <ClInclude Include="Skill.h" />
     <ClInclude Include="SkillArcher.h" />
+    <ClInclude Include="SkillHit.h" />
     <ClInclude Include="SkillMagician.h" />
     <ClInclude Include="SkillManager.h" />
     <ClInclude Include="Sprite.h" />

@@ -3,6 +3,7 @@
 #include "Global.h"
 #include "Frenzy.h"
 #include "CallPet.h"
+#include "SkillHit.h"
 
 Character::Character(void)
 {
@@ -19,10 +20,7 @@ Character::~Character(void)
 void Character::ActiveSkill(int _Index){
 	
 	m_skillManager->ActiveSkill(_Index,m_X,m_Y,m_Direct);
-	if (m_Vy < 0) //nhay len
-	{
-		m_Vy = fabs (m_Vy);
-	}
+	
 }
 
 void Character::Init(){
@@ -31,7 +29,7 @@ void Character::Init(){
 	m_STT = ACTIVE;
 
 	m_skillManager = new SkillManager();
-	m_skillManager->AddSkill(new Skill());
+	m_skillManager->AddSkill(new SkillHit(this));
 	m_skillManager->AddSkill(new Frenzy());
 	m_skillManager->AddSkill(new CallPet());
 }
@@ -79,9 +77,7 @@ void Character::UpdateStatus(float _Time)
 		 {
 			 m_iActive = true ;
 			 m_TimeUpdate =0;
-
 		 }
-
 	 }
 }
 

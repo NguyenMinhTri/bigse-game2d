@@ -78,28 +78,21 @@ bool Skill::iCollision (MyObject* _Obj) {
 	return false;
 }
 
-void Skill::ProcessCollision(MyObject* _Obj){
-	if ( m_STT!= ACTIVE ) 
-	{
-		return;
-	}
-	if(!getRect().iCollision(_Obj->getRect()))
-	{
-		return ;
-	}
-	else {
-		if(_Obj->getActive() == false  || m_iCollision == false )
+void Skill::ProcessCollision(MyObject* _Obj){	
+	
+	
+		if(_Obj->getActive() == false  )
 		{
 			return ;
 		}//true la chua trung
 		_Obj->setActive(false);
-		_Obj->setHp(_Obj->getHp() - getDamage()  );
+		_Obj->setHp(_Obj->getHp() - getDamage());
 		if(_Obj->getHp() == 0)
 		{
 			_Obj->setLife(false); 
 			
 		}		
-	}
+	
 }
 
 

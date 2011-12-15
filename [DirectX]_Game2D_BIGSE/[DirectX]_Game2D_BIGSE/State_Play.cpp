@@ -20,9 +20,11 @@ void State_Play::Init()
 
 	RSMainGame::get()->IntRS(m_Device);
 
-	
-	ManagerObject::Instance()->setListObject(&m_ListItem);
+	m_ListItem = new std::vector<MyObject*>();
+	m_ObjectsCamera = new std::vector<MyObject*>();
 
+	ManagerObject::Instance()->setListObject(m_ListItem);
+	ManagerObject::Instance()->setObjects(m_ObjectsCamera);
 
 	D3DXCreateSprite(m_Device,&m_Handle);
 
@@ -34,6 +36,7 @@ void State_Play::Init()
 	m_char->setXY(200,0);
 	m_char->setSize(50,85);
 	
+
 	m_Monster = new Character();
 	m_Monster->Init();
 	m_Monster->setXY(200,0);
@@ -54,8 +57,14 @@ void State_Play::Init()
 	m_Magician->setXY( 200,0);
 	m_Magician->setSize(50,85);
 
-	
+	m_ObjectsCamera->push_back(m_Archer);
+	m_ObjectsCamera->push_back(m_char);
+	m_ObjectsCamera->push_back(m_Monster);
+	m_ObjectsCamera->push_back(m_Monster1);
+	m_ObjectsCamera->push_back(m_Magician);
 
+	/*std::vector<MyObject*>::iterator iter = m_ObjectsCamera->begin();
+	m_ObjectsCamera->erase(iter);*/
 
 #pragma endregion Init Character
 
@@ -157,6 +166,7 @@ void State_Play::OnKeyDown(int KeyCode)
 // 	case DIK_NUMPAD4:
 // 		 m_Magician->ActiveSkill(0);
 // 		 break;
+	
 	case DIK_J:
 		m_Monster->ActiveSkill(1);
 		break;
@@ -179,57 +189,59 @@ void State_Play::OnKeyUp(int KeyCode)
 
 void State_Play::Update(float _Time)
 {
-	m_Camera->Update(m_char,m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL);
+	m_Camera->Update(m_Archer,m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL);
 	//m_Camera->UpdateEffect(_Time);
 	m_mtWorld = m_Camera->getMatrixTransform();
 
-	for (std::vector<MyObject*>::iterator i = m_ListItem.begin();i!= m_ListItem.end();)
+	/************************************************************************/
+	/*  Update all item                                                     */
+	/************************************************************************/
+	for (std::vector<MyObject*>::iterator i = m_ListItem->begin();i!= m_ListItem->end();)
 	{
 		(*i)->Update(_Time,m_Map->getTerrain(),m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL);
 		if ((*i)->getLife()==false)
 		{
-			m_ListItem.erase(i);
-
-		}else
-		{
-			i++;
+			(*i)->Release();
+			i =m_ListItem->erase(i);
+			continue;
 		}
+		i++;
 	}
-	/*for (int i=0; i < m_ListItem.size();)
+	/************************************************************************/
+	/*  Update Object in camera                                             */
+	/************************************************************************/	
+	for (std::vector<MyObject*>::iterator i = m_ObjectsCamera->begin();i!= m_ObjectsCamera->end();)
 	{
-	  MyObject *t = m_ListItem[i]/ *->Update(_Time,m_Map->getTerrain(),m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL)* /;
-	  t->Update(_Time,m_Map->getTerrain(),m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL);
-	  if (t->getLife() == false)
-	  {
-		  m_ListItem.erase(m_ListItem.begin());
-	  }
-
-	}*/
-	
-	m_char->Update(_Time,m_Map->getTerrain(),m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL);
-	
-	
-	m_Monster->Update(_Time,m_Map->getTerrain(),m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL);
-	m_Monster1->Update(_Time,m_Map->getTerrain(),m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL);
-
-	m_Archer->Update(_Time,m_Map->getTerrain(),m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL);	
-	m_Magician->Update(_Time,m_Map->getTerrain(),m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL);		
-	m_Archer->ProcessCollision(m_Monster);
-	m_Archer->ProcessCollision(m_Monster1);
-
-	m_Monster->ProcessCollision(m_Archer);
-	m_Magician->ProcessCollision(m_Monster);
-	m_Magician->ProcessCollision(m_char);
-
-
-
-	m_char->ProcessCollision(m_Monster);
-	m_char->ProcessCollision(m_Archer);
-	m_Monster->ProcessCollision(m_char);
-	m_Monster->ProcessCollision(m_Monster1);
-	m_Monster1->ProcessCollision(m_char);
-	m_Monster1->ProcessCollision(m_Monster);
-
+		(*i)->Update(_Time,m_Map->getTerrain(),m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL);
+		if( (*i)->getLife() == false)
+		{
+			i = m_ObjectsCamera->erase(i);
+			continue;
+		}
+		i++;		
+	}
+	/************************************************************************/
+	/*  Collision Object vs Object                                          */
+	/************************************************************************/	
+	for (std::vector<MyObject*>::iterator i = m_ObjectsCamera->begin();i!= m_ObjectsCamera->end();i++)
+	{		
+		for (std::vector<MyObject*>::iterator j = (i+1);j!= m_ObjectsCamera->end();j++)
+		{
+			(*i)->ProcessCollision(*j);
+			(*j)->ProcessCollision(*i);
+		}		
+	}
+	/************************************************************************/
+	/*  Collision Object vs item                                            */
+	/************************************************************************/
+	for (std::vector<MyObject*>::iterator i = m_ObjectsCamera->begin();i!= m_ObjectsCamera->end();i++)
+	{		
+		for (std::vector<MyObject*>::iterator j = m_ListItem->begin();j!= m_ListItem->end();j++)
+		{
+			(*i)->ProcessCollision(*j);
+			(*j)->ProcessCollision(*i);
+		}		
+	}
 }
 void State_Play::Draw()
 {	
@@ -249,17 +261,9 @@ void State_Play::Draw()
 		m_Archer->Draw(m_mtWorld,m_Handle);
 		m_Magician->Draw(m_mtWorld,m_Handle);
 
-		for (std::vector<MyObject*>::iterator i = m_ListItem.begin();i!= m_ListItem.end();)
+		for (std::vector<MyObject*>::iterator i = m_ListItem->begin();i!= m_ListItem->end();i++)
 		{
-			(*i)->Draw(m_mtWorld,m_Handle);
-			if ((*i)->getLife()==false)
-			{
-				m_ListItem.erase(i);
-
-			}else
-			{
-				i++;
-			}
+			(*i)->Draw(m_mtWorld,m_Handle);			
 		}
 
 
