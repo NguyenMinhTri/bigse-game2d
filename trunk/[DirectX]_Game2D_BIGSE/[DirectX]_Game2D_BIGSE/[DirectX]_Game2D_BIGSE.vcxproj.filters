@@ -102,9 +102,6 @@
     <ClCompile Include="State_Play.cpp">
       <Filter>GameScreen\GameState</Filter>
     </ClCompile>
-    <ClCompile Include="State_Game.cpp">
-      <Filter>GameScreen\GameState</Filter>
-    </ClCompile>
     <ClCompile Include="Character.cpp">
       <Filter>Object\Character</Filter>
     </ClCompile>
@@ -201,9 +198,6 @@
       <Filter>GameScreen\GamePlay</Filter>
     </ClInclude>
     <ClInclude Include="State_Play.h">
-      <Filter>GameScreen\GameState</Filter>
-    </ClInclude>
-    <ClInclude Include="State_Game.h">
       <Filter>GameScreen\GameState</Filter>
     </ClInclude>
     <ClInclude Include="Character.h">

@@ -4,7 +4,7 @@
 #include <dinput.h>
 #include "InputManager.h"
 #include <intsafe.h>
-
+#include "iState.h"
 
 GameApp::GameApp(void)
 {
