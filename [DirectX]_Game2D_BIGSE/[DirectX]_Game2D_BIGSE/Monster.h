@@ -4,18 +4,19 @@
 #include "Skill.h"
 #include "SkillManager.h"
 #include "Item.h"
-#include "ItemManager.h"
+
 #include "Character.h"
 
 class Monster : public Character
 {
 protected:
+	int count ;
 	int m_Damage ;
 	int m_Mana ;
 	Sprite* m_Monster ;
 
-	ItemManager  *m_itemManager;
-	SkillManager *m_skillManager ; //tam. thoi`
+/*	ItemManager  *m_itemManager;*/
+	SkillManager *m_skillManager ; 
 
 public:
 	Monster(void);

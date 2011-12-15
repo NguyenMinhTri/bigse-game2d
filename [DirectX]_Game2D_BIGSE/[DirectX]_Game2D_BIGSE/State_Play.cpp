@@ -29,6 +29,8 @@ void State_Play::Init()
 	D3DXCreateSprite(m_Device,&m_Handle);
 
 	m_Camera = new Camera(0,0,g_SCREEN_WIDTH,g_SCREEN_HEIGHT);
+	#pragma region Init Item
+
 
 	#pragma region Init Character
     m_char = new Character();
@@ -215,6 +217,7 @@ void State_Play::Update(float _Time)
 		(*i)->Update(_Time,m_Map->getTerrain(),m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL);
 		if( (*i)->getLife() == false)
 		{
+			(*i)->Release();
 			i = m_ObjectsCamera->erase(i);
 			continue;
 		}
@@ -243,23 +246,22 @@ void State_Play::Update(float _Time)
 		}		
 	}
 }
+
 void State_Play::Draw()
 {	
 	m_Device->Clear(0,NULL,D3DCLEAR_TARGET,D3DCOLOR_XRGB(0,0,0),1.0f,0);
 
-	
 	if(m_Device->BeginScene())
 	{
 		m_Handle->Begin(D3DXSPRITE_SORT_DEPTH_FRONTTOBACK|D3DXSPRITE_ALPHABLEND);
 		
-		m_Map->Draw(m_Camera,m_mtWorld,m_Handle);
+ 		m_Map->Draw(m_Camera,m_mtWorld,m_Handle);
 
-		m_char->Draw(m_mtWorld,m_Handle);
-		m_Monster->Draw(m_mtWorld,m_Handle);
-		m_Monster1->Draw(m_mtWorld,m_Handle);
+		for (std::vector<MyObject*>::iterator i = m_ObjectsCamera->begin();i!= m_ObjectsCamera->end();i++)
+		{
+			(*i)->Draw(m_mtWorld,m_Handle);			
 
-		m_Archer->Draw(m_mtWorld,m_Handle);
-		m_Magician->Draw(m_mtWorld,m_Handle);
+		}
 
 		for (std::vector<MyObject*>::iterator i = m_ListItem->begin();i!= m_ListItem->end();i++)
 		{

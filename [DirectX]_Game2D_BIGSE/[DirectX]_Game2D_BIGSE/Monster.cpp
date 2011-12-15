@@ -4,6 +4,8 @@
 #include "Frenzy.h"
 #include "CallPet.h"
 #include "Item.h"
+#include "ManagerObject.h"
+
 Monster::Monster(void)
 {
 	m_HP =2;
@@ -19,6 +21,7 @@ Monster::~Monster(void)
 void Monster::Init()
 {
 	m_Direct = 1;
+	count = 0 ;
 	m_STT = ACTIVE;
 	m_Monster = RSMainGame::get()->getCharacter();
 	m_InfoSprite.setSize(300,200);
@@ -28,8 +31,8 @@ void Monster::Init()
 	m_skillManager->AddSkill(new Skill());
 	m_skillManager->AddSkill(new CallPet());
 
-	m_itemManager = new ItemManager();
-	m_itemManager->AddItem(new Item());
+// 	m_itemManager = new ItemManager();
+// 	m_itemManager->AddItem(new Item());
 }
 
 void Monster::ActiveSkill(int _Index)
@@ -156,11 +159,10 @@ void Monster :: Move (float _Time, int** _Terrain,float _MaxWidth,float _MaxHeig
 	}
 void Monster::ProcessCollision(MyObject* _Obj)
 {
-	m_itemManager->ProcessCollision(_Obj);
 	if(getLife() == true)
 	{
 		m_skillManager->ProcessCollision(_Obj);
-	
+
 		if(getRect().iCollision(_Obj->getRect()))
 		{
 			if(!_Obj->getLife())
@@ -212,53 +214,54 @@ void Monster::UpdateStatus(float _Time)
 		{
 			m_iActive = true ;
 			m_TimeUpdate =0;
-
 		}
-
 	}
 }
 
 void Monster::Update(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight)
 {
-	if(getLife() ==true)
-	{
 		Animation(_Time);
 		Move(_Time,_Terrain,_MaxWidth,_MaxHeight);	
 		UpdateStatus(_Time);
 		m_skillManager->Update(_Time,_Terrain,_MaxWidth,_MaxHeight);
-	}
 }
+
 void Monster::Draw(D3DXMATRIX _MWorld,LPD3DXSPRITE _Handler)
 {
+
 	if(getLife() == false)
 	{
-		m_itemManager->Draw(_MWorld,_Handler,m_X,m_Y);
-		return ;
+       	Item *_item = new Item(m_X,m_Y);
+	    ManagerObject::Instance()->getListItem()->push_back(_item);
 	}
 
-	m_skillManager->Draw(_MWorld,_Handler);
-
-	if( getActive() ==false)
+	if(getLife() == true)
 	{
-		if (timeGetTime()%400 >200)
-		{
-			return ;
-		}
-	}
+		
+			m_skillManager->Draw(_MWorld,_Handler);
 
-	if (m_skillManager->getSkill(0)->getSTT()==ACTIVE)
-	{
-		m_InfoSprite.setCurFrame(m_skillManager->getSkill(0)->getInfoSprite().getCurFrame());
-	}
+			if( getActive() ==false)
+			{
+				if (timeGetTime()%400 >200)
+				{
+					return ;
+				}
+			}
 
-	if (m_Direct<0){
-		m_InfoSprite.setScaleX(1);
-	}else{
-		m_InfoSprite.setScaleX(-1);
-	}
-	m_InfoSprite.setXY(-125+m_X,-54+m_Y);
+			if (m_skillManager->getSkill(0)->getSTT()==ACTIVE)
+			{
+				m_InfoSprite.setCurFrame(m_skillManager->getSkill(0)->getInfoSprite().getCurFrame());
+			}
 
-	m_Monster->Draw(_MWorld,m_InfoSprite,_Handler);
+			if (m_Direct<0){
+				m_InfoSprite.setScaleX(1);
+			}else{
+				m_InfoSprite.setScaleX(-1);
+			}
+			m_InfoSprite.setXY(-125+m_X,-54+m_Y);
+
+			m_Monster->Draw(_MWorld,m_InfoSprite,_Handler);
+	}
 
 }
 void  Monster::Release(){

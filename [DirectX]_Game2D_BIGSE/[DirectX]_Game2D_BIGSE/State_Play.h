@@ -13,9 +13,8 @@ class State_Play :
 	public iState
 {
 	std::vector<MyObject*> *m_ListItem;
-
 	std::vector<MyObject*> *m_ObjectsCamera;
-
+	Item *m_Item;
 	Character* m_Monster ;
 	Character* m_char;
     Archer *m_Archer; 

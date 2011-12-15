@@ -1,267 +1,81 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="Environment">
-      <UniqueIdentifier>{7ba840e7-e765-43ae-8bcb-3e01c698e8ef}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="FrameWork">
-      <UniqueIdentifier>{ba612442-023c-4f1e-bf4d-b31503747472}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Global">
-      <UniqueIdentifier>{57866ac6-b89e-43df-b693-f3b5aadcb7d4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Object">
-      <UniqueIdentifier>{75be8449-e884-46b1-ac51-2d648bff05b8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="GameScreen">
-      <UniqueIdentifier>{d9d824c0-0523-4604-9ffb-fce82dd91431}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="FrameWork\InfoSprite">
-      <UniqueIdentifier>{73e9e1dc-f844-4fa2-8229-74de2e79fd16}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="FrameWork\IPlay&amp;IState">
-      <UniqueIdentifier>{0057cd52-2e84-4607-8f63-081c614baee1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="FrameWork\Sprite">
-      <UniqueIdentifier>{2c3c1730-0927-4593-8579-ca438b787ccc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="GameScreen\GamePlay">
-      <UniqueIdentifier>{1d6e1e68-eb8d-4ad3-9c13-f08e36bdc75f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="GameScreen\GameState">
-      <UniqueIdentifier>{a51dc307-0769-4377-8861-dc54ad26a167}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Object\Character">
-      <UniqueIdentifier>{04b830e5-a58c-4b6f-9c47-80e92d86e71d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Object\Skill">
-      <UniqueIdentifier>{8a069f0b-7080-41b6-8d46-5802a4dbb721}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Environment\GameApp">
-      <UniqueIdentifier>{e2bb0e4b-631a-4508-a1a5-a3cdd55f38b2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Environment\Graphics">
-      <UniqueIdentifier>{d24582ce-402c-45f0-8f13-ec947a9d8cb8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Environment\InputManager">
-      <UniqueIdentifier>{945f04e0-02de-4fc6-8b2f-46ed91c25315}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Environment\Winform">
-      <UniqueIdentifier>{ed1b0bdd-0313-4629-be84-c3518b751d32}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Camera">
-      <UniqueIdentifier>{b188ab0c-010a-4900-9fc0-672f859d2fb2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Terrain">
-      <UniqueIdentifier>{1eec9191-e2a7-4ff4-9949-b5d7f252555e}</UniqueIdentifier>
-    </Filter>
+    <ClCompile Include="Archer.cpp" />
+    <ClCompile Include="Arrow.cpp" />
+    <ClCompile Include="CallPet.cpp" />
+    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Character.cpp" />
+    <ClCompile Include="DXDevice.cpp" />
+    <ClCompile Include="Effect.cpp" />
+    <ClCompile Include="Frenzy.cpp" />
+    <ClCompile Include="GameApp.cpp" />
+    <ClCompile Include="GamePlay.cpp" />
+    <ClCompile Include="InfoSprite.cpp" />
+    <ClCompile Include="InputManager.cpp" />
+    <ClCompile Include="iPlay.cpp" />
+    <ClCompile Include="iState.cpp" />
+    <ClCompile Include="Item.cpp" />
+    <ClCompile Include="Magician.cpp" />
+    <ClCompile Include="ManagerObject.cpp" />
+    <ClCompile Include="Monster.cpp" />
+    <ClCompile Include="MyObject.cpp" />
+    <ClCompile Include="RECT.cpp" />
+    <ClCompile Include="RSMainGame.cpp" />
+    <ClCompile Include="Skill.cpp" />
+    <ClCompile Include="SkillArcher.cpp" />
+    <ClCompile Include="SkillHit.cpp" />
+    <ClCompile Include="SkillMagician.cpp" />
+    <ClCompile Include="SkillManager.cpp" />
+    <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="State_Play.cpp" />
+    <ClCompile Include="Terrain.cpp" />
+    <ClCompile Include="Winform.cpp" />
+    <ClCompile Include="WinMain.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="GameApp.cpp">
-      <Filter>Environment\GameApp</Filter>
-    </ClCompile>
-    <ClCompile Include="DXDevice.cpp">
-      <Filter>Environment\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="InputManager.cpp">
-      <Filter>Environment\InputManager</Filter>
-    </ClCompile>
-    <ClCompile Include="Winform.cpp">
-      <Filter>Environment\Winform</Filter>
-    </ClCompile>
-    <ClCompile Include="WinMain.cpp">
-      <Filter>Environment</Filter>
-    </ClCompile>
-    <ClCompile Include="InfoSprite.cpp">
-      <Filter>FrameWork\InfoSprite</Filter>
-    </ClCompile>
-    <ClCompile Include="iPlay.cpp">
-      <Filter>FrameWork\IPlay&amp;IState</Filter>
-    </ClCompile>
-    <ClCompile Include="iState.cpp">
-      <Filter>FrameWork\IPlay&amp;IState</Filter>
-    </ClCompile>
-    <ClCompile Include="Sprite.cpp">
-      <Filter>FrameWork\Sprite</Filter>
-    </ClCompile>
-    <ClCompile Include="GamePlay.cpp">
-      <Filter>GameScreen\GamePlay</Filter>
-    </ClCompile>
-    <ClCompile Include="State_Play.cpp">
-      <Filter>GameScreen\GameState</Filter>
-    </ClCompile>
-    <ClCompile Include="Character.cpp">
-      <Filter>Object\Character</Filter>
-    </ClCompile>
-    <ClCompile Include="MyObject.cpp">
-      <Filter>Object</Filter>
-    </ClCompile>
-    <ClCompile Include="RSMainGame.cpp">
-      <Filter>FrameWork</Filter>
-    </ClCompile>
-    <ClCompile Include="Skill.cpp">
-      <Filter>Object\Skill</Filter>
-    </ClCompile>
-    <ClCompile Include="Terrain.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Camera.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Effect.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SkillManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RECT.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Frenzy.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CallPet.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Monster.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Archer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SkillArcher.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Arrow.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Magician.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SkillMagician.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ManagerObject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Item.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ItemManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SkillHit.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
+    <ClInclude Include="Archer.h" />
+    <ClInclude Include="Arrow.h" />
+    <ClInclude Include="CallPet.h" />
+    <ClInclude Include="Camera.h" />
+    <ClInclude Include="Character.h" />
+    <ClInclude Include="DXDevice.h" />
+    <ClInclude Include="Effect.h" />
+    <ClInclude Include="Frenzy.h" />
+    <ClInclude Include="GameApp.h" />
+    <ClInclude Include="GamePlay.h" />
+    <ClInclude Include="Global.h" />
+    <ClInclude Include="InfoSprite.h" />
+    <ClInclude Include="InputManager.h" />
+    <ClInclude Include="iPlay.h" />
+    <ClInclude Include="iState.h" />
+    <ClInclude Include="Item.h" />
+    <ClInclude Include="Magician.h" />
+    <ClInclude Include="ManagerObject.h" />
+    <ClInclude Include="Monster.h" />
+    <ClInclude Include="MyObject.h" />
+    <ClInclude Include="RECT.h" />
+    <ClInclude Include="RSMainGame.h" />
+    <ClInclude Include="Skill.h" />
+    <ClInclude Include="SkillArcher.h" />
+    <ClInclude Include="SkillHit.h" />
+    <ClInclude Include="SkillMagician.h" />
+    <ClInclude Include="SkillManager.h" />
+    <ClInclude Include="Sprite.h" />
+    <ClInclude Include="State_Play.h" />
+    <ClInclude Include="Terrain.h" />
+    <ClInclude Include="Winform.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GameApp.h">
-      <Filter>Environment\GameApp</Filter>
-    </ClInclude>
-    <ClInclude Include="DXDevice.h">
-      <Filter>Environment\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="InputManager.h">
-      <Filter>Environment\InputManager</Filter>
-    </ClInclude>
-    <ClInclude Include="Winform.h">
-      <Filter>Environment\Winform</Filter>
-    </ClInclude>
-    <ClInclude Include="InfoSprite.h">
-      <Filter>FrameWork\InfoSprite</Filter>
-    </ClInclude>
-    <ClInclude Include="iState.h">
-      <Filter>FrameWork\IPlay&amp;IState</Filter>
-    </ClInclude>
-    <ClInclude Include="iPlay.h">
-      <Filter>FrameWork\IPlay&amp;IState</Filter>
-    </ClInclude>
-    <ClInclude Include="Sprite.h">
-      <Filter>FrameWork\Sprite</Filter>
-    </ClInclude>
-    <ClInclude Include="Global.h">
-      <Filter>Global</Filter>
-    </ClInclude>
-    <ClInclude Include="GamePlay.h">
-      <Filter>GameScreen\GamePlay</Filter>
-    </ClInclude>
-    <ClInclude Include="State_Play.h">
-      <Filter>GameScreen\GameState</Filter>
-    </ClInclude>
-    <ClInclude Include="Character.h">
-      <Filter>Object\Character</Filter>
-    </ClInclude>
-    <ClInclude Include="MyObject.h">
-      <Filter>Object</Filter>
-    </ClInclude>
-    <ClInclude Include="RSMainGame.h">
-      <Filter>FrameWork</Filter>
-    </ClInclude>
-    <ClInclude Include="Skill.h">
-      <Filter>Object\Skill</Filter>
-    </ClInclude>
-    <ClInclude Include="Terrain.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Camera.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Effect.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SkillManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RECT.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Frenzy.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CallPet.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Monster.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Archer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SkillArcher.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Arrow.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Magician.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SkillMagician.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ManagerObject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Item.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ItemManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SkillHit.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <None Include="data\image\Arrow.png" />
+    <None Include="data\image\callpet.png" />
+    <None Include="data\image\character.png" />
+    <None Include="data\image\character1.png" />
+    <None Include="data\image\cungthu.png" />
+    <None Include="data\image\Ice.png" />
+    <None Include="data\image\Magician.png" />
+    <None Include="data\image\mario.png" />
+    <None Include="data\image\Medicine.png" />
+    <None Include="data\image\ter.png" />
   </ItemGroup>
 </Project>
