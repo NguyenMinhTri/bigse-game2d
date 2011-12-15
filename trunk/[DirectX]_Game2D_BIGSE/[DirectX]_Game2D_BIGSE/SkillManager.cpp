@@ -20,10 +20,13 @@ void SkillManager :: ProcessCollision(MyObject*_Obj)
 {
 	for (int i =0; i < m_List.size(); i++)
 	{
-		if (m_List[i]->getSTT() != ACTIVE)
+		if (m_List[i]->getSTT() != ACTIVE|| // Skill chua dc kich hoat		
+			m_List[i]->getiCollision() == false || // Skill chua bat dau tinh va cham
+			m_List[i]->getRect().iCollision(_Obj->getRect())==false) // Chua co va cham
 		{
 			continue;
 		}
+		
 		m_List[i]->ProcessCollision(_Obj);
 	}
 
