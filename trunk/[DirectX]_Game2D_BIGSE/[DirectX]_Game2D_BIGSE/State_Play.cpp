@@ -59,11 +59,14 @@ void State_Play::Init()
 	m_Magician->setXY( 200,0);
 	m_Magician->setSize(50,85);
 
+	m_Angle = new Angle();
+
 	m_ObjectsCamera->push_back(m_Archer);
 	m_ObjectsCamera->push_back(m_char);
 	m_ObjectsCamera->push_back(m_Monster);
 	m_ObjectsCamera->push_back(m_Monster1);
 	m_ObjectsCamera->push_back(m_Magician);
+	m_ObjectsCamera->push_back(m_Angle);
 
 	/*std::vector<MyObject*>::iterator iter = m_ObjectsCamera->begin();
 	m_ObjectsCamera->erase(iter);*/
@@ -110,13 +113,13 @@ void State_Play::IsKeyDown(int KeyCode){
 	switch(KeyCode)
 	{
 	case DIK_LEFT:
-		m_Archer->setMove(-1);
+	m_Angle->setMove(-1);
 		break;
 	case DIK_RIGHT:
-		m_Archer->setMove(1);
+	m_Angle->setMove(1);
 		break;
 	case DIK_UP:
-		m_Archer->setJump();
+	m_Angle->setJump();
 		break;
 // 	case DIK_LEFT:
 // 		m_Magician->setMove(-1);
@@ -163,7 +166,7 @@ void State_Play::OnKeyDown(int KeyCode)
 		m_Archer->ActiveSkill(0);
 		break;
 	case DIK_NUMPAD4:
-		m_Archer->ActiveSkill(1);
+		m_Angle->ActiveSkill(0);
 		break;
 // 	case DIK_NUMPAD4:
 // 		 m_Magician->ActiveSkill(0);

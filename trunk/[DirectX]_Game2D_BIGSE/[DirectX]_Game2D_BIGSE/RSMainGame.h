@@ -16,6 +16,7 @@ private:
 	Sprite* m_Magician;
 	Sprite* m_medicine;
 	Sprite* m_Partner;
+	Sprite* m_Angle ;
 	RSMainGame(void);
 public:
 	
@@ -58,6 +59,10 @@ public:
 	Sprite* getPartner()
 	{
 		return  m_Partner;
+	}
+	Sprite* getAngle()
+	{
+		return  m_Angle;
 	}
 };
 

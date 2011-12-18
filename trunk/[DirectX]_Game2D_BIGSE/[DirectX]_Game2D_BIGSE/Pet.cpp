@@ -21,6 +21,7 @@ void Pet :: Init()
 	m_InfoSprite.setSize(100,80);
 	setSize(62,62);
 	m_STT = READY;
+    p_stt = P_READY;
 	m_iCollision = false ;
 }
 
@@ -200,6 +201,7 @@ void Pet :: Animation(float _Time)
 				if(m_InfoSprite.getCurFrame() ==11 )
 				{
 					m_InfoSprite.setCurFrame(6);
+					p_stt = P_READY;
 					m_TimeAni =0;
 				}
 			}
@@ -242,6 +244,7 @@ void Pet :: ProcessCollision(MyObject* _Obj)
 	if(getRect().iCollision(_Obj->getRect())== true )
 	{
 		m_iCollision = true ;
+		p_stt = P_COLLISION ;
 		if(_Obj->getActive() == false  )
 		{
 			return ;
@@ -252,6 +255,10 @@ void Pet :: ProcessCollision(MyObject* _Obj)
 		{
 			_Obj->setLife(false); 
 		}	
+	}
+	else if(getRect().iCollision(_Obj->getRect())== false  && p_stt == P_READY)
+	{
+		m_iCollision = false ;
 	}
 }
 
