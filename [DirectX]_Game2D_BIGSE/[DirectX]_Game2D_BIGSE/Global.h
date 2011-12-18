@@ -22,5 +22,5 @@ enum STT
 {
 	READY,
 	ACTIVE,
-	COOLDOWN
+	COOLDOWN,
 };

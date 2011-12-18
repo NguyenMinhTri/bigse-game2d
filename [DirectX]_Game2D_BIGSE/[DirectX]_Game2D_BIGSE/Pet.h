@@ -8,9 +8,15 @@ class Pet :
 	public Skill
 {
 protected:
+	enum P_STT
+	{
+		P_READY,
+		P_COLLISION,
+		P_END 
+	};
+	int p_stt;
 	float  m_TimeLife ;
 	float m_TimeCoolDown;
-	float m_TimeShoot ;
 	MyObject *m_Character ;
 	Sprite* m_Partner;
 public:

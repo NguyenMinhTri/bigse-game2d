@@ -21,7 +21,6 @@ public:
 	/* Check collision with other Object */
 	virtual bool iCollision (MyObject* _Obj) ;
 
-	virtual void Move(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight);
 	/* Update Animation */
 	virtual void Animation (float _Time) ;
 

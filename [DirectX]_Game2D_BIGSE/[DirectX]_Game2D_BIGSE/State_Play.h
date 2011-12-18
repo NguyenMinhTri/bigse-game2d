@@ -6,6 +6,7 @@
 #include "Monster.h"
 #include "Archer.h"
 #include "Magician.h"
+#include "Angle.h"
 #include <vector>
 
 using namespace std;
@@ -18,6 +19,7 @@ class State_Play :
 	Character* m_Monster ;
 	Character* m_char;
     Archer *m_Archer; 
+	Angle *m_Angle ;
 
 	Monster* m_Monster1;
 	Magician* m_Magician;

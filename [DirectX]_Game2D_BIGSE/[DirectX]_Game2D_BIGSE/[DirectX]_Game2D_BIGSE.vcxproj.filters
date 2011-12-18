@@ -33,6 +33,8 @@
     <ClCompile Include="Winform.cpp" />
     <ClCompile Include="WinMain.cpp" />
     <ClCompile Include="Pet.cpp" />
+    <ClCompile Include="Angle.cpp" />
+    <ClCompile Include="SkillAngle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Archer.h" />
@@ -67,6 +69,8 @@
     <ClInclude Include="Terrain.h" />
     <ClInclude Include="Winform.h" />
     <ClInclude Include="Pet.h" />
+    <ClInclude Include="Angle.h" />
+    <ClInclude Include="SkillAngle.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="data\image\Arrow.png" />
