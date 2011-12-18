@@ -49,6 +49,7 @@ int Frenzy::getDamageEX(int _Damage, int _Offset)
 {
 	return _Damage+ rand()%_Offset;
 }
+
 void Frenzy::Animation(float _Time){
 	if (m_STT == ACTIVE)
 	{

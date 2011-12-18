@@ -77,10 +77,9 @@ void Skill::Active (float _X,float _Y,int _Dir)
 bool Skill::iCollision (MyObject* _Obj) {
 	return false;
 }
-
 void Skill::ProcessCollision(MyObject* _Obj){	
-	
-	
+	if(getiCollision() == true && getRect().iCollision(_Obj->getRect())== true )
+	{
 		if(_Obj->getActive() == false  )
 		{
 			return ;
@@ -90,18 +89,14 @@ void Skill::ProcessCollision(MyObject* _Obj){
 		if(_Obj->getHp() == 0)
 		{
 			_Obj->setLife(false); 
-			
-		}		
-	
+		}	
+	}
 }
-
-
 
 int Skill::getDamageEX(int _Damage, int _Offset)
 {
 	return _Damage+ rand()%_Offset;
 }
-
 void Skill::Move(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight)
 {
 

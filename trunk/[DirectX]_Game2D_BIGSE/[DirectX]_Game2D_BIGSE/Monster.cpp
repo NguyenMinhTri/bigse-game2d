@@ -26,7 +26,6 @@ void Monster::Init()
 	m_Monster = RSMainGame::get()->getCharacter();
 	m_InfoSprite.setSize(300,200);
 
-	m_STT = ACTIVE;
 	m_skillManager = new SkillManager();
 	m_skillManager->AddSkill(new Skill());
 	m_skillManager->AddSkill(new CallPet());
@@ -162,7 +161,6 @@ void Monster::ProcessCollision(MyObject* _Obj)
 	if(getLife() == true)
 	{
 		m_skillManager->ProcessCollision(_Obj);
-
 		if(getRect().iCollision(_Obj->getRect()))
 		{
 			if(!_Obj->getLife())
@@ -220,6 +218,11 @@ void Monster::UpdateStatus(float _Time)
 
 void Monster::Update(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight)
 {
+	if(getLife() == false)
+	{
+		Item *_item = new Item(m_X,m_Y);
+		ManagerObject::Instance()->getListItem()->push_back(_item);
+	}
 		Animation(_Time);
 		Move(_Time,_Terrain,_MaxWidth,_MaxHeight);	
 		UpdateStatus(_Time);
@@ -228,16 +231,8 @@ void Monster::Update(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeigh
 
 void Monster::Draw(D3DXMATRIX _MWorld,LPD3DXSPRITE _Handler)
 {
-
-	if(getLife() == false)
-	{
-       	Item *_item = new Item(m_X,m_Y);
-	    ManagerObject::Instance()->getListItem()->push_back(_item);
-	}
-
 	if(getLife() == true)
-	{
-		
+	{	
 			m_skillManager->Draw(_MWorld,_Handler);
 
 			if( getActive() ==false)

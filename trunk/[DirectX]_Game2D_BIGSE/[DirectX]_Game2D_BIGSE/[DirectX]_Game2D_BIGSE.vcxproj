@@ -96,6 +96,7 @@
     <ClCompile Include="ManagerObject.cpp" />
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="MyObject.cpp" />
+    <ClCompile Include="Pet.cpp" />
     <ClCompile Include="RECT.cpp" />
     <ClCompile Include="RSMainGame.cpp" />
     <ClCompile Include="Skill.cpp" />
@@ -130,6 +131,7 @@
     <ClInclude Include="ManagerObject.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="MyObject.h" />
+    <ClInclude Include="Pet.h" />
     <ClInclude Include="RECT.h" />
     <ClInclude Include="RSMainGame.h" />
     <ClInclude Include="Skill.h" />

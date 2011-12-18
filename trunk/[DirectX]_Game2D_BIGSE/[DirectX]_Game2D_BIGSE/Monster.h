@@ -14,8 +14,6 @@ protected:
 	int m_Damage ;
 	int m_Mana ;
 	Sprite* m_Monster ;
-
-/*	ItemManager  *m_itemManager;*/
 	SkillManager *m_skillManager ; 
 
 public:
