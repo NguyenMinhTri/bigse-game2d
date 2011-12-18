@@ -33,7 +33,6 @@ MyObject::~MyObject(void)
 
 void MyObject::setMove(int _move)
 {
-
 	m_VxDirect = _move;
 	m_Direct = _move;
 

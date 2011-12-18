@@ -43,8 +43,6 @@ void CallPet::Active (float _X,float _Y,int _Dir)
 	}
 }
 
-
-
 void CallPet::Animation(float _Time){
 	if (m_STT == ACTIVE)
 	{

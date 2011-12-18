@@ -172,6 +172,9 @@ void State_Play::OnKeyDown(int KeyCode)
 	case DIK_J:
 		m_Monster->ActiveSkill(1);
 		break;
+	case DIK_L:
+		m_Monster->ActiveSkill(3);
+		break;
 	case DIK_K:
 		m_Monster->ActiveSkill(2);
 		break;

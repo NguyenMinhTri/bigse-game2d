@@ -37,7 +37,7 @@ void Item::ProcessCollision(MyObject* _Obj)
 {
 	if(getRect().iCollision(_Obj->getRect()))
  	{
-      /*_Obj->setHp(getHp() +0);*/
+       _Obj->setHp(_Obj->getHp() +2);
 		  setLife(false);
 	}
 }
