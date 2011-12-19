@@ -23,4 +23,5 @@ enum STT
 	READY,
 	ACTIVE,
 	COOLDOWN,
+	TIME
 };

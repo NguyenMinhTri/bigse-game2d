@@ -10,8 +10,10 @@ protected:
 
 	Sprite* m_SSkill;
 	bool timeshoot;
+	
 	bool m_iCollision;
 public:
+	int time ;
 	Skill(void);
 	virtual ~Skill(void);
 

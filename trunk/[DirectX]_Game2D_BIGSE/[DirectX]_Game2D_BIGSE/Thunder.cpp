@@ -12,11 +12,17 @@ Thunder::~Thunder(void)
 {
 
 }
+Thunder::Thunder(MyObject *_Character)
+{
+	m_Character = _Character;
+	Init();
+}
 void Thunder::Init()
 {
 	m_iCollision = false;
 	m_Damage = 1;
 	m_STT = READY;
+	time = READY ;
 	t_STT = READY ;
 	m_InfoThunder1.setSize(1199,598);
 	m_InfoThunder2.setSize(1199,598);
@@ -33,12 +39,12 @@ void Thunder::Active (float _X,float _Y,int _Dir)
 		if (_Dir>0)
 		{
 			m_X = _X - 500 ;
-			m_Y = _Y -500;
+			m_Y = _Y - 500;
 			m_Direct = _Dir;
 		} 
 		else
 		{
-			m_X = _X + 500 ;
+			m_X = _X - 500;
 			m_Y = _Y - 500  ;
 			m_Direct = _Dir;
 		}
@@ -54,9 +60,11 @@ void Thunder::Active (float _X,float _Y,int _Dir)
 void Thunder::Animation(float _Time){
 	if (m_STT == ACTIVE)
 	{
+		time = TIME ;
 		m_TimeAni+= _Time;
 		if (m_TimeAni>=0.12f)
 		{
+		
 			m_TimeAni-= 0.12f;
 			if(t_STT ==READY)
 			m_InfoThunder1.NextFrame(0,18);
@@ -73,6 +81,7 @@ void Thunder::Animation(float _Time){
 					if(m_InfoThunder2.getCurFrame() >=17)
 					{
 						m_STT = COOLDOWN;
+						time = READY;
 						m_TimeAni=0;
 					}
 				}
@@ -96,6 +105,16 @@ void Thunder::UpdateStatus(float _Time)
 }
 void Thunder ::Update(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight)
 {
+// 	float _objectx = m_Character->getX();
+// 	float _objecty = m_Character->getY();	
+// 	if(m_Character->getX() != _objectx)
+// 	{
+// 		m_Character->setX(_objectx);
+// 	}
+// 	if(m_Character->getY() != _objecty)
+// 	{
+// 		m_Character->setY(_objecty);
+// 	}
 	Animation(_Time);
 	UpdateStatus(_Time);
 }
