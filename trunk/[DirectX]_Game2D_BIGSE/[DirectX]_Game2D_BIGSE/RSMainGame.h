@@ -17,6 +17,8 @@ private:
 	Sprite* m_medicine;
 	Sprite* m_Partner;
 	Sprite* m_Angle ;
+	Sprite* m_Thunder1;
+	Sprite* m_Thunder2;
 	RSMainGame(void);
 public:
 	
@@ -63,6 +65,14 @@ public:
 	Sprite* getAngle()
 	{
 		return  m_Angle;
+	}
+	Sprite* getThunder1()
+	{
+		return  m_Thunder1;
+	}
+	Sprite* getThunder2()
+	{
+		return  m_Thunder2;
 	}
 };
 

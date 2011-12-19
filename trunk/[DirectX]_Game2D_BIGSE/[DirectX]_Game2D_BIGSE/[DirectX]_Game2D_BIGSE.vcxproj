@@ -109,6 +109,7 @@
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="State_Play.cpp" />
     <ClCompile Include="Terrain.cpp" />
+    <ClCompile Include="Thunder.cpp" />
     <ClCompile Include="Winform.cpp" />
     <ClCompile Include="WinMain.cpp" />
   </ItemGroup>
@@ -146,6 +147,7 @@
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="State_Play.h" />
     <ClInclude Include="Terrain.h" />
+    <ClInclude Include="Thunder.h" />
     <ClInclude Include="Winform.h" />
   </ItemGroup>
   <ItemGroup>
