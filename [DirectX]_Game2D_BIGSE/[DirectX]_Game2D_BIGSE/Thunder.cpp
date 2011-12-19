@@ -20,6 +20,7 @@ void Thunder::Init()
 	t_STT = READY ;
 	m_InfoThunder1.setSize(1199,598);
 	m_InfoThunder2.setSize(1199,598);
+	
 	setSize(1199,598);
 	m_Thunder1 = RSMainGame::get()->getThunder1();
 	m_Thunder2 = RSMainGame::get()->getThunder2();
@@ -31,14 +32,14 @@ void Thunder::Active (float _X,float _Y,int _Dir)
 	{
 		if (_Dir>0)
 		{
-			m_X = _X  + 50;
-			m_Y = _Y-(394-85);
+			m_X = _X - 500 ;
+			m_Y = _Y -500;
 			m_Direct = _Dir;
 		} 
 		else
 		{
-			m_X = _X -m_Width ;
-			m_Y = _Y-(394-85);
+			m_X = _X + 500 ;
+			m_Y = _Y - 500  ;
 			m_Direct = _Dir;
 		}
 
@@ -54,9 +55,10 @@ void Thunder::Animation(float _Time){
 	if (m_STT == ACTIVE)
 	{
 		m_TimeAni+= _Time;
-		if (m_TimeAni>=0.10f)
+		if (m_TimeAni>=0.12f)
 		{
-			m_TimeAni-= 0.10f;
+			m_TimeAni-= 0.12f;
+			if(t_STT ==READY)
 			m_InfoThunder1.NextFrame(0,18);
 			if(m_InfoThunder1.getCurFrame() >=17)
 			{
@@ -64,6 +66,10 @@ void Thunder::Animation(float _Time){
 				if(t_STT == ACTIVE )
 				{
 					m_InfoThunder2.NextFrame(0,18);
+					if(m_InfoThunder2.getCurFrame() >=8 && m_InfoThunder2.getCurFrame()<=11)
+					{
+						m_iCollision = true ;
+					}
 					if(m_InfoThunder2.getCurFrame() >=17)
 					{
 						m_STT = COOLDOWN;
@@ -80,7 +86,7 @@ void Thunder::UpdateStatus(float _Time)
 	{
 	case COOLDOWN:
 		m_TimeUpdate+= _Time;
-		if(m_TimeUpdate > 10)
+		if(m_TimeUpdate > 1)
 		{
 			m_STT = READY;
 			m_TimeUpdate = 0;
