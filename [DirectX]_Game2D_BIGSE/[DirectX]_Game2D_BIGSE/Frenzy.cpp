@@ -89,8 +89,7 @@ void Frenzy::UpdateStatus(float _Time)
 }
 
 void Frenzy::Update(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight){
-	Animation(_Time);
-	
+	Animation(_Time);	
 	UpdateStatus(_Time);
 }
 

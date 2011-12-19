@@ -5,6 +5,7 @@
 #include "CallPet.h"
 #include "SkillHit.h"
 #include "Pet.h"
+#include "Thunder.h"
 
 Character::Character(void)
 {
@@ -32,6 +33,7 @@ void Character::Init(){
 	m_skillManager->AddSkill(new Frenzy());
 	m_skillManager->AddSkill(new CallPet());
 	m_skillManager->AddSkill(new Pet(this));
+	m_skillManager->AddSkill(new Thunder());
 }
 
 bool Character::iCollision(MyObject* _Obj){

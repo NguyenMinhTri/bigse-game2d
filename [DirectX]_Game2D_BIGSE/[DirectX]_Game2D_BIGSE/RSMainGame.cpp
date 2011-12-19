@@ -25,4 +25,6 @@ void RSMainGame::IntRS(LPDIRECT3DDEVICE9 _Device){
 	m_medicine = new Sprite(_Device,"data\\image\\Medicine.png",52,63,1);
 	m_Partner= new Sprite(_Device,"data\\image\\Dragon.png",100,80,6);
 	m_Angle = new Sprite(_Device,"data\\image\\Angle.png",300,200,4);
+	m_Thunder1 = new Sprite(_Device,"data\\image\\thunder.png",1199,598,3);
+	m_Thunder2 = new Sprite(_Device,"data\\image\\thunder2.png",1199,598,3);
 }

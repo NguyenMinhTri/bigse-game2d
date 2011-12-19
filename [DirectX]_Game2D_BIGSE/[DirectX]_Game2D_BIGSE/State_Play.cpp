@@ -171,7 +171,9 @@ void State_Play::OnKeyDown(int KeyCode)
 // 	case DIK_NUMPAD4:
 // 		 m_Magician->ActiveSkill(0);
 // 		 break;
-	
+	case DIK_H:
+		m_Monster->ActiveSkill(4);
+		break;
 	case DIK_J:
 		m_Monster->ActiveSkill(1);
 		break;
