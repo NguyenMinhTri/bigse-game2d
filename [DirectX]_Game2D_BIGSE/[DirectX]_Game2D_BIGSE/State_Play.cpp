@@ -22,9 +22,13 @@ void State_Play::Init()
 
 	m_ListItem = new std::vector<MyObject*>();
 	m_ObjectsCamera = new std::vector<MyObject*>();
+	m_ListMonster = new std ::vector<MyObject*>();
+	m_ListEffect = new std::vector<EffectSystem*>();
 
 	ManagerObject::Instance()->setListObject(m_ListItem);
 	ManagerObject::Instance()->setObjects(m_ObjectsCamera);
+	ManagerObject::Instance()->setListEffect(m_ListEffect);
+	ManagerObject::Instance()->setListMonster(m_ListMonster);
 
 	D3DXCreateSprite(m_Device,&m_Handle);
 
@@ -41,13 +45,16 @@ void State_Play::Init()
 
 	m_Monster = new Character();
 	m_Monster->Init();
-	m_Monster->setXY(200,0);
+	m_Monster->setXY(1000,460);
 	m_Monster->setSize(50,85);
 
 	m_Monster1 = new Monster();
-	m_Monster1->Init();
 	m_Monster1->setXY(60,460);
-	m_Monster1->setSize(50,85);
+
+	m_Monster2 = new Monster();
+	m_Monster2->setXY(100,460);
+
+
 
 	m_Archer = new Archer();
 	m_Archer->Init();
@@ -64,9 +71,11 @@ void State_Play::Init()
 	m_ObjectsCamera->push_back(m_Archer);
 	m_ObjectsCamera->push_back(m_char);
 	m_ObjectsCamera->push_back(m_Monster);
-	m_ObjectsCamera->push_back(m_Monster1);
 	m_ObjectsCamera->push_back(m_Magician);
 	m_ObjectsCamera->push_back(m_Angle);
+
+	m_ListMonster->push_back(m_Monster1);
+	/*m_ListMonster->push_back(m_Monster2);*/
 
 	/*std::vector<MyObject*>::iterator iter = m_ObjectsCamera->begin();
 	m_ObjectsCamera->erase(iter);*/
@@ -235,11 +244,50 @@ void State_Play::Update(float _Time)
 		i++;		
 	}
 	/************************************************************************/
+	/*  Update Monster in camera                                             */
+	/************************************************************************/	
+	for (std::vector<MyObject*>::iterator i = m_ListMonster->begin();i!= m_ListMonster->end();)
+	{
+		(*i)->Update(_Time,m_Map->getTerrain(),m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL);
+		if( (*i)->getLife() == false)
+		{
+			(*i)->Release();
+			i = m_ListMonster->erase(i);
+			continue;
+		}
+		i++;		
+	}
+	/************************************************************************/
+	/*  Update Effect in camera                                             */
+	/************************************************************************/	
+	for (std::vector<EffectSystem*>::iterator i = m_ListEffect->begin();i!= m_ListEffect->end();)
+	{
+		(*i)->Update(_Time);
+		if( (*i)->m_iLife == false)
+		{
+			(*i)->Release();
+			i = m_ListEffect->erase(i);
+			continue;
+		}
+		i++;		
+	}
+	/************************************************************************/
 	/*  Collision Object vs Object                                          */
 	/************************************************************************/	
 	for (std::vector<MyObject*>::iterator i = m_ObjectsCamera->begin();i!= m_ObjectsCamera->end();i++)
 	{		
 		for (std::vector<MyObject*>::iterator j = (i+1);j!= m_ObjectsCamera->end();j++)
+		{
+			(*i)->ProcessCollision(*j);
+			(*j)->ProcessCollision(*i);
+		}		
+	}
+	/************************************************************************/
+	/*  Collision Object vs Monster                                        */
+	/************************************************************************/	
+	for (std::vector<MyObject*>::iterator i = m_ObjectsCamera->begin();i!= m_ObjectsCamera->end();i++)
+	{		
+		for (std::vector<MyObject*>::iterator j = m_ListMonster->begin();j!= m_ListMonster->end();j++)
 		{
 			(*i)->ProcessCollision(*j);
 			(*j)->ProcessCollision(*i);
@@ -273,12 +321,21 @@ void State_Play::Draw()
 			(*i)->Draw(m_mtWorld,m_Handle);			
 
 		}
+		for (std::vector<MyObject*>::iterator i = m_ListMonster->begin();i!= m_ListMonster->end();i++)
+		{
+			(*i)->Draw(m_mtWorld,m_Handle);			
+
+		}
 
 		for (std::vector<MyObject*>::iterator i = m_ListItem->begin();i!= m_ListItem->end();i++)
 		{
 			(*i)->Draw(m_mtWorld,m_Handle);			
 		}
 
+		for (std::vector<EffectSystem*>::iterator i = m_ListEffect->begin();i!= m_ListEffect->end();i++)
+		{
+			(*i)->Draw(m_mtWorld,m_Handle);			
+		}
 
 		m_Handle->End();
 		m_Device->EndScene();

@@ -36,6 +36,8 @@
     <ClCompile Include="Angle.cpp" />
     <ClCompile Include="SkillAngle.cpp" />
     <ClCompile Include="Thunder.cpp" />
+    <ClCompile Include="EffectSystem.cpp" />
+    <ClCompile Include="EffectFrenzy.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Archer.h" />
@@ -73,17 +75,44 @@
     <ClInclude Include="Angle.h" />
     <ClInclude Include="SkillAngle.h" />
     <ClInclude Include="Thunder.h" />
+    <ClInclude Include="EffectSystem.h" />
+    <ClInclude Include="EffectFrenzy.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="data\image\Arrow.png" />
-    <None Include="data\image\callpet.png" />
-    <None Include="data\image\character.png" />
-    <None Include="data\image\character1.png" />
-    <None Include="data\image\cungthu.png" />
-    <None Include="data\image\Ice.png" />
-    <None Include="data\image\Magician.png" />
-    <None Include="data\image\mario.png" />
-    <None Include="data\image\Medicine.png" />
-    <None Include="data\image\ter.png" />
+    <None Include="data\image\Arrow.png">
+      <Filter>image</Filter>
+    </None>
+    <None Include="data\image\callpet.png">
+      <Filter>image</Filter>
+    </None>
+    <None Include="data\image\character.png">
+      <Filter>image</Filter>
+    </None>
+    <None Include="data\image\character1.png">
+      <Filter>image</Filter>
+    </None>
+    <None Include="data\image\cungthu.png">
+      <Filter>image</Filter>
+    </None>
+    <None Include="data\image\Ice.png">
+      <Filter>image</Filter>
+    </None>
+    <None Include="data\image\Magician.png">
+      <Filter>image</Filter>
+    </None>
+    <None Include="data\image\mario.png">
+      <Filter>image</Filter>
+    </None>
+    <None Include="data\image\Medicine.png">
+      <Filter>image</Filter>
+    </None>
+    <None Include="data\image\ter.png">
+      <Filter>image</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="image">
+      <UniqueIdentifier>{f5eb2076-a41f-4c37-a6d5-ed709b48fddd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

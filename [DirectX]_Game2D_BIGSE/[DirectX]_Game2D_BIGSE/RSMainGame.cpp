@@ -27,4 +27,6 @@ void RSMainGame::IntRS(LPDIRECT3DDEVICE9 _Device){
 	m_Angle = new Sprite(_Device,"data\\image\\Angle.png",300,200,4);
 	m_Thunder1 = new Sprite(_Device,"data\\image\\thunder.png",1199,598,3);
 	m_Thunder2 = new Sprite(_Device,"data\\image\\thunder2.png",1199,598,3);
+	m_EffectIce = new Sprite(_Device,"data\\image\\EffectIce.png",137,155,5);
+	m_EffectDie = new Sprite(_Device,"data\\image\\Die.png",170,229,4);
 }

@@ -1,6 +1,8 @@
 #pragma once
 #include <vector>
 #include "MyObject.h"
+#include "EffectSystem.h"
+
 using namespace std;
 
 class ManagerObject
@@ -9,6 +11,10 @@ private:
 	static ManagerObject* m_Instance;
 	std::vector<MyObject*> *m_ListItem;
 	std::vector<MyObject*> *m_ObjectsCamera;
+	std::vector<MyObject*> *m_ListMonster ;
+
+	std::vector<EffectSystem*> *m_ListEffect ;
+	
 	ManagerObject(void);
 public:
 	
@@ -20,6 +26,25 @@ public:
 			m_Instance = new ManagerObject();
 		}
 		return m_Instance;
+	}
+	void setListEffect(std::vector<EffectSystem*> *_ListEffect)
+	{
+		m_ListEffect = _ListEffect;
+	}
+
+	std::vector<EffectSystem*>* getListEffect () 
+	{
+		return m_ListEffect;
+	}
+
+	std::vector<MyObject*>* getListMonster  () 
+	{
+		return m_ListMonster;
+	}
+
+	void setListMonster  (std::vector<MyObject*> *_ListMonster)
+	{
+		m_ListMonster = _ListMonster;
 	}
 
 	void setListObject (std::vector<MyObject*> *_ListObject)

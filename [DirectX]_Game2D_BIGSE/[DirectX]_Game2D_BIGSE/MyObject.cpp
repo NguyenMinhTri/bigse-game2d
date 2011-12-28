@@ -44,9 +44,11 @@ void MyObject::setJump()
 	m_Vy = -1* g_VY_JUMP;	
 }
 
-void MyObject::Move(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight){	
-
-	float NextX,NextY;
+void MyObject::Move(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight)
+{	
+	if(m_iFrenzy ==false)
+	{
+		float NextX,NextY;
 
 #pragma region RIGHT
 	if (m_VxDirect > 0){
@@ -187,6 +189,5 @@ void MyObject::Move(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight
 		}
 	}
 #pragma endregion UP
-
-
+	}
 }

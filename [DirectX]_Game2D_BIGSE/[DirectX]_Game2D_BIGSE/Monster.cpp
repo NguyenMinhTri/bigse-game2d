@@ -5,10 +5,11 @@
 #include "CallPet.h"
 #include "Item.h"
 #include "ManagerObject.h"
+#include "EffectSystem.h"
 
 Monster::Monster(void)
 {
-	m_HP =2;
+	m_HP =10;
 	Init();
 
 }
@@ -20,8 +21,10 @@ Monster::~Monster(void)
 }
 void Monster::Init()
 {
+	setFrenzey(false);
 	m_Direct = 1;
 	count = 0 ;
+	setSize(50,85);
 	m_STT = ACTIVE;
 	m_Monster = RSMainGame::get()->getCharacter();
 	m_InfoSprite.setSize(300,200);
@@ -50,8 +53,8 @@ bool Monster::iCollision(MyObject* _Obj)
 
 void Monster :: Move (float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight)
 {
-	
-	float NextX, NextY ;
+
+		float NextX, NextY ;
 #pragma  region RIGHT 
 	if(m_Direct > 0 )
 	{
@@ -86,7 +89,8 @@ void Monster :: Move (float _Time, int** _Terrain,float _MaxWidth,float _MaxHeig
 		}
 	}
 #pragma  region LEFT
-	else if(m_Direct <0){
+	else if(m_Direct <0)
+	{
 		NextX= m_X - _Time* g_VX;
 		if (NextX <= 0)
 		{
@@ -133,29 +137,38 @@ void Monster :: Move (float _Time, int** _Terrain,float _MaxWidth,float _MaxHeig
 		m_Vy = fabs(m_Vy);
 	}
 
-	if (m_Vy >= 0){
-
+	if (m_Vy >= 0)
+	{
 		bool iColTer = false;
-		for (int j = (m_Y+m_Height)/g_CELL; j <  (NextY+m_Height)/g_CELL ;j++){
-			for (int i = m_X/g_CELL;i < (m_X+m_Width)/g_CELL;i++ ){
-				if (_Terrain[i][j]!=0){
+		 for (int j = (m_Y+m_Height)/g_CELL; j <  (NextY+m_Height)/g_CELL ;j++)
+		 {
+			for (int i = m_X/g_CELL;i < (m_X+m_Width)/g_CELL;i++ )
+			{
+				if (_Terrain[i][j]!=0)
+				{
 					iColTer = true;
 					m_Y = g_CELL * (j) - m_Height;
 					m_Vy = 0;
 					break;
 				}
 			}
-			if (iColTer == true){
-				break;
-			}
-
-		}
-		if (iColTer == false){
+				if (iColTer == true)
+				{
+					break;
+				}
+		 }
+		
+		if (iColTer == false)
+		{
 			m_Y = NextY;
 		}
-#pragma endregion DOWN
-}
 	}
+#pragma endregion DOWN
+
+	}
+	
+
+
 void Monster::ProcessCollision(MyObject* _Obj)
 {
 	if(getLife() == true)
@@ -214,17 +227,34 @@ void Monster::UpdateStatus(float _Time)
 			m_TimeUpdate =0;
 		}
 	}
+	if(getFrenzy() == true)
+	{
+			m_TimeUpdate += _Time;
+			if(m_TimeUpdate > 1.95)
+			{
+				setFrenzey(false);
+				m_TimeUpdate =0;
+			}
+
+	}
 }
 
 void Monster::Update(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight)
 {
 	if(getLife() == false)
 	{
+		EffectSystem *_EffectDie = new EffectSystem(m_X,m_Y);
+		ManagerObject::Instance()->getListEffect()->push_back(_EffectDie);
+
 		Item *_item = new Item(m_X,m_Y);
 		ManagerObject::Instance()->getListItem()->push_back(_item);
 	}
+
 		Animation(_Time);
-		Move(_Time,_Terrain,_MaxWidth,_MaxHeight);	
+		if(getFrenzy() ==false)
+		{
+	      	Move(_Time,_Terrain,_MaxWidth,_MaxHeight);	
+		}
 		UpdateStatus(_Time);
 		m_skillManager->Update(_Time,_Terrain,_MaxWidth,_MaxHeight);
 }

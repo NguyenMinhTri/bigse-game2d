@@ -16,7 +16,7 @@ public:
 	virtual void Init () ;
 
 
-
+	virtual void ProcessCollision(MyObject *_Obj);
 	/* Update Animation */
 	virtual void Animation (float _Time) ;
 

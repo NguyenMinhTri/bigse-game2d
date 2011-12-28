@@ -19,6 +19,8 @@ private:
 	Sprite* m_Angle ;
 	Sprite* m_Thunder1;
 	Sprite* m_Thunder2;
+	Sprite* m_EffectIce ;
+	Sprite* m_EffectDie ;
 	RSMainGame(void);
 public:
 	
@@ -73,6 +75,14 @@ public:
 	Sprite* getThunder2()
 	{
 		return  m_Thunder2;
+	}
+	Sprite* getEffectIce()
+	{
+		return m_EffectIce ;
+	}
+	Sprite* getEffectDie()
+	{
+		return m_EffectDie;
 	}
 };
 

@@ -1,6 +1,9 @@
 #include "Frenzy.h"
 #include "Global.h"
 #include "RSMainGame.h"
+#include "EffectSystem.h"
+#include "ManagerObject.h"
+#include "EffectFrenzy.h"
 
 Frenzy::Frenzy(void)
 {
@@ -42,9 +45,28 @@ void Frenzy::Active (float _X,float _Y,int _Dir)
 		m_TimeAni = 0;
 		m_iCollision = false ;
 	}
-	
 }
 
+void Frenzy ::ProcessCollision(MyObject *_Obj)
+{
+	if(getiCollision() == true && getRect().iCollision(_Obj->getRect())== true )
+	{
+		if(_Obj->getActive() == false  )
+		{
+			return ;
+		}//true la chua trung
+		EffectFrenzy *m_EffectFrenzy= new EffectFrenzy(_Obj->getX(),_Obj->getY()) ;
+		ManagerObject ::Instance()->getListEffect()->push_back(m_EffectFrenzy) ;
+
+		_Obj->m_iFrenzy =true ;
+	    _Obj->setActive(false);
+		_Obj->setHp(_Obj->getHp() - getDamage());
+		if(_Obj->getHp() == 0)
+		{
+			_Obj->setLife(false); 
+		}	
+	}
+}
 int Frenzy::getDamageEX(int _Damage, int _Offset)
 {
 	return _Damage+ rand()%_Offset;
