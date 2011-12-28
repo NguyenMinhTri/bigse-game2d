@@ -8,13 +8,19 @@
 #include "Magician.h"
 #include "Angle.h"
 #include <vector>
+#include "EffectSystem.h"
 
 using namespace std;
 class State_Play :
 	public iState
 {
+
 	std::vector<MyObject*> *m_ListItem;
 	std::vector<MyObject*> *m_ObjectsCamera;
+	std::vector<EffectSystem*> *m_ListEffect;
+	std::vector<MyObject*> *m_ListMonster ;
+	
+
 	Item *m_Item;
 	Character* m_Monster ;
 	Character* m_char;
@@ -22,6 +28,7 @@ class State_Play :
 	Angle *m_Angle ;
 
 	Monster* m_Monster1;
+	Monster* m_Monster2;
 	Magician* m_Magician;
 
 	LPD3DXSPRITE m_Handle;

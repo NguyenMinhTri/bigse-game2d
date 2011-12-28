@@ -44,13 +44,14 @@ protected :
 	/* All information sprite for render*/
 	InfoSprite m_InfoSprite;
 	/*Sprite m_Sprite;*/
+
+
+	Effect m_Effect;
+public:
 	bool m_iFrenzy;
 	bool m_iFire;
 	bool m_iLife;
 	bool m_iActive ;
-
-	Effect m_Effect;
-public:
 	MyObject(void);
 	virtual ~MyObject(void);
  	CRECT getRect(){
