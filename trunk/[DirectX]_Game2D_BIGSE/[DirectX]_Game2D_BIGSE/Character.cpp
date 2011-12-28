@@ -81,6 +81,15 @@ void Character::UpdateStatus(float _Time)
 			 m_TimeUpdate =0;
 		 }
 	 }
+	 if(getFrenzy() == true)
+	 {
+		 m_TimeUpdate += _Time;
+		 if(m_TimeUpdate > 1.95)
+		 {
+			 setFrenzey(false);
+			 m_TimeUpdate =0;
+		 }
+	 }
 }
 
 void Character::Update(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight)
