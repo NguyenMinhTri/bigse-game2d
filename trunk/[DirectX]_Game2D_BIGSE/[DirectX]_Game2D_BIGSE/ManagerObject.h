@@ -2,7 +2,6 @@
 #include <vector>
 #include "MyObject.h"
 #include "EffectSystem.h"
-
 using namespace std;
 
 class ManagerObject

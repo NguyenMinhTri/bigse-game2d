@@ -8,10 +8,10 @@ Angle::Angle(void)
 	m_HP = 2;
 }
 
-
 Angle::~Angle(void)
 {
 }
+
 void Angle ::Init()
 {
 	m_SCharater= RSMainGame ::get()->getAngle();
@@ -24,11 +24,16 @@ void Angle ::Init()
 	m_skillManager->AddSkill(new SkillAngle(this));
     m_skillManager->AddSkill(new Thunder(this));
 }
+void Angle ::ActiveSkill(int _Index)
+{
+      m_skillManager->ActiveSkill(_Index,m_X,m_Y,m_Direct);
+}
 void Angle ::Move(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight)
 {
 	if(m_skillManager->getSkill(1)->time !=TIME)
 	MyObject::Move(_Time, _Terrain,_MaxWidth,_MaxHeight);
 }
+
 void Angle ::Animation(float _Time)
 {
 	m_TimeAni +=_Time ;

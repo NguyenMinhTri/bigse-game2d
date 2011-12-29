@@ -9,6 +9,7 @@ public:
 	Angle(void);
 	~Angle(void);
 	virtual void Init () ;
+	virtual void ActiveSkill(int _Index);
 	virtual void Move(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight);
 	virtual void Animation (float _Time) ;
 };

@@ -3,13 +3,12 @@
 #include "RSMainGame.h"
 #include "ManagerObject.h"
 
-
 State_Play::State_Play(iPlay* GamePlay)
 	:iState(GamePlay)
 {
 	m_ID = PLAY;
+	m_STT = READY ;
 }
-
 
 State_Play::~State_Play(void)
 {
@@ -68,13 +67,17 @@ void State_Play::Init()
 
 	m_Angle = new Angle();
 
+	m_GodLike = new GodLike_Beast() ;
+	m_GodLike->setXY(50,100);
+
 // 	m_ObjectsCamera->push_back(m_Archer);
 // 	m_ObjectsCamera->push_back(m_char);
 	m_ObjectsCamera->push_back(m_Monster);
 // 	m_ObjectsCamera->push_back(m_Magician);
-// 	m_ObjectsCamera->push_back(m_Angle);
+ 	m_ObjectsCamera->push_back(m_Angle);
 
 	m_ListMonster->push_back(m_Monster1);
+	m_ListMonster->push_back(m_GodLike);
 	/*m_ListMonster->push_back(m_Monster2);*/
 
 	/*std::vector<MyObject*>::iterator iter = m_ObjectsCamera->begin();
@@ -130,31 +133,9 @@ void State_Play::IsKeyDown(int KeyCode){
 	case DIK_UP:
 	m_Angle->setJump();
 		break;
-// 	case DIK_LEFT:
-// 		m_Magician->setMove(-1);
-// 		break;
-// 	case DIK_RIGHT:
-// 		m_Magician->setMove(1);
-// 		break;
-// 	case DIK_UP:
-// 		m_Magician->setJump();
-// 		break;
-
-	case DIK_NUMPAD7:
-		m_char->setMove(-1);
-		break;
-
-	case DIK_NUMPAD8:
-		m_char->setMove(1);
-		break;
-	case DIK_NUMPAD9:
-		m_char->setJump();
-		break;
-
 	case DIK_A:
 		m_Monster->setMove(-1);
 		break;
-	
 	case DIK_D:
 		m_Monster->setMove(1);
 		break;
@@ -171,6 +152,13 @@ void State_Play::OnKeyDown(int KeyCode)
 {
 	switch(KeyCode)
 	{
+	case DIK_NUMPAD8 :
+		m_GodLike->ActiveSkill(0);
+
+	case DIK_NUMPAD7 :
+		m_GodLike->ActiveSkill(1);
+
+
 	case DIK_NUMPAD1:
 		m_Archer->ActiveSkill(0);
 		break;
@@ -180,6 +168,9 @@ void State_Play::OnKeyDown(int KeyCode)
 	case DIK_NUMPAD5:
 		m_Angle->ActiveSkill(1);
 		break;
+		
+	case DIK_NUMPAD9:
+		m_STT = FREEZETIME ;
 // 	case DIK_NUMPAD4:
 // 		 m_Magician->ActiveSkill(0);
 // 		 break;
@@ -212,7 +203,10 @@ void State_Play::OnKeyUp(int KeyCode)
 void State_Play::Update(float _Time)
 {
 	m_Camera->Update(m_Archer,m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL);
-	//m_Camera->UpdateEffect(_Time);
+	if(m_Angle->m_skillManager->getSkill(1)->time == TIME)
+	{
+	        m_Camera->UpdateEffect(_Time);
+	}
 	m_mtWorld = m_Camera->getMatrixTransform();
 
 	/************************************************************************/
@@ -246,17 +240,21 @@ void State_Play::Update(float _Time)
 	/************************************************************************/
 	/*  Update Monster in camera                                             */
 	/************************************************************************/	
-	for (std::vector<MyObject*>::iterator i = m_ListMonster->begin();i!= m_ListMonster->end();)
+	if(m_STT != FREEZETIME)
 	{
-		(*i)->Update(_Time,m_Map->getTerrain(),m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL);
-		if( (*i)->getLife() == false)
+		for (std::vector<MyObject*>::iterator i = m_ListMonster->begin();i!= m_ListMonster->end();)
 		{
-			(*i)->Release();
-			i = m_ListMonster->erase(i);
-			continue;
+			(*i)->Update(_Time,m_Map->getTerrain(),m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL);
+			if( (*i)->getLife() == false)
+			{
+				(*i)->Release();
+				i = m_ListMonster->erase(i);
+				continue;
+			}
+			i++;		
 		}
-		i++;		
 	}
+
 	/************************************************************************/
 	/*  Update Effect in camera                                             */
 	/************************************************************************/	
@@ -285,13 +283,16 @@ void State_Play::Update(float _Time)
 	/************************************************************************/
 	/*  Collision Object vs Monster                                        */
 	/************************************************************************/	
-	for (std::vector<MyObject*>::iterator i = m_ObjectsCamera->begin();i!= m_ObjectsCamera->end();i++)
-	{		
-		for (std::vector<MyObject*>::iterator j = m_ListMonster->begin();j!= m_ListMonster->end();j++)
-		{
-			(*i)->ProcessCollision(*j);
-			(*j)->ProcessCollision(*i);
-		}		
+	if(m_STT != FREEZETIME)
+	{
+		for (std::vector<MyObject*>::iterator i = m_ObjectsCamera->begin();i!= m_ObjectsCamera->end();i++)
+		{		
+			for (std::vector<MyObject*>::iterator j = m_ListMonster->begin();j!= m_ListMonster->end();j++)
+			{
+				(*i)->ProcessCollision(*j);
+				(*j)->ProcessCollision(*i);
+			}		
+		}
 	}
 	/************************************************************************/
 	/*  Collision Object vs item                                            */
@@ -308,7 +309,7 @@ void State_Play::Update(float _Time)
 
 void State_Play::Draw()
 {	
-	m_Device->Clear(0,NULL,D3DCLEAR_TARGET,D3DCOLOR_XRGB(0,0,0),1.0f,0);
+	m_Device->Clear(0,NULL,D3DCLEAR_TARGET|D3DCLEAR_ZBUFFER,D3DCOLOR_XRGB(0,0,0),1.0f,0);
 
 	if(m_Device->BeginScene())
 	{

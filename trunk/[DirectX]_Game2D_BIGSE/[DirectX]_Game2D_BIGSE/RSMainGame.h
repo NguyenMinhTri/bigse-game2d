@@ -21,6 +21,12 @@ private:
 	Sprite* m_Thunder2;
 	Sprite* m_EffectIce ;
 	Sprite* m_EffectDie ;
+	Sprite* m_FrenzyTime ;
+	Sprite* m_GodLikeMove ;
+	Sprite* m_GodLikeStand ;
+	Sprite* m_GodLikeAttack1 ;
+	Sprite* m_GodLikeAttack2 ;
+
 	RSMainGame(void);
 public:
 	
@@ -83,6 +89,26 @@ public:
 	Sprite* getEffectDie()
 	{
 		return m_EffectDie;
+	}
+	Sprite* getFrenzyTime()
+	{
+		return m_FrenzyTime ;
+	}
+	Sprite* getGodLikeMove()
+	{
+		return m_GodLikeMove ;
+	}
+	Sprite* getGodLikeStand()
+	{
+		return m_GodLikeStand ;
+	}
+	Sprite* getGodLikeAttack1()
+	{
+		return m_GodLikeAttack1 ;
+	}
+	Sprite* getGodLikeAttack2()
+	{
+		return m_GodLikeAttack2 ;
 	}
 };
 

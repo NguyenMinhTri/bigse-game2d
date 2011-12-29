@@ -88,8 +88,12 @@
     <ClCompile Include="EffectFrenzy.cpp" />
     <ClCompile Include="EffectSystem.cpp" />
     <ClCompile Include="Frenzy.cpp" />
+    <ClCompile Include="FrenzyTime.cpp" />
     <ClCompile Include="GameApp.cpp" />
     <ClCompile Include="GamePlay.cpp" />
+    <ClCompile Include="GodLike_Attack1.cpp" />
+    <ClCompile Include="GodLike_Attack2.cpp" />
+    <ClCompile Include="GodLike_Beast.cpp" />
     <ClCompile Include="InfoSprite.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="iPlay.cpp" />
@@ -127,9 +131,13 @@
     <ClInclude Include="EffectFrenzy.h" />
     <ClInclude Include="EffectSystem.h" />
     <ClInclude Include="Frenzy.h" />
+    <ClInclude Include="FrenzyTime.h" />
     <ClInclude Include="GameApp.h" />
     <ClInclude Include="GamePlay.h" />
     <ClInclude Include="Global.h" />
+    <ClInclude Include="GodLike_Attack1.h" />
+    <ClInclude Include="GodLike_Attack2.h" />
+    <ClInclude Include="GodLike_Beast.h" />
     <ClInclude Include="InfoSprite.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="iPlay.h" />
