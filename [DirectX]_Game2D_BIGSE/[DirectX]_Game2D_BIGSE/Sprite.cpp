@@ -61,23 +61,16 @@ void Sprite::Draw(LPD3DXSPRITE _Handler,D3DMATRIX _mtWorld, float _X,float _Y, i
 	D3DXVECTOR2 MTTran (_X,_Y); 
 
 	D3DXMatrixTransformation2D(&MaTrix,NULL,0,NULL,NULL,NULL,&MTTran);
-
 	mtFinal = MaTrix*_mtWorld;
-
 	_Handler->SetTransform(&mtFinal);
 
 	_Handler->Draw(m_Image,&this->getRect(_Index),NULL,
 		&D3DXVECTOR3(0,0,_Depth),_color);
 }
 void Sprite::Draw(InfoSprite _info,LPD3DXSPRITE _Handler){
-
-	
 	_Handler->SetTransform(&_info.getMatrixTransform());
-
 	_Handler->Draw(m_Image,&this->getRect(_info.getCurFrame()),NULL,
 		&D3DXVECTOR3(0,0,_info.getDepth()),_info.getColor());
-
-	
 }
 
 void Sprite::Draw(D3DMATRIX _World,InfoSprite _info,LPD3DXSPRITE _Handler)

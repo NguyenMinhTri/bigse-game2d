@@ -29,4 +29,9 @@ void RSMainGame::IntRS(LPDIRECT3DDEVICE9 _Device){
 	m_Thunder2 = new Sprite(_Device,"data\\image\\thunder2.png",1199,598,3);
 	m_EffectIce = new Sprite(_Device,"data\\image\\EffectIce.png",137,155,5);
 	m_EffectDie = new Sprite(_Device,"data\\image\\Die.png",170,229,4);
+	m_FrenzyTime = new Sprite(_Device,"data\\image\\DongBangThoiGian_image.png",38,38,1);
+	m_GodLikeMove = new Sprite(_Device,"data\\image\\GodLike_Move.png",566,524,4);
+	m_GodLikeStand = new Sprite(_Device,"data\\image\\GodLike_Stand.png",554,509,6);
+	m_GodLikeAttack1 = new Sprite(_Device,"data\\image\\GodLike_Attack1.png",802,647,4);
+	m_GodLikeAttack2 = new Sprite(_Device,"data\\image\\GodLike_Attack2.png",987,732,4);
 }

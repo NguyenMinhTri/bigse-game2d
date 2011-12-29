@@ -40,11 +40,8 @@ public:
 
 	/* Draw Object */
 	virtual void Draw (D3DXMATRIX _MWorld,LPD3DXSPRITE _Handler) ;
-
 	/* Release */
 	virtual void Release () ;
-
     virtual void ActiveSkill (int _Index);
-
 };
 

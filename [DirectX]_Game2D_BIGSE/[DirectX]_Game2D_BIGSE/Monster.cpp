@@ -28,7 +28,6 @@ void Monster::Init()
 	m_STT = ACTIVE;
 	m_Monster = RSMainGame::get()->getCharacter();
 	m_InfoSprite.setSize(300,200);
-
 	m_skillManager = new SkillManager();
 	m_skillManager->AddSkill(new Skill());
 	m_skillManager->AddSkill(new CallPet());
@@ -166,15 +165,11 @@ void Monster :: Move (float _Time, int** _Terrain,float _MaxWidth,float _MaxHeig
 #pragma endregion DOWN
 
 	}
-	
-
-
 void Monster::ProcessCollision(MyObject* _Obj)
 {
-
 	if(!getRect().iCollision(_Obj->getRect()))
 	{
-		if(abs(_Obj->getX() - m_X ) < 300 ) 
+		if(abs(_Obj->getX() - m_X ) < 400 ) 
 		{
 			if(_Obj->getX() > m_X )
 			{

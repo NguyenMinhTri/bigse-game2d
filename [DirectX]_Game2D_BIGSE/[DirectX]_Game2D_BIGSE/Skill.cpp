@@ -24,6 +24,7 @@ void Skill::Init(){
 	setSize(150,150);
 	m_SSkill = RSMainGame::get()->getCharacter();
 }
+
 void Skill::Active (float _X,float _Y,int _Dir)
 {
 	if (m_STT != ACTIVE) //chua tung skill
@@ -39,8 +40,7 @@ void Skill::Active (float _X,float _Y,int _Dir)
 			m_X = _X + 50- m_Width ;
 			m_Y = _Y;
 			m_Direct = _Dir;
-		}
-		
+		}		
 		m_STT = ACTIVE;
 		m_InfoSprite.setCurFrame(12);
 		m_Combo = 0;

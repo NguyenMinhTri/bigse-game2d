@@ -5,6 +5,7 @@
 #define  g_VY_JUMP			 300
 #define  g_GRAVITY			 400
 #define  g_VX				 100
+#define  g_GodLike_Beast     50
 
 enum STATE 
 {
@@ -23,5 +24,8 @@ enum STT
 	READY,
 	ACTIVE,
 	COOLDOWN,
-	TIME
+	TIME,
+	FREEZETIME,
+	GODLIKE_SKILL1,
+	GODLIKE_SKILL2 
 };

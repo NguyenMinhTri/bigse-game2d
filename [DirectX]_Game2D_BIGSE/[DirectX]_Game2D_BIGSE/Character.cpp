@@ -13,7 +13,6 @@ Character::Character(void)
 	m_Damage = 1;
 }
 
-
 Character::~Character(void)
 {
 
@@ -26,6 +25,8 @@ void Character::ActiveSkill(int _Index){
 void Character::Init(){
 	m_SCharater = RSMainGame::get()->getCharacter();
 	m_InfoSprite.setSize(300,200);
+/*	m_InfoSprite.setDepth(0.5);*/
+
 	m_STT = ACTIVE;
 
 	m_skillManager = new SkillManager();
@@ -105,7 +106,6 @@ void Character::Draw(D3DXMATRIX _MWorld,LPD3DXSPRITE _Handler)
 	{
 		return ;
 	}
-
 	m_skillManager->Draw(_MWorld,_Handler);
 
 	if( getActive() ==false)

@@ -35,7 +35,6 @@ void MyObject::setMove(int _move)
 {
 	m_VxDirect = _move;
 	m_Direct = _move;
-
 }
 
 void MyObject::setJump()
@@ -109,8 +108,6 @@ void MyObject::Move(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight
 			{
 				m_X = NextX;
 			}
-
-
 
 		}		
 	}

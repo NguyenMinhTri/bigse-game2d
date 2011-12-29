@@ -8,9 +8,10 @@ class Character :
 {
 protected:
 	Sprite* m_SCharater;
-	SkillManager *m_skillManager ;
+	
 
 public:
+	SkillManager *m_skillManager ;
 	Character(void);
 	virtual ~Character(void);
 

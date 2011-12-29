@@ -20,7 +20,6 @@ Camera::~Camera(void)
 }
 void  Camera::Update(Character* _Character,float _MaxWidth,float _MaxHeight)
 {
-
 	m_X = _Character->getX() - (g_SCREEN_WIDTH - _Character->getWidth())/2 ;
 	if (m_X<=0)
 	{

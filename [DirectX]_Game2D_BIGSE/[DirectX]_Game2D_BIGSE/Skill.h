@@ -9,10 +9,11 @@ protected:
 	bool m_NextCombo;
 
 	Sprite* m_SSkill;
-	bool timeshoot;
+	
 	
 	bool m_iCollision;
 public:
+	bool timeshoot;
 	int time ;
 	Skill(void);
 	virtual ~Skill(void);
