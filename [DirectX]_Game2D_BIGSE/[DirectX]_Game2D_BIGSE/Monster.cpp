@@ -171,11 +171,42 @@ void Monster :: Move (float _Time, int** _Terrain,float _MaxWidth,float _MaxHeig
 
 void Monster::ProcessCollision(MyObject* _Obj)
 {
+
+	if(!getRect().iCollision(_Obj->getRect()))
+	{
+		if(abs(_Obj->getX() - m_X ) < 300 ) 
+		{
+			if(_Obj->getX() > m_X )
+			{
+				m_Direct =1 ;
+			}
+			if(_Obj->getX() < m_X)
+			{
+				m_Direct = -1 ;
+			}
+		}
+	}
 	if(getLife() == true)
 	{
 		m_skillManager->ProcessCollision(_Obj);
 		if(getRect().iCollision(_Obj->getRect()))
 		{
+			if(_Obj->getDirection() > 0 && _Obj->getX() > m_X )
+			{
+				if(m_Direct <0)
+				{
+					m_Direct = 1 ;
+					m_X = m_X + 50;
+				}
+			}
+			else if(_Obj->getDirection() < 0 && _Obj->getX() < m_X )
+			{
+				if(m_Direct > 0)
+				{
+					m_Direct =-1 ;
+					m_X = m_X + 60;
+				}
+			}
 			if(!_Obj->getLife())
 			{
 				return ;

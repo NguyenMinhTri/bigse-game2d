@@ -68,11 +68,11 @@ void State_Play::Init()
 
 	m_Angle = new Angle();
 
-	m_ObjectsCamera->push_back(m_Archer);
-	m_ObjectsCamera->push_back(m_char);
+// 	m_ObjectsCamera->push_back(m_Archer);
+// 	m_ObjectsCamera->push_back(m_char);
 	m_ObjectsCamera->push_back(m_Monster);
-	m_ObjectsCamera->push_back(m_Magician);
-	m_ObjectsCamera->push_back(m_Angle);
+// 	m_ObjectsCamera->push_back(m_Magician);
+// 	m_ObjectsCamera->push_back(m_Angle);
 
 	m_ListMonster->push_back(m_Monster1);
 	/*m_ListMonster->push_back(m_Monster2);*/
