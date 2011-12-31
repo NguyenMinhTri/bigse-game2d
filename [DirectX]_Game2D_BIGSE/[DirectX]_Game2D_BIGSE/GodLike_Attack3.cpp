@@ -1,36 +1,34 @@
-#include "GodLike_Attack1.h"
+#include "GodLike_Attack3.h"
 #include "RSMainGame.h"
 #include "Global.h"
 #include "InfoSprite.h"
 #include "ManagerObject.h"
-#include "EffectThunder.h"
-GodLike_Attack1::GodLike_Attack1(GodLike_Beast *_GodLike)
+#include "EffectSound.h"
+
+GodLike_Attack3 ::GodLike_Attack3 (GodLike_Beast *_GodLike)
 {
 	m_GodLike = _GodLike ;
 	Init() ;
 }
 
 
-GodLike_Attack1::~GodLike_Attack1(void)
+GodLike_Attack3 ::~GodLike_Attack3 (void)
 {
 }
-GodLike_Attack1::GodLike_Attack1(void)
-{
-	Init();
-}
-void GodLike_Attack1 ::Init()
+
+void GodLike_Attack3  ::Init()
 {
 	m_Damage = 1;
 	m_iCollision = false ;
-	m_Attack1  = RSMainGame::get()->getGodLikeAttack1() ;
-	m_InfoSprite1.setSize(802,607) ;
+	m_Attack1  = RSMainGame::get()->getGodLikeAttack3() ;
+	m_InfoSprite1.setSize(717,603) ;
 
-	setSize(802,647);
+	setSize(717,603);
 	m_STT = READY ;
 	timeshoot = true;
 }
 
-void GodLike_Attack1 ::Active(float _X,float _Y,int _Dir)
+void GodLike_Attack3  ::Active(float _X,float _Y,int _Dir)
 {
 	if(m_STT ==READY ) //dang ready moi cho active 
 	{
@@ -53,7 +51,7 @@ void GodLike_Attack1 ::Active(float _X,float _Y,int _Dir)
 		timeshoot = true ;
 	}
 }
-void GodLike_Attack1 ::Animation(float _Time)
+void GodLike_Attack3  ::Animation(float _Time)
 {
 	if(m_STT == ACTIVE)
 	{
@@ -61,28 +59,28 @@ void GodLike_Attack1 ::Animation(float _Time)
 		if(m_TimeAni >= 0.16f)
 		{
 			m_TimeAni -=0.16f;
-			m_InfoSprite1.NextFrame(0,23) ;
-			    if(m_InfoSprite1.getCurFrame()>=10 && m_InfoSprite1.getCurFrame() <= 16 )
-				{
-					m_iCollision = true ;
-				}
-				if(m_InfoSprite1.getCurFrame() >=22 )
-				{
-					m_STT = COOLDOWN ;
-					timeshoot = false ;
-					m_TimeAni =0;
-				}
+			m_InfoSprite1.NextFrame(0,19) ;
+			if(m_InfoSprite1.getCurFrame()>=8 && m_InfoSprite1.getCurFrame() <= 13 )
+			{
+				m_iCollision = true ;
+			}
+			if(m_InfoSprite1.getCurFrame() >=18 )
+			{
+				m_STT = COOLDOWN ;
+				timeshoot = false ;
+				m_TimeAni =0;
+			}
 		}
 	}
 }
 
-void GodLike_Attack1::Update(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight)
+void GodLike_Attack3 ::Update(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight)
 {
 	Animation(_Time);
 	UpdateStatus(_Time);
 }
 
-void GodLike_Attack1 ::UpdateStatus(float _Time)
+void GodLike_Attack3  ::UpdateStatus(float _Time)
 {
 	switch (m_STT)
 	{
@@ -96,7 +94,7 @@ void GodLike_Attack1 ::UpdateStatus(float _Time)
 		break;
 	}
 }
-void GodLike_Attack1 ::ProcessCollision(MyObject *_Obj)
+void GodLike_Attack3  ::ProcessCollision(MyObject *_Obj)
 {
 	if(getiCollision() == true && getRect().iCollision(_Obj->getRect())== true )
 	{
@@ -105,9 +103,9 @@ void GodLike_Attack1 ::ProcessCollision(MyObject *_Obj)
 			return ;
 		}//true la chua trung
 
-		EffectThunder*m_EffectThunder = new EffectThunder(_Obj->getX(), _Obj->getY());
-		ManagerObject::Instance()->getListEffect()->push_back(m_EffectThunder);
-		_Obj->m_iThunder = true ;
+
+		EffectSound *m_EffectSound = new EffectSound(_Obj->getX(),_Obj->getY());
+		ManagerObject::Instance()->getListEffect()->push_back(m_EffectSound );
 
 		_Obj->setActive(false);
 		_Obj->setHp(_Obj->getHp() - m_Damage );
@@ -118,7 +116,7 @@ void GodLike_Attack1 ::ProcessCollision(MyObject *_Obj)
 	}
 }
 
-void GodLike_Attack1 ::Draw(D3DXMATRIX _mtWorld,LPD3DXSPRITE _Handler)
+void GodLike_Attack3  ::Draw(D3DXMATRIX _mtWorld,LPD3DXSPRITE _Handler)
 {
 	if (m_Direct<0){
 		m_InfoSprite1.setScaleX(1);
@@ -129,7 +127,7 @@ void GodLike_Attack1 ::Draw(D3DXMATRIX _mtWorld,LPD3DXSPRITE _Handler)
 	m_Attack1->Draw(_mtWorld,m_InfoSprite1,_Handler);
 }
 
-void GodLike_Attack1 ::Release()
+void GodLike_Attack3  ::Release()
 {
 
 }

@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="Archer.cpp" />
     <ClCompile Include="Arrow.cpp" />
     <ClCompile Include="CallPet.cpp" />
     <ClCompile Include="Camera.cpp" />
@@ -42,9 +41,18 @@
     <ClCompile Include="GodLike_Beast.cpp" />
     <ClCompile Include="GodLike_Attack1.cpp" />
     <ClCompile Include="GodLike_Attack2.cpp" />
+    <ClCompile Include="GodLike_Attack3.cpp" />
+    <ClCompile Include="Archer.cpp" />
+    <ClCompile Include="SnakeMans.cpp" />
+    <ClCompile Include="Hero.cpp" />
+    <ClCompile Include="Hero_Attack1.cpp" />
+    <ClCompile Include="GodLike_Attack4.cpp" />
+    <ClCompile Include="EffectLaze.cpp" />
+    <ClCompile Include="EffectSound.cpp" />
+    <ClCompile Include="EffectThunder.cpp" />
+    <ClCompile Include="EffectHit.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Archer.h" />
     <ClInclude Include="Arrow.h" />
     <ClInclude Include="CallPet.h" />
     <ClInclude Include="Camera.h" />
@@ -85,6 +93,16 @@
     <ClInclude Include="GodLike_Beast.h" />
     <ClInclude Include="GodLike_Attack1.h" />
     <ClInclude Include="GodLike_Attack2.h" />
+    <ClInclude Include="GodLike_Attack3.h" />
+    <ClInclude Include="Archer.h" />
+    <ClInclude Include="SnakeMans.h" />
+    <ClInclude Include="Hero.h" />
+    <ClInclude Include="Hero_Attack1.h" />
+    <ClInclude Include="GodLike_Attack4.h" />
+    <ClInclude Include="EffectLaze.h" />
+    <ClInclude Include="EffectSound.h" />
+    <ClInclude Include="EffectThunder.h" />
+    <ClInclude Include="EffectHit.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="data\image\Arrow.png">

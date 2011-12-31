@@ -19,6 +19,7 @@ MyObject::MyObject(void)
     m_iFire = false ;
 	m_iLife = true;
 	m_iActive = true;
+	m_iThunder = false ;
 
 	m_ID		= PLAYER;
 	m_STT		= ACTIVE;

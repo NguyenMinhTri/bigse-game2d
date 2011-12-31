@@ -56,7 +56,7 @@ void GodLike_Attack2 ::Animation(float _Time)
 		{
 			m_TimeAni -=0.16f;
 			m_InfoSprite2.NextFrame(0,19) ;
-			if(m_InfoSprite2.getCurFrame()>=11 && m_InfoSprite2.getCurFrame() <= 15 )
+			if(m_InfoSprite2.getCurFrame()>=11 && m_InfoSprite2.getCurFrame() <= 14 )
 			{
 				m_iCollision = true ;
 			}
@@ -82,7 +82,7 @@ void GodLike_Attack2 ::UpdateStatus(float _Time)
 	{
 	case COOLDOWN:
 		m_TimeUpdate+= _Time;
-		if(m_TimeUpdate > 4)
+		if(m_TimeUpdate > 20)
 		{
 			m_STT = READY;
 			m_TimeUpdate = 0;

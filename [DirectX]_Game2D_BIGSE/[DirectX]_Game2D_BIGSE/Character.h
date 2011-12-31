@@ -1,3 +1,4 @@
+
 #pragma once
 #include "myobject.h"
 #include "Skill.h"

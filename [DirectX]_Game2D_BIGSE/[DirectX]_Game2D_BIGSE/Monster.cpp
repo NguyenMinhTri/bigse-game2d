@@ -49,7 +49,11 @@ bool Monster::iCollision(MyObject* _Obj)
 {
 	return false;
 }
-
+void Monster ::setJump()
+{
+	if(m_Vy!= 0) return;
+	m_Vy = -1* g_VY_JUMP;	
+}
 void Monster :: Move (float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight)
 {
 
@@ -71,6 +75,7 @@ void Monster :: Move (float _Time, int** _Terrain,float _MaxWidth,float _MaxHeig
 				if (_Terrain[i][j]!=0){
 					iColTer = true;
 					m_X = g_CELL * (i) - m_Width;
+					
 					m_Direct = -1 ;
 					break;
 				}

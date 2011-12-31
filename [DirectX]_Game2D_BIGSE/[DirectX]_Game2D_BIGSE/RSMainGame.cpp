@@ -34,4 +34,17 @@ void RSMainGame::IntRS(LPDIRECT3DDEVICE9 _Device){
 	m_GodLikeStand = new Sprite(_Device,"data\\image\\GodLike_Stand.png",554,509,6);
 	m_GodLikeAttack1 = new Sprite(_Device,"data\\image\\GodLike_Attack1.png",802,647,4);
 	m_GodLikeAttack2 = new Sprite(_Device,"data\\image\\GodLike_Attack2.png",987,732,4);
+	m_GodLikeAttack3 = new Sprite(_Device,"data\\image\\GodLike_Attack3.png",717,603,4);
+	m_GodLikeAttack4_1 = new Sprite(_Device,"data\\image\\GodLike_Attack4_1.png",1346,639,3);
+	m_GodLikeAttack4_2 = new Sprite(_Device,"data\\image\\GodLike_Attack4 _2.png",1346,639,3);
+	m_EffectLaze = new Sprite(_Device,"data\\image\\EffectLaze.png",103,106,7);
+	m_EffectSound = new Sprite(_Device,"data\\image\\EffectSound.png",151,151,4);
+	m_EffectThunder = new Sprite(_Device,"data\\image\\EffectThunder.png",182,129,5);
+	m_EffectHit = new Sprite(_Device,"data\\image\\EffectHit.png",197,177,6);
+
+	m_SnakeMans_Move = new Sprite(_Device,"data\\image\\SnakeMans_Move.png",202,269,6);
+	m_Hero_Move=new Sprite(_Device,"data\\image\\Hero_Move.png",79,103,6);
+	m_Hero_Stand=new Sprite(_Device,"data\\image\\Hero_Stand.png",79,98,4);
+	m_Hero_Attack1=new Sprite(_Device,"data\\image\\Hero_Attack1.png",570,255,4);
+	m_Hero_Attack1_Ball=new Sprite(_Device,"data\\image\\Hero_Attack1_Ball.png",415,143,5);
 }

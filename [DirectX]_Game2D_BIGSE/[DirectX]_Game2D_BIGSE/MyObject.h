@@ -49,6 +49,7 @@ protected :
 	Effect m_Effect;
 public:
 	bool m_iFrenzy;
+	bool m_iThunder ;
 	bool m_iFire;
 	bool m_iLife;
 	bool m_iActive ;
