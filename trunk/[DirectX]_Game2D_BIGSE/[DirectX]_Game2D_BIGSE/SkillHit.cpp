@@ -1,5 +1,7 @@
 #include "SkillHit.h"
 #include "Global.h"
+#include "EffectHit.h"
+#include "ManagerObject.h"
 
 
 SkillHit::SkillHit(Character* _Character)
@@ -110,6 +112,29 @@ void SkillHit::Animation(float _Time)
 		}
 	}
 }
+
+void SkillHit ::ProcessCollision(MyObject *_Obj)
+{
+	if(getiCollision() == true && getRect().iCollision(_Obj->getRect())== true )
+	{
+		if(_Obj->getActive() == false  )
+		{
+			return ;
+		}//true la chua trung
+
+
+		EffectHit* m_Effecthit = new EffectHit(m_X,m_Y - 30);
+		ManagerObject::Instance()->getListEffect()->push_back(m_Effecthit);
+
+		_Obj->setActive(false);
+		_Obj->setHp(_Obj->getHp() - 1 );
+		if(_Obj->getHp() == 0)
+		{
+			_Obj->setLife(false); 
+		}	
+	}
+}
+
 void SkillHit::Update(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight)
 {
 	if (m_STT==ACTIVE)
@@ -128,5 +153,4 @@ void SkillHit::Update(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeig
 		}
 	}
 	Animation(_Time);
-	
 }

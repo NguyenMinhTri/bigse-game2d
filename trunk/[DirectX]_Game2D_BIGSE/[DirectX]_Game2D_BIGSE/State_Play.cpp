@@ -23,11 +23,13 @@ void State_Play::Init()
 	m_ObjectsCamera = new std::vector<MyObject*>();
 	m_ListMonster = new std ::vector<MyObject*>();
 	m_ListEffect = new std::vector<EffectSystem*>();
+	m_ListBoss = new std ::vector<MyObject*>();
 
 	ManagerObject::Instance()->setListObject(m_ListItem);
 	ManagerObject::Instance()->setObjects(m_ObjectsCamera);
 	ManagerObject::Instance()->setListEffect(m_ListEffect);
 	ManagerObject::Instance()->setListMonster(m_ListMonster);
+	ManagerObject::Instance()->setListBoss(m_ListBoss);
 
 	D3DXCreateSprite(m_Device,&m_Handle);
 
@@ -54,11 +56,10 @@ void State_Play::Init()
 	m_Monster2->setXY(100,460);
 
 
-
+// 
 	m_Archer = new Archer();
-	m_Archer->Init();
-	m_Archer->setXY( 200,0);
-	m_Archer->setSize(50,85);
+	m_Archer->setXY( 200,300);
+	
 
 	m_Magician = new Magician();
 	m_Magician->Init();
@@ -70,14 +71,25 @@ void State_Play::Init()
 	m_GodLike = new GodLike_Beast() ;
 	m_GodLike->setXY(50,100);
 
-// 	m_ObjectsCamera->push_back(m_Archer);
-// 	m_ObjectsCamera->push_back(m_char);
-	m_ObjectsCamera->push_back(m_Monster);
-// 	m_ObjectsCamera->push_back(m_Magician);
- 	m_ObjectsCamera->push_back(m_Angle);
+	m_SnakeMan=new SnakeMans();
+	m_SnakeMan->setXY(450,0);
 
-	m_ListMonster->push_back(m_Monster1);
-	m_ListMonster->push_back(m_GodLike);
+	m_Hero=new Hero();
+	m_Hero->setXY(300,400);
+
+/*	m_ObjectsCamera->push_back(m_Hero);*/
+
+/*	m_ObjectsCamera->push_back(m_SnakeMan);*/
+//  	m_ObjectsCamera->push_back(m_Archer);
+// // 	m_ObjectsCamera->push_back(m_char);
+// 	
+// // 	m_ObjectsCamera->push_back(m_Magician);
+ /*	m_ObjectsCamera->push_back(m_Angle);*/
+ 	m_ObjectsCamera->push_back(m_Monster);
+
+	m_ListBoss->push_back(m_GodLike);
+
+	/*m_ListMonster->push_back(m_Monster1);*/
 	/*m_ListMonster->push_back(m_Monster2);*/
 
 	/*std::vector<MyObject*>::iterator iter = m_ObjectsCamera->begin();
@@ -93,10 +105,10 @@ int _Terrain [] = {
 		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, //2
 		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, //3
 		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, //4
-		0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, //5
-		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, //6
-		1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, //7
-		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, //8
+		0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, //5
+		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, //6
+		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, //7
+		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, //8
 		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, //9
 		1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, //10		
 		1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, //11
@@ -124,14 +136,14 @@ int _Terrain [] = {
 void State_Play::IsKeyDown(int KeyCode){
 	switch(KeyCode)
 	{
-	case DIK_LEFT:
-	m_Angle->setMove(-1);
-		break;
-	case DIK_RIGHT:
-	m_Angle->setMove(1);
-		break;
-	case DIK_UP:
-	m_Angle->setJump();
+// 	case DIK_LEFT:
+// 	m_Monster->setMove(-1);
+// 		break;
+// 	case DIK_RIGHT:
+// 	m_Monster->setMove(1);
+// 	  break;
+// 	case DIK_UP:
+// 	m_Monster->setJump();
 		break;
 	case DIK_A:
 		m_Monster->setMove(-1);
@@ -152,12 +164,14 @@ void State_Play::OnKeyDown(int KeyCode)
 {
 	switch(KeyCode)
 	{
-	case DIK_NUMPAD8 :
-		m_GodLike->ActiveSkill(0);
 
-	case DIK_NUMPAD7 :
-		m_GodLike->ActiveSkill(1);
+	case DIK_NUMPAD7:
+		m_GodLike->ActiveSkill(3);
+		break ;
 
+	case DIK_Z:
+		m_Hero->ActiveSkill(0);
+		break ;
 
 	case DIK_NUMPAD1:
 		m_Archer->ActiveSkill(0);
@@ -171,6 +185,7 @@ void State_Play::OnKeyDown(int KeyCode)
 		
 	case DIK_NUMPAD9:
 		m_STT = FREEZETIME ;
+
 // 	case DIK_NUMPAD4:
 // 		 m_Magician->ActiveSkill(0);
 // 		 break;
@@ -202,7 +217,7 @@ void State_Play::OnKeyUp(int KeyCode)
 
 void State_Play::Update(float _Time)
 {
-	m_Camera->Update(m_Archer,m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL);
+	m_Camera->Update(m_GodLike,m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL);
 	if(m_Angle->m_skillManager->getSkill(1)->time == TIME)
 	{
 	        m_Camera->UpdateEffect(_Time);
@@ -233,6 +248,20 @@ void State_Play::Update(float _Time)
 		{
 			(*i)->Release();
 			i = m_ObjectsCamera->erase(i);
+			continue;
+		}
+		i++;		
+	}
+	/************************************************************************/
+	/*  Update Boss in camera                                             */
+	/************************************************************************/	
+	for (std::vector<MyObject*>::iterator i = m_ListBoss->begin();i!= m_ListBoss->end();)
+	{
+		(*i)->Update(_Time,m_Map->getTerrain(),m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL);
+		if( (*i)->getLife() == false)
+		{
+			(*i)->Release();
+			i = m_ListBoss->erase(i);
 			continue;
 		}
 		i++;		
@@ -269,12 +298,24 @@ void State_Play::Update(float _Time)
 		}
 		i++;		
 	}
+
 	/************************************************************************/
 	/*  Collision Object vs Object                                          */
 	/************************************************************************/	
 	for (std::vector<MyObject*>::iterator i = m_ObjectsCamera->begin();i!= m_ObjectsCamera->end();i++)
 	{		
 		for (std::vector<MyObject*>::iterator j = (i+1);j!= m_ObjectsCamera->end();j++)
+		{
+			(*i)->ProcessCollision(*j);
+			(*j)->ProcessCollision(*i);
+		}		
+	}
+	/************************************************************************/
+	/*  Collision Object vs BOSS                                    */
+	/************************************************************************/	
+	for (std::vector<MyObject*>::iterator i = m_ObjectsCamera->begin();i!= m_ObjectsCamera->end();i++)
+	{		
+		for (std::vector<MyObject*>::iterator j = m_ListBoss->begin();j!= m_ListBoss->end();j++)
 		{
 			(*i)->ProcessCollision(*j);
 			(*j)->ProcessCollision(*i);
@@ -294,6 +335,7 @@ void State_Play::Update(float _Time)
 			}		
 		}
 	}
+
 	/************************************************************************/
 	/*  Collision Object vs item                                            */
 	/************************************************************************/
@@ -323,6 +365,14 @@ void State_Play::Draw()
 
 		}
 		for (std::vector<MyObject*>::iterator i = m_ListMonster->begin();i!= m_ListMonster->end();i++)
+		{
+			(*i)->Draw(m_mtWorld,m_Handle);			
+
+		}
+		/************************************************************************/
+		/*  Draw Boss  in camera                                             */
+		/************************************************************************/	
+		for (std::vector<MyObject*>::iterator i = m_ListBoss->begin();i!= m_ListBoss->end();i++)
 		{
 			(*i)->Draw(m_mtWorld,m_Handle);			
 

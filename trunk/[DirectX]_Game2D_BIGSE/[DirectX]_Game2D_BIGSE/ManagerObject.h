@@ -11,6 +11,7 @@ private:
 	std::vector<MyObject*> *m_ListItem;
 	std::vector<MyObject*> *m_ObjectsCamera;
 	std::vector<MyObject*> *m_ListMonster ;
+	std::vector<MyObject*> *m_ListBoss ;
 
 	std::vector<EffectSystem*> *m_ListEffect ;
 	
@@ -26,6 +27,18 @@ public:
 		}
 		return m_Instance;
 	}
+	std::vector<MyObject*>* getListBoss  () 
+	{
+		return m_ListBoss;
+	}
+
+	void setListBoss  (std::vector<MyObject*> *_ListBoss)
+	{
+		m_ListBoss = _ListBoss;
+	}
+
+
+
 	void setListEffect(std::vector<EffectSystem*> *_ListEffect)
 	{
 		m_ListEffect = _ListEffect;

@@ -15,5 +15,6 @@ public:
 	virtual void Update (float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight) ;
 	/* Update Animation */
 	virtual void Animation (float _Time) ;
+	virtual void ProcessCollision(MyObject *_Obj);
 };
 

@@ -10,6 +10,8 @@
 #include <vector>
 #include "GodLike_Beast.h"
 #include "EffectSystem.h"
+#include "SnakeMans.h"
+#include "Hero.h"
 
 using namespace std;
 class State_Play :
@@ -19,19 +21,22 @@ class State_Play :
 	std::vector<MyObject*> *m_ObjectsCamera;
 	std::vector<EffectSystem*> *m_ListEffect;
 	std::vector<MyObject*> *m_ListMonster ;
+	std::vector<MyObject*> *m_ListBoss ;
 
 	int m_STT ;
 
 	Item *m_Item;
 	Character* m_Monster ;
 	Character* m_char;
-    Archer *m_Archer; 
 	Angle *m_Angle ;
+	Archer *m_Archer ;
 	Monster* m_Monster1;
 	Monster* m_Monster2;
 	Magician* m_Magician;
-
+	SnakeMans* m_SnakeMan;
 	GodLike_Beast* m_GodLike ;
+
+	Hero* m_Hero;
 
 	LPD3DXSPRITE m_Handle;
 	Terrain* m_Map;

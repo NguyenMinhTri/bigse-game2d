@@ -1,22 +1,29 @@
 #pragma once
 #include "skill.h"
-#include "GodLike_Beast.h"
-class GodLike_Attack1 :
+#include "Hero.h"
+class Hero_Attack1 :
 	public Skill
 {
 public:
-	GodLike_Beast *m_GodLike ;
-	Sprite *m_Attack1 ;
-	InfoSprite m_InfoSprite1;
+	Hero* m_Hero;
+	Sprite* m_Hero_Attack1Sprite;
+	Sprite* m_Hero_Attack1_BallSprite;
+	InfoSprite m_Hero_Attack1InfoSprite;
+	InfoSprite m_Hero_Attack1_BallInfoSprite;
 
-	GodLike_Attack1(GodLike_Beast *_GodLike);
-	GodLike_Attack1(void);
-	~GodLike_Attack1(void);
+	bool Test1;
 
+	int V;
+	Hero_Attack1(Hero* _Hero);
+	~Hero_Attack1(void);
+
+	/* Active skill */
 	virtual void Active (float _X,float _Y,int _Dir);
+
 	virtual void Init () ;
 
 	virtual void ProcessCollision(MyObject *_Obj);
+
 	/* Update Animation */
 	virtual void Animation (float _Time) ;
 
@@ -28,6 +35,8 @@ public:
 
 	/* Draw Object */
 	virtual void Draw (D3DXMATRIX _mtWorld,LPD3DXSPRITE _Handler);
-	virtual void Release() ;
+
+	/* Release */
+/*	virtual void Release () ;*/
 };
 

@@ -9,7 +9,7 @@
 
 Character::Character(void)
 {
-	m_HP = 10; 
+	m_HP = 30 ; 
 	m_Damage = 1;
 }
 
@@ -19,13 +19,14 @@ Character::~Character(void)
 }
 
 void Character::ActiveSkill(int _Index){
+
 	m_skillManager->ActiveSkill(_Index,m_X,m_Y,m_Direct);
 }
 
 void Character::Init(){
 	m_SCharater = RSMainGame::get()->getCharacter();
 	m_InfoSprite.setSize(300,200);
-/*	m_InfoSprite.setDepth(0.5);*/
+	m_InfoSprite.setDepth(0.2);
 
 	m_STT = ACTIVE;
 
@@ -41,8 +42,9 @@ bool Character::iCollision(MyObject* _Obj){
 	return false;
 }
 
+
 void Character::ProcessCollision(MyObject* _Obj){
-	m_skillManager->ProcessCollision(_Obj);
+		m_skillManager->ProcessCollision(_Obj);
 }
 
 void Character::Animation(float _Time){
@@ -91,17 +93,31 @@ void Character::UpdateStatus(float _Time)
 			 m_TimeUpdate =0;
 		 }
 	 }
+	 if(m_iThunder== true)
+	 {
+		 m_TimeUpdate += _Time;
+		 if(m_TimeUpdate > 0.5)
+		 {
+			 m_iThunder =false ;
+			 m_TimeUpdate =0;
+		 }
+	 }
 }
 
 void Character::Update(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight)
 {
 	Animation(_Time);
-	Move(_Time,_Terrain,_MaxWidth,_MaxHeight);	
+	if(getFrenzy() == false )
+	{
+		Move(_Time,_Terrain,_MaxWidth,_MaxHeight);	
+	}
 	UpdateStatus(_Time);
 	m_skillManager->Update(_Time,_Terrain,_MaxWidth,_MaxHeight);
 }
 void Character::Draw(D3DXMATRIX _MWorld,LPD3DXSPRITE _Handler)
 {
+	if(m_iThunder ==false)
+	{
 	if(getLife() == false)
 	{
 		return ;
@@ -128,6 +144,7 @@ void Character::Draw(D3DXMATRIX _MWorld,LPD3DXSPRITE _Handler)
 		m_InfoSprite.setXY(-125+m_X,-54+m_Y);
 
 		m_SCharater->Draw(_MWorld,m_InfoSprite,_Handler);
+	}
 		
 }
 

@@ -26,6 +26,19 @@ private:
 	Sprite* m_GodLikeStand ;
 	Sprite* m_GodLikeAttack1 ;
 	Sprite* m_GodLikeAttack2 ;
+	Sprite* m_GodLikeAttack3 ;
+	Sprite* m_GodLikeAttack4_1;
+	Sprite* m_GodLikeAttack4_2;
+	Sprite* m_EffectLaze ;
+	Sprite* m_EffectSound ;
+	Sprite* m_EffectThunder ;
+	Sprite* m_EffectHit ;
+
+	Sprite* m_SnakeMans_Move;
+	Sprite* m_Hero_Move;
+	Sprite* m_Hero_Stand;
+	Sprite* m_Hero_Attack1;
+	Sprite* m_Hero_Attack1_Ball;
 
 	RSMainGame(void);
 public:
@@ -109,6 +122,57 @@ public:
 	Sprite* getGodLikeAttack2()
 	{
 		return m_GodLikeAttack2 ;
+	}
+	Sprite* getGodLikeAttack3()
+	{
+		return m_GodLikeAttack3 ;
+	}
+
+	Sprite* getGodLikeAttack4_1()
+	{
+		return m_GodLikeAttack4_1 ; //dang lam`
+	}
+
+	Sprite* getGodLikeAttack4_2()
+	{
+		return m_GodLikeAttack4_2 ;
+	}
+
+	Sprite* getSnakeMans_Move()
+	{
+		return m_SnakeMans_Move ;
+	}
+	Sprite* getHero_Move()
+	{
+		return m_Hero_Move;
+	}
+	Sprite* getHero_Stand()
+	{
+		return m_Hero_Stand;
+	}
+	Sprite* getHero_Attack1()
+	{
+		return m_Hero_Attack1;
+	}
+	Sprite* getHero_Attack1_Ball()
+	{
+		return m_Hero_Attack1_Ball;
+	}
+	Sprite* getEffectLaze()
+	{
+		return m_EffectLaze;
+	}
+	Sprite* getEffectSound()
+	{
+		return m_EffectSound;
+	}
+	Sprite* getEffectThunder()
+	{
+		return m_EffectThunder;
+	}
+	Sprite* getEffectHit()
+	{
+		return m_EffectHit;
 	}
 };
 
