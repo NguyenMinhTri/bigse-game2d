@@ -24,5 +24,9 @@ public:
 		return m_List[_Index];
 	}
 
+	vector<Skill*> getList()
+	{
+		return m_List;
+	}
 };
 

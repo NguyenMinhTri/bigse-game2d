@@ -75,9 +75,9 @@ void State_Play::Init()
 	m_SnakeMan->setXY(450,0);
 
 	m_Hero=new Hero();
-	m_Hero->setXY(300,400);
+	m_Hero->setXY(0,0);
 
-/*	m_ObjectsCamera->push_back(m_Hero);*/
+	m_ObjectsCamera->push_back(m_Hero);
 
 /*	m_ObjectsCamera->push_back(m_SnakeMan);*/
 //  	m_ObjectsCamera->push_back(m_Archer);
@@ -87,7 +87,7 @@ void State_Play::Init()
  /*	m_ObjectsCamera->push_back(m_Angle);*/
  	m_ObjectsCamera->push_back(m_Monster);
 
-	m_ListBoss->push_back(m_GodLike);
+/*	m_ListBoss->push_back(m_GodLike);*/
 
 	/*m_ListMonster->push_back(m_Monster1);*/
 	/*m_ListMonster->push_back(m_Monster2);*/
@@ -146,13 +146,13 @@ void State_Play::IsKeyDown(int KeyCode){
 // 	m_Monster->setJump();
 		break;
 	case DIK_A:
-		m_Monster->setMove(-1);
+		m_Hero->setMove(-1);
 		break;
 	case DIK_D:
-		m_Monster->setMove(1);
+		m_Hero->setMove(1);
 		break;
 	case DIK_W:
-		m_Monster->setJump();
+		m_Hero->setJump();
 		break;
 
 	case DIK_DOWN:
@@ -169,10 +169,15 @@ void State_Play::OnKeyDown(int KeyCode)
 		m_GodLike->ActiveSkill(3);
 		break ;
 
-	case DIK_Z:
+	case DIK_F:
 		m_Hero->ActiveSkill(0);
 		break ;
-
+	case DIK_E:
+		m_Hero->ActiveSkill(1);
+		break ;
+	case DIK_R:
+		m_Hero->ActiveSkill(2);
+		break ;
 	case DIK_NUMPAD1:
 		m_Archer->ActiveSkill(0);
 		break;
@@ -217,7 +222,7 @@ void State_Play::OnKeyUp(int KeyCode)
 
 void State_Play::Update(float _Time)
 {
-	m_Camera->Update(m_GodLike,m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL);
+	m_Camera->Update(m_Hero,m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL);
 	if(m_Angle->m_skillManager->getSkill(1)->time == TIME)
 	{
 	        m_Camera->UpdateEffect(_Time);

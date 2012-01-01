@@ -42,7 +42,6 @@
     <ClCompile Include="GodLike_Attack1.cpp" />
     <ClCompile Include="GodLike_Attack2.cpp" />
     <ClCompile Include="GodLike_Attack3.cpp" />
-    <ClCompile Include="Archer.cpp" />
     <ClCompile Include="SnakeMans.cpp" />
     <ClCompile Include="Hero.cpp" />
     <ClCompile Include="Hero_Attack1.cpp" />
@@ -51,6 +50,11 @@
     <ClCompile Include="EffectSound.cpp" />
     <ClCompile Include="EffectThunder.cpp" />
     <ClCompile Include="EffectHit.cpp" />
+    <ClCompile Include="..\..\..\tailieu\BinhNhi\BinhNhi\[DirectX]_Game2D_BIGSE\[DirectX]_Game2D_BIGSE\Archer.cpp" />
+    <ClCompile Include="Hero_Attack2.cpp" />
+    <ClCompile Include="Hero_Effect1.cpp" />
+    <ClCompile Include="Hero_Attack3.cpp" />
+    <ClCompile Include="Hero_Effect2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Arrow.h" />
@@ -94,7 +98,6 @@
     <ClInclude Include="GodLike_Attack1.h" />
     <ClInclude Include="GodLike_Attack2.h" />
     <ClInclude Include="GodLike_Attack3.h" />
-    <ClInclude Include="Archer.h" />
     <ClInclude Include="SnakeMans.h" />
     <ClInclude Include="Hero.h" />
     <ClInclude Include="Hero_Attack1.h" />
@@ -103,6 +106,11 @@
     <ClInclude Include="EffectSound.h" />
     <ClInclude Include="EffectThunder.h" />
     <ClInclude Include="EffectHit.h" />
+    <ClInclude Include="..\..\..\tailieu\BinhNhi\BinhNhi\[DirectX]_Game2D_BIGSE\[DirectX]_Game2D_BIGSE\Archer.h" />
+    <ClInclude Include="Hero_Attack2.h" />
+    <ClInclude Include="Hero_Effect1.h" />
+    <ClInclude Include="Hero_Attack3.h" />
+    <ClInclude Include="Hero_Effect2.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="data\image\Arrow.png">

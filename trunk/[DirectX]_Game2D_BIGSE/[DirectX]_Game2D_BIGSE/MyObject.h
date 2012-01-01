@@ -64,6 +64,10 @@ public:
 
 		return r;
 	}
+	float getVY()
+	{
+		return m_Vy;
+	}
 	int getDirection ()
 	{
 		return m_Direct;
