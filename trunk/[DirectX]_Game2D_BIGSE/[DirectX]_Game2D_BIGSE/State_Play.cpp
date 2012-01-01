@@ -8,6 +8,7 @@ State_Play::State_Play(iPlay* GamePlay)
 	:iState(GamePlay)
 {
 	m_ID = PLAY;
+	m_STT = READY ;
 }
 
 
@@ -24,11 +25,13 @@ void State_Play::Init()
 	m_ObjectsCamera = new std::vector<MyObject*>();
 	m_ListMonster = new std ::vector<MyObject*>();
 	m_ListEffect = new std::vector<EffectSystem*>();
+	m_ListBoss = new std ::vector<MyObject*>();
 
 	ManagerObject::Instance()->setListObject(m_ListItem);
 	ManagerObject::Instance()->setObjects(m_ObjectsCamera);
 	ManagerObject::Instance()->setListEffect(m_ListEffect);
 	ManagerObject::Instance()->setListMonster(m_ListMonster);
+	ManagerObject::Instance()->setListBoss(m_ListBoss);
 
 	D3DXCreateSprite(m_Device,&m_Handle);
 
@@ -67,6 +70,17 @@ void State_Play::Init()
 	m_Magician->setSize(50,85);
 
 	m_Angle = new Angle();
+
+	m_GodLike = new GodLike_Beast() ;
+	m_GodLike->setXY(50,100);
+
+	m_SnakeMan=new SnakeMans();
+	m_SnakeMan->setXY(450,0);
+
+	m_Hero=new Hero();
+	m_Hero->setXY(0,0);
+
+	m_ObjectsCamera->push_back(m_Hero);
 
 // 	m_ObjectsCamera->push_back(m_Archer);
 // 	m_ObjectsCamera->push_back(m_char);
@@ -122,48 +136,27 @@ int _Terrain [] = {
 
 	m_QuadTree->Insert(m_Monster1);
 }
-void State_Play::IsKeyDown(int KeyCode){
+void State_Play::IsKeyDown(int KeyCode)
+{
 	switch(KeyCode)
 	{
-	case DIK_LEFT:
-	m_Angle->setMove(-1);
+		// 	case DIK_LEFT:
+		// 	m_Monster->setMove(-1);
+		// 		break;
+		// 	case DIK_RIGHT:
+		// 	m_Monster->setMove(1);
+		// 	  break;
+		// 	case DIK_UP:
+		// 	m_Monster->setJump();
 		break;
-	case DIK_RIGHT:
-	m_Angle->setMove(1);
-		break;
-	case DIK_UP:
-	m_Angle->setJump();
-		break;
-// 	case DIK_LEFT:
-// 		m_Magician->setMove(-1);
-// 		break;
-// 	case DIK_RIGHT:
-// 		m_Magician->setMove(1);
-// 		break;
-// 	case DIK_UP:
-// 		m_Magician->setJump();
-// 		break;
-
-	case DIK_NUMPAD7:
-		m_char->setMove(-1);
-		break;
-
-	case DIK_NUMPAD8:
-		m_char->setMove(1);
-		break;
-	case DIK_NUMPAD9:
-		m_char->setJump();
-		break;
-
 	case DIK_A:
-		m_Monster->setMove(-1);
+		m_Hero->setMove(-1);
 		break;
-	
 	case DIK_D:
-		m_Monster->setMove(1);
+		m_Hero->setMove(1);
 		break;
 	case DIK_W:
-		m_Monster->setJump();
+		m_Hero->setJump();
 		break;
 
 	case DIK_DOWN:
@@ -175,6 +168,20 @@ void State_Play::OnKeyDown(int KeyCode)
 {
 	switch(KeyCode)
 	{
+
+	case DIK_NUMPAD7:
+		m_GodLike->ActiveSkill(3);
+		break ;
+
+	case DIK_F:
+		m_Hero->ActiveSkill(0);
+		break ;
+	case DIK_E:
+		m_Hero->ActiveSkill(1);
+		break ;
+	case DIK_R:
+		m_Hero->ActiveSkill(2);
+		break ;
 	case DIK_NUMPAD1:
 		m_Archer->ActiveSkill(0);
 		break;
@@ -184,9 +191,13 @@ void State_Play::OnKeyDown(int KeyCode)
 	case DIK_NUMPAD5:
 		m_Angle->ActiveSkill(1);
 		break;
-// 	case DIK_NUMPAD4:
-// 		 m_Magician->ActiveSkill(0);
-// 		 break;
+
+	case DIK_NUMPAD9:
+		m_STT = FREEZETIME ;
+
+		// 	case DIK_NUMPAD4:
+		// 		 m_Magician->ActiveSkill(0);
+		// 		 break;
 	case DIK_H:
 		m_Monster->ActiveSkill(4);
 		break;
@@ -215,7 +226,7 @@ void State_Play::OnKeyUp(int KeyCode)
 
 void State_Play::Update(float _Time)
 {
-	m_Camera->Update(m_Monster,m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL);
+	m_Camera->Update(m_Hero,m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL);
 	//m_Camera->UpdateEffect(_Time);
 	m_mtWorld = m_Camera->getMatrixTransform();
 
