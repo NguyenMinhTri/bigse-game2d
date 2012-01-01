@@ -37,13 +37,13 @@ public:
 		return m_Height;
 	};
 
-	 RECT getRect()
+	 CRECT getRect()
 	 {
-		 RECT r;
-		 r.left = m_X ;
-		 r.top = m_Y ;
-		 r.right = m_X + m_Width;
-		 r.bottom = m_Y + m_Height ;
+		 CRECT r;
+		 r.Left = m_X ;
+		 r.Top = m_Y ;
+		 r.Right = m_X + m_Width;
+		 r.Bottom = m_Y + m_Height ;
 
 		 return r;
 	 };

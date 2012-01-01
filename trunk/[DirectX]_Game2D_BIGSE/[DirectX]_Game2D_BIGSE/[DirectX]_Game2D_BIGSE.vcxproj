@@ -77,8 +77,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\tailieu\BinhNhi\BinhNhi\[DirectX]_Game2D_BIGSE\[DirectX]_Game2D_BIGSE\Archer.cpp" />
     <ClCompile Include="Angle.cpp" />
+    <ClCompile Include="Archer.cpp" />
     <ClCompile Include="Arrow.cpp" />
     <ClCompile Include="CallPet.cpp" />
     <ClCompile Include="Camera.cpp" />
@@ -116,6 +116,8 @@
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="MyObject.cpp" />
     <ClCompile Include="Pet.cpp" />
+    <ClCompile Include="QuadTree.cpp" />
+    <ClCompile Include="QuadTreeNode.cpp" />
     <ClCompile Include="RECT.cpp" />
     <ClCompile Include="RSMainGame.cpp" />
     <ClCompile Include="Skill.cpp" />
@@ -133,8 +135,8 @@
     <ClCompile Include="WinMain.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\tailieu\BinhNhi\BinhNhi\[DirectX]_Game2D_BIGSE\[DirectX]_Game2D_BIGSE\Archer.h" />
     <ClInclude Include="Angle.h" />
+    <ClInclude Include="Archer.h" />
     <ClInclude Include="Arrow.h" />
     <ClInclude Include="CallPet.h" />
     <ClInclude Include="Camera.h" />
@@ -173,6 +175,8 @@
     <ClInclude Include="Monster.h" />
     <ClInclude Include="MyObject.h" />
     <ClInclude Include="Pet.h" />
+    <ClInclude Include="QuadTree.h" />
+    <ClInclude Include="QuadTreeNode.h" />
     <ClInclude Include="RECT.h" />
     <ClInclude Include="RSMainGame.h" />
     <ClInclude Include="Skill.h" />

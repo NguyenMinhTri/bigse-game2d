@@ -131,6 +131,7 @@ void Character::Draw(D3DXMATRIX _MWorld,LPD3DXSPRITE _Handler)
 			return ;
 		}
 	}
+
 	if (m_skillManager->getSkill(0)->getSTT()==ACTIVE)
 	{
 		m_InfoSprite.setCurFrame(m_skillManager->getSkill(0)->getInfoSprite().getCurFrame());
