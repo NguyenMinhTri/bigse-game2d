@@ -77,8 +77,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\tailieu\BinhNhi\BinhNhi\[DirectX]_Game2D_BIGSE\[DirectX]_Game2D_BIGSE\Archer.cpp" />
     <ClCompile Include="Angle.cpp" />
-    <ClCompile Include="Archer.cpp" />
     <ClCompile Include="Arrow.cpp" />
     <ClCompile Include="CallPet.cpp" />
     <ClCompile Include="Camera.cpp" />
@@ -102,6 +102,10 @@
     <ClCompile Include="GodLike_Beast.cpp" />
     <ClCompile Include="Hero.cpp" />
     <ClCompile Include="Hero_Attack1.cpp" />
+    <ClCompile Include="Hero_Attack2.cpp" />
+    <ClCompile Include="Hero_Attack3.cpp" />
+    <ClCompile Include="Hero_Effect1.cpp" />
+    <ClCompile Include="Hero_Effect2.cpp" />
     <ClCompile Include="InfoSprite.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="iPlay.cpp" />
@@ -129,8 +133,8 @@
     <ClCompile Include="WinMain.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\tailieu\BinhNhi\BinhNhi\[DirectX]_Game2D_BIGSE\[DirectX]_Game2D_BIGSE\Archer.h" />
     <ClInclude Include="Angle.h" />
-    <ClInclude Include="Archer.h" />
     <ClInclude Include="Arrow.h" />
     <ClInclude Include="CallPet.h" />
     <ClInclude Include="Camera.h" />
@@ -155,6 +159,10 @@
     <ClInclude Include="GodLike_Beast.h" />
     <ClInclude Include="Hero.h" />
     <ClInclude Include="Hero_Attack1.h" />
+    <ClInclude Include="Hero_Attack2.h" />
+    <ClInclude Include="Hero_Attack3.h" />
+    <ClInclude Include="Hero_Effect1.h" />
+    <ClInclude Include="Hero_Effect2.h" />
     <ClInclude Include="InfoSprite.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="iPlay.h" />

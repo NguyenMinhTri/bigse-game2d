@@ -1,10 +1,11 @@
 #include "Hero_Attack1.h"
-
+#include "EffectSystem.h"
+#include "ManagerObject.h"
+#include "Hero_Effect1.h"
 
 Hero_Attack1::Hero_Attack1(Hero* _Hero)
 {
 	m_Hero=_Hero;
-
 	Init();
 }
 
@@ -15,13 +16,14 @@ Hero_Attack1::~Hero_Attack1(void)
 
 void Hero_Attack1::Init()
 {
-	Test1=false;
-	V=100;
+
+	m_TestBallFly=false;
+	m_VBallFly=100;
 	m_iCollision=false;
 	m_Damage = 1;
 
 	m_STT = READY;
-	setSize(415,143);
+	setSize(415,100);
 	m_Hero_Attack1Sprite = RSMainGame::get()->getHero_Attack1();
 	m_Hero_Attack1_BallSprite = RSMainGame::get()->getHero_Attack1_Ball();
 
@@ -65,13 +67,13 @@ void Hero_Attack1::Animation(float _Time)
 			if(m_Hero_Attack1InfoSprite.getCurFrame()>=8)
 			{
 				m_iCollision=true;
-				V+=100;
+				m_VBallFly+=100;
 				m_Hero_Attack1_BallInfoSprite.NextFrame(0,4);
-				Test1=true;
+				m_TestBallFly=true;
 				if(m_Hero_Attack1_BallInfoSprite.getCurFrame()>=3)
 				{
-					Test1=false;
-					V=100;
+					m_TestBallFly=false;
+					m_VBallFly=100;
 
 				}
 			}
@@ -80,8 +82,8 @@ void Hero_Attack1::Animation(float _Time)
 				m_STT=COOLDOWN;
 				m_TimeAni=0;
 			}
-			
-			
+
+
 		}
 	}
 }
@@ -106,9 +108,40 @@ void Hero_Attack1::UpdateStatus(float _Time)
 
 void Hero_Attack1::ProcessCollision(MyObject *_Obj)
 {
-
-	if(getiCollision() == true && getRect().iCollision(_Obj->getRect())== true )
+	CRECT r;
+	r.Left =m_Hero_Attack1_BallInfoSprite.getX(); ;
+	r.Top = m_Hero_Attack1_BallInfoSprite.getY() ;
+	r.Right = r.Left+ 415;
+	r.Bottom = r.Top  + 143;
+	CRECT r1;
+	r1.Left =m_Hero_Attack1InfoSprite.getX(); ;
+	r1.Top = m_Hero_Attack1InfoSprite.getY() ;
+	r1.Right = r1.Left+570;
+	r1.Bottom = r1.Top  + 255 ;
+	if(getiCollision() == true &&( r.iCollision(_Obj->getRect())== true ||r1.iCollision(_Obj->getRect())== true ))
 	{
+		if(m_Hero_Attack1InfoSprite.getCurFrame()==8)
+		{
+
+			if (m_Direct<0)
+			{
+				Hero_Effect1 *m_HeroEffect1 = new Hero_Effect1(_Obj->getX()+20,_Obj->getY()+50);
+				m_HeroEffect1->m_InfoSprite.setScaleX(1);
+
+				ManagerObject::Instance()->getListEffect()->push_back(m_HeroEffect1);
+			}
+			else
+			{
+				Hero_Effect1 *m_HeroEffect1 = new Hero_Effect1(_Obj->getX()+130,_Obj->getY()+50);
+				m_HeroEffect1->m_InfoSprite.setScaleX(-1);
+
+				ManagerObject::Instance()->getListEffect()->push_back(m_HeroEffect1);
+			}
+		}
+
+
+
+
 		if(_Obj->getActive() == false  )
 		{
 			return ;
@@ -134,21 +167,23 @@ void Hero_Attack1::Draw(D3DXMATRIX _mtWorld,LPD3DXSPRITE _Handler)
 	if (m_Direct<0){
 		m_Hero_Attack1InfoSprite.setScaleX(1);
 		m_Hero_Attack1_BallInfoSprite.setScaleX(1);
-		m_Hero_Attack1_BallInfoSprite.setXY(m_X-100-V,m_Y-30);
-		
+		m_Hero_Attack1_BallInfoSprite.setXY(m_X-100-m_VBallFly,m_Y-30);
+		m_Hero_Attack1InfoSprite.setXY(m_X-15,m_Y-67);
+
 	}else{
 		m_Hero_Attack1InfoSprite.setScaleX(-1);
 		m_Hero_Attack1_BallInfoSprite.setScaleX(-1);
-		m_Hero_Attack1_BallInfoSprite.setXY(m_X+100+V,m_Y-30);
-		
+		m_Hero_Attack1_BallInfoSprite.setXY(m_X+100+m_VBallFly,m_Y-30);
+		m_Hero_Attack1InfoSprite.setXY(m_X-150,m_Y-67);
+
 	}
-	m_Hero_Attack1InfoSprite.setXY(m_X-150,m_Y-67);
-	
+
+
 
 	if(m_STT==ACTIVE)
 	{
 		m_Hero_Attack1Sprite->Draw(_mtWorld,m_Hero_Attack1InfoSprite,_Handler);
-		if(Test1==true)
+		if(m_TestBallFly==true)
 		{
 			m_Hero_Attack1_BallSprite->Draw(_mtWorld,m_Hero_Attack1_BallInfoSprite,_Handler);
 

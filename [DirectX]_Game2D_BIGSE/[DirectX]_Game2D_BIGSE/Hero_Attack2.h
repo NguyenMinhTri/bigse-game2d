@@ -2,21 +2,17 @@
 #include "skill.h"
 #include "Hero.h"
 #include "Hero_Effect1.h"
-class Hero_Attack1 :
+class Hero_Attack2 :
 	public Skill
 {
 public:
 	Hero* m_Hero;
-	Sprite* m_Hero_Attack1Sprite;
-	Sprite* m_Hero_Attack1_BallSprite;
-	InfoSprite m_Hero_Attack1InfoSprite;
-	InfoSprite m_Hero_Attack1_BallInfoSprite;
-	bool m_TestBallFly;
-	int m_VBallFly;
-	Hero_Attack1(Hero* _Hero);
-	~Hero_Attack1(void);
+	Sprite* m_Hero_Attack2Sprite;
+	InfoSprite m_Hero_Attack2InfoSprite;
 
-	/* Active skill */
+	Hero_Attack2(Hero* _Hero);
+	~Hero_Attack2(void);
+
 	virtual void Active (float _X,float _Y,int _Dir);
 
 	virtual void Init () ;
@@ -35,7 +31,5 @@ public:
 	/* Draw Object */
 	virtual void Draw (D3DXMATRIX _mtWorld,LPD3DXSPRITE _Handler);
 
-	/* Release */
-	/*	virtual void Release () ;*/
 };
 
