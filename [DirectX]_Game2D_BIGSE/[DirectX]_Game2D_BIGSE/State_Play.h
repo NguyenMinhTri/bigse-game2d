@@ -10,6 +10,10 @@
 #include <vector>
 #include "EffectSystem.h"
 #include "QuadTree.h"
+#include "GodLike_Beast.h"
+#include "EffectSystem.h"
+#include "SnakeMans.h"
+#include "Hero.h"
 using namespace std;
 class State_Play :
 	public iState
@@ -19,7 +23,9 @@ class State_Play :
 	std::vector<MyObject*> *m_ObjectsCamera;
 	std::vector<EffectSystem*> *m_ListEffect;
 	std::vector<MyObject*> *m_ListMonster ;
-	
+	std::vector<MyObject*> *m_ListBoss ;
+
+	int m_STT ;
 	QuadTree* m_QuadTree;
 
 	Item *m_Item;
@@ -31,6 +37,10 @@ class State_Play :
 	Monster* m_Monster1;
 	Monster* m_Monster2;
 	Magician* m_Magician;
+
+	SnakeMans* m_SnakeMan;
+	GodLike_Beast* m_GodLike ;
+	Hero* m_Hero;
 
 	LPD3DXSPRITE m_Handle;
 	Terrain* m_Map;
