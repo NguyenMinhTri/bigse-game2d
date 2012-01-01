@@ -29,3 +29,11 @@ bool CRECT::iCollision(CRECT _Rect)
 	return ((dw < ((Right-Left)+(_Rect.Right-_Rect.Left)))&&
 		(dh < ((Bottom-Top) + (_Rect.Bottom- _Rect.Top))));
 }
+
+bool CRECT::iContains(CRECT _Rect)
+{
+	return (_Rect.Left>Left)
+		&&(_Rect.Right<Right)
+		&&(_Rect.Top>Top)
+		&&(_Rect.Bottom < Bottom);
+}
