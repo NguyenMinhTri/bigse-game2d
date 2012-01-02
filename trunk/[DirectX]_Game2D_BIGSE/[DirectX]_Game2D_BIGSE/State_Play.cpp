@@ -3,6 +3,7 @@
 #include "RSMainGame.h"
 #include "ManagerObject.h"
 
+
 State_Play::State_Play(iPlay* GamePlay)
 	:iState(GamePlay)
 {
@@ -10,15 +11,15 @@ State_Play::State_Play(iPlay* GamePlay)
 	m_STT = READY ;
 }
 
+
 State_Play::~State_Play(void)
 {
-
 }
 
 void State_Play::Init()
 {
 
-	RSMainGame::get()->IntRS(m_Device);
+	RSMainGame::get()->IntRS(m_Device);	
 
 	m_ListItem = new std::vector<MyObject*>();
 	m_ObjectsCamera = new std::vector<MyObject*>();
@@ -44,6 +45,7 @@ void State_Play::Init()
 	m_char->setXY(200,0);
 	m_char->setSize(50,85);
 	
+
 	m_Monster = new Character();
 	m_Monster->Init();
 	m_Monster->setXY(1000,460);
@@ -80,77 +82,41 @@ void State_Play::Init()
 
 	m_ObjectsCamera->push_back(m_Hero);
 
-// 	m_ObjectsCamera->push_back(m_Archer);
-// 	m_ObjectsCamera->push_back(m_char);
-	m_ObjectsCamera->push_back(m_Monster1);
-	m_ObjectsCamera->push_back(m_Monster2);
-	m_ObjectsCamera->push_back(m_Monster);
-// 	m_ObjectsCamera->push_back(m_Magician);
-// 	m_ObjectsCamera->push_back(m_Angle);
-
-/* 	m_ListBoss->push_back(m_GodLike);*/
-
-	/*m_ListMonster->push_back(m_Monster1);*/
-	/*m_ListMonster->push_back(m_Monster2);*/
-	
-	/*std::vector<MyObject*>::iterator iter = m_ObjectsCamera->begin();
-	m_ObjectsCamera->erase(iter);*/
 
 #pragma endregion Init Character
 
 	#pragma region Init Map Terrain
-int _Terrain [] = {
-//      0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31
-		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, //0
-		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, //1
-		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, //2
-		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, //3
-		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, //4
-		0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, //5
-		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, //6
-		1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, //7
-		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, //8
-		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, //9
-		1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, //10		
-		1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, //11
-		1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, //12
-		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, //13
-	};
-	int **m_Terrain; 
-	m_Terrain=new int*[32];
-	for(int i=0;i<32;i++)
-	{
-		m_Terrain[i]=new int[14];
-	}
 
+	m_LoadMap = new LoadMap();
+	m_LoadMap->LoadMapFormFile("data\\map\\6.png",m_Device);
 
-	for (int i =0 ; i< 32; i++)	{
-		for (int j = 0 ; j<14; j++)	{			 
-			m_Terrain[i][j] = _Terrain[j*32 + i];
-		}
-	}
-	m_Map = new Terrain(m_Terrain,32,14);
+	int m = m_LoadMap->m_Width > m_LoadMap->m_Height ? m_LoadMap->m_Width : m_LoadMap->m_Height;
+
+	m_QuadTree = new QuadTree(CRECT(0,m*50,0,50*m));
+	ManagerObject::Instance()->setQuadTree(m_QuadTree);
+
+	m_LoadMap->TranslateMap();
+
+	m_Map = new Terrain(m_LoadMap->m_Terrain,m_LoadMap->m_TerrainExtends,m_LoadMap->m_Width,m_LoadMap->m_Height);
 #pragma endregion Init Map Terrain
 
 	D3DXMatrixIdentity(&m_mtWorld);
 
-	m_QuadTree = new QuadTree(CRECT(0,32*50,0,50*14));
-
-	/*m_QuadTree->Insert(m_Monster1);*/
+	
 }
 void State_Play::IsKeyDown(int KeyCode)
 {
 	switch(KeyCode)
 	{
-	case DIK_LEFT:
-	m_Monster->setMove(-1);
-	break;
-	case DIK_RIGHT:
-	 m_Monster->setMove(1);
-	 break;
-	case DIK_UP:
-		m_Monster->setJump();
-		break;
+		// 	case DIK_LEFT:
+		// 	m_Monster->setMove(-1);
+		// 		break;
+		// 	case DIK_RIGHT:
+		// 	m_Monster->setMove(1);
+		// 	  break;
+		// 	case DIK_UP:
+		// 	m_Monster->setJump();
+		
 	case DIK_A:
 		m_Hero->setMove(-1);
 		break;
@@ -174,9 +140,7 @@ void State_Play::OnKeyDown(int KeyCode)
 	case DIK_NUMPAD7:
 		m_GodLike->ActiveSkill(3);
 		break ;
-	case DIK_C:
-		m_Hero->ActiveSkill(3);
-		break ;
+
 	case DIK_F:
 		m_Hero->ActiveSkill(0);
 		break ;
@@ -216,6 +180,7 @@ void State_Play::OnKeyDown(int KeyCode)
 		break;
 	case DIK_SPACE:
 		m_Monster->ActiveSkill(0);
+		
 		break;
 	}
 }
@@ -296,20 +261,6 @@ void State_Play::Update(float _Time)
 		i++;		
 	}
 	/************************************************************************/
-	/*  Update Boss in camera                                             */
-	/************************************************************************/	
-	for (std::vector<MyObject*>::iterator i = m_ListBoss->begin();i!= m_ListBoss->end();)
-	{
-		(*i)->Update(_Time,m_Map->getTerrain(),m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL);
-		if( (*i)->getLife() == false)
-		{
-			(*i)->Release();
-			i = m_ListBoss->erase(i);
-			continue;
-		}
-		i++;		
-	}
-	/************************************************************************/
 	/*  Update Effect in camera                                             */
 	/************************************************************************/	
 	for (std::vector<EffectSystem*>::iterator i = m_ListEffect->begin();i!= m_ListEffect->end();)
@@ -346,17 +297,6 @@ void State_Play::Update(float _Time)
 		}		
 	}
 	/************************************************************************/
-	/*  Collision Object vs Boss                                       */
-	/************************************************************************/	
-	for (std::vector<MyObject*>::iterator i = m_ObjectsCamera->begin();i!= m_ObjectsCamera->end();i++)
-	{		
-		for (std::vector<MyObject*>::iterator j = m_ListBoss->begin();j!= m_ListBoss->end();j++)
-		{
-			(*i)->ProcessCollision(*j);
-			(*j)->ProcessCollision(*i);
-		}		
-	}
-	/************************************************************************/
 	/*  Collision Object vs item                                            */
 	/************************************************************************/
 	for (std::vector<MyObject*>::iterator i = m_ObjectsCamera->begin();i!= m_ObjectsCamera->end();i++)
@@ -366,6 +306,30 @@ void State_Play::Update(float _Time)
 			(*i)->ProcessCollision(*j);
 			(*j)->ProcessCollision(*i);
 		}		
+	}
+
+	for (std::vector<MyObject*>::iterator i = m_ListBoss->begin();i!= m_ListBoss->end();)
+	{
+		(*i)->Update(_Time,m_Map->getTerrain(),m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL);
+		if( (*i)->getLife() == false)
+		{
+			(*i)->Release();
+			i = m_ListBoss->erase(i);
+			continue;
+		}
+		i++;  
+	}
+
+	/************************************************************************/
+	/*  Collision Object vs Boss                                       */
+	/************************************************************************/ 
+	for (std::vector<MyObject*>::iterator i = m_ObjectsCamera->begin();i!= m_ObjectsCamera->end();i++)
+	{  
+		for (std::vector<MyObject*>::iterator j = m_ListBoss->begin();j!= m_ListBoss->end();j++)
+		{
+			(*i)->ProcessCollision(*j);
+			(*j)->ProcessCollision(*i);
+		}  
 	}
 }
 
@@ -399,11 +363,11 @@ void State_Play::Draw()
 		{
 			(*i)->Draw(m_mtWorld,m_Handle);			
 		}
+
 		for (std::vector<MyObject*>::iterator i = m_ListBoss->begin();i!= m_ListBoss->end();i++)
 		{
-			(*i)->Draw(m_mtWorld,m_Handle);			
+			(*i)->Draw(m_mtWorld,m_Handle);   
 		}
-
 		m_Handle->End();
 		m_Device->EndScene();
 	}
