@@ -1,6 +1,5 @@
 #pragma once
-#include "Effectsystem.h"
-
+#include "effectsystem.h"
 class EffectFont :
 	public EffectSystem
 {

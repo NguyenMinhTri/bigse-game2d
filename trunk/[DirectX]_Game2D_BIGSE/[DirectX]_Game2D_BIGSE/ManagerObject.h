@@ -2,6 +2,7 @@
 #include <vector>
 #include "MyObject.h"
 #include "EffectSystem.h"
+#include "QuadTree.h"
 using namespace std;
 
 class ManagerObject
@@ -14,7 +15,9 @@ private:
 	std::vector<MyObject*> *m_ListBoss ;
 
 	std::vector<EffectSystem*> *m_ListEffect ;
-	
+	QuadTree* m_QuadTree;
+
+
 	ManagerObject(void);
 public:
 	
@@ -37,6 +40,18 @@ public:
 		m_ListBoss = _ListBoss;
 	}
 
+	/************************************************************************/
+	/*                                                                      */
+	/************************************************************************/
+	void setQuadTree (QuadTree* _QuadTree)
+	{
+		m_QuadTree = _QuadTree;
+	}
+
+	QuadTree* getQuadTree () 
+	{
+		return m_QuadTree;
+	}
 
 
 	void setListEffect(std::vector<EffectSystem*> *_ListEffect)
