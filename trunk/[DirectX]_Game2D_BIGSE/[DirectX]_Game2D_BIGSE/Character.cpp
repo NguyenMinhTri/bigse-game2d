@@ -9,8 +9,7 @@
 
 Character::Character(void)
 {
-	m_HP = 30 ; 
-	m_Damage = 1;
+	m_HP = 20000 ; 
 }
 
 Character::~Character(void)

@@ -1,6 +1,9 @@
 #include "CallPet.h"
 #include "Global.h"
 #include "RSMainGame.h"
+#include "ManagerObject.h"
+#include "EffectFont.h"
+#include "EffectHit.h"
 
 CallPet::CallPet(void)
 {
@@ -12,7 +15,7 @@ CallPet::~CallPet(void)
 void CallPet::Init()
 {
 	
-	m_Damage = 1;
+	m_Damage = 500;
 	m_STT = READY;
 	m_InfoSprite.setSize(520,385);
 	setSize(520,385);
@@ -76,6 +79,31 @@ void CallPet::UpdateStatus(float _Time)
 			m_TimeUpdate = 0;
 		}
 		break;
+	}
+}
+
+void CallPet ::ProcessCollision(MyObject *_Obj)
+{
+	if(getiCollision() == true && getRect().iCollision(_Obj->getRect())== true )
+	{
+		if(_Obj->getActive() == false  )
+		{
+			return ;
+		}
+
+
+		EffectHit* m_Effecthit = new EffectHit(m_X,m_Y - 30);
+		ManagerObject::Instance()->getListEffect()->push_back(m_Effecthit);
+
+		EffectFont* m_EffectFont = new EffectFont(m_X,m_Y - 30,m_Damage);
+		ManagerObject::Instance()->getListEffect()->push_back(m_EffectFont);
+
+		_Obj->setActive(false);
+		_Obj->setHp(_Obj->getHp() - m_Damage );
+		if(_Obj->getHp() <= 0)
+		{
+			_Obj->setLife(false); 
+		}	
 	}
 }
 

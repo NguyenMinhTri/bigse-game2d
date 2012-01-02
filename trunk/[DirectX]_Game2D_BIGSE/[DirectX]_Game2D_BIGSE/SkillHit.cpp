@@ -2,11 +2,13 @@
 #include "Global.h"
 #include "EffectHit.h"
 #include "ManagerObject.h"
+#include "EffectFont.h"
 
 
 SkillHit::SkillHit(Character* _Character)
 {
 	m_Character = _Character;
+	m_Damage = 700;
 }
 
 
@@ -120,15 +122,17 @@ void SkillHit ::ProcessCollision(MyObject *_Obj)
 		if(_Obj->getActive() == false  )
 		{
 			return ;
-		}//true la chua trung
-
+		}
 
 		EffectHit* m_Effecthit = new EffectHit(m_X,m_Y - 30);
 		ManagerObject::Instance()->getListEffect()->push_back(m_Effecthit);
 
+		EffectFont* m_EffectFont = new EffectFont(m_X,m_Y - 30,m_Damage);
+		ManagerObject::Instance()->getListEffect()->push_back(m_EffectFont);
+
 		_Obj->setActive(false);
-		_Obj->setHp(_Obj->getHp() - 1 );
-		if(_Obj->getHp() == 0)
+		_Obj->setHp(_Obj->getHp() - m_Damage );
+		if(_Obj->getHp() <= 0)
 		{
 			_Obj->setLife(false); 
 		}	

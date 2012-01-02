@@ -13,7 +13,7 @@ protected :
 	int m_ID;
 
     int m_HP;
-    int m_Damage;
+
 
 	int m_Direct;
 
@@ -41,6 +41,8 @@ protected :
 	/* Time for Animation */
 	float m_TimeAni;
 
+	float m_TimePrivate ;
+
 	/* All information sprite for render*/
 	InfoSprite m_InfoSprite;
 	/*Sprite m_Sprite;*/
@@ -48,6 +50,7 @@ protected :
 
 	Effect m_Effect;
 public:
+    int m_Damage;
 	bool m_iFrenzy;
 	bool m_iThunder ;
 	bool m_iFire;

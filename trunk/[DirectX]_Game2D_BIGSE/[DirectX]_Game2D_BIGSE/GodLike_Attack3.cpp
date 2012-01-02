@@ -4,6 +4,7 @@
 #include "InfoSprite.h"
 #include "ManagerObject.h"
 #include "EffectSound.h"
+#include "EffectFont.h"
 
 GodLike_Attack3 ::GodLike_Attack3 (GodLike_Beast *_GodLike)
 {
@@ -18,7 +19,7 @@ GodLike_Attack3 ::~GodLike_Attack3 (void)
 
 void GodLike_Attack3  ::Init()
 {
-	m_Damage = 1;
+	m_Damage = 1800;
 	m_iCollision = false ;
 	m_Attack1  = RSMainGame::get()->getGodLikeAttack3() ;
 	m_InfoSprite1.setSize(717,603) ;
@@ -106,6 +107,9 @@ void GodLike_Attack3  ::ProcessCollision(MyObject *_Obj)
 
 		EffectSound *m_EffectSound = new EffectSound(_Obj->getX(),_Obj->getY());
 		ManagerObject::Instance()->getListEffect()->push_back(m_EffectSound );
+
+		EffectFont* m_EffectFont = new EffectFont(_Obj->getX(), _Obj->getY(),m_Damage);
+		ManagerObject::Instance()->getListEffect()->push_back(m_EffectFont);
 
 		_Obj->setActive(false);
 		_Obj->setHp(_Obj->getHp() - m_Damage );

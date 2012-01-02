@@ -45,6 +45,8 @@ void RSMainGame::IntRS(LPDIRECT3DDEVICE9 _Device){
 	m_EffectLeonDie_2 = new Sprite(_Device,"data\\image\\GodLike_dIE_2.png",732,700,4);
 	m_Teleport = new Sprite(_Device,"data\\image\\TelePort.png",568,574,4);
 	m_Teleport1 = new Sprite(_Device,"data\\image\\TelePort1.png",568,574,4);
+	
+	m_FontNum = new Sprite(_Device,"data\\image\\num.png",37,39,10 );
 
 	m_SnakeMans_Move = new Sprite(_Device,"data\\image\\SnakeMans_Move.png",202,269,6);
 	m_Hero_Move=new Sprite(_Device,"data\\image\\Hero_Move.png",79,103,6);

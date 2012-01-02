@@ -4,6 +4,7 @@
 #include "EffectSystem.h"
 #include "ManagerObject.h"
 #include "EffectFrenzy.h"
+#include "EffectFont.h"
 
 Frenzy::Frenzy(void)
 {
@@ -14,7 +15,7 @@ Frenzy::~Frenzy(void)
 }
 void Frenzy::Init(){
 	m_iCollision = false;
-	m_Damage = 1;
+	m_Damage = 400;
 	m_Combo = 0;
 	m_STT = READY;
 	m_InfoSprite.setSize(435,419);
@@ -57,6 +58,10 @@ void Frenzy ::ProcessCollision(MyObject *_Obj)
 		}//true la chua trung
 		EffectFrenzy *m_EffectFrenzy= new EffectFrenzy(_Obj->getX(),_Obj->getY()) ;
 		ManagerObject ::Instance()->getListEffect()->push_back(m_EffectFrenzy) ;
+
+		EffectFont* m_EffectFont = new EffectFont((m_X + getWidth())/2,m_Y ,m_Damage);
+		ManagerObject::Instance()->getListEffect()->push_back(m_EffectFont);
+
 
 		_Obj->m_iFrenzy =true ;
 	    _Obj->setActive(false);

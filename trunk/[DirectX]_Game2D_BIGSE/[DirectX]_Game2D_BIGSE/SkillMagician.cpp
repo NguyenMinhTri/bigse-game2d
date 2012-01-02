@@ -1,7 +1,8 @@
 #include "SkillMagician.h"
 #include "Global.h"
 #include "RSMainGame.h"
-
+#include "ManagerObject.h"
+#include "EffectFont.h"
 
 SkillMagician::SkillMagician(void)
 {
@@ -14,7 +15,7 @@ SkillMagician::~SkillMagician(void)
 }
 
 void SkillMagician::Init(){
-	m_Damage = 1;
+	m_Damage = 700;
 	m_STT = READY;
 	setSize(165,100);
 	m_SSkill = RSMainGame::get()->getMagician();
@@ -58,6 +59,27 @@ void SkillMagician::Animation(float _Time)
 				m_TimeAni =0;
 			}
 		}
+	}
+}
+void SkillMagician ::ProcessCollision(MyObject *_Obj)
+{
+	if(getiCollision() == true && getRect().iCollision(_Obj->getRect())== true )
+	{
+		if(_Obj->getActive() == false  )
+		{
+			return ;
+		}
+
+
+		EffectFont* m_EffectFont = new EffectFont(m_X,m_Y - 30,m_Damage);
+		ManagerObject::Instance()->getListEffect()->push_back(m_EffectFont);
+
+		_Obj->setActive(false);
+		_Obj->setHp(_Obj->getHp() - m_Damage );
+		if(_Obj->getHp() <= 0)
+		{
+			_Obj->setLife(false); 
+		}	
 	}
 }
 void SkillMagician::Update(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight){

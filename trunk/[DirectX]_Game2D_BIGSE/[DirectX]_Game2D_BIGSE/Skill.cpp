@@ -18,8 +18,9 @@ Skill::~Skill(void)
 
 void Skill::Init(){
 	m_iCollision = false ;
-	m_Damage = 1;
+/*	m_Damage = 1;*/
 	m_Combo = 0;
+	m_iActive = true ;
 	m_STT = READY;
 	setSize(150,150);
 	m_SSkill = RSMainGame::get()->getCharacter();
@@ -85,7 +86,7 @@ void Skill::ProcessCollision(MyObject* _Obj){
 			return ;
 		}//true la chua trung
 		_Obj->setActive(false);
-		_Obj->setHp(_Obj->getHp() - getDamage());
+		_Obj->setHp(_Obj->getHp() - m_Damage);
 		if(_Obj->getHp() == 0)
 		{
 			_Obj->setLife(false); 

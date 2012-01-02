@@ -12,7 +12,7 @@
 
 GodLike_Beast::GodLike_Beast(void)
 {
-	m_HP = 2 ;
+	
 	Init() ;
 }
 
@@ -26,6 +26,11 @@ void GodLike_Beast ::Init()
 	/*m_VxDirect = 0;*/
 	m_Direct = 1 ;
 	m_VMove = g_GodLike_Beast ;
+	m_HP = 40000 ;
+	m_iActive = true ;
+
+	m_TimePrivate = 0;
+	m_time = 0;
 
 	m_GodLike_Move = RSMainGame::get()->getGodLikeMove() ;
 	m_GodLike_Stand = RSMainGame ::get()->getGodLikeStand() ;
@@ -46,7 +51,6 @@ void GodLike_Beast ::Init()
 	m_skillManager->AddSkill(new GodLike_Attack3(this)) ; 
     m_skillManager->AddSkill(new GodLike_Attack4(this)) ; 
 	m_skillManager->AddSkill(new GodLike_Teleport(this)) ; 
- 
 
 }
 void GodLike_Beast ::ActiveSkill (int _Index )
@@ -87,11 +91,11 @@ void GodLike_Beast ::UpdateStatus(float _Time)
 {
 	if(!m_iActive )
 	{
-		m_TimeUpdate += _Time;
-		if(m_TimeUpdate > 1 )
+		m_time+= _Time;
+		if(m_time > 1 )
 		{
 			m_iActive = true ;
-			m_TimeUpdate =0;
+			m_time =0;
 		}
 	}
 }
@@ -135,6 +139,8 @@ void GodLike_Beast :: Move(float _Time, int** _Terrain,float _MaxWidth,float _Ma
 
 void GodLike_Beast ::ProcessCollision(MyObject* _Obj)
 {
+	m_skillManager->ProcessCollision(_Obj);
+
 	if(getLife() == true)
 	{
 	if(!getRect().iCollision(_Obj->getRect()))
@@ -157,7 +163,7 @@ void GodLike_Beast ::ProcessCollision(MyObject* _Obj)
 // 
 // 		}
 	}
-		m_skillManager->ProcessCollision(_Obj);
+		
 		if(getRect().iCollision(_Obj->getRect()))
 		{
 			if(_Obj->getDirection() > 0 && _Obj->getX() > m_X )
@@ -176,12 +182,6 @@ void GodLike_Beast ::ProcessCollision(MyObject* _Obj)
 					m_X = m_X + 60;
 				}
 			}
-
-			int a = m_X;
-			if(m_X >a || m_X<a)
-			{
-				m_X = a ;
-			}
 		}
 	}
 }
@@ -192,11 +192,12 @@ void GodLike_Beast ::Update(float _Time, int** _Terrain,float _MaxWidth,float _M
 	{
 		EffectLeonDie *_EffectDie = new EffectLeonDie (m_X,m_Y);
 		ManagerObject::Instance()->getListEffect()->push_back(_EffectDie);
+		return ;
 	}
 
-	m_TimeUpdate +=_Time ;
 	int random ;
-	random = rand() % 4;
+	random = rand() % 4;	
+	m_TimeUpdate+=_Time ;
 
 	if(m_TimeUpdate > 2)
 	{
@@ -205,7 +206,7 @@ void GodLike_Beast ::Update(float _Time, int** _Terrain,float _MaxWidth,float _M
 	case 0:
 		if(	m_skillManager->getSkill(1)->getSTT()!=ACTIVE  && m_skillManager->getSkill(2)->getSTT()!=ACTIVE && m_skillManager->getSkill(3)->getSTT()!=ACTIVE&& m_skillManager->getSkill(4)->getSTT()!=ACTIVE )
 			ActiveSkill(0);
-		m_TimeUpdate = 0 ;
+		m_TimeUpdate= 0 ;
 		break;
 	case 1:
 		if(	m_skillManager->getSkill(0)->getSTT()!=ACTIVE  && m_skillManager->getSkill(2)->getSTT()!=ACTIVE && m_skillManager->getSkill(3)->getSTT()!=ACTIVE && m_skillManager->getSkill(4)->getSTT()!=ACTIVE  )
@@ -222,7 +223,7 @@ void GodLike_Beast ::Update(float _Time, int** _Terrain,float _MaxWidth,float _M
 			ActiveSkill(3) ;
 		m_TimeUpdate = 0 ;
 		break ;
-		default : break ;
+
 		}
 	}
 	if(	m_skillManager->getSkill(0)->getSTT()!=ACTIVE  && m_skillManager->getSkill(1)->getSTT()!=ACTIVE && m_skillManager->getSkill(2)->getSTT()!=ACTIVE && m_skillManager->getSkill(3)->getSTT()!=ACTIVE && m_skillManager->getSkill(4)->getSTT()!=ACTIVE   )
@@ -236,10 +237,7 @@ void GodLike_Beast ::Update(float _Time, int** _Terrain,float _MaxWidth,float _M
 
 void GodLike_Beast::Draw(D3DXMATRIX _MWorld,LPD3DXSPRITE _Handler)
 {
-	if(getLife() == false)
-	{
-		return ;
-	}
+
 	m_InfoSprite1.setXY(m_X, m_Y);
 	m_InfoSprite2.setXY(m_X, m_Y);
 

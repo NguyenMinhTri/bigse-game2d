@@ -5,6 +5,7 @@
 #include "ManagerObject.h"
 #include "EffectLaze.h"
 #include "EffectFrenzy.h"
+#include "EffectFont.h"
 
 GodLike_Attack4::GodLike_Attack4(GodLike_Beast* _GodLike)
 {
@@ -20,7 +21,7 @@ GodLike_Attack4::~GodLike_Attack4(void)
 
 void GodLike_Attack4 ::Init()
 {
-	m_Damage = 1 ;
+	m_Damage = 1600 ;
 	count =0;
 	m_Attack4_1 = RSMainGame::get()->getGodLikeAttack4_1() ;
 	m_Attack4_2 = RSMainGame::get()->getGodLikeAttack4_2() ;
@@ -101,6 +102,10 @@ void GodLike_Attack4 ::ProcessCollision(MyObject *_Obj)
 
 			EffectLaze*m_EffectLaze = new EffectLaze(_Obj->getX(), _Obj->getY());
 			ManagerObject::Instance()->getListEffect()->push_back(m_EffectLaze);
+
+			EffectFont* m_EffectFont = new EffectFont(_Obj->getX(), _Obj->getY(),m_Damage);
+			ManagerObject::Instance()->getListEffect()->push_back(m_EffectFont);
+
 			_Obj->setActive(false);
 			_Obj->setHp(_Obj->getHp() - m_Damage );
 			if(_Obj->getHp() == 0)

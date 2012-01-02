@@ -4,6 +4,7 @@
 #include "InfoSprite.h"
 #include "ManagerObject.h"
 #include "EffectThunder.h"
+#include "EffectFont.h"
 GodLike_Attack1::GodLike_Attack1(GodLike_Beast *_GodLike)
 {
 	m_GodLike = _GodLike ;
@@ -20,7 +21,7 @@ GodLike_Attack1::GodLike_Attack1(void)
 }
 void GodLike_Attack1 ::Init()
 {
-	m_Damage = 1;
+	m_Damage = 1400;
 	m_iCollision = false ;
 	m_Attack1  = RSMainGame::get()->getGodLikeAttack1() ;
 	m_InfoSprite1.setSize(802,607) ;
@@ -49,7 +50,7 @@ void GodLike_Attack1 ::Active(float _X,float _Y,int _Dir)
 		m_iCollision = false ;
 		m_InfoSprite1.setCurFrame(0);
 		m_STT = ACTIVE ;
-		timeshoot = true ;
+
 	}
 }
 void GodLike_Attack1 ::Animation(float _Time)
@@ -106,6 +107,10 @@ void GodLike_Attack1 ::ProcessCollision(MyObject *_Obj)
 
 		EffectThunder*m_EffectThunder = new EffectThunder(_Obj->getX(), _Obj->getY());
 		ManagerObject::Instance()->getListEffect()->push_back(m_EffectThunder);
+
+		EffectFont* m_EffectFont = new EffectFont(_Obj->getX(), _Obj->getY(),m_Damage);
+		ManagerObject::Instance()->getListEffect()->push_back(m_EffectFont);
+
 		_Obj->m_iThunder = true ;
 
 		_Obj->setActive(false);

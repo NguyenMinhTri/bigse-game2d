@@ -1,6 +1,7 @@
 #include "GodLike_Attack2.h"
 #include "RSMainGame.h"
-
+#include "EffectFont.h"
+#include "ManagerObject.h"
 GodLike_Attack2::GodLike_Attack2(GodLike_Beast *_GodLike)
 {
 	m_GodLike = _GodLike ;
@@ -16,11 +17,11 @@ GodLike_Attack2::~GodLike_Attack2(void)
 
 void GodLike_Attack2 ::Init()
 {
-	m_Damage = 1;
+	m_Damage = 2000;
 	m_iCollision = false ;
 	m_Attack2  = RSMainGame::get()->getGodLikeAttack2() ;
 	m_InfoSprite2.setSize(987,732) ;
-	setSize(987,732);
+	setSize(800,732);
 	m_STT = READY ;
 	timeshoot = true ;
 }
@@ -98,6 +99,9 @@ void GodLike_Attack2 ::ProcessCollision(MyObject *_Obj)
 		{
 			return ;
 		}//true la chua trung
+
+		EffectFont* m_EffectFont = new EffectFont(_Obj->getX(), _Obj->getY(),m_Damage);
+		ManagerObject::Instance()->getListEffect()->push_back(m_EffectFont);
 
 		_Obj->setActive(false);
 		_Obj->setHp(_Obj->getHp() - m_Damage );

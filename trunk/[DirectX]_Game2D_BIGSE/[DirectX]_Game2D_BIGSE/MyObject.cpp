@@ -14,6 +14,7 @@ MyObject::MyObject(void)
 	m_Gravity	= g_GRAVITY;
 	m_TimeUpdate= 0;
 	m_TimeAni	= 0;
+	m_TimePrivate = 0;
 
 	m_iFrenzy = false;
     m_iFire = false ;

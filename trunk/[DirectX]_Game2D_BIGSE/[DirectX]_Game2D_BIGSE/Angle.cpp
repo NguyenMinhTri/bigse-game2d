@@ -5,7 +5,7 @@
 Angle::Angle(void)
 {
 	Init();
-	m_HP = 2;
+	m_HP = 20000;
 }
 
 Angle::~Angle(void)

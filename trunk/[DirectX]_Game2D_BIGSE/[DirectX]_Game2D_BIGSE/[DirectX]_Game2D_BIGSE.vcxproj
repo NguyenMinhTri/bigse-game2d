@@ -85,6 +85,7 @@
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="DXDevice.cpp" />
     <ClCompile Include="Effect.cpp" />
+    <ClCompile Include="EffectFont.cpp" />
     <ClCompile Include="EffectFrenzy.cpp" />
     <ClCompile Include="EffectHit.cpp" />
     <ClCompile Include="EffectLaze.cpp" />
@@ -145,6 +146,7 @@
     <ClInclude Include="Character.h" />
     <ClInclude Include="DXDevice.h" />
     <ClInclude Include="Effect.h" />
+    <ClInclude Include="EffectFont.h" />
     <ClInclude Include="EffectFrenzy.h" />
     <ClInclude Include="EffectHit.h" />
     <ClInclude Include="EffectLaze.h" />
