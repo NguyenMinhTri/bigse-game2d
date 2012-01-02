@@ -39,6 +39,7 @@ private:
 	Sprite* m_Teleport1 ;
 
 	Sprite* m_SnakeMans_Move;
+	Sprite* m_FontNum;
 
 	Sprite* m_Hero_Move;
 	Sprite* m_Hero_Stand;
@@ -222,6 +223,10 @@ public:
 	Sprite* getTeleport1()
 	{
 		return m_Teleport1 ;
+	}
+	Sprite* getNumFont()
+	{
+		return m_FontNum;
 	}
 };
 

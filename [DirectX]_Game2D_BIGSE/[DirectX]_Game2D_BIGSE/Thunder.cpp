@@ -2,6 +2,8 @@
 #include "RSMainGame.h"
 #include "Global.h"
 #include "InfoSprite.h"
+#include "ManagerObject.h"
+#include "EffectFont.h"
 Thunder::Thunder(void)
 {
 	Init();
@@ -20,7 +22,7 @@ Thunder::Thunder(MyObject *_Character)
 void Thunder::Init()
 {
 	m_iCollision = false;
-	m_Damage = 1;
+	m_Damage = 3000;
 	m_STT = READY;
 	time = READY ;
 	t_STT = READY ;
@@ -101,6 +103,26 @@ void Thunder::UpdateStatus(float _Time)
 			m_TimeUpdate = 0;
 		}
 		break;
+	}
+}
+void Thunder ::ProcessCollision(MyObject *_Obj)
+{
+	if(getiCollision() == true && getRect().iCollision(_Obj->getRect())== true )
+	{
+		if(_Obj->getActive() == false  )
+		{
+			return ;
+		}
+
+		EffectFont* m_EffectFont = new EffectFont(m_X + 300,m_Y + 250,m_Damage);
+		ManagerObject::Instance()->getListEffect()->push_back(m_EffectFont);
+
+		_Obj->setActive(false);
+		_Obj->setHp(_Obj->getHp() - m_Damage );
+		if(_Obj->getHp() <= 0)
+		{
+			_Obj->setLife(false); 
+		}	
 	}
 }
 void Thunder ::Update(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight)

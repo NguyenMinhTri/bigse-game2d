@@ -7,6 +7,8 @@ protected:
 	int m_IndexSkill ;
 	int m_VMove; 
 
+	float m_TimePrivate   ;
+	float  m_time ;
     Sprite *m_GodLike_Move ;
 	Sprite *m_GodLike_Stand ;
 

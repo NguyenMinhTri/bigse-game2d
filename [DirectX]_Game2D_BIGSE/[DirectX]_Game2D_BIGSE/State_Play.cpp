@@ -82,7 +82,7 @@ void State_Play::Init()
 
 // 	m_ObjectsCamera->push_back(m_Archer);
 // 	m_ObjectsCamera->push_back(m_char);
-/*	m_ObjectsCamera->push_back(m_Monster);*/
+	m_ObjectsCamera->push_back(m_Monster);
 // 	m_ObjectsCamera->push_back(m_Magician);
 // 	m_ObjectsCamera->push_back(m_Angle);
 

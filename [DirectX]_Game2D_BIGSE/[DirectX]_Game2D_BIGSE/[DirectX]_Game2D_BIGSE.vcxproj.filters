@@ -59,6 +59,7 @@
     <ClCompile Include="QuadTreeNode.cpp" />
     <ClCompile Include="EffectLeonDie.cpp" />
     <ClCompile Include="GodLike_Teleport.cpp" />
+    <ClCompile Include="EffectFont.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Arrow.h" />
@@ -119,6 +120,7 @@
     <ClInclude Include="QuadTreeNode.h" />
     <ClInclude Include="EffectLeonDie.h" />
     <ClInclude Include="GodLike_Teleport.h" />
+    <ClInclude Include="EffectFont.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="data\image\Arrow.png">

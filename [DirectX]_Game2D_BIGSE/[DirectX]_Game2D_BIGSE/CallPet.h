@@ -17,6 +17,8 @@ public:
 	/* Update status */
 	virtual void UpdateStatus (float _Time) ;
 
+	virtual void ProcessCollision(MyObject* _Obj);
+
 	/* Update all */
 	virtual void Update (float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight) ;
 

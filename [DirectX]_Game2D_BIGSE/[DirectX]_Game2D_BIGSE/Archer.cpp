@@ -10,8 +10,7 @@
 Archer::Archer(void)
 {
 	Init();
-	m_HP = 2; 
-	m_Damage = 1;
+	m_HP = 20000; 
 }
 
 Archer::~Archer(void)
