@@ -3,7 +3,6 @@
 #include "RSMainGame.h"
 #include "ManagerObject.h"
 
-
 State_Play::State_Play(iPlay* GamePlay)
 	:iState(GamePlay)
 {
@@ -11,9 +10,9 @@ State_Play::State_Play(iPlay* GamePlay)
 	m_STT = READY ;
 }
 
-
 State_Play::~State_Play(void)
 {
+
 }
 
 void State_Play::Init()
@@ -39,43 +38,8 @@ void State_Play::Init()
 	#pragma region Init Item
 
 
-	#pragma region Init Character
-    m_char = new Character();
-	m_char->Init();
-	m_char->setXY(200,0);
-	m_char->setSize(50,85);
+	#pragma region Init Character   
 	
-
-	m_Monster = new Character();
-	m_Monster->Init();
-	m_Monster->setXY(1000,460);
-	m_Monster->setSize(50,85);
-
-	m_Monster1 = new Monster();
-	m_Monster1->setXY(60,460);
-
-	m_Monster2 = new Monster();
-	m_Monster2->setXY(100,460);
-
-
-
-	m_Archer = new Archer();
-	m_Archer->Init();
-	m_Archer->setXY( 200,0);
-	m_Archer->setSize(50,85);
-
-	m_Magician = new Magician();
-	m_Magician->Init();
-	m_Magician->setXY( 200,0);
-	m_Magician->setSize(50,85);
-
-	m_Angle = new Angle();
-
-	m_GodLike = new GodLike_Beast() ;
-	m_GodLike->setXY(50,100);
-
-	m_SnakeMan=new SnakeMans();
-	m_SnakeMan->setXY(450,0);
 
 	m_Hero=new Hero();
 	m_Hero->setXY(0,0);
@@ -101,6 +65,7 @@ void State_Play::Init()
 #pragma endregion Init Map Terrain
 
 	D3DXMatrixIdentity(&m_mtWorld);
+	
 
 	
 }
@@ -108,15 +73,7 @@ void State_Play::IsKeyDown(int KeyCode)
 {
 	switch(KeyCode)
 	{
-		// 	case DIK_LEFT:
-		// 	m_Monster->setMove(-1);
-		// 		break;
-		// 	case DIK_RIGHT:
-		// 	m_Monster->setMove(1);
-		// 	  break;
-		// 	case DIK_UP:
-		// 	m_Monster->setJump();
-		
+	
 	case DIK_A:
 		m_Hero->setMove(-1);
 		break;
@@ -136,11 +93,10 @@ void State_Play::OnKeyDown(int KeyCode)
 {
 	switch(KeyCode)
 	{
-
-	case DIK_NUMPAD7:
-		m_GodLike->ActiveSkill(3);
+	
+	case DIK_C:
+		m_Hero->ActiveSkill(3);
 		break ;
-
 	case DIK_F:
 		m_Hero->ActiveSkill(0);
 		break ;
@@ -149,39 +105,13 @@ void State_Play::OnKeyDown(int KeyCode)
 		break ;
 	case DIK_R:
 		m_Hero->ActiveSkill(2);
-		break ;
-	case DIK_NUMPAD1:
-		m_Archer->ActiveSkill(0);
-		break;
-	case DIK_NUMPAD4:
-		m_Angle->ActiveSkill(0);
-		break;
-	case DIK_NUMPAD5:
-		m_Angle->ActiveSkill(1);
-		break;
+		break ;	
 
 	case DIK_NUMPAD9:
 		m_STT = FREEZETIME ;
 
-		// 	case DIK_NUMPAD4:
-		// 		 m_Magician->ActiveSkill(0);
-		// 		 break;
-	case DIK_H:
-		m_Monster->ActiveSkill(4);
-		break;
-	case DIK_J:
-		m_Monster->ActiveSkill(1);
-		break;
-	case DIK_L:
-		m_Monster->ActiveSkill(3);
-		break;
-	case DIK_K:
-		m_Monster->ActiveSkill(2);
-		break;
-	case DIK_SPACE:
-		m_Monster->ActiveSkill(0);
-		
-		break;
+	
+	
 	}
 }
 
@@ -261,6 +191,20 @@ void State_Play::Update(float _Time)
 		i++;		
 	}
 	/************************************************************************/
+	/*  Update Boss in camera                                             */
+	/************************************************************************/	
+	for (std::vector<MyObject*>::iterator i = m_ListBoss->begin();i!= m_ListBoss->end();)
+	{
+		(*i)->Update(_Time,m_Map->getTerrain(),m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL);
+		if( (*i)->getLife() == false)
+		{
+			(*i)->Release();
+			i = m_ListBoss->erase(i);
+			continue;
+		}
+		i++;		
+	}
+	/************************************************************************/
 	/*  Update Effect in camera                                             */
 	/************************************************************************/	
 	for (std::vector<EffectSystem*>::iterator i = m_ListEffect->begin();i!= m_ListEffect->end();)
@@ -291,6 +235,17 @@ void State_Play::Update(float _Time)
 	for (std::vector<MyObject*>::iterator i = m_ObjectsCamera->begin();i!= m_ObjectsCamera->end();i++)
 	{		
 		for (std::vector<MyObject*>::iterator j = m_ListMonster->begin();j!= m_ListMonster->end();j++)
+		{
+			(*i)->ProcessCollision(*j);
+			(*j)->ProcessCollision(*i);
+		}		
+	}
+	/************************************************************************/
+	/*  Collision Object vs Boss                                       */
+	/************************************************************************/	
+	for (std::vector<MyObject*>::iterator i = m_ObjectsCamera->begin();i!= m_ObjectsCamera->end();i++)
+	{		
+		for (std::vector<MyObject*>::iterator j = m_ListBoss->begin();j!= m_ListBoss->end();j++)
 		{
 			(*i)->ProcessCollision(*j);
 			(*j)->ProcessCollision(*i);
@@ -360,6 +315,10 @@ void State_Play::Draw()
 		}
 
 		for (std::vector<EffectSystem*>::iterator i = m_ListEffect->begin();i!= m_ListEffect->end();i++)
+		{
+			(*i)->Draw(m_mtWorld,m_Handle);			
+		}
+		for (std::vector<MyObject*>::iterator i = m_ListBoss->begin();i!= m_ListBoss->end();i++)
 		{
 			(*i)->Draw(m_mtWorld,m_Handle);			
 		}

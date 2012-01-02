@@ -14,10 +14,12 @@
 #include "EffectSystem.h"
 #include "SnakeMans.h"
 #include "Hero.h"
+#include "LoadMap.h"
 using namespace std;
 class State_Play :
 	public iState
 {
+	LoadMap* m_LoadMap;
 
 	std::vector<MyObject*> *m_ListItem;
 	std::vector<MyObject*> *m_ObjectsCamera;
@@ -28,18 +30,9 @@ class State_Play :
 	int m_STT ;
 	QuadTree* m_QuadTree;
 
-	Item *m_Item;
-	Character* m_Monster ;
-	Character* m_char;
-    Archer *m_Archer; 
-	Angle *m_Angle ;
+	Item *m_Item;	
 
-	Monster* m_Monster1;
-	Monster* m_Monster2;
-	Magician* m_Magician;
-
-	SnakeMans* m_SnakeMan;
-	GodLike_Beast* m_GodLike ;
+	
 	Hero* m_Hero;
 
 	LPD3DXSPRITE m_Handle;

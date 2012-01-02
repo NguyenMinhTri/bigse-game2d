@@ -8,7 +8,7 @@ EffectFont::EffectFont(float _X, float _Y,int _Damage)
 	m_Y = _Y;
 	Init();
 	m_Damage = _Damage;
-
+	
 
 }
 
@@ -18,7 +18,7 @@ EffectFont::~EffectFont(void)
 }
 void EffectFont::Init()
 {
-
+	
 	m_InfoSprite.setSize(37,39);
 	m_Sprite = RSMainGame::get()->getNumFont();
 	m_iLife = true;
@@ -30,7 +30,7 @@ void EffectFont::Update(float _Time)
 	m_TimeAni += _Time ;	
 	if (m_TimeAni<= 1)
 	{
-		m_Y -= _Time*150;
+		m_Y -= _Time*250;
 	}
 	else
 	{
@@ -51,7 +51,7 @@ void EffectFont ::Draw(D3DXMATRIX _mtWorld,LPD3DXSPRITE _Handler)
 		}
 		int Offset =0;
 		int t = m_Damage;
-
+		
 		while (t/10 > 0)
 		{
 			int t2 = t%10;
@@ -66,4 +66,5 @@ void EffectFont ::Draw(D3DXMATRIX _mtWorld,LPD3DXSPRITE _Handler)
 		m_InfoSprite.setXY(m_X-Offset+ OffsetSum/2,m_Y);
 		m_Sprite->Draw(_mtWorld,m_InfoSprite,_Handler);
 	}
+
 }

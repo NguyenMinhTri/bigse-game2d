@@ -18,6 +18,11 @@ void RSMainGame::IntRS(LPDIRECT3DDEVICE9 _Device){
 		"data\\image\\ter.png",50,70,1);
 	m_Frenzy = new Sprite(_Device,
 		"data\\image\\ice.png",435,419,2);
+	m_IC = new Sprite(_Device,"data\\image\\IC.png",52,50,13 );
+	m_IC2 = new Sprite(_Device,"data\\image\\IC2.png",50,80,2 );
+	m_Grass = new Sprite(_Device,"data\\image\\TerGrass.png",52,50,13 );
+	m_Grass2 = new Sprite(_Device,"data\\image\\TerGrass2.png",50,80,2 );
+	m_FontNum = new Sprite(_Device,"data\\image\\num.png",37,39,10 );
 	m_Pet = new Sprite(_Device,"data\\image\\callPet.png",520,385,6 );
 	m_Archer = new Sprite(_Device,"data\\image\\cungthu.png",300,200,4);
 	m_Arrow = new Sprite(_Device,"data\\image\\Arrow.png",232,67,4);

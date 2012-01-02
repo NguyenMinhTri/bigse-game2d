@@ -57,8 +57,9 @@ std::vector<MyObject*>* QuadTreeNode::SubTreeContents()
 {
 	std::vector<MyObject*> *result = new std::vector<MyObject*>();
 	std::vector<MyObject*> *Contents = this->Contents(); 
-	delete Contents;
+
 	result->insert(result->begin(),Contents->begin(),Contents->end());
+	delete Contents;
 
 	if (m_Child!=NULL)
 	{
@@ -69,6 +70,7 @@ std::vector<MyObject*>* QuadTreeNode::SubTreeContents()
 			delete SubTreeContents;
 		}
 	}
+
 	return result;
 }
 
