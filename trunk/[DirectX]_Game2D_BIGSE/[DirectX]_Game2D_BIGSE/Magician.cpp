@@ -5,8 +5,7 @@
 
 Magician::Magician(void)
 {
-	m_HP = 20; 
-	m_Damage = 1;
+	m_HP = 20000; 
 }
 
 
