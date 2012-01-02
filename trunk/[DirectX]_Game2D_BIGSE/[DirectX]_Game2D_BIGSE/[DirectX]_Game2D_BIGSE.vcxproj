@@ -88,6 +88,7 @@
     <ClCompile Include="EffectFrenzy.cpp" />
     <ClCompile Include="EffectHit.cpp" />
     <ClCompile Include="EffectLaze.cpp" />
+    <ClCompile Include="EffectLeonDie.cpp" />
     <ClCompile Include="EffectSound.cpp" />
     <ClCompile Include="EffectSystem.cpp" />
     <ClCompile Include="EffectThunder.cpp" />
@@ -100,6 +101,7 @@
     <ClCompile Include="GodLike_Attack3.cpp" />
     <ClCompile Include="GodLike_Attack4.cpp" />
     <ClCompile Include="GodLike_Beast.cpp" />
+    <ClCompile Include="GodLike_Teleport.cpp" />
     <ClCompile Include="Hero.cpp" />
     <ClCompile Include="Hero_Attack1.cpp" />
     <ClCompile Include="Hero_Attack2.cpp" />
@@ -146,6 +148,7 @@
     <ClInclude Include="EffectFrenzy.h" />
     <ClInclude Include="EffectHit.h" />
     <ClInclude Include="EffectLaze.h" />
+    <ClInclude Include="EffectLeonDie.h" />
     <ClInclude Include="EffectSound.h" />
     <ClInclude Include="EffectSystem.h" />
     <ClInclude Include="EffectThunder.h" />
@@ -159,6 +162,7 @@
     <ClInclude Include="GodLike_Attack3.h" />
     <ClInclude Include="GodLike_Attack4.h" />
     <ClInclude Include="GodLike_Beast.h" />
+    <ClInclude Include="GodLike_Teleport.h" />
     <ClInclude Include="Hero.h" />
     <ClInclude Include="Hero_Attack1.h" />
     <ClInclude Include="Hero_Attack2.h" />

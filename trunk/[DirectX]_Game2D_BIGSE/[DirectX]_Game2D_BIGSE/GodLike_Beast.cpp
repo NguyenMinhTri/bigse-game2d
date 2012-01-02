@@ -6,10 +6,13 @@
 #include "GodLike_Attack2.h"
 #include "GodLike_Attack3.h"
 #include "GodLike_Attack4.h"
+#include "ManagerObject.h"
+#include "EffectLeonDie.h"
+#include "GodLike_Teleport.h"
 
 GodLike_Beast::GodLike_Beast(void)
 {
-	m_HP = 10 ;
+	m_HP = 2 ;
 	Init() ;
 }
 
@@ -17,8 +20,10 @@ GodLike_Beast::GodLike_Beast(void)
 GodLike_Beast::~GodLike_Beast(void)
 {
 }
+
 void GodLike_Beast ::Init()
 {
+	/*m_VxDirect = 0;*/
 	m_Direct = 1 ;
 	m_VMove = g_GodLike_Beast ;
 
@@ -36,10 +41,12 @@ void GodLike_Beast ::Init()
 	g_STT = ACTIVE ;
 
 	m_skillManager = new SkillManager();
-	m_skillManager->AddSkill(new GodLike_Attack1(this)) ; //sam' set'
+	m_skillManager->AddSkill(new GodLike_Attack1(this)) ; 
 	m_skillManager->AddSkill(new GodLike_Attack2(this)) ; 
 	m_skillManager->AddSkill(new GodLike_Attack3(this)) ; 
     m_skillManager->AddSkill(new GodLike_Attack4(this)) ; 
+	m_skillManager->AddSkill(new GodLike_Teleport(this)) ; 
+ 
 
 }
 void GodLike_Beast ::ActiveSkill (int _Index )
@@ -55,7 +62,7 @@ void GodLike_Beast ::Animation(float _Time)
 		if (m_TimeAni>= 0.15f)
 		{
 			m_TimeAni -= 0.15f;
-				if (g_STT == READY)//Ready : Stand 
+				if (g_STT == READY || m_VxDirect == 0 )//Ready : Stand 
 				{
 					m_InfoSprite2.NextFrame(0,5);
 					if(m_InfoSprite2.getCurFrame() ==5)
@@ -116,7 +123,16 @@ void GodLike_Beast :: Move(float _Time, int** _Terrain,float _MaxWidth,float _Ma
 		}
 	}
 #pragma  endregion LEFT 
+
+// #pragma  region STAND 
+// 	if(m_VxDirect == 0 || m_Direct == 0)
+// 	{
+// 		m_X = m_X ;
+// 		g_STT = READY ;
+// 	}
+// #pragma  endregion STAND 
 }
+
 void GodLike_Beast ::ProcessCollision(MyObject* _Obj)
 {
 	if(getLife() == true)
@@ -134,6 +150,12 @@ void GodLike_Beast ::ProcessCollision(MyObject* _Obj)
 				m_Direct = -1 ;
 			}
 		}
+// 		if(abs(_Obj->getX() - m_X ) > 1000 ) 
+// 		{
+// 			if(	m_skillManager->getSkill(1)->getSTT()!=ACTIVE  && m_skillManager->getSkill(2)->getSTT()!=ACTIVE && m_skillManager->getSkill(3)->getSTT()!=ACTIVE&& m_skillManager->getSkill(0)->getSTT()!=ACTIVE )
+// 				ActiveSkill(4);
+// 
+// 		}
 	}
 		m_skillManager->ProcessCollision(_Obj);
 		if(getRect().iCollision(_Obj->getRect()))
@@ -154,10 +176,6 @@ void GodLike_Beast ::ProcessCollision(MyObject* _Obj)
 					m_X = m_X + 60;
 				}
 			}
-			if(!_Obj->getLife())
-			{
-				return ;
-			}
 
 			int a = m_X;
 			if(m_X >a || m_X<a)
@@ -170,8 +188,13 @@ void GodLike_Beast ::ProcessCollision(MyObject* _Obj)
 							
 void GodLike_Beast ::Update(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight)
 {
-	m_TimeUpdate +=_Time ;
+	if(getLife() == false)
+	{
+		EffectLeonDie *_EffectDie = new EffectLeonDie (m_X,m_Y);
+		ManagerObject::Instance()->getListEffect()->push_back(_EffectDie);
+	}
 
+	m_TimeUpdate +=_Time ;
 	int random ;
 	random = rand() % 4;
 
@@ -180,31 +203,29 @@ void GodLike_Beast ::Update(float _Time, int** _Terrain,float _MaxWidth,float _M
 	switch (random)
 	{
 	case 0:
-		if(	m_skillManager->getSkill(1)->getSTT()!=ACTIVE  && m_skillManager->getSkill(2)->getSTT()!=ACTIVE && m_skillManager->getSkill(3)->getSTT()!=ACTIVE )
+		if(	m_skillManager->getSkill(1)->getSTT()!=ACTIVE  && m_skillManager->getSkill(2)->getSTT()!=ACTIVE && m_skillManager->getSkill(3)->getSTT()!=ACTIVE&& m_skillManager->getSkill(4)->getSTT()!=ACTIVE )
 			ActiveSkill(0);
 		m_TimeUpdate = 0 ;
 		break;
 	case 1:
-		if(	m_skillManager->getSkill(0)->getSTT()!=ACTIVE  && m_skillManager->getSkill(2)->getSTT()!=ACTIVE && m_skillManager->getSkill(3)->getSTT()!=ACTIVE )
+		if(	m_skillManager->getSkill(0)->getSTT()!=ACTIVE  && m_skillManager->getSkill(2)->getSTT()!=ACTIVE && m_skillManager->getSkill(3)->getSTT()!=ACTIVE && m_skillManager->getSkill(4)->getSTT()!=ACTIVE  )
 		   ActiveSkill(1);
 		m_TimeUpdate = 0 ;
 		break ;
-
 	case 2:
-		if(	m_skillManager->getSkill(0)->getSTT()!=ACTIVE  && m_skillManager->getSkill(1)->getSTT()!=ACTIVE && m_skillManager->getSkill(3)->getSTT()!=ACTIVE )
+		if(	m_skillManager->getSkill(0)->getSTT()!=ACTIVE  && m_skillManager->getSkill(1)->getSTT()!=ACTIVE && m_skillManager->getSkill(3)->getSTT()!=ACTIVE && m_skillManager->getSkill(4)->getSTT()!=ACTIVE )
 			ActiveSkill(2);
 		m_TimeUpdate = 0 ;
 		break ;
 	case 3:
-		if(	m_skillManager->getSkill(0)->getSTT()!=ACTIVE  && m_skillManager->getSkill(1)->getSTT()!=ACTIVE && m_skillManager->getSkill(2)->getSTT()!=ACTIVE )
+		if(	m_skillManager->getSkill(0)->getSTT()!=ACTIVE  && m_skillManager->getSkill(1)->getSTT()!=ACTIVE && m_skillManager->getSkill(2)->getSTT()!=ACTIVE && m_skillManager->getSkill(4)->getSTT()!=ACTIVE  )
 			ActiveSkill(3) ;
 		m_TimeUpdate = 0 ;
 		break ;
-		
 		default : break ;
 		}
 	}
-	if(	m_skillManager->getSkill(0)->getSTT()!=ACTIVE  && m_skillManager->getSkill(1)->getSTT()!=ACTIVE && m_skillManager->getSkill(2)->getSTT()!=ACTIVE && m_skillManager->getSkill(3)->getSTT()!=ACTIVE  )
+	if(	m_skillManager->getSkill(0)->getSTT()!=ACTIVE  && m_skillManager->getSkill(1)->getSTT()!=ACTIVE && m_skillManager->getSkill(2)->getSTT()!=ACTIVE && m_skillManager->getSkill(3)->getSTT()!=ACTIVE && m_skillManager->getSkill(4)->getSTT()!=ACTIVE   )
 	{
 		Animation(_Time);
 		Move(_Time,_Terrain,_MaxWidth,_MaxHeight);
@@ -219,42 +240,35 @@ void GodLike_Beast::Draw(D3DXMATRIX _MWorld,LPD3DXSPRITE _Handler)
 	{
 		return ;
 	}
-
-	if (m_skillManager->getSkill(0)->getSTT()==ACTIVE)
-	{
-		m_skillManager->getSkill(0)->Draw(_MWorld,_Handler) ;
-	}
-	if (m_skillManager->getSkill(1)->getSTT()==ACTIVE )
-	{
-		m_skillManager->getSkill(1)->Draw(_MWorld,_Handler) ;
-	}
-
-	if (m_skillManager->getSkill(2)->getSTT()==ACTIVE )
-	{
-		m_skillManager->getSkill(2)->Draw(_MWorld,_Handler) ;
-	}
-
-	if (m_skillManager->getSkill(3)->getSTT()==ACTIVE )
-	{
-		m_skillManager->getSkill(3)->Draw(_MWorld,_Handler) ;
-	}
 	m_InfoSprite1.setXY(m_X, m_Y);
 	m_InfoSprite2.setXY(m_X, m_Y);
 
-	if (m_Direct>0)
-	{
-		m_InfoSprite1.setScaleX(-1);
-		m_InfoSprite2.setScaleX(-1) ;
-	}
+		if (m_Direct>0)
+		{
+			m_InfoSprite1.setScaleX(-1);
+			m_InfoSprite2.setScaleX(-1) ;
+		}
 
-	else if(m_Direct<0)
+		else if(m_Direct<0)
+		{
+			m_InfoSprite1.setScaleX(1);
+			m_InfoSprite2.setScaleX(1);
+		}
+	for(int i=0 ; i<=4 ;i++ )
 	{
-		m_InfoSprite1.setScaleX(1);
-		m_InfoSprite2.setScaleX(1);
+		if (m_skillManager->getSkill(i)->getSTT()==ACTIVE )
+		{
+// 			if(m_skillManager->getSkill(4)->getSTT()==ACTIVE )
+// 			{ 
+// 					m_InfoSprite1.setXY(m_skillManager->getSkill(4)->getX(),m_skillManager->getSkill(4)->getY() ) ;
+// 					m_InfoSprite2.setXY(m_skillManager->getSkill(4)->getX(),m_skillManager->getSkill(4)->getY() ) ;
+// 			}
+			m_skillManager->getSkill(i)->Draw(_MWorld,_Handler) ;
+		}
 	}
-
-	if(m_skillManager->getSkill(0)->getSTT()!=ACTIVE  && m_skillManager->getSkill(1)->getSTT()!=ACTIVE && m_skillManager->getSkill(2)->getSTT()!=ACTIVE && m_skillManager->getSkill(3)->getSTT()!=ACTIVE)
-	{
+	
+	if(m_skillManager->getSkill(0)->getSTT()!=ACTIVE  && m_skillManager->getSkill(1)->getSTT()!=ACTIVE && m_skillManager->getSkill(2)->getSTT()!=ACTIVE && m_skillManager->getSkill(3)->getSTT()!=ACTIVE && m_skillManager->getSkill(4)->getSTT()!=ACTIVE)
+	{	
 		if(g_STT == ACTIVE)
 		{
 			m_GodLike_Move->Draw(_MWorld,m_InfoSprite1,_Handler);

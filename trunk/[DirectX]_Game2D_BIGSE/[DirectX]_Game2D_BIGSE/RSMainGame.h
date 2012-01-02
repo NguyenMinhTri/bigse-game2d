@@ -33,9 +33,12 @@ private:
 	Sprite* m_EffectSound ;
 	Sprite* m_EffectThunder ;
 	Sprite* m_EffectHit ;
+	Sprite* m_EffectLeonDie_1 ;
+	Sprite* m_EffectLeonDie_2 ;
+	Sprite* m_Teleport ;
+	Sprite* m_Teleport1 ;
 
 	Sprite* m_SnakeMans_Move;
-
 
 	Sprite* m_Hero_Move;
 	Sprite* m_Hero_Stand;
@@ -203,6 +206,22 @@ public:
 	Sprite* getEffectHit()
 	{
 		return m_EffectHit;
+	}
+	Sprite* getEffectLeonDie_1()
+	{
+		return m_EffectLeonDie_1;
+	}
+	Sprite* getEffectLeonDie_2()
+	{
+		return m_EffectLeonDie_2;
+	}
+	Sprite* getTeleport()
+	{
+		return m_Teleport ;
+	}
+	Sprite* getTeleport1()
+	{
+		return m_Teleport1 ;
 	}
 };
 

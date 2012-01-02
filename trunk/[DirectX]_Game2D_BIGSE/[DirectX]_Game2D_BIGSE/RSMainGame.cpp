@@ -41,6 +41,10 @@ void RSMainGame::IntRS(LPDIRECT3DDEVICE9 _Device){
 	m_EffectSound = new Sprite(_Device,"data\\image\\EffectSound.png",151,151,4);
 	m_EffectThunder = new Sprite(_Device,"data\\image\\EffectThunder.png",182,129,5);
 	m_EffectHit = new Sprite(_Device,"data\\image\\EffectHit.png",197,177,6);
+	m_EffectLeonDie_1 = new Sprite(_Device,"data\\image\\GodLike_dIE.png",732,700,4);
+	m_EffectLeonDie_2 = new Sprite(_Device,"data\\image\\GodLike_dIE_2.png",732,700,4);
+	m_Teleport = new Sprite(_Device,"data\\image\\TelePort.png",568,574,4);
+	m_Teleport1 = new Sprite(_Device,"data\\image\\TelePort1.png",568,574,4);
 
 	m_SnakeMans_Move = new Sprite(_Device,"data\\image\\SnakeMans_Move.png",202,269,6);
 	m_Hero_Move=new Sprite(_Device,"data\\image\\Hero_Move.png",79,103,6);

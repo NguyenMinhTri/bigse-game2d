@@ -29,7 +29,6 @@ void Character::Init(){
 	m_InfoSprite.setDepth(0.2);
 
 	m_STT = ACTIVE;
-
 	m_skillManager = new SkillManager();
 	m_skillManager->AddSkill(new SkillHit(this));
 	m_skillManager->AddSkill(new Frenzy());
