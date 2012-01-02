@@ -34,6 +34,11 @@ void Hero_Attack1::Init()
 }
 void Hero_Attack1::Active(float _X,float _Y,int _Dir)
 {
+	for(int i=0;i<4;i++)
+	{
+		if(m_Hero->m_skillManager->getSkill(i)->getSTT()==ACTIVE)
+			return;
+	}
 	if (m_STT == READY) //chua tung skill
 	{
 		if (_Dir>0)
@@ -67,10 +72,11 @@ void Hero_Attack1::Animation(float _Time)
 			m_Hero_Attack1InfoSprite.NextFrame(0,15);			
 			if(m_Hero_Attack1InfoSprite.getCurFrame()>=8)
 			{
-				m_iCollision=true;
+				
 				m_VBallFly+=100;
 				m_Hero_Attack1_BallInfoSprite.NextFrame(0,4);
 				m_TestBallFly=true;
+				m_iCollision=true;
 				if(m_Hero_Attack1_BallInfoSprite.getCurFrame()>=3)
 				{
 					m_TestBallFly=false;
@@ -96,7 +102,7 @@ void Hero_Attack1::UpdateStatus(float _Time)
 	{
 	case COOLDOWN:
 		m_TimeUpdate+= _Time;
-		if(m_TimeUpdate > 1)
+		if(m_TimeUpdate > 5)
 		{
 			m_STT = READY;
 			m_TimeUpdate = 0;
@@ -109,22 +115,25 @@ void Hero_Attack1::UpdateStatus(float _Time)
 
 void Hero_Attack1::ProcessCollision(MyObject *_Obj)
 {
-	CRECT r;
-	r.Left =m_Hero_Attack1_BallInfoSprite.getX(); ;
-	r.Top = m_Hero_Attack1_BallInfoSprite.getY() ;
-	r.Right = r.Left+ 415;
-	r.Bottom = r.Top  + 143;
-	CRECT r1;
-	r1.Left =m_Hero_Attack1InfoSprite.getX(); ;
-	r1.Top = m_Hero_Attack1InfoSprite.getY() ;
-	r1.Right = r1.Left+570;
-	r1.Bottom = r1.Top  + 255 ;
-	if(getiCollision() == true &&( r.iCollision(_Obj->getRect())== true ||r1.iCollision(_Obj->getRect())== true ))
+	
+	if(getiCollision() == true )
 	{
-		if(_Obj->getActive() == false  )
+		CRECT r;
+		r.Left =m_Hero_Attack1_BallInfoSprite.getX();
+		r.Top = m_Hero_Attack1_BallInfoSprite.getY() ;
+		r.Right = r.Left+ 415;
+		r.Bottom = r.Top  + 143;
+		CRECT r1;
+		r1.Left =m_Hero_Attack1InfoSprite.getX(); ;
+		r1.Top = m_Hero_Attack1InfoSprite.getY() ;
+		r1.Right = r1.Left+570;
+		r1.Bottom = r1.Top  + 255 ;
+		if(r.iCollision(_Obj->getRect())== true ||r1.iCollision(_Obj->getRect())== true)
 		{
-			return ;
-		}//true la chua trung
+			if(_Obj->getActive() == false  )
+			{
+				return ;
+			}//true la chua trung
 
 			EffectFont* m_EffectFont = new EffectFont(_Obj->getX(), _Obj->getY(),m_Damage);
 			ManagerObject::Instance()->getListEffect()->push_back(m_EffectFont);
@@ -132,31 +141,25 @@ void Hero_Attack1::ProcessCollision(MyObject *_Obj)
 			{
 				Hero_Effect1 *m_HeroEffect1 = new Hero_Effect1(_Obj->getX()+20,_Obj->getY()+50);
 				m_HeroEffect1->m_InfoSprite.setScaleX(1);
-
+				m_HeroEffect1->m_InfoSprite.setXY(_Obj->getX()+_Obj->getWidth()/2-25,r.Top);
 				ManagerObject::Instance()->getListEffect()->push_back(m_HeroEffect1);
 			}
 			else
 			{
 				Hero_Effect1 *m_HeroEffect1 = new Hero_Effect1(_Obj->getX()+130,_Obj->getY()+50);
 				m_HeroEffect1->m_InfoSprite.setScaleX(-1);
-
+				m_HeroEffect1->m_InfoSprite.setXY(_Obj->getX()+_Obj->getWidth()/2+25,r.Top);
 				ManagerObject::Instance()->getListEffect()->push_back(m_HeroEffect1);
 			}
 
-
-
-
-
-		if(_Obj->getActive() == false  )
-		{
-			return ;
-		}//true la chua trung
-		_Obj->setActive(false);
-		_Obj->setHp(_Obj->getHp() - getDamage());
-		if(_Obj->getHp() == 0)
-		{
-			_Obj->setLife(false); 
-		}	
+			_Obj->setActive(false);
+			_Obj->setHp(_Obj->getHp() - getDamage());
+			if(_Obj->getHp() == 0)
+			{
+				_Obj->setLife(false); 
+			}	
+		}
+		
 	}
 }
 

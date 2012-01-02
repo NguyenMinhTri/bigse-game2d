@@ -2,7 +2,7 @@
 #include "EffectSystem.h"
 #include "ManagerObject.h"
 #include "Hero_Effect1.h"
-
+#include "EffectFont.h"
 Hero_Attack2::Hero_Attack2(Hero* _Hero)
 {
 	m_Hero=_Hero;
@@ -27,6 +27,11 @@ void Hero_Attack2::Init()
 }
 void Hero_Attack2::Active(float _X,float _Y,int _Dir)
 {
+	for(int i=0;i<4;i++)
+	{
+		if(m_Hero->m_skillManager->getSkill(i)->getSTT()==ACTIVE)
+			return;
+	}
 	if (m_STT == READY) //chua tung skill
 	{
 		if (_Dir>0)
@@ -63,6 +68,14 @@ void Hero_Attack2::Animation(float _Time)
 			}
 			if(m_Hero_Attack2InfoSprite.getCurFrame()>=13)
 			{
+				if (m_Direct<0)
+				{
+					m_Hero->setXY(m_Hero->getX()-160,m_Hero->getY());
+				}
+				else
+				{
+					m_Hero->setXY(m_Hero->getX()+160,m_Hero->getY());
+				}
 				m_STT=COOLDOWN;
 				m_TimeAni=0;
 			}
@@ -79,7 +92,7 @@ void Hero_Attack2::UpdateStatus(float _Time)
 	{
 	case COOLDOWN:
 		m_TimeUpdate+= _Time;
-		if(m_TimeUpdate > 1)
+		if(m_TimeUpdate > 5)
 		{
 			m_STT = READY;
 			m_TimeUpdate = 0;
@@ -104,17 +117,20 @@ void Hero_Attack2::ProcessCollision(MyObject *_Obj)
 		{
 			return ;
 		}//true la chua trung
+		EffectFont* m_EffectFont = new EffectFont(_Obj->getX(), _Obj->getY(),m_Damage);
+		ManagerObject::Instance()->getListEffect()->push_back(m_EffectFont);
 			if (m_Direct<0)
 			{
 				Hero_Effect1 *m_HeroEffect1 = new Hero_Effect1(_Obj->getX(),_Obj->getY()+50);
 				m_HeroEffect1->m_InfoSprite.setScaleX(1);
+				m_HeroEffect1->m_InfoSprite.setXY(_Obj->getX()+_Obj->getWidth()/2-25,r1.Top);
 				ManagerObject::Instance()->getListEffect()->push_back(m_HeroEffect1);
 			}
 			else
 			{
 				Hero_Effect1 *m_HeroEffect1 = new Hero_Effect1(_Obj->getX()+150,_Obj->getY()+50);
 				m_HeroEffect1->m_InfoSprite.setScaleX(-1);
-
+				m_HeroEffect1->m_InfoSprite.setXY(_Obj->getX()+_Obj->getWidth()/2+25,r1.Top);
 				ManagerObject::Instance()->getListEffect()->push_back(m_HeroEffect1);
 			}
 

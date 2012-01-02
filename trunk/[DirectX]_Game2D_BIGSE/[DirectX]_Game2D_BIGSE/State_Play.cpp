@@ -88,7 +88,7 @@ void State_Play::Init()
 // 	m_ObjectsCamera->push_back(m_Magician);
 // 	m_ObjectsCamera->push_back(m_Angle);
 
-	m_ListBoss->push_back(m_GodLike);
+/* 	m_ListBoss->push_back(m_GodLike);*/
 
 	/*m_ListMonster->push_back(m_Monster1);*/
 	/*m_ListMonster->push_back(m_Monster2);*/
@@ -174,7 +174,9 @@ void State_Play::OnKeyDown(int KeyCode)
 	case DIK_NUMPAD7:
 		m_GodLike->ActiveSkill(3);
 		break ;
-
+	case DIK_C:
+		m_Hero->ActiveSkill(3);
+		break ;
 	case DIK_F:
 		m_Hero->ActiveSkill(0);
 		break ;
@@ -369,7 +371,7 @@ void State_Play::Update(float _Time)
 
 void State_Play::Draw()
 {	
-	m_Device->Clear(0,NULL,D3DCLEAR_TARGET|D3DCLEAR_ZBUFFER,D3DCOLOR_XRGB(255,255,255),1.0f,0);
+	m_Device->Clear(0,NULL,D3DCLEAR_TARGET|D3DCLEAR_ZBUFFER,D3DCOLOR_XRGB(0,0,0),1.0f,0);
 
 	if(m_Device->BeginScene())
 	{

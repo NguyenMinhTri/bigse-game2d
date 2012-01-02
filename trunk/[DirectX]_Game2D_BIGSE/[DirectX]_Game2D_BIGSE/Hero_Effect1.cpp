@@ -17,7 +17,8 @@ void Hero_Effect1::Init()
 {
 	m_Sprite=RSMainGame::get()->getHero_Effect1();
 	m_InfoSprite.setXY(109,100);
-
+	m_InfoSprite.setScaleXY(2,2);
+	m_InfoSprite.setDepth(0.1);
 	m_iLife=true;
 	m_TimeAni=0;
 
@@ -50,7 +51,7 @@ void Hero_Effect1::Draw (D3DXMATRIX _MWorld,LPD3DXSPRITE _Handler)
 {
 	if(m_iLife==true)
 	{
-		m_InfoSprite.setXY(-43.5+m_X,-60+m_Y);
+/*		m_InfoSprite.setXY(-43.5+m_X,-120+m_Y);*/
 		m_Sprite->Draw(_MWorld,m_InfoSprite,_Handler);
 	}
 }

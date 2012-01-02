@@ -41,6 +41,11 @@ void Hero_Attack4::Init()
 }
 void Hero_Attack4::Active(float _X,float _Y,int _Dir)
 {
+	for(int i=0;i<4;i++)
+	{
+		if(m_Hero->m_skillManager->getSkill(i)->getSTT()==ACTIVE)
+			return;
+	}
 	if (m_STT == READY&&m_Hero->getVY()==0) //chua tung skill
 	{
 		if (_Dir>0)
@@ -105,7 +110,7 @@ void Hero_Attack4::UpdateStatus(float _Time)
 	{
 	case COOLDOWN:
 		m_TimeUpdate+= _Time;
-		if(m_TimeUpdate > 1)
+		if(m_TimeUpdate > 5)
 		{
 			m_STT = READY;
 			m_TimeUpdate = 0;
@@ -140,19 +145,20 @@ void Hero_Attack4::ProcessCollision(MyObject *_Obj)
 				{
 					return ;
 				}//true la chua trung
-					
+				EffectFont* m_EffectFont = new EffectFont(_Obj->getX(), _Obj->getY(),m_Damage);
+				ManagerObject::Instance()->getListEffect()->push_back(m_EffectFont);
 					if (m_Direct<0)
 					{
 						Hero_Effect2 *m_HeroEffect2 = new Hero_Effect2(_Obj->getX()+20,_Obj->getY()+50);
 						m_HeroEffect2->m_InfoSprite.setScaleX(1);
-
+						m_HeroEffect2->m_InfoSprite.setXY(_Obj->getX()+_Obj->getWidth()/2-25,TemR.Top);
 						ManagerObject::Instance()->getListEffect()->push_back(m_HeroEffect2);
 					}
 					else
 					{
 						Hero_Effect2 *m_HeroEffect2 = new Hero_Effect2(_Obj->getX()+130,_Obj->getY()+50);
 						m_HeroEffect2->m_InfoSprite.setScaleX(-1);
-
+						m_HeroEffect2->m_InfoSprite.setXY(_Obj->getX()+_Obj->getWidth()/2+25,TemR.Top);
 						ManagerObject::Instance()->getListEffect()->push_back(m_HeroEffect2);
 					}
 				
