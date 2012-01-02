@@ -112,6 +112,26 @@ public:
 		}
 		/*m_CurFrame = abs((m_CurFrame+1)%(_offset)) + _first;*/
 	}
+	void BackFrame(int _first, int _offset)
+	{
+		if(m_CurFrame > _first)
+		{
+			m_CurFrame = _first;
+		}
+		else{
+			if(m_CurFrame < ( _first -  _offset))
+			{
+				m_CurFrame = _first - _offset ;
+			}
+			else {
+				m_CurFrame --;
+				if(m_CurFrame <= _first - _offset)
+				{
+					m_CurFrame = _first;
+				}
+			}
+		}
+	}
 
 	float getX () { return m_X;}
 	float getY () { return m_Y;}

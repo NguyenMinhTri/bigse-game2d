@@ -3,7 +3,6 @@
 #include "RSMainGame.h"
 #include "ManagerObject.h"
 
-
 State_Play::State_Play(iPlay* GamePlay)
 	:iState(GamePlay)
 {
@@ -11,9 +10,9 @@ State_Play::State_Play(iPlay* GamePlay)
 	m_STT = READY ;
 }
 
-
 State_Play::~State_Play(void)
 {
+
 }
 
 void State_Play::Init()
@@ -45,7 +44,6 @@ void State_Play::Init()
 	m_char->setXY(200,0);
 	m_char->setSize(50,85);
 	
-
 	m_Monster = new Character();
 	m_Monster->Init();
 	m_Monster->setXY(1000,460);
@@ -80,15 +78,17 @@ void State_Play::Init()
 	m_Hero=new Hero();
 	m_Hero->setXY(0,0);
 
-	m_ObjectsCamera->push_back(m_Hero);
+/*	m_ObjectsCamera->push_back(m_Hero);*/
 
 // 	m_ObjectsCamera->push_back(m_Archer);
 // 	m_ObjectsCamera->push_back(m_char);
-	m_ObjectsCamera->push_back(m_Monster);
+/*	m_ObjectsCamera->push_back(m_Monster);*/
 // 	m_ObjectsCamera->push_back(m_Magician);
 // 	m_ObjectsCamera->push_back(m_Angle);
 
-	//m_ListMonster->push_back(m_Monster1);
+	m_ListBoss->push_back(m_GodLike);
+
+	/*m_ListMonster->push_back(m_Monster1);*/
 	/*m_ListMonster->push_back(m_Monster2);*/
 	
 	/*std::vector<MyObject*>::iterator iter = m_ObjectsCamera->begin();
@@ -134,20 +134,20 @@ int _Terrain [] = {
 
 	m_QuadTree = new QuadTree(CRECT(0,32*50,0,50*14));
 
-	m_QuadTree->Insert(m_Monster1);
+	/*m_QuadTree->Insert(m_Monster1);*/
 }
 void State_Play::IsKeyDown(int KeyCode)
 {
 	switch(KeyCode)
 	{
-		// 	case DIK_LEFT:
-		// 	m_Monster->setMove(-1);
-		// 		break;
-		// 	case DIK_RIGHT:
-		// 	m_Monster->setMove(1);
-		// 	  break;
-		// 	case DIK_UP:
-		// 	m_Monster->setJump();
+	case DIK_LEFT:
+	m_Monster->setMove(-1);
+	break;
+	case DIK_RIGHT:
+	 m_Monster->setMove(1);
+	 break;
+	case DIK_UP:
+		m_Monster->setJump();
 		break;
 	case DIK_A:
 		m_Hero->setMove(-1);
@@ -226,7 +226,7 @@ void State_Play::OnKeyUp(int KeyCode)
 
 void State_Play::Update(float _Time)
 {
-	m_Camera->Update(m_Hero,m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL);
+	m_Camera->Update(m_Monster,m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL);
 	//m_Camera->UpdateEffect(_Time);
 	m_mtWorld = m_Camera->getMatrixTransform();
 
@@ -292,6 +292,20 @@ void State_Play::Update(float _Time)
 		i++;		
 	}
 	/************************************************************************/
+	/*  Update Boss in camera                                             */
+	/************************************************************************/	
+	for (std::vector<MyObject*>::iterator i = m_ListBoss->begin();i!= m_ListBoss->end();)
+	{
+		(*i)->Update(_Time,m_Map->getTerrain(),m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL);
+		if( (*i)->getLife() == false)
+		{
+			(*i)->Release();
+			i = m_ListBoss->erase(i);
+			continue;
+		}
+		i++;		
+	}
+	/************************************************************************/
 	/*  Update Effect in camera                                             */
 	/************************************************************************/	
 	for (std::vector<EffectSystem*>::iterator i = m_ListEffect->begin();i!= m_ListEffect->end();)
@@ -328,6 +342,17 @@ void State_Play::Update(float _Time)
 		}		
 	}
 	/************************************************************************/
+	/*  Collision Object vs Boss                                       */
+	/************************************************************************/	
+	for (std::vector<MyObject*>::iterator i = m_ObjectsCamera->begin();i!= m_ObjectsCamera->end();i++)
+	{		
+		for (std::vector<MyObject*>::iterator j = m_ListBoss->begin();j!= m_ListBoss->end();j++)
+		{
+			(*i)->ProcessCollision(*j);
+			(*j)->ProcessCollision(*i);
+		}		
+	}
+	/************************************************************************/
 	/*  Collision Object vs item                                            */
 	/************************************************************************/
 	for (std::vector<MyObject*>::iterator i = m_ObjectsCamera->begin();i!= m_ObjectsCamera->end();i++)
@@ -342,7 +367,7 @@ void State_Play::Update(float _Time)
 
 void State_Play::Draw()
 {	
-	m_Device->Clear(0,NULL,D3DCLEAR_TARGET|D3DCLEAR_ZBUFFER,D3DCOLOR_XRGB(0,0,0),1.0f,0);
+	m_Device->Clear(0,NULL,D3DCLEAR_TARGET|D3DCLEAR_ZBUFFER,D3DCOLOR_XRGB(255,255,255),1.0f,0);
 
 	if(m_Device->BeginScene())
 	{
@@ -367,6 +392,10 @@ void State_Play::Draw()
 		}
 
 		for (std::vector<EffectSystem*>::iterator i = m_ListEffect->begin();i!= m_ListEffect->end();i++)
+		{
+			(*i)->Draw(m_mtWorld,m_Handle);			
+		}
+		for (std::vector<MyObject*>::iterator i = m_ListBoss->begin();i!= m_ListBoss->end();i++)
 		{
 			(*i)->Draw(m_mtWorld,m_Handle);			
 		}

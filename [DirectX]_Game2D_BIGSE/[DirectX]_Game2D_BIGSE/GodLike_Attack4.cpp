@@ -26,9 +26,9 @@ void GodLike_Attack4 ::Init()
 	m_Attack4_2 = RSMainGame::get()->getGodLikeAttack4_2() ;
 
 	t_STT = READY ;
-	m_InfoSprite4_1.setSize(1346,639) ;
-	m_InfoSprite4_2.setSize(1346,639) ;
-	setSize(1346,639);
+	m_InfoSprite4_1.setSize(1346 , 639) ;
+	m_InfoSprite4_2.setSize(1346 , 639) ;
+	setSize(900,639);
 	m_STT=READY;
 }
 

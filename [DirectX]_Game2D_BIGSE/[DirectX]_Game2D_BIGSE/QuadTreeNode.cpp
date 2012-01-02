@@ -131,6 +131,7 @@ std::vector<MyObject*>* QuadTreeNode::Query (CRECT _Area)
 		if (_Area.iCollision((*i)->getRect()))
 		{
 			result->push_back((*i));
+
 			i= m_Contents->erase(i);
 		} 
 		else

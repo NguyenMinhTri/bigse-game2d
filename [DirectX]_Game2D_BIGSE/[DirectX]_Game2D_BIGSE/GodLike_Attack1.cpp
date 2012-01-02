@@ -27,7 +27,6 @@ void GodLike_Attack1 ::Init()
 
 	setSize(802,647);
 	m_STT = READY ;
-	timeshoot = true;
 }
 
 void GodLike_Attack1 ::Active(float _X,float _Y,int _Dir)
@@ -125,7 +124,7 @@ void GodLike_Attack1 ::Draw(D3DXMATRIX _mtWorld,LPD3DXSPRITE _Handler)
 	}else{
 		m_InfoSprite1.setScaleX(-1);
 	}
-	m_InfoSprite1.setXY(m_X ,m_Y);
+	m_InfoSprite1.setXY(m_X ,m_Y - 60);
 	m_Attack1->Draw(_mtWorld,m_InfoSprite1,_Handler);
 }
 
