@@ -99,9 +99,11 @@ void Hero_Attack2::ProcessCollision(MyObject *_Obj)
 	r1.Bottom = r1.Top  + 164 ;
 	if(getiCollision() == true &&r1.iCollision(_Obj->getRect())== true )
 	{
-		if(m_Hero_Attack2InfoSprite.getCurFrame()==8)
-		{
 
+		if(_Obj->getActive() == false  )
+		{
+			return ;
+		}//true la chua trung
 			if (m_Direct<0)
 			{
 				Hero_Effect1 *m_HeroEffect1 = new Hero_Effect1(_Obj->getX(),_Obj->getY()+50);
@@ -115,11 +117,7 @@ void Hero_Attack2::ProcessCollision(MyObject *_Obj)
 
 				ManagerObject::Instance()->getListEffect()->push_back(m_HeroEffect1);
 			}
-		}
-		if(_Obj->getActive() == false  )
-		{
-			return ;
-		}//true la chua trung
+
 		_Obj->setActive(false);
 		_Obj->setHp(_Obj->getHp() - getDamage());
 		if(_Obj->getHp() == 0)

@@ -107,6 +107,8 @@
     <ClCompile Include="Hero_Attack1.cpp" />
     <ClCompile Include="Hero_Attack2.cpp" />
     <ClCompile Include="Hero_Attack3.cpp" />
+    <ClCompile Include="Hero_Attack4.cpp" />
+    <ClCompile Include="Hero_Die.cpp" />
     <ClCompile Include="Hero_Effect1.cpp" />
     <ClCompile Include="Hero_Effect2.cpp" />
     <ClCompile Include="InfoSprite.cpp" />
@@ -169,6 +171,8 @@
     <ClInclude Include="Hero_Attack1.h" />
     <ClInclude Include="Hero_Attack2.h" />
     <ClInclude Include="Hero_Attack3.h" />
+    <ClInclude Include="Hero_Attack4.h" />
+    <ClInclude Include="Hero_Die.h" />
     <ClInclude Include="Hero_Effect1.h" />
     <ClInclude Include="Hero_Effect2.h" />
     <ClInclude Include="InfoSprite.h" />

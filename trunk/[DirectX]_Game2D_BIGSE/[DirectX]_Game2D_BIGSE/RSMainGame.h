@@ -48,8 +48,10 @@ private:
 	Sprite* m_Hero_Effect1;
 	Sprite* m_Hero_Attack2;
 	Sprite* m_Hero_Attack3;
+	Sprite* m_Hero_Attack4;
 	Sprite* m_Hero_Attack3_Ball;
 	Sprite* m_Hero_Effect2;
+	Sprite* m_Hero_Die;
 
 	RSMainGame(void);
 public:
@@ -154,6 +156,8 @@ public:
 		return m_SnakeMans_Move ;
 	}
 
+
+
 	Sprite* getHero_Move()
 	{
 		return m_Hero_Move;
@@ -182,6 +186,10 @@ public:
 	{
 		return m_Hero_Attack3;
 	}
+	Sprite* getHero_Attack4()
+	{
+		return m_Hero_Attack4;
+	}
 	Sprite* getHero_Attack3_Ball()
 	{
 		return m_Hero_Attack3_Ball;
@@ -190,6 +198,11 @@ public:
 	{
 		return m_Hero_Effect2;
 	}
+	Sprite* getHero_Die()
+	{
+		return m_Hero_Die;
+	}
+
 
 
 	Sprite* getEffectLaze()

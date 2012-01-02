@@ -2,6 +2,7 @@
 #include "EffectSystem.h"
 #include "ManagerObject.h"
 #include "Hero_Effect1.h"
+#include "EffectFont.h"
 
 Hero_Attack1::Hero_Attack1(Hero* _Hero)
 {
@@ -120,9 +121,13 @@ void Hero_Attack1::ProcessCollision(MyObject *_Obj)
 	r1.Bottom = r1.Top  + 255 ;
 	if(getiCollision() == true &&( r.iCollision(_Obj->getRect())== true ||r1.iCollision(_Obj->getRect())== true ))
 	{
-		if(m_Hero_Attack1InfoSprite.getCurFrame()==8)
+		if(_Obj->getActive() == false  )
 		{
+			return ;
+		}//true la chua trung
 
+			EffectFont* m_EffectFont = new EffectFont(_Obj->getX(), _Obj->getY(),m_Damage);
+			ManagerObject::Instance()->getListEffect()->push_back(m_EffectFont);
 			if (m_Direct<0)
 			{
 				Hero_Effect1 *m_HeroEffect1 = new Hero_Effect1(_Obj->getX()+20,_Obj->getY()+50);
@@ -137,7 +142,7 @@ void Hero_Attack1::ProcessCollision(MyObject *_Obj)
 
 				ManagerObject::Instance()->getListEffect()->push_back(m_HeroEffect1);
 			}
-		}
+
 
 
 

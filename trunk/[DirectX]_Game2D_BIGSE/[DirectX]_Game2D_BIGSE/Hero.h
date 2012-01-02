@@ -6,6 +6,8 @@ class Hero :
 {
 public:
 	Sprite* m_SpriteHero;
+	Sprite* m_Hero_Die;
+	InfoSprite m_InfoHero_Die;
 	InfoSprite m_InfoSpriteHero;
 	Sprite* m_SpriteHero_Move;
 	InfoSprite m_InfoSpriteHero_Move;
