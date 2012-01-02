@@ -12,10 +12,9 @@ protected:
 public:
 	Archer(void);
 	~Archer(void);
-	
+
 	virtual void Init () ;
 	virtual void Animation (float _Time) ;
 
 
 };
-

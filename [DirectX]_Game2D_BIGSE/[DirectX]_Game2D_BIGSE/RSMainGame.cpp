@@ -56,7 +56,8 @@ void RSMainGame::IntRS(LPDIRECT3DDEVICE9 _Device){
 	m_Hero_Effect1=new Sprite(_Device,"data\\image\\Hero_Attack1_Hit.png",96,113,6);
 	m_Hero_Attack2=new Sprite(_Device,"data\\image\\Hero_Attack2.png",294,164,5);
 	m_Hero_Attack3=new Sprite(_Device,"data\\image\\Hero_Attack3.png",274,231,5);
+	m_Hero_Attack4=new Sprite(_Device,"data\\image\\Hero_Attack4.png",212,251,5);
 	m_Hero_Attack3_Ball=new Sprite(_Device,"data\\image\\Hero_Attack3_Ball.png",97,150,7);
 	m_Hero_Effect2=new Sprite(_Device,"data\\image\\Hero_Attack3_Hit.png",124,109,5);
-
+	m_Hero_Die=new Sprite(_Device,"data\\image\\Hero_Die.png",212,202,5);
 }

@@ -26,11 +26,12 @@ void Hero_Effect1::Update(float _Time)
 {
 
 	m_TimeAni+=_Time;
-	if(m_iLife==true)
-	{
+
 		if(m_TimeAni>=0.15f)
 		{
 			m_TimeAni-0.15f;
+			if(m_iLife==true)
+			{
 			m_InfoSprite.NextFrame(0,5);
 			if(m_InfoSprite.getCurFrame()>=4)
 			{
