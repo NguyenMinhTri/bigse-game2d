@@ -7,6 +7,11 @@ class RSMainGame
 {
 private:
 	static RSMainGame* instance ; 
+	Sprite* m_IC;
+	Sprite* m_IC2;
+	Sprite* m_Grass;
+	Sprite* m_Grass2;
+	Sprite* m_FontNum;
 	Sprite* m_Character;
 	Sprite* m_Terrain;
 	Sprite* m_Frenzy;
@@ -33,13 +38,9 @@ private:
 	Sprite* m_EffectSound ;
 	Sprite* m_EffectThunder ;
 	Sprite* m_EffectHit ;
-	Sprite* m_EffectLeonDie_1 ;
-	Sprite* m_EffectLeonDie_2 ;
-	Sprite* m_Teleport ;
-	Sprite* m_Teleport1 ;
 
 	Sprite* m_SnakeMans_Move;
-	Sprite* m_FontNum;
+
 
 	Sprite* m_Hero_Move;
 	Sprite* m_Hero_Stand;
@@ -48,10 +49,8 @@ private:
 	Sprite* m_Hero_Effect1;
 	Sprite* m_Hero_Attack2;
 	Sprite* m_Hero_Attack3;
-	Sprite* m_Hero_Attack4;
 	Sprite* m_Hero_Attack3_Ball;
 	Sprite* m_Hero_Effect2;
-	Sprite* m_Hero_Die;
 
 	RSMainGame(void);
 public:
@@ -156,8 +155,6 @@ public:
 		return m_SnakeMans_Move ;
 	}
 
-
-
 	Sprite* getHero_Move()
 	{
 		return m_Hero_Move;
@@ -186,10 +183,6 @@ public:
 	{
 		return m_Hero_Attack3;
 	}
-	Sprite* getHero_Attack4()
-	{
-		return m_Hero_Attack4;
-	}
 	Sprite* getHero_Attack3_Ball()
 	{
 		return m_Hero_Attack3_Ball;
@@ -198,12 +191,6 @@ public:
 	{
 		return m_Hero_Effect2;
 	}
-	Sprite* getHero_Die()
-	{
-		return m_Hero_Die;
-	}
-
-
 
 	Sprite* getEffectLaze()
 	{
@@ -221,25 +208,25 @@ public:
 	{
 		return m_EffectHit;
 	}
-	Sprite* getEffectLeonDie_1()
-	{
-		return m_EffectLeonDie_1;
-	}
-	Sprite* getEffectLeonDie_2()
-	{
-		return m_EffectLeonDie_2;
-	}
-	Sprite* getTeleport()
-	{
-		return m_Teleport ;
-	}
-	Sprite* getTeleport1()
-	{
-		return m_Teleport1 ;
-	}
 	Sprite* getNumFont()
 	{
 		return m_FontNum;
+	}
+	Sprite* getGrass()
+	{
+		return m_Grass;
+	}
+	Sprite* getGrass2()
+	{
+		return m_Grass2;
+	}
+	Sprite* getIC()
+	{
+		return m_IC;
+	}
+	Sprite* getIC2()
+	{
+		return m_IC2;
 	}
 };
 
