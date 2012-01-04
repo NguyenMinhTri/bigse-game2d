@@ -65,9 +65,7 @@ void State_Play::Init()
 #pragma endregion Init Map Terrain
 
 	D3DXMatrixIdentity(&m_mtWorld);
-	
 
-	
 }
 void State_Play::IsKeyDown(int KeyCode)
 {
@@ -261,18 +259,6 @@ void State_Play::Update(float _Time)
 			(*i)->ProcessCollision(*j);
 			(*j)->ProcessCollision(*i);
 		}		
-	}
-
-	for (std::vector<MyObject*>::iterator i = m_ListBoss->begin();i!= m_ListBoss->end();)
-	{
-		(*i)->Update(_Time,m_Map->getTerrain(),m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL);
-		if( (*i)->getLife() == false)
-		{
-			(*i)->Release();
-			i = m_ListBoss->erase(i);
-			continue;
-		}
-		i++;  
 	}
 
 	/************************************************************************/

@@ -147,8 +147,8 @@ void GodLike_Attack4 :: Draw(D3DXMATRIX _MWorld,LPD3DXSPRITE _Handler)
 
 	else if(m_Direct<0)
 	{
-		m_InfoSprite4_1.setXY(m_X  + 800,m_Y);
-		m_InfoSprite4_2.setXY(m_X +  800,m_Y);
+		m_InfoSprite4_1.setXY(m_X + 400,m_Y);
+		m_InfoSprite4_2.setXY(m_X + 400,m_Y);
 		m_InfoSprite4_1.setScaleX(1);
 		m_InfoSprite4_2.setScaleX(1);
 	}
