@@ -28,6 +28,8 @@ void Hero::Init()
 	m_Hero_Die=RSMainGame::get()->getHero_Die();
 	m_InfoHero_Die.setSize(212,202);
 
+
+
 	setSize(79,90);
 	m_STT=ACTIVE;
 	m_HP=50;
