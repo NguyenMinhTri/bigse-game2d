@@ -30,7 +30,7 @@ void Hero::Init()
 
 	setSize(79,90);
 	m_STT=ACTIVE;
-	m_HP=500000;
+	m_HP=5000000;
 	m_skillManager = new SkillManager();
 	
 	m_skillManager->AddSkill(new Hero_Attack4(this));

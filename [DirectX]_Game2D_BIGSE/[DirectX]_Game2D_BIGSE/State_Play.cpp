@@ -44,11 +44,11 @@ void State_Play::Init()
 	m_Hero=new Hero();
 	m_Hero->setXY(0,0);
 
-	m_SnakeMans=new SnakeMans();
-	m_SnakeMans->setXY(600,650);
+// 	m_SnakeMans=new SnakeMans();
+// 	m_SnakeMans->setXY(1200,650);
 
 	m_ObjectsCamera->push_back(m_Hero);
-	m_ListBoss->push_back(m_SnakeMans);
+/*	m_ListBoss->push_back(m_SnakeMans);*/
 
 #pragma endregion Init Character
 
