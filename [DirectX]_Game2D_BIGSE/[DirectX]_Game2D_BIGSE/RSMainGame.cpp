@@ -84,4 +84,14 @@ void RSMainGame::IntRS(LPDIRECT3DDEVICE9 _Device){
 	m_Hero_Attack3_Ball=new Sprite(_Device,"data\\image\\Hero_Attack3_Ball.png",97,150,7);
 	m_Hero_Effect2=new Sprite(_Device,"data\\image\\Hero_Attack3_Hit.png",124,109,5);
 	m_Hero_Die=new Sprite(_Device,"data\\image\\Hero_Die.png",212,202,5);
+
+	m_ElephantMove = new Sprite(_Device,"data\\image\\Elephant_Move.png",128,120,8);
+	m_ElephantDie = new Sprite(_Device,"data\\image\\ElephantDie.png",178,139,13);
+	m_ElephantAttack = new Sprite(_Device,"data\\image\\Elephant_Attack.png",195,193,13);
+	m_ElephantHit = new Sprite(_Device,"data\\image\\ElephantHit.png",143,132,1);
+	m_ElephantInfo = new Sprite(_Device,"data\\image\\Elephant_Info.png",163,131,4);
+
+	m_SnowManMove = new Sprite(_Device,"data\\image\\SnowMan.png",121,111,4);
+	m_SnowManAttack = new Sprite(_Device,"data\\image\\SnowManAttack.png",224,191,9);
+	m_SnowManDie = new Sprite(_Device,"data\\image\\SnowMan_Die.png",190,108,7);
 }

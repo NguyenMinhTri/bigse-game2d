@@ -49,10 +49,20 @@ private:
 	Sprite* m_SnakeMans_attack1;
 	Sprite* m_SnakeMans_Attack1_Hit;
 
+
+	Sprite* m_ElephantMove;
+	Sprite* m_ElephantDie;
+	Sprite* m_ElephantAttack ;
+	Sprite* m_ElephantInfo ;
+	Sprite* m_ElephantHit ;
+
 	Sprite* m_SnakeMans_attack2;
 	Sprite* m_SnakeMans_Attack2_info_ball;
 	Sprite* m_SnakeMans_Attack2_info_hit;
 
+	Sprite* m_SnowManMove ;
+	Sprite* m_SnowManDie ;
+	Sprite* m_SnowManAttack ;
 	Sprite* m_SnakeMans_attack3;
 	Sprite* m_SnakeMans_Attack3_Ball;
 	Sprite* m_SnakeMans_Attack3_Hit;
@@ -271,6 +281,39 @@ public:
 	Sprite* getIC2()
 	{
 		return m_IC2;
+	}
+	Sprite* getElephantMove()
+	{
+		return m_ElephantMove ;
+	}
+	Sprite* getElephantAttack()
+	{
+		return m_ElephantAttack ;
+	}
+	Sprite* getElephantDie()
+	{
+		return m_ElephantDie ;
+	}
+	Sprite* getElephantInfo()
+	{
+		return m_ElephantInfo ;
+	}
+	Sprite* getElephantHit()
+	{
+		return m_ElephantHit ;
+	}
+
+	Sprite* getSnowManMove()
+	{
+		return m_SnowManMove ;
+	}
+	Sprite* getSnowManAttack()
+	{
+		return m_SnowManAttack ;
+	}
+	Sprite* getSnowManDie()
+	{
+		return m_SnowManDie ;
 	}
 	Sprite* getSnakeMans_Die()
 	{

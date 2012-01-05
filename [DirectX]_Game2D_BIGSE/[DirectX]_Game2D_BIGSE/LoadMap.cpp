@@ -6,7 +6,7 @@
 #include "GodLike_Beast.h"
 #include "ManagerObject.h"
 #include "Monster.h"
-
+#include "SnowMan.h"
 LoadMap::LoadMap(void)
 {
 	m_Width = 0;
@@ -159,11 +159,23 @@ void LoadMap::TranslateMap()
 				_GodLike->setXY(i*50,j*50-460);
 				ManagerObject::Instance()->getListBoss()->push_back(_GodLike);
 			}
-			if (r==10)
+// 			if (r==10)
+// 			{
+// 				Character* _Character = new Character();
+// 				_Character->setXY(i*50,j*50 + 100);
+// 				ManagerObject::Instance()->getQuadTree()->Insert(_Character);
+// 			}
+			if (r==11)
 			{
 				Monster* _Monster = new Monster();
 				_Monster->setXY(i*50,j*50-60);
 				ManagerObject::Instance()->getQuadTree()->Insert(_Monster);
+			}
+			if (r==12)
+			{
+				SnowMan* _SnowMan = new SnowMan();
+				_SnowMan->setXY(i*50,j*50-60);
+				ManagerObject::Instance()->getQuadTree()->Insert(_SnowMan);
 			}
 		}
 	}

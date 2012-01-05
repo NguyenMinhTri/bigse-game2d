@@ -28,8 +28,6 @@ void Hero::Init()
 	m_Hero_Die=RSMainGame::get()->getHero_Die();
 	m_InfoHero_Die.setSize(212,202);
 
-
-
 	setSize(79,90);
 	m_STT=ACTIVE;
 	m_HP=500000;
@@ -124,7 +122,6 @@ void Hero::Update(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight)
 
 
 }
-
 void Hero::Draw(D3DXMATRIX _MWorld,LPD3DXSPRITE _Handler)
 {
 	if (m_Direct<0)
@@ -149,9 +146,7 @@ void Hero::Draw(D3DXMATRIX _MWorld,LPD3DXSPRITE _Handler)
 			if(m_skillManager->getSkill(i)->getSTT()==ACTIVE)
 			{
 				m_skillManager->getSkill(i)->Draw(_MWorld,_Handler);
-
-			}
-			
+			}	
 	}
 	else
 	{

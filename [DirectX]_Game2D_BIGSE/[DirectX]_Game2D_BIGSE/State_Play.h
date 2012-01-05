@@ -15,6 +15,7 @@
 #include "SnakeMans.h"
 #include "Hero.h"
 #include "LoadMap.h"
+#include "Monster.h"
 using namespace std;
 class State_Play :
 	public iState
@@ -31,8 +32,6 @@ class State_Play :
 	QuadTree* m_QuadTree;
 
 	Item *m_Item;	
-
-	
 	Hero* m_Hero;
 	SnakeMans* m_SnakeMans;
 	LPD3DXSPRITE m_Handle;
