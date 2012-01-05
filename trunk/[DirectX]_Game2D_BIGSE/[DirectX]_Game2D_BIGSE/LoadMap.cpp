@@ -7,6 +7,7 @@
 #include "ManagerObject.h"
 #include "Monster.h"
 #include "SnowMan.h"
+#include "SnakeMans.h"
 LoadMap::LoadMap(void)
 {
 	m_Width = 0;
@@ -159,6 +160,12 @@ void LoadMap::TranslateMap()
 				_GodLike->setXY(i*50,j*50-460);
 				ManagerObject::Instance()->getListBoss()->push_back(_GodLike);
 			}
+			if (r == 4)
+			{
+				SnakeMans* _Snakemens = new SnakeMans() ;
+				_Snakemens->setXY(i*50,650);
+				ManagerObject::Instance()->getListBoss()->push_back(_Snakemens);
+			}
 // 			if (r==10)
 // 			{
 // 				Character* _Character = new Character();
@@ -177,6 +184,7 @@ void LoadMap::TranslateMap()
 				_SnowMan->setXY(i*50,j*50-60);
 				ManagerObject::Instance()->getQuadTree()->Insert(_SnowMan);
 			}
+
 		}
 	}
 }
