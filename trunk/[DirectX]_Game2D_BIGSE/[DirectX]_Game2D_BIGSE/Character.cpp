@@ -10,6 +10,7 @@
 Character::Character(void)
 {
 	m_HP = 20000 ; 
+	Init();
 }
 
 Character::~Character(void)

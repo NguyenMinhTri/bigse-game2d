@@ -17,7 +17,6 @@
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Magician.cpp" />
     <ClCompile Include="ManagerObject.cpp" />
-    <ClCompile Include="Monster.cpp" />
     <ClCompile Include="MyObject.cpp" />
     <ClCompile Include="RECT.cpp" />
     <ClCompile Include="RSMainGame.cpp" />
@@ -60,6 +59,30 @@
     <ClCompile Include="EffectLeonDie.cpp" />
     <ClCompile Include="GodLike_Teleport.cpp" />
     <ClCompile Include="EffectFont.cpp" />
+<<<<<<< .mine
+    <ClCompile Include="Hero_Attack4.cpp" />
+    <ClCompile Include="Hero_Die.cpp" />
+    <ClCompile Include="LoadMap.cpp" />
+    <ClCompile Include="Monster.cpp">
+      <Filter>Elephant</Filter>
+    </ClCompile>
+    <ClCompile Include="ElephantAttack.cpp">
+      <Filter>Elephant</Filter>
+    </ClCompile>
+    <ClCompile Include="ElephantDie.cpp">
+      <Filter>Elephant</Filter>
+    </ClCompile>
+    <ClCompile Include="EffectInfoEle.cpp">
+      <Filter>Elephant</Filter>
+    </ClCompile>
+    <ClCompile Include="SnowMan.cpp">
+      <Filter>SnowMan</Filter>
+    </ClCompile>
+    <ClCompile Include="SnowManAttack.cpp">
+      <Filter>SnowMan</Filter>
+    </ClCompile>
+    <ClCompile Include="EffectDieSnow.cpp" />
+=======
     <ClCompile Include="Hero_Attack4.cpp" />
     <ClCompile Include="Hero_Die.cpp" />
     <ClCompile Include="LoadMap.cpp" />
@@ -71,6 +94,7 @@
     <ClCompile Include="SnakeMens_Attack4.cpp" />
     <ClCompile Include="SnakeMens_Effect3.cpp" />
     <ClCompile Include="SnakeMens_Die.cpp" />
+>>>>>>> .r59
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Arrow.h" />
@@ -90,7 +114,6 @@
     <ClInclude Include="Item.h" />
     <ClInclude Include="Magician.h" />
     <ClInclude Include="ManagerObject.h" />
-    <ClInclude Include="Monster.h" />
     <ClInclude Include="MyObject.h" />
     <ClInclude Include="RECT.h" />
     <ClInclude Include="RSMainGame.h" />
@@ -132,6 +155,31 @@
     <ClInclude Include="EffectLeonDie.h" />
     <ClInclude Include="GodLike_Teleport.h" />
     <ClInclude Include="EffectFont.h" />
+<<<<<<< .mine
+    <ClInclude Include="Hero_Attack4.h" />
+    <ClInclude Include="Hero_Die.h" />
+    <ClInclude Include="LoadMap.h" />
+    <ClInclude Include="Monster.h">
+      <Filter>Elephant</Filter>
+    </ClInclude>
+    <ClInclude Include="ElephantAttack.h">
+      <Filter>Elephant</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="ElephantDie.h">
+      <Filter>Elephant</Filter>
+    </ClInclude>
+    <ClInclude Include="EffectInfoEle.h">
+      <Filter>Elephant</Filter>
+    </ClInclude>
+    <ClInclude Include="SnowMan.h">
+      <Filter>SnowMan</Filter>
+    </ClInclude>
+    <ClInclude Include="SnowManAttack.h">
+      <Filter>SnowMan</Filter>
+    </ClInclude>
+    <ClInclude Include="EffectDieSnow.h" />
+=======
     <ClInclude Include="Hero_Attack4.h" />
     <ClInclude Include="Hero_Die.h" />
     <ClInclude Include="LoadMap.h" />
@@ -143,6 +191,7 @@
     <ClInclude Include="SnakeMens_Attack4.h" />
     <ClInclude Include="SnakeMens_Effect3.h" />
     <ClInclude Include="SnakeMens_Die.h" />
+>>>>>>> .r59
   </ItemGroup>
   <ItemGroup>
     <None Include="data\image\Arrow.png">
@@ -179,6 +228,12 @@
   <ItemGroup>
     <Filter Include="image">
       <UniqueIdentifier>{f5eb2076-a41f-4c37-a6d5-ed709b48fddd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Elephant">
+      <UniqueIdentifier>{6fe1ee6c-3246-4afd-9d98-578e40561b4b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SnowMan">
+      <UniqueIdentifier>{128cf23f-bdbb-4407-80b0-10dc1dd2e41d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -6,10 +6,11 @@
 #include "Item.h"
 #include "ManagerObject.h"
 #include "EffectSystem.h"
-
+#include "ElephantDie.h"
+#include "EffectInfoEle.h"
 Monster::Monster(void)
 {
-	m_HP =10;
+	m_HP = 2100;
 	Init();
 
 }
@@ -21,19 +22,21 @@ Monster::~Monster(void)
 }
 void Monster::Init()
 {
+	v_x = g_GodLike_Beast ;
 	setFrenzey(false);
 	m_Direct = 1;
-	count = 0 ;
-	setSize(50,85);
 	m_STT = ACTIVE;
-	m_Monster = RSMainGame::get()->getCharacter();
-	m_InfoSprite.setSize(300,200);
-	m_skillManager = new SkillManager();
-	m_skillManager->AddSkill(new Skill());
-	m_skillManager->AddSkill(new CallPet());
+	m_ElephantMove = RSMainGame::get()->getElephantMove() ;
+	m_InfoMove.setSize(128,120);
+	m_InfoMove.setDepth(0.2);
 
-// 	m_itemManager = new ItemManager();
-// 	m_itemManager->AddItem(new Item());
+	setSize(128,120);
+	m_Hit = false;
+
+	m_skillManager = new SkillManager();
+	m_skillManager->AddSkill(new ElephantAttack(this));
+
+
 }
 
 void Monster::ActiveSkill(int _Index)
@@ -44,7 +47,6 @@ void Monster::ActiveSkill(int _Index)
 		m_Vy = fabs (m_Vy);
 	}
 }
-
 bool Monster::iCollision(MyObject* _Obj)
 {
 	return false;
@@ -61,7 +63,7 @@ void Monster :: Move (float _Time, int** _Terrain,float _MaxWidth,float _MaxHeig
 #pragma  region RIGHT 
 	if(m_Direct > 0 )
 	{
-		NextX =m_X + _Time * g_VX;
+		NextX =m_X + _Time * v_x;
 
 		if (NextX >= _MaxWidth - m_Width) 
 		{
@@ -95,7 +97,7 @@ void Monster :: Move (float _Time, int** _Terrain,float _MaxWidth,float _MaxHeig
 #pragma  region LEFT
 	else if(m_Direct <0)
 	{
-		NextX= m_X - _Time* g_VX;
+		NextX= m_X - _Time* v_x;
 		if (NextX <= 0)
 		{
 			NextX = 0;
@@ -172,6 +174,7 @@ void Monster :: Move (float _Time, int** _Terrain,float _MaxWidth,float _MaxHeig
 	}
 void Monster::ProcessCollision(MyObject* _Obj)
 {
+	m_skillManager->ProcessCollision(_Obj);
 	if(!getRect().iCollision(_Obj->getRect()))
 	{
 		if(abs(_Obj->getX() - m_X ) < 400 ) 
@@ -186,44 +189,10 @@ void Monster::ProcessCollision(MyObject* _Obj)
 			}
 		}
 	}
-	if(getLife() == true)
+	if(abs(_Obj->getX() - m_X ) < 200 ) 
 	{
-		m_skillManager->ProcessCollision(_Obj);
-		if(getRect().iCollision(_Obj->getRect()))
-		{
-			if(_Obj->getDirection() > 0 && _Obj->getX() > m_X )
-			{
-				if(m_Direct <0)
-				{
-					m_Direct = 1 ;
-					m_X = m_X + 50;
-				}
-			}
-			else if(_Obj->getDirection() < 0 && _Obj->getX() < m_X )
-			{
-				if(m_Direct > 0)
-				{
-					m_Direct =-1 ;
-					m_X = m_X + 60;
-				}
-			}
-			if(!_Obj->getLife())
-			{
-				return ;
-			}
-        		ActiveSkill(0);		
-				int a = m_X;
-				if(m_X >a || m_X<a)
-				{
-					m_X = a ;
-				}
-		}
+		ActiveSkill(0);		
 	}
-// 	if(m_skillManager->getSkill(0)->getRect().iCollision(_Obj->getRect()))
-// 	{
-// 
-// 		ActiveSkill(1);	
-// 	}		
 }
 void Monster::Animation(float _Time){
 	m_TimeAni += _Time ;
@@ -233,14 +202,13 @@ void Monster::Animation(float _Time){
 		if (m_TimeAni>= 0.15f)
 		{
 			m_TimeAni -= 0.15f;
-
 			if (m_Vy != 0)
 			{
-				m_InfoSprite.setCurFrame(4);
+				m_InfoMove.setCurFrame(4);
 			}
 			else
 			{
-					m_InfoSprite.NextFrame(0,4);
+					m_InfoMove.NextFrame(0,7);
 			}
 		}
 		break;
@@ -266,7 +234,6 @@ void Monster::UpdateStatus(float _Time)
 				setFrenzey(false);
 				m_TimeUpdate =0;
 			}
-
 	}
 }
 
@@ -274,52 +241,54 @@ void Monster::Update(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeigh
 {
 	if(getLife() == false)
 	{
-		EffectSystem *_EffectDie = new EffectSystem(m_X,m_Y);
+		int random ;
+		random = rand() % 4 ;
+		switch(random)
+		{
+		case  0 :
+			Item *_item = new Item(m_X,m_Y);
+			ManagerObject::Instance()->getListItem()->push_back(_item);
+			break ;
+		
+		}
+
+
+		ElephantDie *_EffectDie = new ElephantDie (m_X,m_Y);
 		ManagerObject::Instance()->getListEffect()->push_back(_EffectDie);
-
-		Item *_item = new Item(m_X,m_Y);
-		ManagerObject::Instance()->getListItem()->push_back(_item);
 	}
-
-		Animation(_Time);
+	if(m_skillManager->getSkill(0)->getSTT()==ACTIVE)
+	{
+		m_skillManager->Update(_Time,_Terrain,_MaxWidth,_MaxHeight);
+	}
+	else if(m_skillManager->getSkill(0)->getSTT() !=ACTIVE)
+	{
 		if(getFrenzy() ==false)
 		{
 	      	Move(_Time,_Terrain,_MaxWidth,_MaxHeight);	
 		}
+		Animation(_Time);
 		UpdateStatus(_Time);
-		m_skillManager->Update(_Time,_Terrain,_MaxWidth,_MaxHeight);
+		m_skillManager->Update(_Time,_Terrain,_MaxWidth,_MaxHeight); //??
+	}
+
 }
 
 void Monster::Draw(D3DXMATRIX _MWorld,LPD3DXSPRITE _Handler)
 {
-	if(getLife() == true)
-	{	
-			m_skillManager->Draw(_MWorld,_Handler);
-
-			if( getActive() ==false)
-			{
-				if (timeGetTime()%400 >200)
-				{
-					return ;
-				}
-			}
-
 			if (m_skillManager->getSkill(0)->getSTT()==ACTIVE)
 			{
-				m_InfoSprite.setCurFrame(m_skillManager->getSkill(0)->getInfoSprite().getCurFrame());
+				m_skillManager->getSkill(0)->Draw(_MWorld,_Handler) ;
 			}
-
 			if (m_Direct<0){
-				m_InfoSprite.setScaleX(1);
+				m_InfoMove.setScaleX(1);
 			}else{
-				m_InfoSprite.setScaleX(-1);
+				m_InfoMove.setScaleX(-1);
 			}
-			m_InfoSprite.setXY(-125+m_X,-54+m_Y);
-
-			m_Monster->Draw(_MWorld,m_InfoSprite,_Handler);
-	}
-
+			if (m_skillManager->getSkill(0)->getSTT()!=ACTIVE)
+			{
+				m_InfoMove.setXY(m_X,m_Y);
+				m_ElephantMove->Draw(_MWorld,m_InfoMove,_Handler);
+			}
 }
 void  Monster::Release(){
-
 }

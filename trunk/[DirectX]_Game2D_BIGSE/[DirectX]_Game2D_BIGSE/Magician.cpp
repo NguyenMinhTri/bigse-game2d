@@ -6,6 +6,8 @@
 Magician::Magician(void)
 {
 	m_HP = 20000; 
+	Init();
+
 }
 
 

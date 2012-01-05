@@ -110,9 +110,6 @@ void State_Play::OnKeyDown(int KeyCode)
 
 	case DIK_NUMPAD9:
 		m_STT = FREEZETIME ;
-
-	
-	
 	}
 }
 

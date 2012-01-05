@@ -4,19 +4,21 @@
 #include "Skill.h"
 #include "SkillManager.h"
 #include "Item.h"
-
+#include "ElephantAttack.h"
 #include "Character.h"
 
-class Monster : public Character
+class Monster : public Character //Elephant 
 {
 protected:
-	int count ;
 	int m_Damage ;
-	int m_Mana ;
-	Sprite* m_Monster ;
+	float m_TimePrivate ;
+	int v_x ;
+	Sprite* m_ElephantMove ;
+	InfoSprite m_InfoMove ;
 	SkillManager *m_skillManager ; 
 
 public:
+	bool m_Hit ;
 	Monster(void);
 	~Monster(void);
 	virtual void Init () ;
