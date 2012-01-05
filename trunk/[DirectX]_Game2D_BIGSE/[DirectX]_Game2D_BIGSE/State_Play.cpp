@@ -44,8 +44,11 @@ void State_Play::Init()
 	m_Hero=new Hero();
 	m_Hero->setXY(0,0);
 
-	m_ObjectsCamera->push_back(m_Hero);
+	m_SnakeMans=new SnakeMans();
+	m_SnakeMans->setXY(600,650);
 
+	m_ObjectsCamera->push_back(m_Hero);
+	m_ListBoss->push_back(m_SnakeMans);
 
 #pragma endregion Init Character
 
@@ -93,16 +96,16 @@ void State_Play::OnKeyDown(int KeyCode)
 	{
 	
 	case DIK_C:
-		m_Hero->ActiveSkill(3);
-		break ;
-	case DIK_F:
 		m_Hero->ActiveSkill(0);
 		break ;
-	case DIK_E:
+	case DIK_F:
 		m_Hero->ActiveSkill(1);
 		break ;
-	case DIK_R:
+	case DIK_E:
 		m_Hero->ActiveSkill(2);
+		break ;
+	case DIK_R:
+		m_Hero->ActiveSkill(3);
 		break ;	
 
 	case DIK_NUMPAD9:

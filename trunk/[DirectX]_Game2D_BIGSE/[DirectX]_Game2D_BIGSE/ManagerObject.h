@@ -34,7 +34,10 @@ public:
 	{
 		return m_ListBoss;
 	}
-
+	std::vector<MyObject*>* getObjectCamera() 
+	{
+		return m_ObjectsCamera;
+	}
 	void setListBoss  (std::vector<MyObject*> *_ListBoss)
 	{
 		m_ListBoss = _ListBoss;

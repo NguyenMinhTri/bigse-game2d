@@ -21,16 +21,17 @@ void Hero_Attack1::Init()
 	m_TestBallFly=false;
 	m_VBallFly=100;
 	m_iCollision=false;
-	m_Damage = 1;
+	m_Damage = 3000;
 
 	m_STT = READY;
 	setSize(415,100);
 	m_Hero_Attack1Sprite = RSMainGame::get()->getHero_Attack1();
 	m_Hero_Attack1_BallSprite = RSMainGame::get()->getHero_Attack1_Ball();
 
+	m_Hero_Attack1_BallInfoSprite.setDepth(0.3f);
 	m_Hero_Attack1_BallInfoSprite.setSize(415,143);
 	m_Hero_Attack1InfoSprite.setSize(570,255);
-
+	m_Hero_Attack1InfoSprite.setDepth(0.3f);
 }
 void Hero_Attack1::Active(float _X,float _Y,int _Dir)
 {
@@ -102,7 +103,7 @@ void Hero_Attack1::UpdateStatus(float _Time)
 	{
 	case COOLDOWN:
 		m_TimeUpdate+= _Time;
-		if(m_TimeUpdate > 5)
+		if(m_TimeUpdate > 2)
 		{
 			m_STT = READY;
 			m_TimeUpdate = 0;
@@ -153,8 +154,9 @@ void Hero_Attack1::ProcessCollision(MyObject *_Obj)
 			}
 
 			_Obj->setActive(false);
+			_Obj->setFrenzey(true);
 			_Obj->setHp(_Obj->getHp() - getDamage());
-			if(_Obj->getHp() == 0)
+			if(_Obj->getHp() <= 0)
 			{
 				_Obj->setLife(false); 
 			}	
