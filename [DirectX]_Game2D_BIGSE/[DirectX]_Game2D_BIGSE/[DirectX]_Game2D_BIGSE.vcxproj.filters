@@ -60,6 +60,17 @@
     <ClCompile Include="EffectLeonDie.cpp" />
     <ClCompile Include="GodLike_Teleport.cpp" />
     <ClCompile Include="EffectFont.cpp" />
+    <ClCompile Include="Hero_Attack4.cpp" />
+    <ClCompile Include="Hero_Die.cpp" />
+    <ClCompile Include="LoadMap.cpp" />
+    <ClCompile Include="SnakeMens_Attack1.cpp" />
+    <ClCompile Include="SnakeMens_Effect1.cpp" />
+    <ClCompile Include="SnakeMens_Attack2.cpp" />
+    <ClCompile Include="SnakeMens_Effect2.cpp" />
+    <ClCompile Include="SnakeMens_Attack3.cpp" />
+    <ClCompile Include="SnakeMens_Attack4.cpp" />
+    <ClCompile Include="SnakeMens_Effect3.cpp" />
+    <ClCompile Include="SnakeMens_Die.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Arrow.h" />
@@ -121,6 +132,17 @@
     <ClInclude Include="EffectLeonDie.h" />
     <ClInclude Include="GodLike_Teleport.h" />
     <ClInclude Include="EffectFont.h" />
+    <ClInclude Include="Hero_Attack4.h" />
+    <ClInclude Include="Hero_Die.h" />
+    <ClInclude Include="LoadMap.h" />
+    <ClInclude Include="SnakeMens_Attack1.h" />
+    <ClInclude Include="SnakeMens_Effect1.h" />
+    <ClInclude Include="SnakeMens_Attack2.h" />
+    <ClInclude Include="SnakeMens_Effect2.h" />
+    <ClInclude Include="SnakeMens_Attack3.h" />
+    <ClInclude Include="SnakeMens_Attack4.h" />
+    <ClInclude Include="SnakeMens_Effect3.h" />
+    <ClInclude Include="SnakeMens_Die.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="data\image\Arrow.png">

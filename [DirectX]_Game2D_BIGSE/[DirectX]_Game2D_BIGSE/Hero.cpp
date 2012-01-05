@@ -32,7 +32,7 @@ void Hero::Init()
 
 	setSize(79,90);
 	m_STT=ACTIVE;
-	m_HP=50;
+	m_HP=500000;
 	m_skillManager = new SkillManager();
 	
 	m_skillManager->AddSkill(new Hero_Attack4(this));
@@ -87,6 +87,7 @@ void Hero::Animation(float _Time)
 
 		break;
 	}
+
 }
 
 void Hero::Update(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight)
@@ -109,17 +110,17 @@ void Hero::Update(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight)
 		}
 	}
 	else
-	if(m_skillManager->getSkill(0)->getSTT()==ACTIVE||m_skillManager->getSkill(1)->getSTT()==ACTIVE||m_skillManager->getSkill(2)->getSTT()==ACTIVE||m_skillManager->getSkill(3)->getSTT()==ACTIVE)
-	{
-		m_skillManager->Update(_Time,_Terrain,_MaxWidth,_MaxHeight);
-	}
-	else
-	{
-		UpdateStatus(_Time);
-		Animation(_Time);
-		Move(_Time,_Terrain,_MaxWidth,_MaxHeight);
-		m_skillManager->Update(_Time,_Terrain,_MaxWidth,_MaxHeight);
-	}
+		if(m_skillManager->getSkill(0)->getSTT()==ACTIVE||m_skillManager->getSkill(1)->getSTT()==ACTIVE||m_skillManager->getSkill(2)->getSTT()==ACTIVE||m_skillManager->getSkill(3)->getSTT()==ACTIVE)
+		{
+			m_skillManager->Update(_Time,_Terrain,_MaxWidth,_MaxHeight);
+		}
+		else
+		{
+			UpdateStatus(_Time);
+			Animation(_Time);
+			Move(_Time,_Terrain,_MaxWidth,_MaxHeight);
+			m_skillManager->Update(_Time,_Terrain,_MaxWidth,_MaxHeight);
+		}
 
 
 }

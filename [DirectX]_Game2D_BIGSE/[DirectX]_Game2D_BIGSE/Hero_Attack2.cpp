@@ -17,12 +17,13 @@ Hero_Attack2::~Hero_Attack2(void)
 void Hero_Attack2::Init()
 {
 	m_iCollision=false;
-	m_Damage = 1;
+	m_Damage = 2000;
 
 	m_STT = READY;
 	setSize(294,120);
 	m_Hero_Attack2Sprite = RSMainGame::get()->getHero_Attack2();
 	m_Hero_Attack2InfoSprite.setSize(294,164);
+	m_Hero_Attack2InfoSprite.setDepth(0.3f);
 
 }
 void Hero_Attack2::Active(float _X,float _Y,int _Dir)
@@ -68,14 +69,14 @@ void Hero_Attack2::Animation(float _Time)
 			}
 			if(m_Hero_Attack2InfoSprite.getCurFrame()>=13)
 			{
-				if (m_Direct<0)
-				{
-					m_Hero->setXY(m_Hero->getX()-160,m_Hero->getY());
-				}
-				else
-				{
-					m_Hero->setXY(m_Hero->getX()+160,m_Hero->getY());
-				}
+// 				if (m_Direct<0)
+// 				{
+// 					m_Hero->setXY(m_Hero->getX()-160,m_Hero->getY());
+// 				}
+// 				else
+// 				{
+// 					m_Hero->setXY(m_Hero->getX()+160,m_Hero->getY());
+// 				}
 				m_STT=COOLDOWN;
 				m_TimeAni=0;
 			}
@@ -92,7 +93,7 @@ void Hero_Attack2::UpdateStatus(float _Time)
 	{
 	case COOLDOWN:
 		m_TimeUpdate+= _Time;
-		if(m_TimeUpdate > 5)
+		if(m_TimeUpdate > 0.5f)
 		{
 			m_STT = READY;
 			m_TimeUpdate = 0;
@@ -136,7 +137,7 @@ void Hero_Attack2::ProcessCollision(MyObject *_Obj)
 
 		_Obj->setActive(false);
 		_Obj->setHp(_Obj->getHp() - getDamage());
-		if(_Obj->getHp() == 0)
+		if(_Obj->getHp() <= 0)
 		{
 			_Obj->setLife(false); 
 		}	

@@ -21,13 +21,13 @@ void Hero_Attack4::Init()
 	m_TestBallFly=false;
 	m_VBallFly=100;
 	m_iCollision=false;
-	m_Damage = 1;
+	m_Damage = 5000;
 	m_CountBall=10;
 	m_STT = READY;
 	setSize(212,251);
 	m_Hero_Attack4Sprite = RSMainGame::get()->getHero_Attack4();
 	m_Hero_Attack4InfoSprite.setSize(212,251);
-
+	m_Hero_Attack4InfoSprite.setDepth(0.3f);
 	m_ListHero_Attack4_BallInfoSprite=new std::vector<InfoSprite>();
 	m_ListHero_Attack4_BallSprite=new std::vector<Sprite*>();
 	for(int i=0;i<m_CountBall;i++)
@@ -36,6 +36,7 @@ void Hero_Attack4::Init()
 		m_ListHero_Attack4_BallSprite->push_back(Temp);
 		InfoSprite TempIF;
 		TempIF.setSize(97,150);
+		TempIF.setDepth(0.3f);
 		m_ListHero_Attack4_BallInfoSprite->push_back(TempIF);
 	}
 }
@@ -110,7 +111,7 @@ void Hero_Attack4::UpdateStatus(float _Time)
 	{
 	case COOLDOWN:
 		m_TimeUpdate+= _Time;
-		if(m_TimeUpdate > 5)
+		if(m_TimeUpdate > 3)
 		{
 			m_STT = READY;
 			m_TimeUpdate = 0;
@@ -165,7 +166,7 @@ void Hero_Attack4::ProcessCollision(MyObject *_Obj)
 
 				_Obj->setActive(false);
 				_Obj->setHp(_Obj->getHp() - getDamage());
-				if(_Obj->getHp() == 0)
+				if(_Obj->getHp() <= 0)
 				{
 					_Obj->setLife(false); 
 				}

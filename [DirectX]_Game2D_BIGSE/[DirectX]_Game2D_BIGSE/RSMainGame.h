@@ -42,10 +42,25 @@ private:
 	Sprite* m_EffectLeonDie_2 ;
 	Sprite* m_Teleport ;
 	Sprite* m_Teleport1 ;
-
+	////////////////////////////////
 	Sprite* m_SnakeMans_Move;
+	Sprite* m_SnakeMans_Die;
+	
+	Sprite* m_SnakeMans_attack1;
+	Sprite* m_SnakeMans_Attack1_Hit;
 
+	Sprite* m_SnakeMans_attack2;
+	Sprite* m_SnakeMans_Attack2_info_ball;
+	Sprite* m_SnakeMans_Attack2_info_hit;
 
+	Sprite* m_SnakeMans_attack3;
+	Sprite* m_SnakeMans_Attack3_Ball;
+	Sprite* m_SnakeMans_Attack3_Hit;
+
+	Sprite* m_SnakeMans_attack4;
+	Sprite* m_SnakeMans_Attack4_Ball;
+	Sprite* m_SnakeMans_Attack4_Hit;
+	////////////////////////////////
 	Sprite* m_Hero_Move;
 	Sprite* m_Hero_Stand;
 	Sprite* m_Hero_Attack1;
@@ -257,5 +272,54 @@ public:
 	{
 		return m_IC2;
 	}
+	Sprite* getSnakeMans_Die()
+	{
+		return m_SnakeMans_Die;
+	}
+	Sprite* getSnakeMans_attack1()
+	{
+		return m_SnakeMans_attack1;
+	}
+	Sprite* getSnakeMans_Attack1_Hit()
+	{
+		return m_SnakeMans_Attack1_Hit;
+	}
+	Sprite* getSnakeMans_Attack2()
+	{
+		return m_SnakeMans_attack2;
+	}
+	Sprite* getSnakeMans_Attack2_Ball()
+	{
+		return m_SnakeMans_Attack2_info_ball;
+	}
+	Sprite* getSnakeMans_Attack2_Hit()
+	{
+		return m_SnakeMans_Attack2_info_hit;
+	}
+	Sprite* getSnakeMans_Attack3()
+	{
+		return m_SnakeMans_attack3;
+	}
+	Sprite* getSnakeMans_Attack3_Ball()
+	{
+		return m_SnakeMans_Attack3_Ball;
+	}
+	Sprite* getSnakeMans_Attack3_Hit()
+	{
+		return m_SnakeMans_Attack3_Hit;
+	}
+	Sprite* getSnakeMans_Attack4()
+	{
+		return m_SnakeMans_attack4;
+	}
+	Sprite* getSnakeMans_Attack4_Ball()
+	{
+		return m_SnakeMans_Attack4_Ball;
+	}
+	Sprite* getSnakeMans_Attack4_Hit()
+	{
+		return m_SnakeMans_Attack4_Hit;
+	}
+
 };
 

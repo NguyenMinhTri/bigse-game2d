@@ -34,7 +34,7 @@ class State_Play :
 
 	
 	Hero* m_Hero;
-
+	SnakeMans* m_SnakeMans;
 	LPD3DXSPRITE m_Handle;
 	Terrain* m_Map;
 	Camera* m_Camera;

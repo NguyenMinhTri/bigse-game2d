@@ -52,8 +52,27 @@ void RSMainGame::IntRS(LPDIRECT3DDEVICE9 _Device){
 	m_Teleport1 = new Sprite(_Device,"data\\image\\TelePort1.png",568,574,4);
 	
 	m_FontNum = new Sprite(_Device,"data\\image\\num.png",37,39,10 );
-
+	/////////////////////////////////////
 	m_SnakeMans_Move = new Sprite(_Device,"data\\image\\SnakeMans_Move.png",202,269,6);
+	m_SnakeMans_Die=new Sprite(_Device,"data\\image\\SnakeMans_Die.png",312,421,10);
+
+	m_SnakeMans_attack1=new Sprite(_Device,"data\\image\\SnakeMans_attack1.png",721,280,5);
+	m_SnakeMans_Attack1_Hit=new Sprite(_Device,"data\\image\\SnakeMans_Attack1_Hit.png",200,135,5);
+
+	m_SnakeMans_attack2=new Sprite(_Device,"data\\image\\SnakeMans_attack2.png",523,385,5);
+	m_SnakeMans_Attack2_info_ball=new Sprite(_Device,"data\\image\\SnakeMans_Attack2_info_ball.png",103,103,15);
+	m_SnakeMans_Attack2_info_hit=new Sprite(_Device,"data\\image\\SnakeMans_Attack2_info_hit.png",181,201,6);
+
+	m_SnakeMans_attack3=new Sprite(_Device,"data\\image\\SnakeMans_attack3.png",456,371,5);
+	m_SnakeMans_Attack3_Ball=new Sprite(_Device,"data\\image\\SnakeMans_Attack3_Ball.png",237,465,5);
+	m_SnakeMans_Attack3_Hit=new Sprite(_Device,"data\\image\\SnakeMans_Attack3_Hit.png",216,195,6);
+
+	m_SnakeMans_attack4=new Sprite(_Device,"data\\image\\SnakeMens_attack4.png",328,522,5);
+	m_SnakeMans_Attack4_Ball=new Sprite(_Device,"data\\image\\SnakeMans_Attack4_Ball.png",622,563,4);
+	m_SnakeMans_Attack4_Hit=new Sprite(_Device,"data\\image\\SnakeMans_Attack4_Hit.png",209,200,6);
+	
+	
+	/////////////////////////////////////////
 	m_Hero_Move=new Sprite(_Device,"data\\image\\Hero_Move.png",79,103,6);
 	m_Hero_Stand=new Sprite(_Device,"data\\image\\Hero_Stand.png",79,98,4);
 	m_Hero_Attack1=new Sprite(_Device,"data\\image\\Hero_Attack1.png",570,255,4);
