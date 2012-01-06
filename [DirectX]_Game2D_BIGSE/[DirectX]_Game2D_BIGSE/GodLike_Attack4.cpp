@@ -7,6 +7,7 @@
 #include "EffectFrenzy.h"
 #include "EffectFont.h"
 
+
 GodLike_Attack4::GodLike_Attack4(GodLike_Beast* _GodLike)
 {
 
@@ -139,16 +140,16 @@ void GodLike_Attack4 :: Draw(D3DXMATRIX _MWorld,LPD3DXSPRITE _Handler)
 {
 	if (m_Direct>0)
 	{
-		m_InfoSprite4_1.setXY(m_X - 400,m_Y);
-		m_InfoSprite4_2.setXY(m_X - 400,m_Y);
+		m_InfoSprite4_1.setXY(m_X - 380,m_Y);
+		m_InfoSprite4_2.setXY(m_X - 380,m_Y);
 		m_InfoSprite4_1.setScaleX(-1);
 		m_InfoSprite4_2.setScaleX(-1) ;
 	}
 
 	else if(m_Direct<0)
 	{
-		m_InfoSprite4_1.setXY(m_X + 400,m_Y);
-		m_InfoSprite4_2.setXY(m_X + 400,m_Y);
+		m_InfoSprite4_1.setXY(m_X + 350,m_Y);
+		m_InfoSprite4_2.setXY(m_X + 350,m_Y);
 		m_InfoSprite4_1.setScaleX(1);
 		m_InfoSprite4_2.setScaleX(1);
 	}

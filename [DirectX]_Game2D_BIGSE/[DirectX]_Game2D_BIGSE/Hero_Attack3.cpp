@@ -146,11 +146,6 @@ void Hero_Attack3::ProcessCollision(MyObject *_Obj)
 				m_HeroEffect2->m_InfoSprite.setXY(_Obj->getX()+_Obj->getWidth()/2+25,r.Top);
 				ManagerObject::Instance()->getListEffect()->push_back(m_HeroEffect2);
 			}
-		
-
-
-
-
 		_Obj->setActive(false);
 		_Obj->setHp(_Obj->getHp() - getDamage());
 		if(_Obj->getHp() <= 0)
@@ -159,8 +154,6 @@ void Hero_Attack3::ProcessCollision(MyObject *_Obj)
 		}	
 	}
 }
-
-
 void Hero_Attack3::Update(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight)
 {
 	Animation(_Time);	

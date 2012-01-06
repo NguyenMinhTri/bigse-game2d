@@ -26,7 +26,7 @@ void GodLike_Attack1 ::Init()
 	m_Attack1  = RSMainGame::get()->getGodLikeAttack1() ;
 	m_InfoSprite1.setSize(802,607) ;
 
-	setSize(802,647);
+	setSize(780,647);
 	m_STT = READY ;
 }
 
@@ -126,10 +126,10 @@ void GodLike_Attack1 ::Draw(D3DXMATRIX _mtWorld,LPD3DXSPRITE _Handler)
 {
 	if (m_Direct<0){
 		m_InfoSprite1.setScaleX(1);
-			m_InfoSprite1.setXY(m_X + 50 ,m_Y - 60);
+			m_InfoSprite1.setXY(m_X - 110 ,m_Y - 60);
 	}else{
 		m_InfoSprite1.setScaleX(-1);
-	   m_InfoSprite1.setXY(m_X ,m_Y - 60);
+	   m_InfoSprite1.setXY(m_X  - 40,m_Y - 60);
 	}
 
 	m_Attack1->Draw(_mtWorld,m_InfoSprite1,_Handler);

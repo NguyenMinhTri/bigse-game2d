@@ -8,6 +8,9 @@
 #include "Monster.h"
 #include "SnowMan.h"
 #include "SnakeMans.h"
+#include "GateSpace.h"
+#include "Trap.h"
+#include "Bear.h"
 LoadMap::LoadMap(void)
 {
 	m_Width = 0;
@@ -184,6 +187,31 @@ void LoadMap::TranslateMap()
 				_SnowMan->setXY(i*50,j*50-60);
 				ManagerObject::Instance()->getQuadTree()->Insert(_SnowMan);
 			}
+			if (r==13)
+			{
+				Trap* m_Trap = new Trap();
+				m_Trap->setXY(i*50,j*50);
+				ManagerObject::Instance()->getSpecialObjects()->push_back(m_Trap);
+			}
+			if (r==14)
+			{
+				GateSpace* _SpaceGate = new GateSpace(1);
+				_SpaceGate->setXY(i*50,j*50);
+				ManagerObject::Instance()->getQuadTree()->Insert(_SpaceGate);
+			}
+			if(r==15)
+			{
+				GateSpace* _SpaceGate1 = new GateSpace(-1);
+				_SpaceGate1->setXY(i*50,j*50);
+				ManagerObject::Instance()->getQuadTree()->Insert(_SpaceGate1);
+			}
+			if(r==17)
+			{
+				Bear * m_Bear = new Bear() ;
+				m_Bear->setXY(i*50,j*50);
+				ManagerObject::Instance()->getQuadTree()->Insert(m_Bear);
+			}
+			
 
 		}
 	}

@@ -1,239 +1,224 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <ClCompile Include="Angle.cpp" />
+    <ClCompile Include="Archer.cpp" />
     <ClCompile Include="Arrow.cpp" />
     <ClCompile Include="CallPet.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="DXDevice.cpp" />
     <ClCompile Include="Effect.cpp" />
+    <ClCompile Include="EffectDieSnow.cpp" />
+    <ClCompile Include="EffectFont.cpp" />
+    <ClCompile Include="EffectFrenzy.cpp" />
+    <ClCompile Include="EffectHit.cpp" />
+    <ClCompile Include="EffectInfoEle.cpp" />
+    <ClCompile Include="EffectLaze.cpp" />
+    <ClCompile Include="EffectLeonDie.cpp" />
+    <ClCompile Include="EffectSound.cpp" />
+    <ClCompile Include="EffectSystem.cpp" />
+    <ClCompile Include="EffectThunder.cpp" />
+    <ClCompile Include="ElephantAttack.cpp" />
+    <ClCompile Include="ElephantDie.cpp" />
     <ClCompile Include="Frenzy.cpp" />
+    <ClCompile Include="FrenzyTime.cpp" />
     <ClCompile Include="GameApp.cpp" />
     <ClCompile Include="GamePlay.cpp" />
+    <ClCompile Include="GodLike_Attack1.cpp" />
+    <ClCompile Include="GodLike_Attack2.cpp" />
+    <ClCompile Include="GodLike_Attack3.cpp" />
+    <ClCompile Include="GodLike_Attack4.cpp" />
+    <ClCompile Include="GodLike_Beast.cpp" />
+    <ClCompile Include="GodLike_Teleport.cpp" />
+    <ClCompile Include="Hero.cpp" />
+    <ClCompile Include="Hero_Attack1.cpp" />
+    <ClCompile Include="Hero_Attack2.cpp" />
+    <ClCompile Include="Hero_Attack3.cpp" />
+    <ClCompile Include="Hero_Attack4.cpp" />
+    <ClCompile Include="Hero_Die.cpp" />
+    <ClCompile Include="Hero_Effect1.cpp" />
+    <ClCompile Include="Hero_Effect2.cpp" />
     <ClCompile Include="InfoSprite.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="iPlay.cpp" />
     <ClCompile Include="iState.cpp" />
     <ClCompile Include="Item.cpp" />
+    <ClCompile Include="LoadMap.cpp" />
     <ClCompile Include="Magician.cpp" />
     <ClCompile Include="ManagerObject.cpp" />
+    <ClCompile Include="Monster.cpp" />
     <ClCompile Include="MyObject.cpp" />
+    <ClCompile Include="Pet.cpp" />
+    <ClCompile Include="QuadTree.cpp" />
+    <ClCompile Include="QuadTreeNode.cpp" />
     <ClCompile Include="RECT.cpp" />
     <ClCompile Include="RSMainGame.cpp" />
     <ClCompile Include="Skill.cpp" />
+    <ClCompile Include="SkillAngle.cpp" />
     <ClCompile Include="SkillArcher.cpp" />
     <ClCompile Include="SkillHit.cpp" />
     <ClCompile Include="SkillMagician.cpp" />
     <ClCompile Include="SkillManager.cpp" />
+    <ClCompile Include="SnakeMans.cpp" />
+    <ClCompile Include="SnowMan.cpp" />
+    <ClCompile Include="SnowManAttack.cpp" />
+    <ClCompile Include="SnakeMens_Attack1.cpp" />
+    <ClCompile Include="SnakeMens_Attack2.cpp" />
+    <ClCompile Include="SnakeMens_Attack3.cpp" />
+    <ClCompile Include="SnakeMens_Attack4.cpp" />
+    <ClCompile Include="SnakeMens_Die.cpp" />
+    <ClCompile Include="SnakeMens_Effect1.cpp" />
+    <ClCompile Include="SnakeMens_Effect2.cpp" />
+    <ClCompile Include="SnakeMens_Effect3.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="State_Play.cpp" />
     <ClCompile Include="Terrain.cpp" />
+    <ClCompile Include="Thunder.cpp" />
     <ClCompile Include="Winform.cpp" />
     <ClCompile Include="WinMain.cpp" />
-    <ClCompile Include="Pet.cpp" />
-    <ClCompile Include="Angle.cpp" />
-    <ClCompile Include="SkillAngle.cpp" />
-    <ClCompile Include="Thunder.cpp" />
-    <ClCompile Include="EffectSystem.cpp" />
-    <ClCompile Include="EffectFrenzy.cpp" />
-    <ClCompile Include="FrenzyTime.cpp" />
-    <ClCompile Include="GodLike_Beast.cpp" />
-    <ClCompile Include="GodLike_Attack1.cpp" />
-    <ClCompile Include="GodLike_Attack2.cpp" />
-    <ClCompile Include="GodLike_Attack3.cpp" />
-    <ClCompile Include="SnakeMans.cpp" />
-    <ClCompile Include="Hero.cpp" />
-    <ClCompile Include="Hero_Attack1.cpp" />
-    <ClCompile Include="GodLike_Attack4.cpp" />
-    <ClCompile Include="EffectLaze.cpp" />
-    <ClCompile Include="EffectSound.cpp" />
-    <ClCompile Include="EffectThunder.cpp" />
-    <ClCompile Include="EffectHit.cpp" />
-    <ClCompile Include="Hero_Attack2.cpp" />
-    <ClCompile Include="Hero_Effect1.cpp" />
-    <ClCompile Include="Hero_Attack3.cpp" />
-    <ClCompile Include="Hero_Effect2.cpp" />
-    <ClCompile Include="Archer.cpp" />
-    <ClCompile Include="QuadTree.cpp" />
-    <ClCompile Include="QuadTreeNode.cpp" />
-    <ClCompile Include="EffectLeonDie.cpp" />
-    <ClCompile Include="GodLike_Teleport.cpp" />
-    <ClCompile Include="EffectFont.cpp" />
-<<<<<<< .mine
-    <ClCompile Include="Hero_Attack4.cpp" />
-    <ClCompile Include="Hero_Die.cpp" />
-    <ClCompile Include="LoadMap.cpp" />
-    <ClCompile Include="Monster.cpp">
-      <Filter>Elephant</Filter>
+    <ClCompile Include="Trap.cpp" />
+    <ClCompile Include="GateSpace.cpp" />
+    <ClCompile Include="Bear.cpp">
+      <Filter>Bear</Filter>
     </ClCompile>
-    <ClCompile Include="ElephantAttack.cpp">
-      <Filter>Elephant</Filter>
+    <ClCompile Include="BearAttack.cpp">
+      <Filter>Bear</Filter>
     </ClCompile>
-    <ClCompile Include="ElephantDie.cpp">
-      <Filter>Elephant</Filter>
+    <ClCompile Include="EffectDieBear.cpp">
+      <Filter>Bear</Filter>
     </ClCompile>
-    <ClCompile Include="EffectInfoEle.cpp">
-      <Filter>Elephant</Filter>
-    </ClCompile>
-    <ClCompile Include="SnowMan.cpp">
-      <Filter>SnowMan</Filter>
-    </ClCompile>
-    <ClCompile Include="SnowManAttack.cpp">
-      <Filter>SnowMan</Filter>
-    </ClCompile>
-    <ClCompile Include="EffectDieSnow.cpp" />
-=======
-    <ClCompile Include="Hero_Attack4.cpp" />
-    <ClCompile Include="Hero_Die.cpp" />
-    <ClCompile Include="LoadMap.cpp" />
-    <ClCompile Include="SnakeMens_Attack1.cpp" />
-    <ClCompile Include="SnakeMens_Effect1.cpp" />
-    <ClCompile Include="SnakeMens_Attack2.cpp" />
-    <ClCompile Include="SnakeMens_Effect2.cpp" />
-    <ClCompile Include="SnakeMens_Attack3.cpp" />
-    <ClCompile Include="SnakeMens_Attack4.cpp" />
-    <ClCompile Include="SnakeMens_Effect3.cpp" />
-    <ClCompile Include="SnakeMens_Die.cpp" />
->>>>>>> .r59
+    <ClCompile Include="StateWorldMap.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Angle.h" />
+    <ClInclude Include="Archer.h" />
     <ClInclude Include="Arrow.h" />
     <ClInclude Include="CallPet.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Character.h" />
     <ClInclude Include="DXDevice.h" />
     <ClInclude Include="Effect.h" />
+    <ClInclude Include="EffectDieSnow.h" />
+    <ClInclude Include="EffectFont.h" />
+    <ClInclude Include="EffectFrenzy.h" />
+    <ClInclude Include="EffectHit.h" />
+    <ClInclude Include="EffectInfoEle.h" />
+    <ClInclude Include="EffectLaze.h" />
+    <ClInclude Include="EffectLeonDie.h" />
+    <ClInclude Include="EffectSound.h" />
+    <ClInclude Include="EffectSystem.h" />
+    <ClInclude Include="EffectThunder.h" />
+    <ClInclude Include="ElephantAttack.h" />
+    <ClInclude Include="ElephantDie.h" />
     <ClInclude Include="Frenzy.h" />
+    <ClInclude Include="FrenzyTime.h" />
     <ClInclude Include="GameApp.h" />
     <ClInclude Include="GamePlay.h" />
     <ClInclude Include="Global.h" />
+    <ClInclude Include="GodLike_Attack1.h" />
+    <ClInclude Include="GodLike_Attack2.h" />
+    <ClInclude Include="GodLike_Attack3.h" />
+    <ClInclude Include="GodLike_Attack4.h" />
+    <ClInclude Include="GodLike_Beast.h" />
+    <ClInclude Include="GodLike_Teleport.h" />
+    <ClInclude Include="Hero.h" />
+    <ClInclude Include="Hero_Attack1.h" />
+    <ClInclude Include="Hero_Attack2.h" />
+    <ClInclude Include="Hero_Attack3.h" />
+    <ClInclude Include="Hero_Attack4.h" />
+    <ClInclude Include="Hero_Die.h" />
+    <ClInclude Include="Hero_Effect1.h" />
+    <ClInclude Include="Hero_Effect2.h" />
     <ClInclude Include="InfoSprite.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="iPlay.h" />
     <ClInclude Include="iState.h" />
     <ClInclude Include="Item.h" />
+    <ClInclude Include="LoadMap.h" />
     <ClInclude Include="Magician.h" />
     <ClInclude Include="ManagerObject.h" />
+    <ClInclude Include="Monster.h" />
     <ClInclude Include="MyObject.h" />
+    <ClInclude Include="Pet.h" />
+    <ClInclude Include="QuadTree.h" />
+    <ClInclude Include="QuadTreeNode.h" />
     <ClInclude Include="RECT.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="RSMainGame.h" />
     <ClInclude Include="Skill.h" />
+    <ClInclude Include="SkillAngle.h" />
     <ClInclude Include="SkillArcher.h" />
     <ClInclude Include="SkillHit.h" />
     <ClInclude Include="SkillMagician.h" />
     <ClInclude Include="SkillManager.h" />
+    <ClInclude Include="SnakeMans.h" />
+    <ClInclude Include="SnowMan.h" />
+    <ClInclude Include="SnowManAttack.h" />
+    <ClInclude Include="SnakeMens_Attack1.h" />
+    <ClInclude Include="SnakeMens_Attack2.h" />
+    <ClInclude Include="SnakeMens_Attack3.h" />
+    <ClInclude Include="SnakeMens_Attack4.h" />
+    <ClInclude Include="SnakeMens_Die.h" />
+    <ClInclude Include="SnakeMens_Effect1.h" />
+    <ClInclude Include="SnakeMens_Effect2.h" />
+    <ClInclude Include="SnakeMens_Effect3.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="State_Play.h" />
     <ClInclude Include="Terrain.h" />
-    <ClInclude Include="Winform.h" />
-    <ClInclude Include="Pet.h" />
-    <ClInclude Include="Angle.h" />
-    <ClInclude Include="SkillAngle.h" />
     <ClInclude Include="Thunder.h" />
-    <ClInclude Include="EffectSystem.h" />
-    <ClInclude Include="EffectFrenzy.h" />
-    <ClInclude Include="FrenzyTime.h" />
-    <ClInclude Include="GodLike_Beast.h" />
-    <ClInclude Include="GodLike_Attack1.h" />
-    <ClInclude Include="GodLike_Attack2.h" />
-    <ClInclude Include="GodLike_Attack3.h" />
-    <ClInclude Include="SnakeMans.h" />
-    <ClInclude Include="Hero.h" />
-    <ClInclude Include="Hero_Attack1.h" />
-    <ClInclude Include="GodLike_Attack4.h" />
-    <ClInclude Include="EffectLaze.h" />
-    <ClInclude Include="EffectSound.h" />
-    <ClInclude Include="EffectThunder.h" />
-    <ClInclude Include="EffectHit.h" />
-    <ClInclude Include="Hero_Attack2.h" />
-    <ClInclude Include="Hero_Effect1.h" />
-    <ClInclude Include="Hero_Attack3.h" />
-    <ClInclude Include="Hero_Effect2.h" />
-    <ClInclude Include="Archer.h" />
-    <ClInclude Include="QuadTree.h" />
-    <ClInclude Include="QuadTreeNode.h" />
-    <ClInclude Include="EffectLeonDie.h" />
-    <ClInclude Include="GodLike_Teleport.h" />
-    <ClInclude Include="EffectFont.h" />
-<<<<<<< .mine
-    <ClInclude Include="Hero_Attack4.h" />
-    <ClInclude Include="Hero_Die.h" />
-    <ClInclude Include="LoadMap.h" />
-    <ClInclude Include="Monster.h">
-      <Filter>Elephant</Filter>
+    <ClInclude Include="Winform.h" />
+    <ClInclude Include="Trap.h" />
+    <ClInclude Include="GateSpace.h" />
+    <ClInclude Include="Bear.h">
+      <Filter>Bear</Filter>
     </ClInclude>
-    <ClInclude Include="ElephantAttack.h">
-      <Filter>Elephant</Filter>
+    <ClInclude Include="BearAttack.h">
+      <Filter>Bear</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h" />
-    <ClInclude Include="ElephantDie.h">
-      <Filter>Elephant</Filter>
+    <ClInclude Include="EffectDieBear.h">
+      <Filter>Bear</Filter>
     </ClInclude>
-    <ClInclude Include="EffectInfoEle.h">
-      <Filter>Elephant</Filter>
-    </ClInclude>
-    <ClInclude Include="SnowMan.h">
-      <Filter>SnowMan</Filter>
-    </ClInclude>
-    <ClInclude Include="SnowManAttack.h">
-      <Filter>SnowMan</Filter>
-    </ClInclude>
-    <ClInclude Include="EffectDieSnow.h" />
-=======
-    <ClInclude Include="Hero_Attack4.h" />
-    <ClInclude Include="Hero_Die.h" />
-    <ClInclude Include="LoadMap.h" />
-    <ClInclude Include="SnakeMens_Attack1.h" />
-    <ClInclude Include="SnakeMens_Effect1.h" />
-    <ClInclude Include="SnakeMens_Attack2.h" />
-    <ClInclude Include="SnakeMens_Effect2.h" />
-    <ClInclude Include="SnakeMens_Attack3.h" />
-    <ClInclude Include="SnakeMens_Attack4.h" />
-    <ClInclude Include="SnakeMens_Effect3.h" />
-    <ClInclude Include="SnakeMens_Die.h" />
->>>>>>> .r59
+    <ClInclude Include="StateWorldMap.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="data\image\Arrow.png">
-      <Filter>image</Filter>
-    </None>
     <None Include="data\image\callpet.png">
-      <Filter>image</Filter>
+      <Filter>Image</Filter>
     </None>
-    <None Include="data\image\character.png">
-      <Filter>image</Filter>
-    </None>
-    <None Include="data\image\character1.png">
-      <Filter>image</Filter>
+    <None Include="data\image\Arrow.png">
+      <Filter>Image</Filter>
     </None>
     <None Include="data\image\cungthu.png">
-      <Filter>image</Filter>
+      <Filter>Image</Filter>
     </None>
-    <None Include="data\image\Ice.png">
-      <Filter>image</Filter>
+    <None Include="data\image\character1.png">
+      <Filter>Image</Filter>
     </None>
-    <None Include="data\image\Magician.png">
-      <Filter>image</Filter>
-    </None>
-    <None Include="data\image\mario.png">
-      <Filter>image</Filter>
-    </None>
-    <None Include="data\image\Medicine.png">
-      <Filter>image</Filter>
+    <None Include="data\image\character.png">
+      <Filter>Image</Filter>
     </None>
     <None Include="data\image\ter.png">
-      <Filter>image</Filter>
+      <Filter>Image</Filter>
+    </None>
+    <None Include="data\image\Medicine.png">
+      <Filter>Image</Filter>
+    </None>
+    <None Include="data\image\mario.png">
+      <Filter>Image</Filter>
+    </None>
+    <None Include="data\image\Magician.png">
+      <Filter>Image</Filter>
+    </None>
+    <None Include="data\image\Ice.png">
+      <Filter>Image</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="image">
-      <UniqueIdentifier>{f5eb2076-a41f-4c37-a6d5-ed709b48fddd}</UniqueIdentifier>
+    <Filter Include="Image">
+      <UniqueIdentifier>{dd6d873b-665f-4ac7-9920-be3b8caf48c2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Elephant">
-      <UniqueIdentifier>{6fe1ee6c-3246-4afd-9d98-578e40561b4b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="SnowMan">
-      <UniqueIdentifier>{128cf23f-bdbb-4407-80b0-10dc1dd2e41d}</UniqueIdentifier>
+    <Filter Include="Bear">
+      <UniqueIdentifier>{098ef692-5881-42ee-ad82-3e4adc720d1d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

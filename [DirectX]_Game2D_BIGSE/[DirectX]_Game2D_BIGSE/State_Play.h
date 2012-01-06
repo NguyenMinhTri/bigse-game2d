@@ -27,6 +27,7 @@ class State_Play :
 	std::vector<EffectSystem*> *m_ListEffect;
 	std::vector<MyObject*> *m_ListMonster ;
 	std::vector<MyObject*> *m_ListBoss ;
+	std::vector<MyObject*> *m_SpecialObject ;
 
 	int m_STT ;
 	QuadTree* m_QuadTree;

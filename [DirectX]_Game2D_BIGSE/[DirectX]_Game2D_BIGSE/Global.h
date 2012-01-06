@@ -12,12 +12,14 @@ enum STATE
 	PLAY,
 	MENU,
 	ABOUT,
-	EXIT
+	EXIT,
+	WorldMap
 };
 
 enum ID
 {
 	PLAYER,
+
 };
 enum STT 
 {

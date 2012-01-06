@@ -13,7 +13,7 @@ private:
 	std::vector<MyObject*> *m_ObjectsCamera;
 	std::vector<MyObject*> *m_ListMonster ;
 	std::vector<MyObject*> *m_ListBoss ;
-
+	std::vector<MyObject*> *m_SpecialObject ;
 	std::vector<EffectSystem*> *m_ListEffect ;
 	QuadTree* m_QuadTree;
 
@@ -30,6 +30,7 @@ public:
 		}
 		return m_Instance;
 	}
+
 	std::vector<MyObject*>* getListBoss  () 
 	{
 		return m_ListBoss;
@@ -38,6 +39,7 @@ public:
 	{
 		return m_ObjectsCamera;
 	}
+
 	void setListBoss  (std::vector<MyObject*> *_ListBoss)
 	{
 		m_ListBoss = _ListBoss;
@@ -95,6 +97,16 @@ public:
 	std::vector<MyObject*>* getObjects () 
 	{
 		return m_ObjectsCamera;
+	}
+
+	void setSpecialObjects (std::vector<MyObject*> *_Object)
+	{
+		m_SpecialObject = _Object;
+	}
+
+	std::vector<MyObject*>* getSpecialObjects () 
+	{
+		return m_SpecialObject;
 	}
 };
 

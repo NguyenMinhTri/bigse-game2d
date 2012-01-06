@@ -1,7 +1,7 @@
 #pragma once
 #include "GamePlay.h"
-
 #include "State_Play.h"
+#include "StateWorldMap.h"
 
 GamePlay::GamePlay(LPDIRECT3DDEVICE9 Device):iPlay(Device)
 {
