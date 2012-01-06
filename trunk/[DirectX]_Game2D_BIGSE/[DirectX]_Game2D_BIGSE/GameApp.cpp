@@ -167,8 +167,12 @@ void GameApp::ProcessMouse()
 		//mouse device lose, try to re-acquire
 		m_Mouse->Acquire();
 	}
+	else
+	{
+		GetCursorPos(&Postion);
+		ScreenToClient(m_form->getHWND(), &Postion);
+		m_GamePlay->GetCurState()->ProcessMouse(mouseState,Postion);
+	}
 	//get mouse position on screen
-	GetCursorPos(&Postion);
-	ScreenToClient(m_form->getHWND(), &Postion);
-	m_GamePlay->GetCurState()->ProcessMouse(mouseState,Postion);
+	
 }

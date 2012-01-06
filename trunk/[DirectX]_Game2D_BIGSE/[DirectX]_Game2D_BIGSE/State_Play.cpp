@@ -25,12 +25,14 @@ void State_Play::Init()
 	m_ListMonster = new std ::vector<MyObject*>();
 	m_ListEffect = new std::vector<EffectSystem*>();
 	m_ListBoss = new std ::vector<MyObject*>();
+	m_SpecialObject = new std ::vector<MyObject*>();
 
 	ManagerObject::Instance()->setListObject(m_ListItem);
 	ManagerObject::Instance()->setObjects(m_ObjectsCamera);
 	ManagerObject::Instance()->setListEffect(m_ListEffect);
 	ManagerObject::Instance()->setListMonster(m_ListMonster);
 	ManagerObject::Instance()->setListBoss(m_ListBoss);
+	ManagerObject::Instance()->setSpecialObjects(m_SpecialObject);
 
 	D3DXCreateSprite(m_Device,&m_Handle);
 
@@ -228,6 +230,16 @@ void State_Play::Update(float _Time)
 		}		
 	}
 	/************************************************************************/
+	/*  Collision Special vs Object                                        */
+	/************************************************************************/	
+	for (std::vector<MyObject*>::iterator i = m_SpecialObject->begin();i!= m_SpecialObject->end();i++)
+	{		
+		for (std::vector<MyObject*>::iterator j = m_ObjectsCamera->begin();j!= m_ObjectsCamera->end();j++)
+		{
+			(*i)->ProcessCollision(*j);
+		}		
+	}
+	/************************************************************************/
 	/*  Collision Object vs Monster                                        */
 	/************************************************************************/	
 	for (std::vector<MyObject*>::iterator i = m_ObjectsCamera->begin();i!= m_ObjectsCamera->end();i++)
@@ -252,12 +264,11 @@ void State_Play::Update(float _Time)
 	/************************************************************************/
 	/*  Collision Object vs item                                            */
 	/************************************************************************/
-	for (std::vector<MyObject*>::iterator i = m_ObjectsCamera->begin();i!= m_ObjectsCamera->end();i++)
+	for (std::vector<MyObject*>::iterator i = m_ListItem->begin();i!= m_ListItem->end();i++)
 	{		
-		for (std::vector<MyObject*>::iterator j = m_ListItem->begin();j!= m_ListItem->end();j++)
+		for (std::vector<MyObject*>::iterator j = m_ObjectsCamera->begin();j!= m_ObjectsCamera->end();j++)
 		{
 			(*i)->ProcessCollision(*j);
-			(*j)->ProcessCollision(*i);
 		}		
 	}
 
@@ -309,7 +320,9 @@ void State_Play::Draw()
 			(*i)->Draw(m_mtWorld,m_Handle);			
 		}
 
-		for (std::vector<MyObject*>::iterator i = m_ListBoss->begin();i!= m_ListBoss->end();i++)
+	
+
+		for (std::vector<MyObject*>::iterator i = m_SpecialObject->begin();i!= m_SpecialObject->end();i++)
 		{
 			(*i)->Draw(m_mtWorld,m_Handle);   
 		}

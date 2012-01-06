@@ -82,7 +82,6 @@ void Hero::Animation(float _Time)
 				}
 			}
 		}
-
 		break;
 	}
 

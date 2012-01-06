@@ -1,38 +1,34 @@
-#include "SnowMan.h"
-#include "RSMainGame.h"
+#include "Bear.h"
 #include "ManagerObject.h"
-#include "Item.h"
-#include "SnowManAttack.h"
-#include "EffectDieSnow.h"
-
-SnowMan::SnowMan(void)
+#include "BearAttack.h"
+#include "EffectDieBear.h"
+Bear::Bear(void)
 {
 	Init();
 }
 
 
-SnowMan::~SnowMan(void)
+Bear::~Bear(void)
 {
+	
 }
-void SnowMan ::Init()
+void Bear ::Init()
 {
 	v_x = g_GodLike_Beast ;
 	setFrenzey(false);
 	m_Direct = 1;
 	m_STT = ACTIVE;
-	m_SnowManMove= RSMainGame::get()->getSnowManMove() ;
-	m_InfoMove.setSize(121,111);
+	m_BearMove= RSMainGame::get()->getBearMove() ;
+	m_InfoMove.setSize(78,87);
 	m_InfoMove.setDepth(0.2);
-
 	m_HP = 2100 ;
-	setSize(121,111);
+	setSize(78,87);
 	m_Hit = false;
-
 	m_skillManager = new SkillManager();
-	m_skillManager->AddSkill(new SnowManAttack(this));
+	m_skillManager->AddSkill(new BearAttack(this));
 }
-void SnowMan ::Animation(float _Time)
-{
+void Bear ::Animation(float _Time)
+{	
 	m_TimeAni += _Time ;
 	switch (m_STT)
 	{
@@ -46,13 +42,13 @@ void SnowMan ::Animation(float _Time)
 			}
 			else
 			{
-				m_InfoMove.NextFrame(0,3);
+				m_InfoMove.NextFrame(0,5);
 			}
 		}
 		break;
 	}
 }
-void SnowMan ::UpdateStatus(float _Time)
+void Bear ::UpdateStatus(float _Time)
 {
 	if(!m_iActive )
 	{
@@ -73,7 +69,7 @@ void SnowMan ::UpdateStatus(float _Time)
 		}
 	}
 }
-void SnowMan ::ProcessCollision(MyObject* _Obj)
+void Bear ::ProcessCollision(MyObject* _Obj)
 {
 	m_skillManager->ProcessCollision(_Obj);
 	if(!getRect().iCollision(_Obj->getRect()))
@@ -95,7 +91,7 @@ void SnowMan ::ProcessCollision(MyObject* _Obj)
 		ActiveSkill(0);		
 	}
 }
-void SnowMan ::Update(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight)
+void Bear::Update(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight)
 {
 	if(getLife() == false)
 	{
@@ -109,7 +105,7 @@ void SnowMan ::Update(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeig
 			break ;
 
 		}
-		EffectDieSnow *_EffectDie = new EffectDieSnow(m_X,m_Y);
+		EffectDieBear *_EffectDie = new EffectDieBear(this,m_X,m_Y);
 		ManagerObject ::Instance()->getListEffect()->push_back(_EffectDie);
 	}
 	if(m_skillManager->getSkill(0)->getSTT()==ACTIVE)
@@ -127,7 +123,7 @@ void SnowMan ::Update(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeig
 		m_skillManager->Update(_Time,_Terrain,_MaxWidth,_MaxHeight); //??
 	}
 }
-void SnowMan ::Draw(D3DXMATRIX _MWorld,LPD3DXSPRITE _Handler)
+void Bear::Draw(D3DXMATRIX _MWorld,LPD3DXSPRITE _Handler)
 {
 	if (m_skillManager->getSkill(0)->getSTT()==ACTIVE)
 	{
@@ -141,11 +137,10 @@ void SnowMan ::Draw(D3DXMATRIX _MWorld,LPD3DXSPRITE _Handler)
 	if (m_skillManager->getSkill(0)->getSTT()!=ACTIVE)
 	{
 		m_InfoMove.setXY(m_X,m_Y);
-		m_SnowManMove->Draw(_MWorld,m_InfoMove,_Handler);
+		m_BearMove->Draw(_MWorld,m_InfoMove,_Handler);
 	}
 }
-
-void SnowMan ::Release()
+void Bear ::Release()
 {
 
 }

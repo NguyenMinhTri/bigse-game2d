@@ -80,11 +80,14 @@
     <ClCompile Include="Angle.cpp" />
     <ClCompile Include="Archer.cpp" />
     <ClCompile Include="Arrow.cpp" />
+    <ClCompile Include="Bear.cpp" />
+    <ClCompile Include="BearAttack.cpp" />
     <ClCompile Include="CallPet.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="DXDevice.cpp" />
     <ClCompile Include="Effect.cpp" />
+    <ClCompile Include="EffectDieBear.cpp" />
     <ClCompile Include="EffectDieSnow.cpp" />
     <ClCompile Include="EffectFont.cpp" />
     <ClCompile Include="EffectFrenzy.cpp" />
@@ -101,6 +104,7 @@
     <ClCompile Include="FrenzyTime.cpp" />
     <ClCompile Include="GameApp.cpp" />
     <ClCompile Include="GamePlay.cpp" />
+    <ClCompile Include="GateSpace.cpp" />
     <ClCompile Include="GodLike_Attack1.cpp" />
     <ClCompile Include="GodLike_Attack2.cpp" />
     <ClCompile Include="GodLike_Attack3.cpp" />
@@ -137,10 +141,8 @@
     <ClCompile Include="SkillMagician.cpp" />
     <ClCompile Include="SkillManager.cpp" />
     <ClCompile Include="SnakeMans.cpp" />
-
     <ClCompile Include="SnowMan.cpp" />
     <ClCompile Include="SnowManAttack.cpp" />
-
     <ClCompile Include="SnakeMens_Attack1.cpp" />
     <ClCompile Include="SnakeMens_Attack2.cpp" />
     <ClCompile Include="SnakeMens_Attack3.cpp" />
@@ -149,11 +151,12 @@
     <ClCompile Include="SnakeMens_Effect1.cpp" />
     <ClCompile Include="SnakeMens_Effect2.cpp" />
     <ClCompile Include="SnakeMens_Effect3.cpp" />
-
     <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="StateWorldMap.cpp" />
     <ClCompile Include="State_Play.cpp" />
     <ClCompile Include="Terrain.cpp" />
     <ClCompile Include="Thunder.cpp" />
+    <ClCompile Include="Trap.cpp" />
     <ClCompile Include="Winform.cpp" />
     <ClCompile Include="WinMain.cpp" />
   </ItemGroup>
@@ -161,11 +164,14 @@
     <ClInclude Include="Angle.h" />
     <ClInclude Include="Archer.h" />
     <ClInclude Include="Arrow.h" />
+    <ClInclude Include="Bear.h" />
+    <ClInclude Include="BearAttack.h" />
     <ClInclude Include="CallPet.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Character.h" />
     <ClInclude Include="DXDevice.h" />
     <ClInclude Include="Effect.h" />
+    <ClInclude Include="EffectDieBear.h" />
     <ClInclude Include="EffectDieSnow.h" />
     <ClInclude Include="EffectFont.h" />
     <ClInclude Include="EffectFrenzy.h" />
@@ -182,6 +188,7 @@
     <ClInclude Include="FrenzyTime.h" />
     <ClInclude Include="GameApp.h" />
     <ClInclude Include="GamePlay.h" />
+    <ClInclude Include="GateSpace.h" />
     <ClInclude Include="Global.h" />
     <ClInclude Include="GodLike_Attack1.h" />
     <ClInclude Include="GodLike_Attack2.h" />
@@ -220,10 +227,8 @@
     <ClInclude Include="SkillMagician.h" />
     <ClInclude Include="SkillManager.h" />
     <ClInclude Include="SnakeMans.h" />
-
     <ClInclude Include="SnowMan.h" />
     <ClInclude Include="SnowManAttack.h" />
-
     <ClInclude Include="SnakeMens_Attack1.h" />
     <ClInclude Include="SnakeMens_Attack2.h" />
     <ClInclude Include="SnakeMens_Attack3.h" />
@@ -232,11 +237,12 @@
     <ClInclude Include="SnakeMens_Effect1.h" />
     <ClInclude Include="SnakeMens_Effect2.h" />
     <ClInclude Include="SnakeMens_Effect3.h" />
-
     <ClInclude Include="Sprite.h" />
+    <ClInclude Include="StateWorldMap.h" />
     <ClInclude Include="State_Play.h" />
     <ClInclude Include="Terrain.h" />
     <ClInclude Include="Thunder.h" />
+    <ClInclude Include="Trap.h" />
     <ClInclude Include="Winform.h" />
   </ItemGroup>
   <ItemGroup>

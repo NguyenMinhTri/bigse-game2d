@@ -4,8 +4,7 @@
 #include "Global.h"
 #include "Character.h"
 
-class Pet :
-	public Skill
+class Pet :public Skill
 {
 protected:
 	enum P_STT

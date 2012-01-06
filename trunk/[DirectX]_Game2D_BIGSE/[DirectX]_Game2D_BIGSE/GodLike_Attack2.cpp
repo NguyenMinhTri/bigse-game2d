@@ -21,7 +21,7 @@ void GodLike_Attack2 ::Init()
 	m_iCollision = false ;
 	m_Attack2  = RSMainGame::get()->getGodLikeAttack2() ;
 	m_InfoSprite2.setSize(987,732) ;
-	setSize(800,732);
+	setSize(763,732);
 	m_STT = READY ;
 	timeshoot = true ;
 }

@@ -83,6 +83,15 @@ private:
 	Sprite* m_Hero_Effect2;
 	Sprite* m_Hero_Die;
 
+	Sprite* m_SpaceGate ;
+	Sprite* m_SpaceGate1;
+	Sprite* m_Trap ;
+
+	Sprite* m_BearMove ;
+	Sprite* m_BearDie ;
+	Sprite* m_BearAttack ;
+	Sprite* m_WorldMap ;
+
 	RSMainGame(void);
 public:
 	
@@ -363,6 +372,34 @@ public:
 	{
 		return m_SnakeMans_Attack4_Hit;
 	}
+	Sprite* getSpaceGate()
+	{
+		return m_SpaceGate ;
+	}
+	Sprite* getSpaceGate_1()
+	{
+		return m_SpaceGate1 ;
+	}
+	Sprite* getTrap()
+	{
+		return m_Trap ;
+	}
 
+	Sprite* getBearMove()
+	{
+		return m_BearMove ;
+	}
+	Sprite* getBearDie()
+	{
+		return m_BearDie ;
+	}
+	Sprite* getBearAttack()
+	{
+		return m_BearAttack ;
+	}
+	Sprite* getWorldMap()
+	{
+		return m_WorldMap ;
+	}
 };
 

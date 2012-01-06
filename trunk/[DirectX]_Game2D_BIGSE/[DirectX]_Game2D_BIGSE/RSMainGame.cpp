@@ -94,4 +94,15 @@ void RSMainGame::IntRS(LPDIRECT3DDEVICE9 _Device){
 	m_SnowManMove = new Sprite(_Device,"data\\image\\SnowMan.png",121,111,4);
 	m_SnowManAttack = new Sprite(_Device,"data\\image\\SnowManAttack.png",224,191,9);
 	m_SnowManDie = new Sprite(_Device,"data\\image\\SnowMan_Die.png",190,108,7);
+
+	m_SpaceGate = new Sprite(_Device,"data\\image\\SpaceGate.png",300,180,6);
+	m_SpaceGate1 = new Sprite(_Device,"data\\image\\SpaceGate_1.png",300,180,6);
+
+	m_Trap = new Sprite(_Device,"data\\image\\Trap.png",72,43,1) ;
+
+	m_BearMove = new Sprite(_Device,"data\\image\\Bear-Move.png",78,87,8) ;
+	m_BearDie = new Sprite(_Device,"data\\image\\BearDie.png",146,95,6) ;
+	m_BearAttack = new Sprite(_Device,"data\\image\\BearAttack.png",114,104,10) ;
+
+	m_WorldMap  = new Sprite(_Device,"data\\image\\WorldMap.png",1024,720,1) ;
 }
