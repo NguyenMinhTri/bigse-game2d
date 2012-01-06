@@ -92,6 +92,11 @@ private:
 	Sprite* m_BearAttack ;
 	Sprite* m_WorldMap ;
 
+	//////////////////////////
+	Sprite* m_Pet_Move;
+	Sprite* m_Pet_GoAndBack;
+	Sprite* m_Pet_Attack;
+
 	RSMainGame(void);
 public:
 	
@@ -400,6 +405,18 @@ public:
 	Sprite* getWorldMap()
 	{
 		return m_WorldMap ;
+	}
+	Sprite* getPet_Move()
+	{
+		return m_Pet_Move;
+	}
+	Sprite* getPet_GoAndBack()
+	{
+		return m_Pet_GoAndBack;
+	}
+	Sprite* getPet_Attack()
+	{
+		return m_Pet_Attack;
 	}
 };
 

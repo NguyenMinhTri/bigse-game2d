@@ -14,10 +14,10 @@ StateWorldMap::~StateWorldMap(void)
 }
 void StateWorldMap ::Init()
 {
-	RSMainGame::get()->IntRS(m_Device);	
+
 	D3DXCreateSprite(m_Device,&m_Handle);
 
-	m_WorldMap = RSMainGame::get()->getWorldMap() ;
+	m_WorldMap = m_WorldMap  = new Sprite(m_Device,"data\\image\\WorldMap.png",1024,720,1) ;
 	m_InfoSprite.setSize(1024,720);
 }
 

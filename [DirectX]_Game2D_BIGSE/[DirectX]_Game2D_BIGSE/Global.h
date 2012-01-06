@@ -33,3 +33,12 @@ enum STT
 	GODLIKE_SKILL3,
 	GODLIKE_SKILL4
 };
+enum P_STT
+{
+	P_HIDE,
+	P_MOVE,
+	P_GO,
+	P_BACK,
+	p_ACTIVE,
+	P_DIE 
+};
