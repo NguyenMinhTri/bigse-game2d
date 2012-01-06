@@ -109,7 +109,9 @@ void State_Play::OnKeyDown(int KeyCode)
 	case DIK_R:
 		m_Hero->ActiveSkill(3);
 		break ;	
-
+	case DIK_T:
+		m_Hero->CallPet();
+		break ;	
 	case DIK_NUMPAD9:
 		m_STT = FREEZETIME ;
 	}

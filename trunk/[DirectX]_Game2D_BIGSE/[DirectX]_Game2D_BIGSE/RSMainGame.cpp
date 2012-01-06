@@ -104,5 +104,9 @@ void RSMainGame::IntRS(LPDIRECT3DDEVICE9 _Device){
 	m_BearDie = new Sprite(_Device,"data\\image\\BearDie.png",146,95,6) ;
 	m_BearAttack = new Sprite(_Device,"data\\image\\BearAttack.png",114,104,10) ;
 
-	m_WorldMap  = new Sprite(_Device,"data\\image\\WorldMap.png",1024,720,1) ;
+	m_Pet_Move=new Sprite(_Device,"data\\image\\Pet_Hero_Move.png",126,170,10);
+	m_Pet_GoAndBack=new Sprite(_Device,"data\\image\\Pet_Hero_GoAndBack.png",126,202,11);
+	m_Pet_Attack=new Sprite(_Device,"data\\image\\Pet_Hero_Attack.png",262,226,12);
+
+
 }

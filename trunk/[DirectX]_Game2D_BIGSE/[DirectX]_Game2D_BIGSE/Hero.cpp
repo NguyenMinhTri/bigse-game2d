@@ -4,6 +4,7 @@
 #include "Hero_Attack2.h"
 #include "Hero_Attack3.h"
 #include "Hero_Attack4.h"
+#include "Pet_Hero.h"
 #include "Hero_Die.h"
 #include "ManagerObject.h"
 Hero::Hero(void)
@@ -28,6 +29,7 @@ void Hero::Init()
 	m_Hero_Die=RSMainGame::get()->getHero_Die();
 	m_InfoHero_Die.setSize(212,202);
 
+	m_Pet=new Pet_Hero(this);
 	setSize(79,90);
 	m_STT=ACTIVE;
 	m_HP=5000000;
@@ -37,8 +39,12 @@ void Hero::Init()
 	m_skillManager->AddSkill(new Hero_Attack3(this));
 	m_skillManager->AddSkill(new Hero_Attack1(this));
 	m_skillManager->AddSkill(new Hero_Attack2(this));
-}
 
+}
+void Hero::CallPet()
+{
+	m_Pet->Active();
+}
 void Hero::Animation(float _Time)
 {
 	m_TimeAni += _Time ;
@@ -82,6 +88,7 @@ void Hero::Animation(float _Time)
 				}
 			}
 		}
+
 		break;
 	}
 
@@ -106,18 +113,21 @@ void Hero::Update(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight)
 			ManagerObject::Instance()->getListEffect()->push_back(m_HeroDie);
 		}
 	}
-	else
+	else{
 		if(m_skillManager->getSkill(0)->getSTT()==ACTIVE||m_skillManager->getSkill(1)->getSTT()==ACTIVE||m_skillManager->getSkill(2)->getSTT()==ACTIVE||m_skillManager->getSkill(3)->getSTT()==ACTIVE)
 		{
 			m_skillManager->Update(_Time,_Terrain,_MaxWidth,_MaxHeight);
 		}
 		else
 		{
+			
 			UpdateStatus(_Time);
 			Animation(_Time);
 			Move(_Time,_Terrain,_MaxWidth,_MaxHeight);
 			m_skillManager->Update(_Time,_Terrain,_MaxWidth,_MaxHeight);
 		}
+		m_Pet->Update(_Time,_Terrain,_MaxWidth,_MaxHeight);
+	}
 
 
 }
@@ -138,19 +148,25 @@ void Hero::Draw(D3DXMATRIX _MWorld,LPD3DXSPRITE _Handler)
 		m_Hero_Die->Draw(_MWorld,m_InfoSpriteHero,_Handler);
 	}
 	else
-	if(m_skillManager->getSkill(0)->getSTT()==ACTIVE||m_skillManager->getSkill(1)->getSTT()==ACTIVE||m_skillManager->getSkill(2)->getSTT()==ACTIVE||m_skillManager->getSkill(3)->getSTT()==ACTIVE)
 	{
 
-		for(int i=0;i<m_skillManager->getList().size();i++)
-			if(m_skillManager->getSkill(i)->getSTT()==ACTIVE)
-			{
-				m_skillManager->getSkill(i)->Draw(_MWorld,_Handler);
-			}	
+		if(m_skillManager->getSkill(0)->getSTT()==ACTIVE||m_skillManager->getSkill(1)->getSTT()==ACTIVE||m_skillManager->getSkill(2)->getSTT()==ACTIVE||m_skillManager->getSkill(3)->getSTT()==ACTIVE)
+		{
+
+			for(int i=0;i<m_skillManager->getList().size();i++)
+				if(m_skillManager->getSkill(i)->getSTT()==ACTIVE)
+				{
+					m_skillManager->getSkill(i)->Draw(_MWorld,_Handler);
+				}	
+		}
+		else
+		{
+			m_InfoSpriteHero.setXY(m_X,m_Y-3);
+			m_SpriteHero->Draw(_MWorld,m_InfoSpriteHero,_Handler);
+		
+		}
+		m_Pet->Draw(_MWorld,_Handler);
 	}
-	else
-	{
-		m_InfoSpriteHero.setXY(m_X,m_Y-3);
-		m_SpriteHero->Draw(_MWorld,m_InfoSpriteHero,_Handler);
-	}
+
 
 }

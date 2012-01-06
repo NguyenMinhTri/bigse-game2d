@@ -9,8 +9,8 @@
 
 Archer::Archer(void)
 {
-	Init();
-	m_HP = 20000; 
+	m_HP = 2; 
+	m_Damage = 1;
 }
 
 Archer::~Archer(void)
@@ -21,13 +21,12 @@ void Archer ::Init()
 {
 	m_SCharater= RSMainGame ::get()->getArcher();
 	m_InfoSprite.setSize(300,200);
-	setSize(50,85);
 	m_STT = ACTIVE ;
 
 	m_skillManager = new SkillManager();
 	m_skillManager->AddSkill(new SkillArcher());
 	m_skillManager->AddSkill(new Arrow());
-
+	
 }
 
 void Archer::Animation(float _Time){//1 walk,  2 jump, 3 alert, 4 hit, 5 skill
@@ -39,7 +38,7 @@ void Archer::Animation(float _Time){//1 walk,  2 jump, 3 alert, 4 hit, 5 skill
 		if (m_TimeAni>= 0.15f)
 		{
 			m_TimeAni -= 0.15f;
-
+			
 			if(m_skillManager->getSkill(1)->getShoot() == true && m_skillManager->getSkill(1)->getSTT() ==ACTIVE)
 			{
 				m_InfoSprite.NextFrame(16,3);

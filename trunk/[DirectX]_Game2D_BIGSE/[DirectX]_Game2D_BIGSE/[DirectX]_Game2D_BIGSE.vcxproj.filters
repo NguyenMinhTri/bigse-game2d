@@ -89,6 +89,7 @@
       <Filter>Bear</Filter>
     </ClCompile>
     <ClCompile Include="StateWorldMap.cpp" />
+    <ClCompile Include="Pet_Hero.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Angle.h" />
@@ -180,6 +181,7 @@
       <Filter>Bear</Filter>
     </ClInclude>
     <ClInclude Include="StateWorldMap.h" />
+    <ClInclude Include="Pet_Hero.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="data\image\callpet.png">
