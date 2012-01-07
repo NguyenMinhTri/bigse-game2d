@@ -2,6 +2,7 @@
 #include "RSMainGame.h"
 #include "Global.h"
 #include "State_Play.h"
+#include "State_Loading.h"
 
 StateWorldMap::StateWorldMap(iPlay *GamePlay) : iState(GamePlay)
 {
@@ -12,11 +13,13 @@ StateWorldMap::StateWorldMap(iPlay *GamePlay) : iState(GamePlay)
 StateWorldMap::~StateWorldMap(void)
 {
 }
-
 void StateWorldMap ::Init()
 {
+
 	D3DXCreateSprite(m_Device,&m_Handle);
-	m_WorldMap   = new Sprite(m_Device,"data\\image\\WorldMap.png",1024,720,1) ;
+
+	m_WorldMap = new Sprite(m_Device,"data\\image\\WorldMap.png",1024,720,1) ;
+
 	m_InfoSprite.setSize(1024,720);
 }
 
@@ -28,7 +31,7 @@ void StateWorldMap ::ProcessMouse(DIMOUSESTATE MouseState,POINT Positon)
 		{
 			if(Positon.y > 152 && Positon.y < 182)
 			{
-				m_iPlay->SetNextState(new State_Play(this->m_iPlay));
+				m_iPlay->SetNextState(new State_Loading(this->m_iPlay,"data\\map\\6.png"));
 			}
 		}
 		if(Positon.x > 606 && Positon.x < 701) //Ellina

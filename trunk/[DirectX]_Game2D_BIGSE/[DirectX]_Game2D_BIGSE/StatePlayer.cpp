@@ -78,7 +78,6 @@ void StatePlayer:: ProcessMouse(DIMOUSESTATE MouseState,POINT Positon)
 			m_InfoFlag.setXY(810,50);
 		}
 		else{z_STT = READY;}
-
 		
 }
 void StatePlayer::Update(float _Time)

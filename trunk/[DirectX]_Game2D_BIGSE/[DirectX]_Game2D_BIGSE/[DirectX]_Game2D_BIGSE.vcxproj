@@ -86,6 +86,7 @@
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="DXDevice.cpp" />
+    <ClCompile Include="DXManager.cpp" />
     <ClCompile Include="Effect.cpp" />
     <ClCompile Include="EffectDieBear.cpp" />
     <ClCompile Include="EffectDiePrivate.cpp" />
@@ -158,6 +159,7 @@
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="StatePlayer.cpp" />
     <ClCompile Include="StateWorldMap.cpp" />
+    <ClCompile Include="State_Loading.cpp" />
     <ClCompile Include="State_Play.cpp" />
     <ClCompile Include="Terrain.cpp" />
     <ClCompile Include="Thunder.cpp" />
@@ -175,6 +177,7 @@
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Character.h" />
     <ClInclude Include="DXDevice.h" />
+    <ClInclude Include="DXManager.h" />
     <ClInclude Include="Effect.h" />
     <ClInclude Include="EffectDieBear.h" />
     <ClInclude Include="EffectDiePrivate.h" />
@@ -249,6 +252,7 @@
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="StatePlayer.h" />
     <ClInclude Include="StateWorldMap.h" />
+    <ClInclude Include="State_Loading.h" />
     <ClInclude Include="State_Play.h" />
     <ClInclude Include="Terrain.h" />
     <ClInclude Include="Thunder.h" />

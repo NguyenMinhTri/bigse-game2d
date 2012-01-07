@@ -27,6 +27,8 @@ void Hero::Init()
 	m_SpriteHero_Stand=RSMainGame::get()->getHero_Stand();
 	m_InfoSpriteHero_Stand.setSize(79,98);
 
+	m_SpriteHero = m_SpriteHero_Stand;
+
 	m_Hero_Die=RSMainGame::get()->getHero_Die();
 	m_InfoHero_Die.setSize(212,202);
 	m_SpriteHero = m_SpriteHero_Stand;

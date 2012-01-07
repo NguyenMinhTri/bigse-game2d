@@ -3,6 +3,7 @@
 #include <d3d9.h>
 #include <d3dx9.h>
 #include "Sprite.h"
+#include "DXManager.h"
 class RSMainGame
 {
 private:
@@ -110,6 +111,7 @@ public:
 		if (instance == NULL)
 		{
 			instance = new RSMainGame();
+			instance->IntRS(DXManager::Instance()->getDevice());
 		}
 		return instance;
 	}

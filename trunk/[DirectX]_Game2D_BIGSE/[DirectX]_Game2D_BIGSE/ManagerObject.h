@@ -3,6 +3,7 @@
 #include "MyObject.h"
 #include "EffectSystem.h"
 #include "QuadTree.h"
+#include "Terrain.h"
 using namespace std;
 
 class ManagerObject
@@ -17,7 +18,7 @@ private:
 	std::vector<EffectSystem*> *m_ListEffect ;
 	QuadTree* m_QuadTree;
 
-
+	Terrain* m_Map;
 	ManagerObject(void);
 public:
 	
@@ -44,7 +45,15 @@ public:
 	{
 		m_ListBoss = _ListBoss;
 	}
+	void setMap (Terrain* _Map)
+	{
+		m_Map = _Map;
+	}
 
+	Terrain* getMap() 
+	{
+		return m_Map;
+	}
 	/************************************************************************/
 	/*                                                                      */
 	/************************************************************************/
