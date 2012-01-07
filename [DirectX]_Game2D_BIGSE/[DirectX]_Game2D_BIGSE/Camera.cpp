@@ -13,6 +13,7 @@ Camera::Camera(float _X, float _Y,float _Width,float _Height)
 	m_Dy = 0;
 	m_VDy = 1;
 	m_SC = 1;
+	m_Offset = 200;
 }
 
 Camera::~Camera(void)
