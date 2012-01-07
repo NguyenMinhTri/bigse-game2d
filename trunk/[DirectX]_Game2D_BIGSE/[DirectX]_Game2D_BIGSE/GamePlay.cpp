@@ -6,7 +6,7 @@
 #include "StateMainMenu.h"
 GamePlay::GamePlay(LPDIRECT3DDEVICE9 Device):iPlay(Device)
 {
-	m_CurState = new StatePlayer(this);
+	m_CurState = new StateWorldMap(this);
 	m_NextState = m_CurState;
 }
 GamePlay::~GamePlay(void)

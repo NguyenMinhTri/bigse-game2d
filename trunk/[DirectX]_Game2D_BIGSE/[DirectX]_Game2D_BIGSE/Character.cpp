@@ -27,6 +27,7 @@ void Character::Init(){
 	m_SCharater = RSMainGame::get()->getCharacter();
 	m_InfoSprite.setSize(300,200);
 	m_InfoSprite.setDepth(0.2);
+	setSize(50,85);
 
 	m_STT = ACTIVE;
 	m_skillManager = new SkillManager();
