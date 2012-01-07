@@ -1,5 +1,6 @@
 #include "StateMainMenu.h"
 #include "StatePlayer.h"
+#include "SoundGame.h"
 
 
 StateMainMenu::StateMainMenu(iPlay* GamePlay): iState(GamePlay)
@@ -16,6 +17,7 @@ StateMainMenu::~StateMainMenu(void)
 }
 void StateMainMenu::Init()
 {
+	SoundGame::Instance()->PlayBackGame();
 	D3DXCreateSprite(m_Device,&m_Handle);
 	CoAlMain=0;
 	CoAlLogo=1;

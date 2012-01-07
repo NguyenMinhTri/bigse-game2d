@@ -211,7 +211,7 @@ void StateWorldMap ::Update(float _Time)
 {
 	if(r.iCollision(Perion) == true  && m_STT == READY  && m_InfoAttack.getCurFrame()>5)
 	{
-		m_iPlay->SetNextState(new StateMainMenu(this->m_iPlay));
+		m_iPlay->SetNextState(new State_Loading(this->m_iPlay,"data\\map\\6.png"));
 	}
 	if(r.iCollision(Kerningstadt) == true  && m_STT == READY  && m_InfoAttack.getCurFrame()>5)
 	{
