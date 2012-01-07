@@ -18,63 +18,40 @@ State_Play::~State_Play(void)
 void State_Play::Init()
 {
 
-	RSMainGame::get()->IntRS(m_Device);	
-
-	m_ListItem = new std::vector<MyObject*>();
-	m_ObjectsCamera = new std::vector<MyObject*>();
-	m_ListMonster = new std ::vector<MyObject*>();
-	m_ListEffect = new std::vector<EffectSystem*>();
-	m_ListBoss = new std ::vector<MyObject*>();
-	m_SpecialObject = new std ::vector<MyObject*>();
-
-	ManagerObject::Instance()->setListObject(m_ListItem);
-	ManagerObject::Instance()->setObjects(m_ObjectsCamera);
-	ManagerObject::Instance()->setListEffect(m_ListEffect);
-	ManagerObject::Instance()->setListMonster(m_ListMonster);
-	ManagerObject::Instance()->setListBoss(m_ListBoss);
-	ManagerObject::Instance()->setSpecialObjects(m_SpecialObject);
+	m_ListItem = ManagerObject::Instance()->getListItem();
+	m_ObjectsCamera = ManagerObject::Instance()->getObjects();
+	m_ListMonster = ManagerObject::Instance()->getListMonster();
+	m_ListEffect = ManagerObject::Instance()->getListEffect();
+	m_ListBoss = ManagerObject::Instance()->getListBoss();
+	m_SpecialObject = ManagerObject::Instance()->getSpecialObjects();
 
 	D3DXCreateSprite(m_Device,&m_Handle);
 
 	m_Camera = new Camera(0,0,g_SCREEN_WIDTH,g_SCREEN_HEIGHT);
-	#pragma region Init Item
+#pragma region Init Item
 
 
-	#pragma region Init Character   
-	
+#pragma region Init Character   
+
 
 	m_Hero=new Hero();
-	m_Hero->setXY(0,0);
-	
-	m_Magician = new Magician();
-	m_Magician->setXY(200,0);
+	m_Hero->setXY(2000,0);
 
+	m_ObjectsCamera->push_back(m_Hero);
 
-
-// 	m_SnakeMans=new SnakeMans();
-// 	m_SnakeMans->setXY(1200,650);
-
-	m_ObjectsCamera->push_back(m_Magician);
-/*	m_ListBoss->push_back(m_SnakeMans);*/
 
 #pragma endregion Init Character
 
-	#pragma region Init Map Terrain
+#pragma region Init Map Terrain
 
-	m_LoadMap = new LoadMap();
-	m_LoadMap->LoadMapFormFile("data\\map\\6.png",m_Device);
 
-	int m = m_LoadMap->m_Width > m_LoadMap->m_Height ? m_LoadMap->m_Width : m_LoadMap->m_Height;
 
-	m_QuadTree = new QuadTree(CRECT(0,m*50,0,50*m));
-	ManagerObject::Instance()->setQuadTree(m_QuadTree);
+	m_QuadTree = ManagerObject::Instance()->getQuadTree();	
 
-	m_LoadMap->TranslateMap();
-
-	m_Map = new Terrain(m_LoadMap->m_Terrain,m_LoadMap->m_TerrainExtends,m_LoadMap->m_Width,m_LoadMap->m_Height);
+	m_Map = ManagerObject::Instance()->getMap();
 #pragma endregion Init Map Terrain
 
-	D3DXMatrixIdentity(&m_mtWorld);
+	D3DXMatrixIdentity(&m_mtWorld);	
 
 }
 void State_Play::IsKeyDown(int KeyCode)
@@ -83,13 +60,13 @@ void State_Play::IsKeyDown(int KeyCode)
 	{
 	
 	case DIK_A:
-		m_Magician->setMove(-1);
+		m_Hero->setMove(-1);
 		break;
 	case DIK_D:
-		m_Magician->setMove(1);
+		m_Hero->setMove(1);
 		break;
 	case DIK_W:
-		m_Magician->setJump();
+		m_Hero->setJump();
 		break;
 
 	case DIK_DOWN:
@@ -115,7 +92,7 @@ void State_Play::OnKeyDown(int KeyCode)
 		m_Hero->ActiveSkill(3);
 		break ;	
 	case DIK_T:
-		m_Hero->CallPet();
+		/*m_Hero->CallPet();*/
 		break ;	
 	case DIK_NUMPAD9:
 		m_STT = FREEZETIME ;
@@ -132,7 +109,7 @@ void State_Play::OnKeyUp(int KeyCode)
 
 void State_Play::Update(float _Time)
 {
-	m_Camera->Update(m_Magician,m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL);
+	m_Camera->Update(m_Hero,m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL);
 	//m_Camera->UpdateEffect(_Time);
 	m_mtWorld = m_Camera->getMatrixTransform();
 
@@ -305,8 +282,8 @@ void State_Play::Draw()
 		for (std::vector<MyObject*>::iterator i = m_ObjectsCamera->begin();i!= m_ObjectsCamera->end();i++)
 		{
 			(*i)->Draw(m_mtWorld,m_Handle);			
-		}
 
+		}
 		for (std::vector<MyObject*>::iterator i = m_ListMonster->begin();i!= m_ListMonster->end();i++)
 		{
 			(*i)->Draw(m_mtWorld,m_Handle);			
