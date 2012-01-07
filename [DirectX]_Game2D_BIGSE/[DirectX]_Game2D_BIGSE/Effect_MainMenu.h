@@ -12,6 +12,7 @@ public:
 	InfoSprite m_InfoEffect;
 	float m_timeLife;
 	float m_Old;
+	void Repress();
 	Effect_MainMenu(LPDIRECT3DDEVICE9 m_Device);
 	~Effect_MainMenu(void);
 };
