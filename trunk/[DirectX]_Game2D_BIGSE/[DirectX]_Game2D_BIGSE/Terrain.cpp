@@ -23,10 +23,19 @@ Terrain::Terrain (int** _Terrain,int** _TerrainExtends, int _Width,int _Height )
 }
 void Terrain::Draw (Camera* _Camera,D3DXMATRIX _mtWorld,LPD3DXSPRITE _Handler)
 {
+	
 	for (int i = _Camera->getRect().Left/g_CELL; i < (_Camera->getRect().Right)/g_CELL  ; i++)
 	{
+		if (i<0 || i > m_Width)
+		{
+			continue;
+		}
 		for (int j = _Camera->getRect().Top/g_CELL; j<(_Camera->getRect().Bottom)/g_CELL ;j++)
 		{
+			if (j<0 || j> m_Height)
+			{
+				continue;
+			}
 			if (m_TerrainExtends[i][j]>=200 && m_TerrainExtends[i][j]<=234)
 			{
 				if(m_TerrainExtends[i][j]==200)

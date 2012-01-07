@@ -41,10 +41,10 @@ public:
 	 CRECT getRect()
 	 {
 		 CRECT r;
-		 r.Left = m_X  ;
-		 r.Top = m_Y ;
-		 r.Right = m_X + m_Width;
-		 r.Bottom = m_Y + m_Height ;
+		 r.Left = m_X - m_Offset ;
+		 r.Top = m_Y - m_Offset;
+		 r.Right = m_X + m_Width + m_Offset;
+		 r.Bottom = m_Y + m_Height + m_Offset ;
 
 		 return r;
 	 };
