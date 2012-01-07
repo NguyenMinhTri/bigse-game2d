@@ -13,17 +13,17 @@ Magician::Magician(void)
 
 Magician::~Magician(void)
 {
-
 }
 
 void Magician ::Init()
 {
 	m_SCharater= RSMainGame ::get()->getMagician();
 	m_InfoSprite.setSize(300,200);
-	setSize(50,85);
 	m_STT = ACTIVE ;
+
 	m_skillManager = new SkillManager();
 	m_skillManager->AddSkill(new SkillMagician());
+	setSize(50,85);
 }
 
 void Magician::Animation(float _Time){//1 walk,  2 jump, 3 alert, 4 hit, 5 skill
