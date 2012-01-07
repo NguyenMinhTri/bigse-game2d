@@ -144,10 +144,10 @@ void StatePlayer ::Draw()
 
 		m_SwordMan->Draw(m_InfoSword,m_Handle) ;
 
-		if(g_STT == ACTIVE || t_STT==TIME || z_STT ==TIME)
-		{
-		   m_Flag->Draw(m_InfoFlag,m_Handle);
-		}
+// 		if(g_STT == ACTIVE || t_STT==TIME || z_STT ==TIME)
+// 		{
+// 		   m_Flag->Draw(m_InfoFlag,m_Handle);
+// 		}
 		m_Magician->Draw(m_InfoMagician,m_Handle);
 		m_Punch->Draw(m_InfoPunch,m_Handle);
 		m_Handle->End();
