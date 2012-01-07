@@ -59,10 +59,17 @@ void StatePlayer:: ProcessMouse(DIMOUSESTATE MouseState,POINT Positon)
 		}
 	}
 
-		if(Positon.x >=1 && Positon.x <=300 &&Positon.y >= 200 && Positon.y <=526)
+		if(Positon.x >=1 && Positon.x <=300 &&Positon.y >= 200 && Positon.y <=526)//kiem sy
 		{
 				g_STT = ACTIVE ;
 				m_InfoFlag.setXY(100,50 );
+				if (timeGetTime()%400 >200)
+				{
+					m_InfoSword.setScaleXY(1.1f,1.1f);
+				}
+				else{
+					m_InfoSword.setScaleXY(1.0f,1.0f);
+				}	
 		}
 		else{g_STT =READY ; }	
 
@@ -70,14 +77,29 @@ void StatePlayer:: ProcessMouse(DIMOUSESTATE MouseState,POINT Positon)
 		{
 			t_STT = TIME ;
 			m_InfoFlag.setXY(480,50);
+			if (timeGetTime()%400 >200)
+			{
+	            m_InfoMagician.setScaleXY(1.1f,1.1f);
+			}
+			else{
+				m_InfoMagician.setScaleXY(1.0f,1.0f);
+			}	
 		}
 		else {t_STT =READY;}
 		if(Positon.x >=700 &&Positon.x <=1000 && Positon.y>=200 && Positon.y<=543)
 		{
 			z_STT = TIME ;
 			m_InfoFlag.setXY(810,50);
+			if (timeGetTime()%400 >200)
+			{
+				m_InfoPunch.setScaleXY(1.1f,1.1f);
+			}
+			else{
+				m_InfoPunch.setScaleXY(1.0f,1.0f);
+			}	
 		}
-		else{z_STT = READY;}
+		else{z_STT = READY;}	
+
 		
 }
 void StatePlayer::Update(float _Time)
