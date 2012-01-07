@@ -11,6 +11,7 @@ enum STATE
 {
 	PLAY,
 	MENU,
+	LOADING,
 	ABOUT,
 	EXIT,
 	WorldMap,

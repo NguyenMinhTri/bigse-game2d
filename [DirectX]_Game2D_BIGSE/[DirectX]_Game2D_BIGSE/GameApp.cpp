@@ -5,6 +5,7 @@
 #include "InputManager.h"
 #include <intsafe.h>
 #include "iState.h"
+#include "DXManager.h"
 
 GameApp::GameApp(void)
 {
@@ -37,7 +38,7 @@ bool GameApp::Init(HINSTANCE _hInstance,char* _Name)
 	if (!m_Device->Create_Device(m_form->getHWND())) return false;
 
 	m_Device->CreateBuffer();
-
+	DXManager::Instance()->setDevice(m_Device->getDevice());
 	m_Keyboard=InputMannager::Handle(_hInstance,m_form->getHWND())->KeyBoard();
 	m_Mouse =InputMannager::Handle(_hInstance,m_form->getHWND())->Mouse();
 	if (m_Keyboard==NULL|| m_Mouse==NULL)
