@@ -33,14 +33,8 @@ class State_Play :
 	QuadTree* m_QuadTree;
 
 	Item *m_Item;	
-	Hero* m_Hero;
-	Magician *m_Magician ;
-	Angle *m_Angle ;
-
-	Archer *m_Archer ;
-
-
-	SnakeMans* m_SnakeMans;
+	Character* m_Hero;
+	
 	LPD3DXSPRITE m_Handle;
 	Terrain* m_Map;
 	Camera* m_Camera;
