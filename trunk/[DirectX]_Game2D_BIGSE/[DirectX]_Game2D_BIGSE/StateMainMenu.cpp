@@ -127,7 +127,7 @@ void StateMainMenu ::ProcessMouse(DIMOUSESTATE MouseState,POINT Positon)
 				&&Positon.y >= m_InfoButtonStart.getY()-20 && Positon.y <=m_InfoButtonStart.getY()+m_InfoButtonStart.m_Height)
 			{
 				m_InfoButtonStart.setScaleXY(0.9f,0.9f);	
-				m_iPlay->SetNextState(new StatePlayer(this->m_iPlay));
+				m_iPlay->SetNextState(new StatePlayer(m_iPlay));
 			}
 			else
 				m_InfoButtonStart.setScaleXY(1,1);
@@ -162,33 +162,20 @@ void StateMainMenu ::Update(float _Time)
 	{
 		return;
 	}
-	if(m_CountOfEffect<50)
+	m_TimeToUpCount+=_Time;
+	if(m_TimeToUpCount>=0.1)
 	{
-		m_TimeToUpCount+=_Time;
-		if(m_TimeToUpCount>=0.1f)
-		{
-			m_TimeToUpCount=0;
-			m_CountOfEffect+=10;
-		}
-	}
-	
-	if(m_listEffect->size()>=10)
-	{
+		m_TimeToUpCount=0;
 		for (std::vector<Effect_MainMenu*>::iterator i = m_listEffect->begin();i<m_listEffect->end();i++)
-		{
-			(*i)->m_timeLife+=_Time/10;
-			(*i)->m_InfoEffect.setColorAlpha(1-(*i)->m_timeLife*5);		
-			if((*i)->m_timeLife>=(*i)->m_Old)
+		{	
+			if((*i)->m_InfoEffect.getY()>=720)
 			{
-				(*i)=NULL;
-				i=m_listEffect->erase(i);
+				(*i)->Repress();
 			}
+			(*i)->m_InfoEffect.setY((*i)->m_InfoEffect.getY()+2);
+			int vx=5-rand()%10;
+			(*i)->m_InfoEffect.setX((*i)->m_InfoEffect.getX()+vx);
 		}
-	}
-	while (m_listEffect->size()<m_CountOfEffect)
-	{
-		Effect_MainMenu *temp=new Effect_MainMenu(m_Device);
-		m_listEffect->push_back(temp);	
 	}
 	
 	
