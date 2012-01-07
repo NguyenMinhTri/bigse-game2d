@@ -97,6 +97,11 @@ private:
 	Sprite* m_Pet_GoAndBack;
 	Sprite* m_Pet_Attack;
 
+
+	Sprite* m_PirateMove ;
+	Sprite* m_PirateAttack ;
+	Sprite* m_PirateDie ;
+
 	RSMainGame(void);
 public:
 	
@@ -418,5 +423,19 @@ public:
 	{
 		return m_Pet_Attack;
 	}
+
+	Sprite* getPirateMove()
+	{
+		return m_PirateMove ;
+	}
+	Sprite* getPirateAttack()
+	{
+		return m_PirateAttack ;
+	}
+	Sprite* getPirateDie()
+	{
+		return m_PirateDie ;
+	}
+
 };
 
