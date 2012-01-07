@@ -2,7 +2,7 @@
 #include <d3dx9.h>
 class InfoSprite
 {
-protected:
+public:
 	/* Position to render */
 	float m_X,m_Y;
 
@@ -23,7 +23,7 @@ protected:
 
 	/* Color to blending ( include Alpha ) */
 	D3DXCOLOR m_Color;
-public:
+
 	InfoSprite(void);
 	~InfoSprite(void);
 	void setX (float _X){

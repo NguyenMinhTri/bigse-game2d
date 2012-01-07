@@ -79,16 +79,16 @@ void State_Play::OnKeyDown(int KeyCode)
 	switch(KeyCode)
 	{
 	
-	case DIK_C:
+	case DIK_H:
 		m_Hero->ActiveSkill(0);
 		break ;
-	case DIK_F:
+	case DIK_J:
 		m_Hero->ActiveSkill(1);
 		break ;
-	case DIK_E:
+	case DIK_K:
 		m_Hero->ActiveSkill(2);
 		break ;
-	case DIK_R:
+	case DIK_U:
 		m_Hero->ActiveSkill(3);
 		break ;	
 	case DIK_T:
