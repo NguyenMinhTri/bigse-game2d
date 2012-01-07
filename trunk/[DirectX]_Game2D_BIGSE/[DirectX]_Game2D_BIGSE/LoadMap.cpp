@@ -11,6 +11,7 @@
 #include "GateSpace.h"
 #include "Trap.h"
 #include "Bear.h"
+#include "Pirate.h"
 LoadMap::LoadMap(void)
 {
 	m_Width = 0;
@@ -169,12 +170,12 @@ void LoadMap::TranslateMap()
 				_Snakemens->setXY(i*50,650);
 				ManagerObject::Instance()->getListBoss()->push_back(_Snakemens);
 			}
-// 			if (r==10)
-// 			{
-// 				Character* _Character = new Character();
-// 				_Character->setXY(i*50,j*50 + 100);
-// 				ManagerObject::Instance()->getQuadTree()->Insert(_Character);
-// 			}
+			if (r==10)
+			{
+				Character* _Character = new Character();
+				_Character->setXY(i*50,j*50 -200);
+				ManagerObject::Instance()->getObjectCamera()->push_back(_Character);
+			}
 			if (r==11)
 			{
 				Monster* _Monster = new Monster();
@@ -204,6 +205,12 @@ void LoadMap::TranslateMap()
 				GateSpace* _SpaceGate1 = new GateSpace(-1);
 				_SpaceGate1->setXY(i*50,j*50);
 				ManagerObject::Instance()->getQuadTree()->Insert(_SpaceGate1);
+			}
+			if(r==16)
+			{
+				Pirate* _Pirate = new Pirate();
+				_Pirate->setXY(i*50,j*50 - 50);
+				ManagerObject::Instance()->getQuadTree()->Insert(_Pirate);
 			}
 			if(r==17)
 			{

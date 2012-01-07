@@ -45,11 +45,16 @@ void State_Play::Init()
 
 	m_Hero=new Hero();
 	m_Hero->setXY(0,0);
+	
+	m_Magician = new Magician();
+	m_Magician->setXY(200,0);
+
+
 
 // 	m_SnakeMans=new SnakeMans();
 // 	m_SnakeMans->setXY(1200,650);
 
-	m_ObjectsCamera->push_back(m_Hero);
+	m_ObjectsCamera->push_back(m_Magician);
 /*	m_ListBoss->push_back(m_SnakeMans);*/
 
 #pragma endregion Init Character
@@ -78,13 +83,13 @@ void State_Play::IsKeyDown(int KeyCode)
 	{
 	
 	case DIK_A:
-		m_Hero->setMove(-1);
+		m_Magician->setMove(-1);
 		break;
 	case DIK_D:
-		m_Hero->setMove(1);
+		m_Magician->setMove(1);
 		break;
 	case DIK_W:
-		m_Hero->setJump();
+		m_Magician->setJump();
 		break;
 
 	case DIK_DOWN:
@@ -127,7 +132,7 @@ void State_Play::OnKeyUp(int KeyCode)
 
 void State_Play::Update(float _Time)
 {
-	m_Camera->Update(m_Hero,m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL);
+	m_Camera->Update(m_Magician,m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL);
 	//m_Camera->UpdateEffect(_Time);
 	m_mtWorld = m_Camera->getMatrixTransform();
 
@@ -300,8 +305,8 @@ void State_Play::Draw()
 		for (std::vector<MyObject*>::iterator i = m_ObjectsCamera->begin();i!= m_ObjectsCamera->end();i++)
 		{
 			(*i)->Draw(m_mtWorld,m_Handle);			
-
 		}
+
 		for (std::vector<MyObject*>::iterator i = m_ListMonster->begin();i!= m_ListMonster->end();i++)
 		{
 			(*i)->Draw(m_mtWorld,m_Handle);			

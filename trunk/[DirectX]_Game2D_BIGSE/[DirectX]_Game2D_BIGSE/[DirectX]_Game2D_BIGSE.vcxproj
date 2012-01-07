@@ -88,6 +88,7 @@
     <ClCompile Include="DXDevice.cpp" />
     <ClCompile Include="Effect.cpp" />
     <ClCompile Include="EffectDieBear.cpp" />
+    <ClCompile Include="EffectDiePrivate.cpp" />
     <ClCompile Include="EffectDieSnow.cpp" />
     <ClCompile Include="EffectFont.cpp" />
     <ClCompile Include="EffectFrenzy.cpp" />
@@ -131,6 +132,8 @@
     <ClCompile Include="MyObject.cpp" />
     <ClCompile Include="Pet.cpp" />
     <ClCompile Include="Pet_Hero.cpp" />
+    <ClCompile Include="Pirate.cpp" />
+    <ClCompile Include="PirateAttack.cpp" />
     <ClCompile Include="QuadTree.cpp" />
     <ClCompile Include="QuadTreeNode.cpp" />
     <ClCompile Include="RECT.cpp" />
@@ -153,6 +156,7 @@
     <ClCompile Include="SnakeMens_Effect2.cpp" />
     <ClCompile Include="SnakeMens_Effect3.cpp" />
     <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="StatePlayer.cpp" />
     <ClCompile Include="StateWorldMap.cpp" />
     <ClCompile Include="State_Play.cpp" />
     <ClCompile Include="Terrain.cpp" />
@@ -173,6 +177,7 @@
     <ClInclude Include="DXDevice.h" />
     <ClInclude Include="Effect.h" />
     <ClInclude Include="EffectDieBear.h" />
+    <ClInclude Include="EffectDiePrivate.h" />
     <ClInclude Include="EffectDieSnow.h" />
     <ClInclude Include="EffectFont.h" />
     <ClInclude Include="EffectFrenzy.h" />
@@ -217,6 +222,8 @@
     <ClInclude Include="MyObject.h" />
     <ClInclude Include="Pet.h" />
     <ClInclude Include="Pet_Hero.h" />
+    <ClInclude Include="Pirate.h" />
+    <ClInclude Include="PirateAttack.h" />
     <ClInclude Include="QuadTree.h" />
     <ClInclude Include="QuadTreeNode.h" />
     <ClInclude Include="RECT.h" />
@@ -240,6 +247,7 @@
     <ClInclude Include="SnakeMens_Effect2.h" />
     <ClInclude Include="SnakeMens_Effect3.h" />
     <ClInclude Include="Sprite.h" />
+    <ClInclude Include="StatePlayer.h" />
     <ClInclude Include="StateWorldMap.h" />
     <ClInclude Include="State_Play.h" />
     <ClInclude Include="Terrain.h" />

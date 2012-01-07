@@ -34,6 +34,12 @@ class State_Play :
 
 	Item *m_Item;	
 	Hero* m_Hero;
+	Magician *m_Magician ;
+	Angle *m_Angle ;
+
+	Archer *m_Archer ;
+
+
 	SnakeMans* m_SnakeMans;
 	LPD3DXSPRITE m_Handle;
 	Terrain* m_Map;

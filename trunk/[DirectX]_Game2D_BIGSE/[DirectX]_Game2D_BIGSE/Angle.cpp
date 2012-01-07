@@ -17,7 +17,7 @@ void Angle ::Init()
 	m_SCharater= RSMainGame ::get()->getAngle();
 	m_InfoSprite.setSize(300,200);
 	setSize(50,85);
-	setXY(200,0);
+/*	setXY(200,0);*/
 	m_STT = ACTIVE ;
 
 	m_skillManager = new SkillManager();

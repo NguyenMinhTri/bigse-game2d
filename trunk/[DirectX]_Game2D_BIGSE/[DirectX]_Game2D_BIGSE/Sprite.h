@@ -37,5 +37,6 @@ public:
 	void Draw (float X,float Y,int Index,LPD3DXSPRITE Sprite_Handler);
 	void Draw (D3DMATRIX _World,InfoSprite _info,LPD3DXSPRITE _Handler);
 	void Draw (InfoSprite _info,LPD3DXSPRITE _Handler);
+	void DrawCenter (InfoSprite _info,LPD3DXSPRITE _Handler) ;
 };
 #endif

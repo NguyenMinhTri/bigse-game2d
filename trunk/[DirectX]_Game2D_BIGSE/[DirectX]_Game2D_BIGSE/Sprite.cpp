@@ -83,3 +83,10 @@ void Sprite::Draw(D3DMATRIX _World,InfoSprite _info,LPD3DXSPRITE _Handler)
 	_Handler->Draw(m_Image,&this->getRect(_info.getCurFrame()),NULL,
 		&D3DXVECTOR3(0,0,_info.getDepth()),_info.getColor());
 }
+
+void Sprite::DrawCenter (InfoSprite _info,LPD3DXSPRITE _Handler)
+{
+	_Handler->SetTransform(&_info.getMatrixTransform());
+	_Handler->Draw(m_Image,&this->getRect(_info.getCurFrame()),NULL,
+		&D3DXVECTOR3(-m_Width/2,-m_Height/2,_info.getDepth()),_info.getColor());
+}

@@ -90,6 +90,14 @@
     </ClCompile>
     <ClCompile Include="StateWorldMap.cpp" />
     <ClCompile Include="Pet_Hero.cpp" />
+    <ClCompile Include="Pirate.cpp">
+      <Filter>Pirate</Filter>
+    </ClCompile>
+    <ClCompile Include="PirateAttack.cpp">
+      <Filter>Pirate</Filter>
+    </ClCompile>
+    <ClCompile Include="EffectDiePrivate.cpp" />
+    <ClCompile Include="StatePlayer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Angle.h" />
@@ -182,6 +190,14 @@
     </ClInclude>
     <ClInclude Include="StateWorldMap.h" />
     <ClInclude Include="Pet_Hero.h" />
+    <ClInclude Include="Pirate.h">
+      <Filter>Pirate</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateAttack.h">
+      <Filter>Pirate</Filter>
+    </ClInclude>
+    <ClInclude Include="EffectDiePrivate.h" />
+    <ClInclude Include="StatePlayer.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="data\image\callpet.png">
@@ -221,6 +237,9 @@
     </Filter>
     <Filter Include="Bear">
       <UniqueIdentifier>{098ef692-5881-42ee-ad82-3e4adc720d1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pirate">
+      <UniqueIdentifier>{bbebd34d-8c95-4c86-80b2-5667609d49fa}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

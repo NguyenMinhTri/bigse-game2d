@@ -7,6 +7,7 @@
 #include "Pet_Hero.h"
 #include "Hero_Die.h"
 #include "ManagerObject.h"
+
 Hero::Hero(void)
 {
 	Init();
@@ -28,6 +29,7 @@ void Hero::Init()
 
 	m_Hero_Die=RSMainGame::get()->getHero_Die();
 	m_InfoHero_Die.setSize(212,202);
+	m_SpriteHero = m_SpriteHero_Stand;
 
 	m_Pet=new Pet_Hero(this);
 	setSize(79,90);
@@ -167,6 +169,4 @@ void Hero::Draw(D3DXMATRIX _MWorld,LPD3DXSPRITE _Handler)
 		}
 		m_Pet->Draw(_MWorld,_Handler);
 	}
-
-
 }

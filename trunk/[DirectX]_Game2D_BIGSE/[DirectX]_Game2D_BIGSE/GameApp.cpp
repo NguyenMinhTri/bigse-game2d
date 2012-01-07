@@ -73,7 +73,7 @@ void GameApp::Run()
 		m_NowTime = timeGetTime();		
 		m_DetaTime = m_NowTime - m_LastTime;
 
-		if (m_DetaTime > 1000.0f/60.0f)
+		if (m_DetaTime > 1000.0f/600.0f)
 		{			
 			m_LastTime = m_NowTime;
 			m_SaveTime+= m_DetaTime;

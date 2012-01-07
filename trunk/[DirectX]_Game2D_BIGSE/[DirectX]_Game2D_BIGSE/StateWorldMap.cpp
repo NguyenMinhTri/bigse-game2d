@@ -12,12 +12,11 @@ StateWorldMap::StateWorldMap(iPlay *GamePlay) : iState(GamePlay)
 StateWorldMap::~StateWorldMap(void)
 {
 }
+
 void StateWorldMap ::Init()
 {
-
 	D3DXCreateSprite(m_Device,&m_Handle);
-
-	m_WorldMap = m_WorldMap  = new Sprite(m_Device,"data\\image\\WorldMap.png",1024,720,1) ;
+	m_WorldMap   = new Sprite(m_Device,"data\\image\\WorldMap.png",1024,720,1) ;
 	m_InfoSprite.setSize(1024,720);
 }
 
