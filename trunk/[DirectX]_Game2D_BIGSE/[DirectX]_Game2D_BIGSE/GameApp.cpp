@@ -40,6 +40,7 @@ bool GameApp::Init(HINSTANCE _hInstance,char* _Name)
 
 	m_Device->CreateBuffer();
 	DXManager::Instance()->setDevice(m_Device->getDevice());
+	DXManager::Instance()->setHWND(m_form->getHWND());
 	m_Keyboard=InputMannager::Handle(_hInstance,m_form->getHWND())->KeyBoard();
 	m_Mouse =InputMannager::Handle(_hInstance,m_form->getHWND())->Mouse();
 	if (m_Keyboard==NULL|| m_Mouse==NULL)

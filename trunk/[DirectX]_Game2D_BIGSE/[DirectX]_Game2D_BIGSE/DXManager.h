@@ -5,6 +5,7 @@ class DXManager
 {
 	static DXManager* m_Instance;
 	LPDIRECT3DDEVICE9 m_pD3DDev;
+	HWND m_HWND;
 	DXManager(void);
 public:
 	
@@ -24,6 +25,14 @@ public:
 	LPDIRECT3DDEVICE9 getDevice ()
 	{
 		return m_pD3DDev;
+	}
+	void setHWND (HWND _hWnd)
+	{
+		m_HWND = _hWnd;
+	}
+	HWND getHWND ()
+	{
+		return m_HWND;
 	}
 };
 
