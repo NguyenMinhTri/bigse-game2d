@@ -6,7 +6,7 @@
 #include <intsafe.h>
 #include "iState.h"
 #include "DXManager.h"
-
+#include <time.h>
 GameApp::GameApp(void)
 {
 	m_TotalFPS = 0;
@@ -22,6 +22,7 @@ GameApp::~GameApp(void)
 
 bool GameApp::Init(HINSTANCE _hInstance,char* _Name)
 {
+	 srand ( time(NULL) );
 	m_form = new Winform(_Name);
 	if (!m_form->Register(_hInstance))
 		return false;

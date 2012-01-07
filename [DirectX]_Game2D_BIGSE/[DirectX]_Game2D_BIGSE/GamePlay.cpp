@@ -3,10 +3,10 @@
 #include "State_Play.h"
 #include "StateWorldMap.h"
 #include "StatePlayer.h"
-
+#include "StateMainMenu.h"
 GamePlay::GamePlay(LPDIRECT3DDEVICE9 Device):iPlay(Device)
 {
-	m_CurState = new StatePlayer(this);
+	m_CurState = new StateMainMenu(this);
 	m_NextState = m_CurState;
 }
 GamePlay::~GamePlay(void)

@@ -9,6 +9,7 @@ private:
 	float	m_Height;
 	float	m_X, m_Y;
 	
+	float	m_Offset;
 
 	float m_Dy,m_VDy;
 	float m_SC;
@@ -40,7 +41,7 @@ public:
 	 CRECT getRect()
 	 {
 		 CRECT r;
-		 r.Left = m_X ;
+		 r.Left = m_X  ;
 		 r.Top = m_Y ;
 		 r.Right = m_X + m_Width;
 		 r.Bottom = m_Y + m_Height ;
