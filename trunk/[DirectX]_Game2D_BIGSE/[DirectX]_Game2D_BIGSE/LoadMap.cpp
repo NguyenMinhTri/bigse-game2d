@@ -158,7 +158,7 @@ void LoadMap::TranslateMap()
 			{
 				m_TerrainExtends[i][j] = r;
 			}
-			if (r == 1)
+			if(r == 1)
 			{
 				GodLike_Beast* _GodLike = new GodLike_Beast() ;
 				_GodLike->setXY(i*50,j*50-460);
@@ -218,8 +218,6 @@ void LoadMap::TranslateMap()
 				m_Bear->setXY(i*50,j*50);
 				ManagerObject::Instance()->getQuadTree()->Insert(m_Bear);
 			}
-			
-
 		}
 	}
 }
