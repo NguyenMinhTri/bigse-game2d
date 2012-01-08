@@ -2,6 +2,7 @@
 #include "RSMainGame.h"
 #include "EffectFont.h"
 #include "ManagerObject.h"
+#include "SoundGame.h"
 GodLike_Attack2::GodLike_Attack2(GodLike_Beast *_GodLike)
 {
 	m_GodLike = _GodLike ;
@@ -52,11 +53,16 @@ void GodLike_Attack2 ::Animation(float _Time)
 {
 	if(m_STT == ACTIVE)
 	{
+	
 		m_TimeAni +=_Time ;
 		if(m_TimeAni >= 0.16f)
 		{
 			m_TimeAni -=0.16f;
 			m_InfoSprite2.NextFrame(0,19) ;
+			if(m_InfoSprite2.getCurFrame()>=11)
+			{
+					SoundGame ::Instance()->PlayXetXet();
+			}
 			if(m_InfoSprite2.getCurFrame()>=11 && m_InfoSprite2.getCurFrame() <= 14 )
 			{
 				m_iCollision = true ;

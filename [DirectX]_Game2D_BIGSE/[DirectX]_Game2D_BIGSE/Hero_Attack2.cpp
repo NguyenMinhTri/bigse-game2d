@@ -3,6 +3,8 @@
 #include "ManagerObject.h"
 #include "Hero_Effect1.h"
 #include "EffectFont.h"
+#include "SoundGame.h"
+
 Hero_Attack2::Hero_Attack2(Hero* _Hero)
 {
 	m_Hero=_Hero;
@@ -58,6 +60,7 @@ void Hero_Attack2::Animation(float _Time)
 {
 	if (m_STT == ACTIVE)
 	{
+		SoundGame ::Instance()->PlaySolarFlare();
 		m_TimeAni+= _Time;
 		if (m_TimeAni>=0.12f)
 		{
@@ -93,7 +96,7 @@ void Hero_Attack2::UpdateStatus(float _Time)
 	{
 	case COOLDOWN:
 		m_TimeUpdate+= _Time;
-		if(m_TimeUpdate > 0.5f)
+		if(m_TimeUpdate > 20)
 		{
 			m_STT = READY;
 			m_TimeUpdate = 0;

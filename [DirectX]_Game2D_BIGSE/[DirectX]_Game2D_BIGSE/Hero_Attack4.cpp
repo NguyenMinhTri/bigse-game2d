@@ -3,7 +3,7 @@
 #include "ManagerObject.h"
 #include "Hero_Effect2.h"
 #include "EffectFont.h"
-
+#include "SoundGame.h"
 Hero_Attack4::Hero_Attack4(Hero* _Hero)
 {
 	m_Hero=_Hero;
@@ -76,6 +76,7 @@ void Hero_Attack4::Animation(float _Time)
 {
 	if (m_STT == ACTIVE)
 	{
+		SoundGame ::Instance()->PlayKaMeHaMe();
 		m_TimeAni+= _Time;
 		if (m_TimeAni>=0.12f)
 		{
@@ -111,7 +112,7 @@ void Hero_Attack4::UpdateStatus(float _Time)
 	{
 	case COOLDOWN:
 		m_TimeUpdate+= _Time;
-		if(m_TimeUpdate > 3)
+		if(m_TimeUpdate > 20)
 		{
 			m_STT = READY;
 			m_TimeUpdate = 0;

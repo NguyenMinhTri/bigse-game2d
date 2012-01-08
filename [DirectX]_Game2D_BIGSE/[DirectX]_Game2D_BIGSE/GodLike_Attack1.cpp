@@ -5,6 +5,7 @@
 #include "ManagerObject.h"
 #include "EffectThunder.h"
 #include "EffectFont.h"
+#include "SoundGame.h"
 GodLike_Attack1::GodLike_Attack1(GodLike_Beast *_GodLike)
 {
 	m_GodLike = _GodLike ;
@@ -21,6 +22,7 @@ GodLike_Attack1::GodLike_Attack1(void)
 }
 void GodLike_Attack1 ::Init()
 {
+	count = 0;
 	m_Damage = 1400;
 	m_iCollision = false ;
 	m_Attack1  = RSMainGame::get()->getGodLikeAttack1() ;
@@ -57,11 +59,14 @@ void GodLike_Attack1 ::Animation(float _Time)
 {
 	if(m_STT == ACTIVE)
 	{
+		SoundGame ::Instance()->PlayGLPunch();
 		m_TimeAni +=_Time ;
 		if(m_TimeAni >= 0.16f)
 		{
 			m_TimeAni -=0.16f;
 			m_InfoSprite1.NextFrame(0,23) ;
+			 
+			
 			    if(m_InfoSprite1.getCurFrame()>=10 && m_InfoSprite1.getCurFrame() <= 16 )
 				{
 					m_iCollision = true ;

@@ -19,7 +19,7 @@ StateMainMenu::~StateMainMenu(void)
 }
 void StateMainMenu::Init()
 {
-	SoundGame::Instance()->PlayBackGame();
+/*	SoundGame::Instance()->PlayBackGame();*/
 	D3DXCreateSprite(m_Device,&m_Handle);
 	CoAlMain=0;
 	CoAlLogo=1;

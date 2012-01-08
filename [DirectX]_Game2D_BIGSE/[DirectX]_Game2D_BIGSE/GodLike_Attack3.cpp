@@ -5,6 +5,7 @@
 #include "ManagerObject.h"
 #include "EffectSound.h"
 #include "EffectFont.h"
+#include "SoundGame.h"
 
 GodLike_Attack3 ::GodLike_Attack3 (GodLike_Beast *_GodLike)
 {
@@ -54,9 +55,10 @@ void GodLike_Attack3  ::Active(float _X,float _Y,int _Dir)
 }
 void GodLike_Attack3  ::Animation(float _Time)
 {
+	m_TimeAni +=_Time ;
 	if(m_STT == ACTIVE)
 	{
-		m_TimeAni +=_Time ;
+		SoundGame ::Instance()->PlayGLScream();
 		if(m_TimeAni >= 0.16f)
 		{
 			m_TimeAni -=0.16f;
@@ -77,6 +79,7 @@ void GodLike_Attack3  ::Animation(float _Time)
 
 void GodLike_Attack3 ::Update(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight)
 {
+	
 	Animation(_Time);
 	UpdateStatus(_Time);
 }
