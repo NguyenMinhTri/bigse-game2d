@@ -1,6 +1,7 @@
 #include "StateMainMenu.h"
 #include "StatePlayer.h"
 #include "SoundGame.h"
+#include "StateHelp.h"
 
 
 StateMainMenu::StateMainMenu(iPlay* GamePlay): iState(GamePlay)
@@ -35,7 +36,7 @@ void StateMainMenu::Init()
 	m_listEffect=new vector<Effect_MainMenu*>();
 	m_listHoldButton=new vector<Sprite*>();
 	m_listInfoHoldButton = new vector<InfoSprite>();
-	m_CountOfEffect=200;
+	m_CountOfEffect=50;
 	for(int i=0;i<4;i++)
 	{
 		Sprite* m_HoldMainMenu;
@@ -144,6 +145,7 @@ void StateMainMenu ::ProcessMouse(DIMOUSESTATE MouseState,POINT Positon)
 				&&Positon.y >= m_InfoButtonHelp.getY()-20 && Positon.y <=m_InfoButtonHelp.getY()+m_InfoButtonHelp.m_Height)
 			{
 				m_InfoButtonHelp.setScaleXY(0.9f,0.9f);		
+				m_iPlay->SetNextState(new StateHelp(this->m_iPlay));
 			}
 			else
 				m_InfoButtonHelp.setScaleXY(1,1);
