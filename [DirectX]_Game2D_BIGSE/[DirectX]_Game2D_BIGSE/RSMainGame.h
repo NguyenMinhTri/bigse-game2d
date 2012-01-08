@@ -46,7 +46,7 @@ private:
 	////////////////////////////////
 	Sprite* m_SnakeMans_Move;
 	Sprite* m_SnakeMans_Die;
-	
+
 	Sprite* m_SnakeMans_attack1;
 	Sprite* m_SnakeMans_Attack1_Hit;
 
@@ -103,9 +103,10 @@ private:
 	Sprite* m_PirateAttack ;
 	Sprite* m_PirateDie ;
 
+	Sprite* m_Pharaon ;
 	RSMainGame(void);
 public:
-	
+
 	~RSMainGame(void);
 	static RSMainGame* get (){
 		if (instance == NULL)
@@ -439,5 +440,9 @@ public:
 		return m_PirateDie ;
 	}
 
+	Sprite* getPharaon()
+	{
+		return m_Pharaon ;
+	}
 };
 
