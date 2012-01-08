@@ -107,6 +107,8 @@
     <ClCompile Include="State_Loading.cpp" />
     <ClCompile Include="StateHelp.cpp" />
     <ClCompile Include="Effect_Help.cpp" />
+    <ClCompile Include="State_Setting.cpp" />
+    <ClCompile Include="Effect_Setting.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Angle.h" />
@@ -217,6 +219,8 @@
     <ClInclude Include="State_Loading.h" />
     <ClInclude Include="StateHelp.h" />
     <ClInclude Include="Effect_Help.h" />
+    <ClInclude Include="State_Setting.h" />
+    <ClInclude Include="Effect_Setting.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="data\image\callpet.png">

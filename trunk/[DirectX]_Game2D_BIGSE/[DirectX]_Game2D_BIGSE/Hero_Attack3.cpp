@@ -3,6 +3,7 @@
 #include "ManagerObject.h"
 #include "Hero_Effect2.h"
 #include "EffectFont.h"
+#include "EffectFrenzy.h"
 Hero_Attack3::Hero_Attack3(Hero* _Hero)
 {
 	m_Hero=_Hero;
@@ -132,6 +133,8 @@ void Hero_Attack3::ProcessCollision(MyObject *_Obj)
 		}//true la chua trung
 		EffectFont* m_EffectFont = new EffectFont(_Obj->getX(), _Obj->getY(),m_Damage);
 		ManagerObject::Instance()->getListEffect()->push_back(m_EffectFont);
+		EffectFrenzy* m_EffectFrenzy = new EffectFrenzy(_Obj->getX()+_Obj->getWidth()/3, _Obj->getY()+_Obj->getX()+_Obj->getHeight()/3);
+		ManagerObject::Instance()->getListEffect()->push_back(m_EffectFrenzy);
 			if (m_Direct<0)
 			{
 				Hero_Effect2 *m_HeroEffect2 = new Hero_Effect2(_Obj->getX()+20,_Obj->getY()+50);
@@ -147,6 +150,7 @@ void Hero_Attack3::ProcessCollision(MyObject *_Obj)
 				ManagerObject::Instance()->getListEffect()->push_back(m_HeroEffect2);
 			}
 		_Obj->setActive(false);
+		_Obj->setFrenzey(true);
 		_Obj->setHp(_Obj->getHp() - getDamage());
 		if(_Obj->getHp() <= 0)
 		{
