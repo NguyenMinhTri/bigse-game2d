@@ -149,16 +149,24 @@ void State_Play::Update(float _Time)
 		for (std::vector<MyObject*>::iterator i = m_ListBoss->begin();i!= m_ListBoss->end();i++)
 		{	
 			Character* b = (Character*)(*i);
-			for (int j=0;j<4;j++)
+			if (b->getRect().iCollision(m_Camera->getRect()) && b->getLife()==true)
 			{
-				if(b->m_skillManager->getSkill(j)->getSTT()==ACTIVE)
+				for (int j=0;j<4;j++)
 				{
-					m_Camera->UpdateEffect(_Time);
-					iflag = true;
-					break;
+					if(b->m_skillManager->getSkill(j)->getSTT()==ACTIVE)
+					{
+						m_Camera->UpdateEffect(_Time);
+						iflag = true;
+						break;
+					}
 				}
 			}
+			
 			if(iflag) break;
+		}
+		if (iflag==false)
+		{
+			m_Camera->NoEffect();
 		}
 	}
 	
@@ -225,20 +233,7 @@ void State_Play::Update(float _Time)
 		}
 		i++;		
 	}
-	/************************************************************************/
-	/*  Update Boss in camera                                             */
-	/************************************************************************/	
-	for (std::vector<MyObject*>::iterator i = m_ListBoss->begin();i!= m_ListBoss->end();)
-	{
-		(*i)->Update(_Time,m_Map->getTerrain(),m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL);
-		if( (*i)->getLife() == false)
-		{
-			(*i)->Release();
-			i = m_ListBoss->erase(i);
-			continue;
-		}
-		i++;		
-	}
+	
 	/************************************************************************/
 	/*  Update Effect in camera                                             */
 	/************************************************************************/	
@@ -252,36 +247,7 @@ void State_Play::Update(float _Time)
 			continue;
 		}
 		i++;		
-	}
-	/************************************************************************/
-	/*  Update Special                                           */
-	/************************************************************************/	
-	/*for (std::vector<MyObject*>::iterator i = m_SpecialObject->begin();i!= m_SpecialObject->end();)
-	{
-		(*i)->Update(_Time,m_Map->getTerrain(),m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL);		
-		i++;		
-	}*/
-	/************************************************************************/
-	/*  Collision Object vs Object                                          */
-	/************************************************************************/	
-	for (std::vector<MyObject*>::iterator i = m_ObjectsCamera->begin();i!= m_ObjectsCamera->end();i++)
-	{		
-		for (std::vector<MyObject*>::iterator j = (i+1);j!= m_ObjectsCamera->end();j++)
-		{
-			(*i)->ProcessCollision(*j);
-			(*j)->ProcessCollision(*i);
-		}		
-	}
-	/************************************************************************/
-	/*  Collision Special vs Object                                        */
-	/************************************************************************/	
-	for (std::vector<MyObject*>::iterator i = m_SpecialObject->begin();i!= m_SpecialObject->end();i++)
-	{		
-		for (std::vector<MyObject*>::iterator j = m_ObjectsCamera->begin();j!= m_ObjectsCamera->end();j++)
-		{
-			(*i)->ProcessCollision(*j);
-		}		
-	}
+	}	
 	/************************************************************************/
 	/*  Collision Object vs Monster                                        */
 	/************************************************************************/	
@@ -293,17 +259,7 @@ void State_Play::Update(float _Time)
 			(*j)->ProcessCollision(*i);
 		}		
 	}
-	/************************************************************************/
-	/*  Collision Object vs Boss                                       */
-	/************************************************************************/	
-	for (std::vector<MyObject*>::iterator i = m_ObjectsCamera->begin();i!= m_ObjectsCamera->end();i++)
-	{		
-		for (std::vector<MyObject*>::iterator j = m_ListBoss->begin();j!= m_ListBoss->end();j++)
-		{
-			(*i)->ProcessCollision(*j);
-			(*j)->ProcessCollision(*i);
-		}		
-	}
+	
 	/************************************************************************/
 	/*  Collision Object vs item                                            */
 	/************************************************************************/
@@ -314,18 +270,7 @@ void State_Play::Update(float _Time)
 			(*i)->ProcessCollision(*j);
 		}		
 	}
-
-	/************************************************************************/
-	/*  Collision Object vs Boss                                       */
-	/************************************************************************/ 
-	for (std::vector<MyObject*>::iterator i = m_ObjectsCamera->begin();i!= m_ObjectsCamera->end();i++)
-	{  
-		for (std::vector<MyObject*>::iterator j = m_ListBoss->begin();j!= m_ListBoss->end();j++)
-		{
-			(*i)->ProcessCollision(*j);
-			(*j)->ProcessCollision(*i);
-		}  
-	}
+	
 }
 
 void State_Play::Draw()
@@ -345,8 +290,7 @@ void State_Play::Draw()
 		}
 		for (std::vector<MyObject*>::iterator i = m_ListMonster->begin();i!= m_ListMonster->end();i++)
 		{
-			(*i)->Draw(m_mtWorld,m_Handle);			
-
+			(*i)->Draw(m_mtWorld,m_Handle);	
 		}
 
 		for (std::vector<MyObject*>::iterator i = m_ListItem->begin();i!= m_ListItem->end();i++)
@@ -358,11 +302,7 @@ void State_Play::Draw()
 		{
 			(*i)->Draw(m_mtWorld,m_Handle);			
 		}
-		for (std::vector<MyObject*>::iterator i = m_ListBoss->begin();i!= m_ListBoss->end();i++)
-		{
-			(*i)->Draw(m_mtWorld,m_Handle);			
-		}	
-
+		
 		
 		m_Handle->End();
 		m_Device->EndScene();

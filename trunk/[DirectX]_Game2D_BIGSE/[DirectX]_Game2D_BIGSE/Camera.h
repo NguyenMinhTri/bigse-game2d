@@ -50,7 +50,7 @@ public:
 	 };
 	 void  Update(Character* _Character,float _MaxWidth,float _MaxHeight);
 	 void UpdateEffect (float _Time);
-
+	 void NoEffect ();
 	 D3DXMATRIX getMatrixTransform ();
 };
 

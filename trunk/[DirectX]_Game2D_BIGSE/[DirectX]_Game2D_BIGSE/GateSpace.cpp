@@ -18,6 +18,7 @@ GateSpace::GateSpace(int _ID)
 	}
 	Init();
 	m_iActive = false;
+	m_iFrenzy = false;
 }
 
 
