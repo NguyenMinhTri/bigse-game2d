@@ -19,7 +19,7 @@ Hero_Attack2::~Hero_Attack2(void)
 void Hero_Attack2::Init()
 {
 	m_iCollision=false;
-	m_Damage = 2000;
+	m_Damage = 400;
 
 	m_STT = READY;
 	setSize(294,120);
@@ -96,7 +96,7 @@ void Hero_Attack2::UpdateStatus(float _Time)
 	{
 	case COOLDOWN:
 		m_TimeUpdate+= _Time;
-		if(m_TimeUpdate > 20)
+		if(m_TimeUpdate > 2)
 		{
 			m_STT = READY;
 			m_TimeUpdate = 0;

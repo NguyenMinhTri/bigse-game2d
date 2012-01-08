@@ -4,6 +4,7 @@
 #include "InfoSprite.h"
 #include "ManagerObject.h"
 #include "EffectFont.h"
+#include "SoundGame.h"
 Thunder::Thunder(void)
 {
 	Init();
@@ -62,6 +63,7 @@ void Thunder::Active (float _X,float _Y,int _Dir)
 void Thunder::Animation(float _Time){
 	if (m_STT == ACTIVE)
 	{
+		SoundGame ::Instance()->PlayThunder();
 		time = TIME ;
 		m_TimeAni+= _Time;
 		if (m_TimeAni>=0.12f)

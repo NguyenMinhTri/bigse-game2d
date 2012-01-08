@@ -20,6 +20,9 @@ private:
 	CSound* m_GodLike_Scream ;
 	CSound* m_GodLike_Punch ;
 	CSound* m_XetXet ;
+	CSound* m_Thunder ;
+	CSound* m_Pharaon ;
+	CSound* m_AngleXetXet;
 	SoundGame();
 	
 public:
@@ -50,6 +53,9 @@ void Init(HWND _hwnd);
 	void PlayGLScream() ;
 	void PlayGLPunch();
 	void PlayXetXet();
+	void PlayThunder();
+	void PlayPharaon();
+	void PlayAngleXetXet() ;
 	void StopBackGame ();
 	void StopSoundSetting();
 	void PlaySoundSetting();

@@ -1,6 +1,6 @@
 #include "SkillAngle.h"
 #include "RSMainGame.h"
-
+#include "SoundGame.h"
 SkillAngle::SkillAngle(Angle *_Angle)
 {
 	Init();
@@ -44,6 +44,7 @@ void SkillAngle ::Animation(float _Time)
 {
 	if (m_STT == ACTIVE)
 	{
+		SoundGame ::Instance()->PlayAngleXetXet();
 		m_TimeAni+= _Time;
 		if (m_TimeAni>=0.12f)
 		{
