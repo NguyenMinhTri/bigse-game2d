@@ -6,9 +6,10 @@
 #include "RECT.h"
 #include "StateMainMenu.h"
 
-StateWorldMap::StateWorldMap(iPlay *GamePlay) : iState(GamePlay)
+StateWorldMap::StateWorldMap(iPlay *GamePlay,int _IDHero) : iState(GamePlay)
 {
 	m_ID = WorldMap ;
+	m_IDHero = _IDHero;
 }
 
 
@@ -91,7 +92,7 @@ void StateWorldMap ::ProcessMouse(DIMOUSESTATE MouseState,POINT Positon)
 		{
 			if(Positon.y > 152 && Positon.y < 182)
 			{
-				m_iPlay->SetNextState(new State_Loading(this->m_iPlay,"data\\map\\6.png"));
+				m_iPlay->SetNextState(new State_Loading(this->m_iPlay,"data\\map\\6.png",m_IDHero));
 			}
 		}
 		if(Positon.x > 606 && Positon.x < 701) //Ellina
@@ -211,7 +212,7 @@ void StateWorldMap ::Update(float _Time)
 {
 	if(r.iCollision(Perion) == true  && m_STT == READY  && m_InfoAttack.getCurFrame()>5)
 	{
-		m_iPlay->SetNextState(new State_Loading(this->m_iPlay,"data\\map\\6.png"));
+		m_iPlay->SetNextState(new State_Loading(this->m_iPlay,"data\\map\\6.png",m_IDHero));
 	}
 	if(r.iCollision(Kerningstadt) == true  && m_STT == READY  && m_InfoAttack.getCurFrame()>5)
 	{

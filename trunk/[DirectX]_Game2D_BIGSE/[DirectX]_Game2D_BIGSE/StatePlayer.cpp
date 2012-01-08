@@ -47,15 +47,15 @@ void StatePlayer:: ProcessMouse(DIMOUSESTATE MouseState,POINT Positon)
 	{
 		if(Positon.x >=1 && Positon.x <=300 &&Positon.y >= 200 && Positon.y <=526)
 		{
-			m_iPlay->SetNextState(new StateWorldMap(this->m_iPlay));//chua dat ID
+			m_iPlay->SetNextState(new StateWorldMap(this->m_iPlay,0));//chua dat ID
 		}
 		if(Positon.x >=350 && Positon.x<=650 && Positon.y >=200 && Positon.y <=522)
 		{
-			m_iPlay->SetNextState(new StateWorldMap(this->m_iPlay));//chua dat ID
+			m_iPlay->SetNextState(new StateWorldMap(this->m_iPlay,1));//chua dat ID
 		}
 		if(Positon.x >=700 &&Positon.x <=1000 && Positon.y>=200 && Positon.y<=543)
 		{
-			m_iPlay->SetNextState(new StateWorldMap(this->m_iPlay)); //chua dat ID 
+			m_iPlay->SetNextState(new StateWorldMap(this->m_iPlay,2)); //chua dat ID 
 		}
 	}
 

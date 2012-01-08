@@ -11,6 +11,7 @@ class StateWorldMap :
 	public iState
 {
 public:
+	int m_IDHero;
 	CRECT r ;
 	CRECT Perion ;
 	CRECT Kerningstadt ;
@@ -32,7 +33,7 @@ public:
 	InfoSprite m_InfoCharacter;
 	InfoSprite m_InfoAttack ;
 	LPD3DXSPRITE m_Handle;
-	StateWorldMap(iPlay* GamePlay);
+	StateWorldMap(iPlay* GamePlay,int _IDHero);
 	~StateWorldMap(void);
 
 	void IsKeyDown(int KeyCode);
