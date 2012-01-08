@@ -22,7 +22,7 @@ void Hero_Attack3::Init()
 	m_TestBallFly=false;
 	m_VBallFly=30;
 	m_iCollision=false;
-	m_Damage = 4000;
+	m_Damage = 700;
 
 	m_STT = READY;
 	setSize(97,150);
@@ -103,7 +103,7 @@ void Hero_Attack3::UpdateStatus(float _Time)
 	{
 	case COOLDOWN:
 		m_TimeUpdate+= _Time;
-		if(m_TimeUpdate > 20)
+		if(m_TimeUpdate > 3)
 		{
 			m_STT = READY;
 			m_TimeUpdate = 0;
