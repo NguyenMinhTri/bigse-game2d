@@ -137,6 +137,7 @@
     <ClCompile Include="MyObject.cpp" />
     <ClCompile Include="Pet.cpp" />
     <ClCompile Include="Pet_Hero.cpp" />
+    <ClCompile Include="Pharaon.cpp" />
     <ClCompile Include="Pirate.cpp" />
     <ClCompile Include="PirateAttack.cpp" />
     <ClCompile Include="QuadTree.cpp" />
@@ -239,6 +240,7 @@
     <ClInclude Include="MyObject.h" />
     <ClInclude Include="Pet.h" />
     <ClInclude Include="Pet_Hero.h" />
+    <ClInclude Include="Pharaon.h" />
     <ClInclude Include="Pirate.h" />
     <ClInclude Include="PirateAttack.h" />
     <ClInclude Include="QuadTree.h" />

@@ -2,6 +2,9 @@
 #include "RSMainGame.h"
 #include "SkillAngle.h"
 #include "Thunder.h"
+#include "Pharaon.h"
+#include "CallPet.h"
+#include "Frenzy.h"
 Angle::Angle(void)
 {
 	Init();
@@ -17,21 +20,23 @@ void Angle ::Init()
 	m_SCharater= RSMainGame ::get()->getAngle();
 	m_InfoSprite.setSize(300,200);
 	setSize(50,85);
-/*	setXY(200,0);*/
+	/*	setXY(200,0);*/
 	m_STT = ACTIVE ;
 
 	m_skillManager = new SkillManager();
 	m_skillManager->AddSkill(new SkillAngle(this));
-    m_skillManager->AddSkill(new Thunder(this));
+	m_skillManager->AddSkill(new Thunder(this));
+	m_skillManager->AddSkill(new CallPet()) ;
+	m_skillManager->AddSkill(new Pharaon(this)) ;
 }
 void Angle ::ActiveSkill(int _Index)
 {
-      m_skillManager->ActiveSkill(_Index,m_X,m_Y,m_Direct);
+	m_skillManager->ActiveSkill(_Index,m_X,m_Y,m_Direct);
 }
 void Angle ::Move(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight)
 {
 	if(m_skillManager->getSkill(1)->time !=TIME)
-	MyObject::Move(_Time, _Terrain,_MaxWidth,_MaxHeight);
+		MyObject::Move(_Time, _Terrain,_MaxWidth,_MaxHeight);
 }
 
 void Angle ::Animation(float _Time)

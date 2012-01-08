@@ -1,6 +1,7 @@
 #include "StateMainMenu.h"
 #include "StatePlayer.h"
 #include "SoundGame.h"
+#include "State_Play.h"
 #include "StateHelp.h"
 #include "State_Setting.h"
 
