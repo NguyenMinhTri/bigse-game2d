@@ -17,7 +17,6 @@ SnakeMens_Attack4::~SnakeMens_Attack4(void)
 
 void SnakeMens_Attack4::Init()
 {
-
 	m_TestBallFly=false;
 	m_iCollision=false;
 	m_Damage = 2000;
