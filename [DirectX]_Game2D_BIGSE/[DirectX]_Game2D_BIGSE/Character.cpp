@@ -33,7 +33,6 @@ void Character::Init(){
 	m_skillManager = new SkillManager();
 	m_skillManager->AddSkill(new SkillHit(this));
 	m_skillManager->AddSkill(new Frenzy());
-	m_skillManager->AddSkill(new CallPet());
 	m_skillManager->AddSkill(new Pet(this));
 	m_skillManager->AddSkill(new Thunder());
 }
