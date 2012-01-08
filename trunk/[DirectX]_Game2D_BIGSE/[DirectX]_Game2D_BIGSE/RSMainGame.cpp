@@ -50,7 +50,7 @@ void RSMainGame::IntRS(LPDIRECT3DDEVICE9 _Device){
 	m_EffectLeonDie_2 = new Sprite(_Device,"data\\image\\GodLike_dIE_2.png",732,700,4);
 	m_Teleport = new Sprite(_Device,"data\\image\\TelePort.png",568,574,4);
 	m_Teleport1 = new Sprite(_Device,"data\\image\\TelePort1.png",568,574,4);
-	
+
 	m_FontNum = new Sprite(_Device,"data\\image\\num.png",37,39,10 );
 	/////////////////////////////////////
 	m_SnakeMans_Move = new Sprite(_Device,"data\\image\\SnakeMans_Move.png",202,269,6);
@@ -70,8 +70,8 @@ void RSMainGame::IntRS(LPDIRECT3DDEVICE9 _Device){
 	m_SnakeMans_attack4=new Sprite(_Device,"data\\image\\SnakeMens_attack4.png",328,522,5);
 	m_SnakeMans_Attack4_Ball=new Sprite(_Device,"data\\image\\SnakeMans_Attack4_Ball.png",622,563,4);
 	m_SnakeMans_Attack4_Hit=new Sprite(_Device,"data\\image\\SnakeMans_Attack4_Hit.png",209,200,6);
-	
-	
+
+
 	/////////////////////////////////////////
 	m_Hero_Move=new Sprite(_Device,"data\\image\\Hero_Move.png",79,103,6);
 	m_Hero_Stand=new Sprite(_Device,"data\\image\\Hero_Stand.png",79,98,4);
@@ -111,4 +111,6 @@ void RSMainGame::IntRS(LPDIRECT3DDEVICE9 _Device){
 	m_PirateMove=new Sprite(_Device,"data\\image\\PrivateMove.png",118,107,4);
 	m_PirateAttack =new Sprite(_Device,"data\\image\\PrivateAttack.png",159,143,19);
 	m_PirateDie =new Sprite(_Device,"data\\image\\PrivateDie.png",162,146,9);
+
+	m_Pharaon = new Sprite(_Device,"data\\image\\Pharaon.png",1010,517,4);
 }
