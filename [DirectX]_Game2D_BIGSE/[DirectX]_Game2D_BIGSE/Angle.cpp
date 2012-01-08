@@ -20,14 +20,14 @@ void Angle ::Init()
 	m_SCharater= RSMainGame ::get()->getAngle();
 	m_InfoSprite.setSize(300,200);
 	setSize(50,85);
-	/*	setXY(200,0);*/
+
 	m_STT = ACTIVE ;
 
 	m_skillManager = new SkillManager();
-	m_skillManager->AddSkill(new SkillAngle(this));
-	m_skillManager->AddSkill(new Thunder(this));
+	m_skillManager->AddSkill(new SkillAngle(this));	
 	m_skillManager->AddSkill(new CallPet()) ;
 	m_skillManager->AddSkill(new Pharaon(this)) ;
+	m_skillManager->AddSkill(new Thunder(this));
 }
 void Angle ::ActiveSkill(int _Index)
 {

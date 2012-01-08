@@ -12,6 +12,7 @@
 #include "Trap.h"
 #include "Bear.h"
 #include "Pirate.h"
+#include "Global.h"
 LoadMap::LoadMap(void)
 {
 	m_Width = 0;
@@ -158,6 +159,10 @@ void LoadMap::TranslateMap()
 			{
 				m_TerrainExtends[i][j] = r;
 			}
+			if(r>=100 && r<=131)
+			{
+				m_TerrainExtends[i][j] = r;
+			}
 			if(r == 1)
 			{
 				GodLike_Beast* _GodLike = new GodLike_Beast() ;
@@ -192,19 +197,21 @@ void LoadMap::TranslateMap()
 			{
 				Trap* m_Trap = new Trap();
 				m_Trap->setXY(i*50,j*50);
-				ManagerObject::Instance()->getSpecialObjects()->push_back(m_Trap);
+				ManagerObject::Instance()->getListItem()->push_back(m_Trap);
 			}
-			if (r==14)
+			if (r==14|| r== 15)
 			{
-				GateSpace* _SpaceGate = new GateSpace(1);
-				_SpaceGate->setXY(i*50,j*50);
+				GateSpace* _SpaceGate = new GateSpace(r);
+				_SpaceGate->setXY(i*50,j*50+50);
+				ManagerObject::Instance()->getSpecialObjects()->push_back(_SpaceGate);
 				ManagerObject::Instance()->getQuadTree()->Insert(_SpaceGate);
 			}
-			if(r==15)
+			if (r>= 90 &&  r<=99)
 			{
-				GateSpace* _SpaceGate1 = new GateSpace(-1);
-				_SpaceGate1->setXY(i*50,j*50);
-				ManagerObject::Instance()->getQuadTree()->Insert(_SpaceGate1);
+				GateSpace* _SpaceGate = new GateSpace(r);
+				_SpaceGate->setXY(i*50,j*50+50);
+				ManagerObject::Instance()->getSpecialObjects()->push_back(_SpaceGate);
+				ManagerObject::Instance()->getQuadTree()->Insert(_SpaceGate);
 			}
 			if(r==16)
 			{

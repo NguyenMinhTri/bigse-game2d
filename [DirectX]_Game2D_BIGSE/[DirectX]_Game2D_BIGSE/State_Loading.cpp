@@ -3,10 +3,11 @@
 #include "State_Play.h"
 
 
-State_Loading::State_Loading(iPlay* GamePlay,LPCTSTR _fileMap)
+State_Loading::State_Loading(iPlay* GamePlay,LPCTSTR _fileMap,int _IDHero)
 	:iState(GamePlay)
 {
 	m_ID = LOADING;
+	m_IDHero = _IDHero;
 	m_fileMap = _fileMap;
 	m_Loading1=new Sprite(m_Device,"data\\image\\loading1.png",316,80,1);
 	m_Loading3=new Sprite(m_Device,"data\\image\\loading3.png",316,80,1);
@@ -93,6 +94,28 @@ void State_Loading::Update(float _Time)
 	}
 	if (m_Percent==80)
 	{
+		if (m_IDHero==0)
+		{
+			Character* hero = new Character();
+			hero->setXY(500,0);
+			m_ObjectsCamera->push_back(hero);
+		} 
+		else
+		{
+			if (m_IDHero==1)
+			{
+				Character* hero = new Angle();
+				hero->setXY(500,0);
+				m_ObjectsCamera->push_back(hero);
+			} 
+			else
+			{
+				Character* hero = new Hero();
+				hero->setXY(500,0);
+				m_ObjectsCamera->push_back(hero);
+			}
+		}
+
 		m_LoadMap->TranslateMap();
 		m_Map = new Terrain(m_LoadMap->m_Terrain,m_LoadMap->m_TerrainExtends,m_LoadMap->m_Width,m_LoadMap->m_Height);
 		ManagerObject::Instance()->setMap(m_Map);

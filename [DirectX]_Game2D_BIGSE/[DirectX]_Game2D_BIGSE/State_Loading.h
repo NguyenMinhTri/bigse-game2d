@@ -13,6 +13,7 @@ class State_Loading :
 	public iState
 {
 	int m_Percent;
+	int m_IDHero;
 	Sprite* m_Loading1;
 	Sprite* m_Loading3;
 	Sprite* m_Loading2;
@@ -32,7 +33,7 @@ class State_Loading :
 	Terrain* m_Map;
 	LPCTSTR m_fileMap;
 public:
-	State_Loading(iPlay* GamePlay,LPCTSTR _fileMap);
+	State_Loading(iPlay* GamePlay,LPCTSTR _fileMap,int _IDHero);
 	~State_Loading(void);
 	void IsKeyDown(int KeyCode);
 	void OnKeyDown(int KeyCode);

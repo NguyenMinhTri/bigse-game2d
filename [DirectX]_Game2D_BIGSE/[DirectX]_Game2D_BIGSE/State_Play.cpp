@@ -33,11 +33,9 @@ void State_Play::Init()
 
 #pragma region Init Character   
 
+	std::vector<MyObject*>::iterator u = m_ObjectsCamera->begin();
+	m_Hero= (Character*)(*u);
 
-	m_Hero=new Hero();
-	m_Hero->setXY(2000,0);
-
-	m_ObjectsCamera->push_back(m_Hero);
 
 
 #pragma endregion Init Character
@@ -68,7 +66,7 @@ void State_Play::IsKeyDown(int KeyCode)
 	case DIK_W:
 		m_Hero->setJump();
 		break;
-
+	
 	case DIK_DOWN:
 		break;
 	}
@@ -91,11 +89,40 @@ void State_Play::OnKeyDown(int KeyCode)
 	case DIK_U:
 		m_Hero->ActiveSkill(3);
 		break ;	
-	case DIK_T:
-		/*m_Hero->CallPet();*/
+	case DIK_T:	
 		break ;	
 	case DIK_NUMPAD9:
 		m_STT = FREEZETIME ;
+		break;
+	case DIK_S:
+		for (std::vector<MyObject*>::iterator i = m_SpecialObject->begin();i!= m_SpecialObject->end();i++)
+		{
+			CRECT r1 = m_Hero->getRect();
+			CRECT r2 =(*i)->getRect();
+			bool is = r1.iCollision(r2);
+			if (is)
+			{
+
+				int  id1 = (*i)->getID();
+				int id2;
+				if(id1%2 ==0)id2= id1+1;
+				else id2 = id1-1;
+				
+				for (std::vector<MyObject*>::iterator f = m_SpecialObject->begin();f!= m_SpecialObject->end();f++)
+				{
+					if ((*f)->getID()==id2)
+					{
+						m_Hero->setXY((*f)->getX(),(*f)->getY()-40);
+						return;
+					}
+				}
+				
+
+			}
+
+		}
+
+		break;
 	}
 }
 
@@ -110,7 +137,31 @@ void State_Play::OnKeyUp(int KeyCode)
 void State_Play::Update(float _Time)
 {
 	m_Camera->Update(m_Hero,m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL);
-	//m_Camera->UpdateEffect(_Time);
+
+	
+	if (m_Hero->m_skillManager->getSkill(3)->getSTT()==ACTIVE)
+	{
+		m_Camera->UpdateEffect(_Time);
+	} 
+	else
+	{
+		bool iflag = false;
+		for (std::vector<MyObject*>::iterator i = m_ListBoss->begin();i!= m_ListBoss->end();i++)
+		{	
+			Character* b = (Character*)(*i);
+			for (int j=0;j<4;j++)
+			{
+				if(b->m_skillManager->getSkill(j)->getSTT()==ACTIVE)
+				{
+					m_Camera->UpdateEffect(_Time);
+					iflag = true;
+					break;
+				}
+			}
+			if(iflag) break;
+		}
+	}
+	
 	m_mtWorld = m_Camera->getMatrixTransform();
 
 	/************************************************************************/
@@ -202,6 +253,14 @@ void State_Play::Update(float _Time)
 		}
 		i++;		
 	}
+	/************************************************************************/
+	/*  Update Special                                           */
+	/************************************************************************/	
+	/*for (std::vector<MyObject*>::iterator i = m_SpecialObject->begin();i!= m_SpecialObject->end();)
+	{
+		(*i)->Update(_Time,m_Map->getTerrain(),m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL);		
+		i++;		
+	}*/
 	/************************************************************************/
 	/*  Collision Object vs Object                                          */
 	/************************************************************************/	
@@ -302,14 +361,9 @@ void State_Play::Draw()
 		for (std::vector<MyObject*>::iterator i = m_ListBoss->begin();i!= m_ListBoss->end();i++)
 		{
 			(*i)->Draw(m_mtWorld,m_Handle);			
-		}
+		}	
 
-	
-
-		for (std::vector<MyObject*>::iterator i = m_SpecialObject->begin();i!= m_SpecialObject->end();i++)
-		{
-			(*i)->Draw(m_mtWorld,m_Handle);   
-		}
+		
 		m_Handle->End();
 		m_Device->EndScene();
 	}
