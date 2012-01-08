@@ -9,7 +9,7 @@
 
 Character::Character(void)
 {
-	m_HP = 20000 ; 
+	m_HP = 50000 ; 
 	Init();
 }
 

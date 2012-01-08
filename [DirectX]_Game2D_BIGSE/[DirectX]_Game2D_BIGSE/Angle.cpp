@@ -8,7 +8,7 @@
 Angle::Angle(void)
 {
 	Init();
-	m_HP = 20000;
+	m_HP = 50000;
 }
 
 Angle::~Angle(void)
@@ -35,7 +35,7 @@ void Angle ::ActiveSkill(int _Index)
 }
 void Angle ::Move(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight)
 {
-	if(m_skillManager->getSkill(1)->time !=TIME)
+	if(m_skillManager->getSkill(3)->time !=TIME)
 		MyObject::Move(_Time, _Terrain,_MaxWidth,_MaxHeight);
 }
 
@@ -48,7 +48,7 @@ void Angle ::Animation(float _Time)
 		if (m_TimeAni>= 0.15f)
 		{
 			m_TimeAni -= 0.15f;
-			if(m_skillManager->getSkill(1)->time ==TIME)
+			if(m_skillManager->getSkill(3)->time ==TIME)
 			{
 				m_InfoSprite.setCurFrame(4);
 				setY(getY() - 5);

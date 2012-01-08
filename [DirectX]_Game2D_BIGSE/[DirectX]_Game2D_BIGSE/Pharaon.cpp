@@ -2,7 +2,7 @@
 #include "ManagerObject.h"
 #include "EffectFont.h"
 #include "RSMainGame.h"
-
+#include "SoundGame.h"
 Pharaon::Pharaon(Character *_Character)
 {
 	m_Character = _Character ;
@@ -47,6 +47,7 @@ void Pharaon ::Animation(float _Time)
 {
 	if(m_STT == ACTIVE)
 	{
+		SoundGame ::Instance()->PlayPharaon();
 		m_TimeAni +=_Time ;
 		if(m_TimeAni >= 0.16f)
 		{
@@ -76,7 +77,7 @@ void Pharaon ::UpdateStatus(float _Time)
 	{
 	case COOLDOWN:
 		m_TimeUpdate += _Time;
-		if(m_TimeUpdate > 20)
+		if(m_TimeUpdate > 1)
 		{
 			m_STT = READY;
 			m_TimeUpdate = 0;
@@ -108,7 +109,16 @@ void Pharaon ::ProcessCollision(MyObject *_Obj)
 }
 void Pharaon :: Draw(D3DXMATRIX _mtWorld,LPD3DXSPRITE _Handler)
 {
-	m_InfoSprite.setXY(m_X - 100 ,m_Y - 300 );
+	if(m_Character->getDirection() >0 )
+	{
+		  m_InfoSprite.setXY( m_X , m_Y- 300);
+	}
+	if(m_Character->getDirection() < 0)
+	{
+	     m_InfoSprite.setXY( m_Character->getX() - 900,m_Y - 300 );
+	}
+	
+	
 	m_Pharaon->Draw(_mtWorld,m_InfoSprite,_Handler);
 }
 

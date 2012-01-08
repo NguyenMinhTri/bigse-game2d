@@ -211,12 +211,12 @@ void State_Play::Update(float _Time)
 	for (std::vector<MyObject*>::iterator i = m_ObjectsCamera->begin();i!= m_ObjectsCamera->end();)
 	{
 		(*i)->Update(_Time,m_Map->getTerrain(),m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL);
-		if( (*i)->getLife() == false)
-		{
-			(*i)->Release();
-			i = m_ObjectsCamera->erase(i);
-			continue;
-		}
+// 		if( (*i)->getLife() == false)
+// 		{
+// 			(*i)->Release();
+// 			i = m_ObjectsCamera->erase(i);
+// 			continue;
+// 		}
 		i++;		
 	}
 	/************************************************************************/

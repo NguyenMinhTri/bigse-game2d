@@ -51,6 +51,9 @@ void SoundGame::Init(HWND _hwnd)
 	m_GodLike_Scream = SDev->LoadSound("data\\sound\\scream.wav");
 	m_GodLike_Punch = SDev->LoadSound("data\\sound\\specialbeamcannon.wav");
 	m_XetXet= SDev->LoadSound("data\\sound\\strongkick.wav");
+	m_Thunder = SDev->LoadSound("data\\sound\\thunderclap2.wav");
+	m_Pharaon = SDev->LoadSound("data\\sound\\Pharaon.wav");
+	m_AngleXetXet = SDev->LoadSound("data\\sound\\teleport.wav");
 }
 
 void SoundGame::PlayBackGame()
@@ -130,7 +133,27 @@ void SoundGame :: PlayXetXet()
 		m_XetXet->Play();
 	}
 }
-
+void SoundGame ::PlayAngleXetXet()
+{
+	if(EffActi)
+	{
+		m_AngleXetXet->Play();
+	}
+}
+void SoundGame :: PlayThunder()
+{
+	if(EffActi)
+	{
+		m_Thunder->Play();
+	}
+}
+void SoundGame :: PlayPharaon()
+{
+	if(EffActi)
+	{
+		m_Pharaon->Play();
+	}
+}
 void SoundGame::StopBackGame() 
 {
 	SBackGame->Stop();

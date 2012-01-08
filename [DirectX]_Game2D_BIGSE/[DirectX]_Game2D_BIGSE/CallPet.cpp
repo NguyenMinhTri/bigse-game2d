@@ -4,7 +4,7 @@
 #include "ManagerObject.h"
 #include "EffectFont.h"
 #include "EffectHit.h"
-
+#include "SoundGame.h"
 CallPet::CallPet(void)
 {
 	Init();
@@ -15,7 +15,7 @@ CallPet::~CallPet(void)
 void CallPet::Init()
 {
 	
-	m_Damage = 500;
+	m_Damage = 1500;
 	m_STT = READY;
 	m_InfoSprite.setSize(520,385);
 	setSize(520,385);
@@ -54,8 +54,9 @@ void CallPet::Animation(float _Time){
 		{
 			m_TimeAni-= 0.07f;
 			m_InfoSprite.NextFrame(0,34);
-			if(m_InfoSprite.getCurFrame() ==23 )
+			if(m_InfoSprite.getCurFrame() >=28 && m_InfoSprite.getCurFrame() <=30 )
 			{
+					SoundGame ::Instance()->PlayXetXet();
 				m_iCollision= true;
 			}
 			if(m_InfoSprite.getCurFrame() == 33)
@@ -73,7 +74,7 @@ void CallPet::UpdateStatus(float _Time)
 	{
 	case COOLDOWN:
 		m_TimeUpdate+= _Time;
-		if(m_TimeUpdate > 4)
+		if(m_TimeUpdate > 10)
 		{
 			m_STT = READY;
 			m_TimeUpdate = 0;
