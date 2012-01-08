@@ -168,12 +168,14 @@ void LoadMap::TranslateMap()
 				GodLike_Beast* _GodLike = new GodLike_Beast() ;
 				_GodLike->setXY(i*50,j*50-460);
 				ManagerObject::Instance()->getListBoss()->push_back(_GodLike);
+				ManagerObject::Instance()->getQuadTree()->Insert(_GodLike);
 			}
 			if (r == 4)
 			{
 				SnakeMans* _Snakemens = new SnakeMans() ;
 				_Snakemens->setXY(i*50,650);
 				ManagerObject::Instance()->getListBoss()->push_back(_Snakemens);
+				ManagerObject::Instance()->getQuadTree()->Insert(_Snakemens);
 			}
 			if (r==10)
 			{

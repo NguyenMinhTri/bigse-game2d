@@ -107,10 +107,10 @@ void GodLike_Beast :: Move(float _Time, int** _Terrain,float _MaxWidth,float _Ma
 #pragma region RIGHT
 	if (m_Direct > 0)
 	{
-		m_X =m_X + _Time* m_VMove; //thoi gian thuc
-		if (m_X >= _MaxWidth - m_Width)
+		NextX =m_X + _Time* m_VMove; //thoi gian thuc
+		if (NextX >= _MaxWidth - m_Width)
 		{
-			m_X = _MaxWidth - m_Width;
+			NextX = _MaxWidth - m_Width;
 			m_Direct = -1 ;
 		}
 		bool iColTer = false;
@@ -139,10 +139,10 @@ void GodLike_Beast :: Move(float _Time, int** _Terrain,float _MaxWidth,float _Ma
 #pragma  region LEFT
 	if(m_Direct < 0)
 	{
-		m_X = m_X - _Time * m_VMove ;
-		if (m_X <=0 )
+		NextX = m_X - _Time * m_VMove ;
+		if (NextX <=0 )
 		{
-			m_X = 0;
+			NextX = 0;
 			m_Direct = 1;
 		}
 		bool iColTer = false;
@@ -168,6 +168,73 @@ void GodLike_Beast :: Move(float _Time, int** _Terrain,float _MaxWidth,float _Ma
 		{
 			m_X = NextX;
 		}
+#pragma region DOWN
+		m_Vy+= _Time*m_Gravity;
+		NextY = m_Y + m_Vy*_Time + 0.5*(_Time*_Time)*m_Gravity;
+		if (NextY >= (_MaxHeight - m_Height))
+		{
+			NextY =  _MaxHeight - m_Height;
+		}
+		if (NextY <= 0)
+		{
+			NextY = 0;
+			m_Vy = fabs(m_Vy);
+		}
+
+		if (m_Vy >= 0){
+
+			bool iColTer = false;
+			for (int j = (m_Y+m_Height)/g_CELL; j <  (NextY+m_Height)/g_CELL ;j++){
+				for (int i = m_X/g_CELL;i < (m_X+m_Width)/g_CELL;i++ ){
+					if (_Terrain[i][j]!=0){
+						iColTer = true;
+						m_Y = g_CELL * (j) - m_Height;
+						m_Vy = 0;
+						break;
+					}
+				}
+				if (iColTer == true){
+					break;
+				}
+
+			}
+			if (iColTer == false){
+				m_Y = NextY;
+			}
+#pragma endregion DOWN
+
+#pragma region UP
+		}else{
+
+			NextY = m_Y + m_Vy* _Time;
+			int n = (NextY/g_CELL);
+			int m = (m_Y/g_CELL);
+			if (n!=m ){
+
+				bool iColTer = false;
+				for (int j = m_Y/g_CELL-1; j >  NextY/g_CELL-1;j--){
+					for (int i = m_X/g_CELL;i < (m_X+m_Width)/g_CELL;i++ ){
+						if (_Terrain[i][j]!=0){
+							iColTer = true;
+							m_Y = g_CELL * (j+1);
+							m_Vy = fabs(m_Vy);
+							break;
+						}
+					}
+					if (iColTer == true){
+						break;
+					}
+				}
+
+				if (iColTer == false){
+					m_Y = NextY;
+				}
+
+			}else{
+				m_Y = NextY;
+			}
+		}
+#pragma endregion UP
 	}
 #pragma  endregion LEFT 
 
@@ -298,12 +365,7 @@ void GodLike_Beast::Draw(D3DXMATRIX _MWorld,LPD3DXSPRITE _Handler)
 	for(int i=0 ; i<=4 ;i++ )
 	{
 		if (m_skillManager->getSkill(i)->getSTT()==ACTIVE )
-		{
-			// 			if(m_skillManager->getSkill(4)->getSTT()==ACTIVE )
-			// 			{ 
-			// 					m_InfoSprite1.setXY(m_skillManager->getSkill(4)->getX(),m_skillManager->getSkill(4)->getY() ) ;
-			// 					m_InfoSprite2.setXY(m_skillManager->getSkill(4)->getX(),m_skillManager->getSkill(4)->getY() ) ;
-			// 			}
+		{			
 			m_skillManager->getSkill(i)->Draw(_MWorld,_Handler) ;
 		}
 	}

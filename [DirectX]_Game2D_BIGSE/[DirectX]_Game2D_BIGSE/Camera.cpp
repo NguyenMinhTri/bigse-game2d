@@ -51,7 +51,7 @@ void Camera::UpdateEffect(float _Time)
 	{
 		m_Dy = -3;
 	}
-	m_SC += m_VDy*0.3*_Time;
+	m_SC += m_VDy*0.2*_Time;
 	if (m_SC > 1.1f)
 	{
 		m_VDy = -1;
@@ -62,7 +62,11 @@ void Camera::UpdateEffect(float _Time)
 	}
 
 }
-
+ void Camera::NoEffect ()
+ {
+	 m_Dy =0;
+	 m_SC =1;
+ }
 D3DXMATRIX Camera::getMatrixTransform ()
 {
 	D3DXMATRIX mtFinal,mtCamera,mtEffect;
