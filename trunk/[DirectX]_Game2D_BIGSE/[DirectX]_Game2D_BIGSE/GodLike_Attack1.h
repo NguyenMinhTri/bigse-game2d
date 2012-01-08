@@ -5,6 +5,7 @@ class GodLike_Attack1 :
 	public Skill
 {
 public:
+	int count ;
 	GodLike_Beast *m_GodLike ;
 	Sprite *m_Attack1 ;
 	InfoSprite m_InfoSprite1;

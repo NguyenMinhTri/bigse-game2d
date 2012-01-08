@@ -42,7 +42,15 @@ void SoundGame::Init(HWND _hwnd)
 	SDev = new DSound;
 	SDev->Init(phwnd);
 	SActi=true;
-	SBackGame= SDev->LoadSound("data\\sound\\sback.wav");
+	SBackGame = SDev->LoadSound("data\\sound\\sback.wav");
+	basicbeam_fire = SDev->LoadSound("data\\sound\\basicbeam_fire.wav");
+	m_Hero3 =  SDev->LoadSound("data\\sound\\scream2.wav");
+	m_SoloFlare =  SDev->LoadSound("data\\sound\\solarflare.wav");
+	m_kamehame = SDev->LoadSound("data\\sound\\kamehame.wav");
+	m_Laze = SDev->LoadSound("data\\sound\\Laze.wav");
+	m_GodLike_Scream = SDev->LoadSound("data\\sound\\scream.wav");
+	m_GodLike_Punch = SDev->LoadSound("data\\sound\\specialbeamcannon.wav");
+	m_XetXet= SDev->LoadSound("data\\sound\\strongkick.wav");
 }
 
 void SoundGame::PlayBackGame()
@@ -63,7 +71,67 @@ void SoundGame::PlayEffect()
 	}
 }
 
-void SoundGame::StopBackGame()
+void SoundGame ::PlayBeam_Fire ()
+{
+	if(EffActi)
+	{
+		basicbeam_fire->Play();
+	}
+
+}
+void SoundGame :: PlayHero_3()
+{
+	if(EffActi)
+	{
+		m_Hero3->Play();
+	}
+
+}
+void SoundGame ::PlaySolarFlare()
+{
+	if(EffActi)
+	{
+		m_SoloFlare->Play();
+	}
+	else m_SoloFlare->Stop();
+}
+void SoundGame :: PlayKaMeHaMe()
+{
+	if(EffActi)
+	{
+		m_kamehame->Play();
+	}
+}
+void SoundGame :: PlayLaze()
+{
+	if(EffActi)
+	{
+		m_Laze->Play() ;
+	}
+}
+void SoundGame ::PlayGLScream()
+{
+	if(EffActi)
+	{
+		m_GodLike_Scream->Play() ;
+	}
+}
+void SoundGame :: PlayGLPunch()
+{
+	if(EffActi)
+	{
+		m_GodLike_Punch->Play() ;
+	}
+}
+void SoundGame :: PlayXetXet()
+{
+	if(EffActi)
+	{
+		m_XetXet->Play();
+	}
+}
+
+void SoundGame::StopBackGame() 
 {
 	SBackGame->Stop();
 }
@@ -72,6 +140,7 @@ void SoundGame::StopSoundSetting()
 {
 	SBackGame->Stop();
 }
+
 void SoundGame::PlaySoundSetting()
 {
 	SBackGame->Play(0,DSBPLAY_LOOPING);

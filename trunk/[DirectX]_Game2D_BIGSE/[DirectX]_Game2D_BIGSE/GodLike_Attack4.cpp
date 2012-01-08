@@ -6,6 +6,7 @@
 #include "EffectLaze.h"
 #include "EffectFrenzy.h"
 #include "EffectFont.h"
+#include "SoundGame.h"
 
 
 GodLike_Attack4::GodLike_Attack4(GodLike_Beast* _GodLike)
@@ -64,6 +65,7 @@ void GodLike_Attack4 ::Animation(float _Time)
 {
 	if (m_STT == ACTIVE)
 	{
+		SoundGame ::Instance()->PlayLaze();
 		m_TimeAni+= _Time;
 		if (m_TimeAni>=0.16f)
 		{
@@ -132,6 +134,7 @@ void GodLike_Attack4::UpdateStatus(float _Time)
 }
 void GodLike_Attack4 ::Update(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight)
 {
+	
 	Animation(_Time);
 	UpdateStatus(_Time);
 }

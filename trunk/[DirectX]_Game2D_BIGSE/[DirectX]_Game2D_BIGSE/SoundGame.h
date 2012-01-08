@@ -12,7 +12,14 @@ private:
 	bool SActi,BackActi,EffActi;
 	
 	CSound* SBackGame;
-	
+	CSound* basicbeam_fire ;
+	CSound* m_Hero3;
+	CSound* m_SoloFlare ;
+	CSound* m_kamehame ;
+	CSound* m_Laze ;
+	CSound* m_GodLike_Scream ;
+	CSound* m_GodLike_Punch ;
+	CSound* m_XetXet ;
 	SoundGame();
 	
 public:
@@ -31,11 +38,18 @@ public:
 	void SetSoundEffect (bool _val) ;
 	bool GetSound () {return SActi;}
 	
-	void Init(HWND _hwnd);
+void Init(HWND _hwnd);
 	
 	void PlayBackGame ();
 	void PlayEffect ();
-	
+	void PlayBeam_Fire();
+	void PlayHero_3() ;
+	void PlaySolarFlare();
+	void PlayKaMeHaMe() ;
+	void PlayLaze();
+	void PlayGLScream() ;
+	void PlayGLPunch();
+	void PlayXetXet();
 	void StopBackGame ();
 	void StopSoundSetting();
 	void PlaySoundSetting();

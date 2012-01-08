@@ -9,6 +9,7 @@
 #include "ManagerObject.h"
 #include "EffectLeonDie.h"
 #include "GodLike_Teleport.h"
+#include "SoundGame.h"
 
 GodLike_Beast::GodLike_Beast(void)
 {
@@ -63,6 +64,7 @@ void GodLike_Beast ::Animation(float _Time)
 	switch (m_STT)
 	{
 	case ACTIVE:
+			
 		if (m_TimeAni>= 0.15f)
 		{
 			m_TimeAni -= 0.15f;

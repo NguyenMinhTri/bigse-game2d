@@ -3,6 +3,7 @@
 #include "ManagerObject.h"
 #include "Hero_Effect1.h"
 #include "EffectFont.h"
+#include "SoundGame.h"
 
 Hero_Attack1::Hero_Attack1(Hero* _Hero)
 {
@@ -66,6 +67,7 @@ void Hero_Attack1::Animation(float _Time)
 {
 	if (m_STT == ACTIVE)
 	{
+		SoundGame ::Instance()->PlayBeam_Fire();
 		m_TimeAni+= _Time;
 		if (m_TimeAni>=0.12f)
 		{
@@ -103,7 +105,7 @@ void Hero_Attack1::UpdateStatus(float _Time)
 	{
 	case COOLDOWN:
 		m_TimeUpdate+= _Time;
-		if(m_TimeUpdate > 2)
+		if(m_TimeUpdate > 20)
 		{
 			m_STT = READY;
 			m_TimeUpdate = 0;
