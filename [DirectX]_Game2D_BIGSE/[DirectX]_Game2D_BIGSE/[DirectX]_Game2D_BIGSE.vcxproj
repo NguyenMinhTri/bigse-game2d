@@ -103,6 +103,7 @@
     <ClCompile Include="EffectThunder.cpp" />
     <ClCompile Include="Effect_Help.cpp" />
     <ClCompile Include="Effect_MainMenu.cpp" />
+    <ClCompile Include="Effect_Setting.cpp" />
     <ClCompile Include="ElephantAttack.cpp" />
     <ClCompile Include="ElephantDie.cpp" />
     <ClCompile Include="Frenzy.cpp" />
@@ -168,6 +169,7 @@
     <ClCompile Include="StateWorldMap.cpp" />
     <ClCompile Include="State_Loading.cpp" />
     <ClCompile Include="State_Play.cpp" />
+    <ClCompile Include="State_Setting.cpp" />
     <ClCompile Include="Terrain.cpp" />
     <ClCompile Include="Thunder.cpp" />
     <ClCompile Include="Trap.cpp" />
@@ -202,6 +204,7 @@
     <ClInclude Include="EffectThunder.h" />
     <ClInclude Include="Effect_Help.h" />
     <ClInclude Include="Effect_MainMenu.h" />
+    <ClInclude Include="Effect_Setting.h" />
     <ClInclude Include="ElephantAttack.h" />
     <ClInclude Include="ElephantDie.h" />
     <ClInclude Include="Frenzy.h" />
@@ -269,6 +272,7 @@
     <ClInclude Include="StateWorldMap.h" />
     <ClInclude Include="State_Loading.h" />
     <ClInclude Include="State_Play.h" />
+    <ClInclude Include="State_Setting.h" />
     <ClInclude Include="Terrain.h" />
     <ClInclude Include="Thunder.h" />
     <ClInclude Include="Trap.h" />

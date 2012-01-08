@@ -41,17 +41,19 @@ void SoundGame::Init(HWND _hwnd)
 	phwnd= _hwnd;
 	SDev = new DSound;
 	SDev->Init(phwnd);
-
+	SActi=true;
 	SBackGame= SDev->LoadSound("data\\sound\\sback.wav");
 }
 
 void SoundGame::PlayBackGame()
 {
-	SBackGame->Stop();
+	
 	if (BackActi)
 	{
 		SBackGame->Play(0,DSBPLAY_LOOPING);
 	}
+	else
+		SBackGame->Stop();
 }
 void SoundGame::PlayEffect()
 {
@@ -64,4 +66,13 @@ void SoundGame::PlayEffect()
 void SoundGame::StopBackGame()
 {
 	SBackGame->Stop();
+}
+
+void SoundGame::StopSoundSetting()
+{
+	SBackGame->Stop();
+}
+void SoundGame::PlaySoundSetting()
+{
+	SBackGame->Play(0,DSBPLAY_LOOPING);
 }

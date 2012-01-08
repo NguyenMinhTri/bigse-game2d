@@ -2,7 +2,7 @@
 #include "StatePlayer.h"
 #include "SoundGame.h"
 #include "StateHelp.h"
-
+#include "State_Setting.h"
 
 StateMainMenu::StateMainMenu(iPlay* GamePlay): iState(GamePlay)
 {
@@ -137,7 +137,8 @@ void StateMainMenu ::ProcessMouse(DIMOUSESTATE MouseState,POINT Positon)
 			if(Positon.x >m_InfoButtonSetting.getX() && Positon.x <=m_InfoButtonSetting.getX()+m_InfoButtonSetting.m_Width
 				&&Positon.y >= m_InfoButtonSetting.getY()-20 && Positon.y <=m_InfoButtonSetting.getY()+m_InfoButtonSetting.m_Height)
 			{
-				m_InfoButtonSetting.setScaleXY(0.9f,0.9f);		
+				m_InfoButtonSetting.setScaleXY(0.9f,0.9f);	
+				m_iPlay->SetNextState(new StateSetting(m_iPlay));
 			}
 			else
 				m_InfoButtonSetting.setScaleXY(1,1);

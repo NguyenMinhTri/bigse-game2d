@@ -37,7 +37,8 @@ public:
 	void PlayEffect ();
 	
 	void StopBackGame ();
-	
+	void StopSoundSetting();
+	void PlaySoundSetting();
 };
 extern SoundGame* SouGa;
 #endif

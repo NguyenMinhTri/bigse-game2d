@@ -3,6 +3,7 @@
 #include "ManagerObject.h"
 #include "SnakeMens_Effect1.h"
 #include "EffectFont.h"
+#include "EffectFrenzy.h"
 SnakeMens_Attack1::SnakeMens_Attack1(SnakeMans* _SnakeMens)
 {
 	m_SnakeMens=_SnakeMens;
@@ -112,6 +113,8 @@ void SnakeMens_Attack1::ProcessCollision(MyObject *_Obj)
 		}//true la chua trung
 		EffectFont* m_EffectFont = new EffectFont(_Obj->getX(), _Obj->getY()+_Obj->getHeight()/2,m_Damage);
 		ManagerObject::Instance()->getListEffect()->push_back(m_EffectFont);
+// 		EffectFrenzy* m_EffectFrenzy = new EffectFrenzy(_Obj->getX(), _Obj->getY());
+// 		ManagerObject::Instance()->getListEffect()->push_back(m_EffectFrenzy);
 		if (m_Direct<0)
 		{
 			SnakeMens_Effect1 *m_SnakeEffect1 = new SnakeMens_Effect1(_Obj->getX(),_Obj->getY()+50);

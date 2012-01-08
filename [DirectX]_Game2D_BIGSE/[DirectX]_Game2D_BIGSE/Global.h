@@ -16,7 +16,8 @@ enum STATE
 	EXIT,
 	WorldMap,
 	ChoosePlayer,
-	MAINMENU
+	MAINMENU,
+	SETTING
 };
 
 enum ID
