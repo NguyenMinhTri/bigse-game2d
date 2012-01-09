@@ -54,6 +54,7 @@ void SoundGame::Init(HWND _hwnd)
 	m_Thunder = SDev->LoadSound("data\\sound\\thunderclap2.wav");
 	m_Pharaon = SDev->LoadSound("data\\sound\\Pharaon.wav");
 	m_AngleXetXet = SDev->LoadSound("data\\sound\\teleport.wav");
+	m_MusicPlayer = SDev->LoadSound("data\\sound\\MusicChoosePlayer.wav");
 }
 
 void SoundGame::PlayBackGame()
@@ -154,6 +155,13 @@ void SoundGame :: PlayPharaon()
 		m_Pharaon->Play();
 	}
 }
+void SoundGame :: PlayMusicPlayer()
+{
+	if(EffActi)
+	{
+		m_MusicPlayer->Play();
+	}
+}
 void SoundGame::StopBackGame() 
 {
 	SBackGame->Stop();
@@ -162,6 +170,11 @@ void SoundGame::StopBackGame()
 void SoundGame::StopSoundSetting()
 {
 	SBackGame->Stop();
+}
+void SoundGame :: StopMainMeNu()
+{
+	SBackGame->Stop() ;
+	m_MusicPlayer->Stop();
 }
 
 void SoundGame::PlaySoundSetting()

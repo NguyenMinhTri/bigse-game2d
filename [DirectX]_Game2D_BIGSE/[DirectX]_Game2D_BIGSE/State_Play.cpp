@@ -5,6 +5,7 @@
 #include "StateMainMenu.h"
 #include "State_Lose.h"
 #include "State_Win.h"
+#include "SoundGame.h"
 State_Play::State_Play(iPlay* GamePlay)
 	:iState(GamePlay)
 {
@@ -19,6 +20,7 @@ State_Play::~State_Play(void)
 
 void State_Play::Init()
 {
+	SoundGame ::Instance()->StopMainMeNu() ;
 	m_Flag =0;
 	m_FlagAni =0;
 	m_infoFlag.setDepth(0.9f);

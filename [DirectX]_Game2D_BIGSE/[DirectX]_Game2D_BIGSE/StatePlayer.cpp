@@ -3,7 +3,7 @@
 #include "Global.h"
 #include "StateWorldMap.h"
 #include "State_Play.h"
-
+#include "SoundGame.h"
 
 StatePlayer::StatePlayer(iPlay *GamePlay) : iState(GamePlay)
 {
@@ -16,6 +16,8 @@ StatePlayer::~StatePlayer(void)
 }
 void StatePlayer ::Init()
 {
+	SoundGame ::Instance()->StopMainMeNu();
+	SoundGame ::Instance()->PlayMusicPlayer() ;
 	g_STT =READY;
 	t_STT = READY;
 	z_STT = READY ;
