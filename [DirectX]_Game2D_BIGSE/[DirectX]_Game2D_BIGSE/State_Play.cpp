@@ -5,6 +5,7 @@
 #include "StateMainMenu.h"
 #include "State_Lose.h"
 #include "State_Win.h"
+#include "SoundGame.h"
 State_Play::State_Play(iPlay* GamePlay)
 	:iState(GamePlay)
 {
@@ -19,6 +20,8 @@ State_Play::~State_Play(void)
 
 void State_Play::Init()
 {
+	SoundGame ::Instance()->StopMainMeNu() ;
+	SoundGame ::Instance()->PlayStatePlay() ;
 	m_Time = ManagerObject::Instance()->getTime();
 	m_Flag =0;
 	m_FlagAni =0;

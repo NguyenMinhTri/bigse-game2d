@@ -97,7 +97,7 @@ void State_Loading::Update(float _Time)
 		if (m_IDHero==0)
 		{
 			Character* hero = new Character();
-			hero->setXY(500,0);
+			hero->setXY(0,0);
 			m_ObjectsCamera->push_back(hero);
 		} 
 		else
@@ -105,13 +105,13 @@ void State_Loading::Update(float _Time)
 			if (m_IDHero==1)
 			{
 				Character* hero = new Angle();
-				hero->setXY(500,0);
+				hero->setXY(0,0);
 				m_ObjectsCamera->push_back(hero);
 			} 
 			else
 			{
 				Character* hero = new Hero();
-				hero->setXY(500,0);
+				hero->setXY(0,0);
 				m_ObjectsCamera->push_back(hero);
 			}
 		}
