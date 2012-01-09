@@ -5,6 +5,7 @@
 #include "State_Loading.h"
 #include "RECT.h"
 #include "StateMainMenu.h"
+#include "SoundGame.h"
 
 StateWorldMap::StateWorldMap(iPlay *GamePlay,int _IDHero) : iState(GamePlay)
 {
