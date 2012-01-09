@@ -87,72 +87,72 @@ void StateWorldMap ::Init()
 
 void StateWorldMap ::ProcessMouse(DIMOUSESTATE MouseState,POINT Positon)
 {
-	if(MouseState.rgbButtons[0])
-	{
-		if(Positon.x > 495 && Positon.x < 587) //Level Perion 
-		{
-			if(Positon.y > 152 && Positon.y < 182)
-			{
-				m_iPlay->SetNextState(new State_Loading(this->m_iPlay,"data\\map\\8.png",m_IDHero));
-			}
-		}
-		if(Positon.x > 606 && Positon.x < 701) //Ellina
-		{
-			if(Positon.y > 418 && Positon.y < 452)
-			{
-				/*m_iPlay->SetNextState(new State_Play(this->m_iPlay));*/
-			}
-		}
-		if(Positon.x > 401 && Positon.x < 515) //Sechs Weg kreuzung
-		{
-			if(Positon.y > 365 && Positon.y < 395)
-			{
-				/*m_iPlay->SetNextState(new State_Play(this->m_iPlay));*/
-			}
-		}
-		if(Positon.x > 235 && Positon.x < 331) //Kerningstadt
-		{
-			if(Positon.y > 310 && Positon.y < 340)
-			{
-				m_iPlay->SetNextState(new State_Loading(this->m_iPlay,"data\\map\\6.png",m_IDHero));
-			}
-		}
-		if(Positon.x > 48 && Positon.x < 158) //kerningplatz
-		{
-			if(Positon.y > 339 && Positon.y < 370)
-			{
-				/*m_iPlay->SetNextState(new State_Play(this->m_iPlay));*/
-			}
-		}
-		if(Positon.x > 121 && Positon.x < 216)  //Lith-Hafen
-		{
-			if(Positon.y > 467 && Positon.y < 495)
-			{
-				/*m_iPlay->SetNextState(new State_Play(this->m_iPlay));*/
-			}
-		}
-		if(Positon.x > 392 && Positon.x < 485) //Henesys
-		{
-			if(Positon.y > 501 && Positon.y < 532)
-			{
-				/*m_iPlay->SetNextState(new State_Play(this->m_iPlay));*/
-			}
-		}
-		if(Positon.x > 612 && Positon.x < 706) //Nautilus
-		{
-			if(Positon.y > 552 && Positon.y < 584)
-			{
-				/*m_iPlay->SetNextState(new State_Play(this->m_iPlay));*/
-			}
-		}
-		if(Positon.x > 830 && Positon.x < 956) //Floringstrand 
-		{
-			if(Positon.y > 568 && Positon.y < 600)
-			{
-				/*m_iPlay->SetNextState(new State_Play(this->m_iPlay));*/
-			}
-		}
-	}
+// 	if(MouseState.rgbButtons[0])
+// 	{
+// 		if(Positon.x > 495 && Positon.x < 587) //Level Perion 
+// 		{
+// 			if(Positon.y > 152 && Positon.y < 182)
+// 			{
+// 				m_iPlay->SetNextState(new State_Loading(this->m_iPlay,"data\\map\\8.png",m_IDHero));
+// 			}
+// 		}
+// 		if(Positon.x > 606 && Positon.x < 701) //Ellina
+// 		{
+// 			if(Positon.y > 418 && Positon.y < 452)
+// 			{
+// 				/*m_iPlay->SetNextState(new State_Play(this->m_iPlay));*/
+// 			}
+// 		}
+// 		if(Positon.x > 401 && Positon.x < 515) //Sechs Weg kreuzung
+// 		{
+// 			if(Positon.y > 365 && Positon.y < 395)
+// 			{
+// 				/*m_iPlay->SetNextState(new State_Play(this->m_iPlay));*/
+// 			}
+// 		}
+// 		if(Positon.x > 235 && Positon.x < 331) //Kerningstadt
+// 		{
+// 			if(Positon.y > 310 && Positon.y < 340)
+// 			{
+// 				m_iPlay->SetNextState(new State_Loading(this->m_iPlay,"data\\map\\6.png",m_IDHero));
+// 			}
+// 		}
+// 		if(Positon.x > 48 && Positon.x < 158) //kerningplatz
+// 		{
+// 			if(Positon.y > 339 && Positon.y < 370)
+// 			{
+// 				/*m_iPlay->SetNextState(new State_Play(this->m_iPlay));*/
+// 			}
+// 		}
+// 		if(Positon.x > 121 && Positon.x < 216)  //Lith-Hafen
+// 		{
+// 			if(Positon.y > 467 && Positon.y < 495)
+// 			{
+// 				/*m_iPlay->SetNextState(new State_Play(this->m_iPlay));*/
+// 			}
+// 		}
+// 		if(Positon.x > 392 && Positon.x < 485) //Henesys
+// 		{
+// 			if(Positon.y > 501 && Positon.y < 532)
+// 			{
+// 				/*m_iPlay->SetNextState(new State_Play(this->m_iPlay));*/
+// 			}
+// 		}
+// 		if(Positon.x > 612 && Positon.x < 706) //Nautilus
+// 		{
+// 			if(Positon.y > 552 && Positon.y < 584)
+// 			{
+// 				/*m_iPlay->SetNextState(new State_Play(this->m_iPlay));*/
+// 			}
+// 		}
+// 		if(Positon.x > 830 && Positon.x < 956) //Floringstrand 
+// 		{
+// 			if(Positon.y > 568 && Positon.y < 600)
+// 			{
+// 				/*m_iPlay->SetNextState(new State_Play(this->m_iPlay));*/
+// 			}
+// 		}
+// 	}
 
 }
 void StateWorldMap ::IsKeyDown(int KeyCode)
@@ -221,31 +221,31 @@ void StateWorldMap ::Update(float _Time)
 	}
 	if(r.iCollision(Kerningplatz) == true  && m_STT == READY  && m_InfoAttack.getCurFrame()>5)
 	{
-		m_iPlay->SetNextState(new StateMainMenu(this->m_iPlay));
+			m_iPlay->SetNextState(new State_Loading(this->m_iPlay,"data\\map\\6.png",m_IDHero));
 	}
 	if(r.iCollision(LithHafen) == true  && m_STT == READY  && m_InfoAttack.getCurFrame()>5)
 	{
-		m_iPlay->SetNextState(new StateMainMenu(this->m_iPlay));
+    	m_iPlay->SetNextState(new State_Loading(this->m_iPlay,"data\\map\\6.png",m_IDHero));
 	}
 	if(r.iCollision(Henesys) == true  && m_STT == READY  && m_InfoAttack.getCurFrame()>5)
 	{
-		m_iPlay->SetNextState(new StateMainMenu(this->m_iPlay));
+			m_iPlay->SetNextState(new State_Loading(this->m_iPlay,"data\\map\\8.png",m_IDHero));
 	}
 	if(r.iCollision(SechsWegeKreuzung) == true  && m_STT == READY  && m_InfoAttack.getCurFrame()>5)
 	{
-		m_iPlay->SetNextState(new StateMainMenu(this->m_iPlay));
+			m_iPlay->SetNextState(new State_Loading(this->m_iPlay,"data\\map\\8.png",m_IDHero));
 	}
 	if(r.iCollision(Ellinia) == true  && m_STT == READY  && m_InfoAttack.getCurFrame()>5)
 	{
-		m_iPlay->SetNextState(new StateMainMenu(this->m_iPlay));
+			m_iPlay->SetNextState(new State_Loading(this->m_iPlay,"data\\map\\5.png",m_IDHero));
 	}
 	if(r.iCollision(Nautilus) == true  && m_STT == READY  && m_InfoAttack.getCurFrame()>5)
 	{
-		m_iPlay->SetNextState(new StateMainMenu(this->m_iPlay));
+			m_iPlay->SetNextState(new State_Loading(this->m_iPlay,"data\\map\\5.png",m_IDHero));
 	}
 	if(r.iCollision(FloringStrand) == true  && m_STT == READY  && m_InfoAttack.getCurFrame()>5)
 	{
-		m_iPlay->SetNextState(new StateMainMenu(this->m_iPlay));
+			m_iPlay->SetNextState(new State_Loading(this->m_iPlay,"data\\map\\5.png",m_IDHero));
 	}
 
 
