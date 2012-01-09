@@ -1,14 +1,14 @@
 #include "SkillAngle.h"
 #include "RSMainGame.h"
 #include "SoundGame.h"
-SkillAngle::SkillAngle(Angle *_Angle)
+SkillAngle::SkillAngle(Angle *_Angle):SkillHit(_Angle)
 {
 	Init();
 	m_Angle = _Angle;
 }
 
 void SkillAngle::Init(){
-	m_Damage = 1;
+	m_Damage = 500;
 	m_STT = READY;
 	setSize(150,100);
 	m_SSkill = RSMainGame::get()->getAngle();
