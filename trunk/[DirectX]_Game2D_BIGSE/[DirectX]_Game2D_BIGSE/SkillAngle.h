@@ -2,8 +2,9 @@
 #include "Skill.h"
 
 #include "Angle.h"
+#include "SkillHit.h"
 class SkillAngle :
-	public Skill
+	public SkillHit
 {
 protected:
 	Angle *m_Angle ;

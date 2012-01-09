@@ -19,6 +19,7 @@ void EffectFrenzy::Init()
 {
 	m_Time = true ;
  	m_InfoSprite.setSize(137,155);
+	m_InfoSprite.setDepth(0.4f);
 	m_Sprite = RSMainGame::get()->getEffectIce();
 	m_iLife = true;
 	m_TimeAni =0;
