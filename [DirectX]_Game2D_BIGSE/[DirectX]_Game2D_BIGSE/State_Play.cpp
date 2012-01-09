@@ -354,6 +354,20 @@ void State_Play::Update(float _Time)
 		i++;		
 	}
 	/************************************************************************/
+	/*  Update Item  in camera                                             */
+	/************************************************************************/	
+	for (std::vector<MyObject*>::iterator i = m_ListItem->begin();i!= m_ListItem->end();)
+	{
+		(*i)->Update(_Time,m_Map->getTerrain(),m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL);
+		if( (*i)->getLife() == false)
+		{
+			(*i)->Release();
+			i = m_ListItem->erase(i);
+			continue;
+		}
+		i++;		
+	}
+	/************************************************************************/
 	/*  Update Monster in camera                                             */
 	/************************************************************************/	
 	for (std::vector<MyObject*>::iterator i = m_ListMonster->begin();i!= m_ListMonster->end();)

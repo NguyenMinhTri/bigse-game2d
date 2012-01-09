@@ -104,6 +104,7 @@ private:
 	Sprite* m_PirateDie ;
 
 	Sprite* m_Pharaon ;
+	Sprite* m_ItemHealth ;
 	RSMainGame(void);
 public:
 
@@ -443,6 +444,11 @@ public:
 	Sprite* getPharaon()
 	{
 		return m_Pharaon ;
+	}
+
+	Sprite* getItemHealth()
+	{
+		return m_ItemHealth ;
 	}
 };
 
