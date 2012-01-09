@@ -16,6 +16,7 @@ SnakeMans::~SnakeMans(void)
 }
 void SnakeMans::Init()
 {
+	m_time = 0;
 	m_SCharater= RSMainGame ::get()->getSnakeMans_Move();
 	m_InfoSprite.setSize(202,269);
 	m_InfoSprite.setDepth(0.3f);
@@ -141,6 +142,18 @@ void SnakeMans::Move(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeigh
 		&&ManagerObject::Instance()->getObjectCamera()->at(0)->getX()+ManagerObject::Instance()->getObjectCamera()->at(0)->getWidth()>=m_X)
 	{
 		m_Direct=ManagerObject::Instance()->getObjectCamera()->at(0)->getDirection();
+	}
+}
+void SnakeMans ::UpdateStatus(float _Time)
+{
+	if(!m_iActive )
+	{
+		m_time+= _Time;
+		if(m_time > 1 )
+		{
+			m_iActive = true ;
+			m_time =0;
+		}
 	}
 }
 void SnakeMans::Draw(D3DXMATRIX _MWorld,LPD3DXSPRITE _Handler)

@@ -23,6 +23,7 @@ public:
 	virtual void Animation (float _Time);
 	virtual void UpdateStatus (float _Time) ;
 	virtual void Update (float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight);
+	virtual void Move(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight);
 
 	virtual void Draw (D3DXMATRIX _mtWorld,LPD3DXSPRITE _Handler);
 	virtual void Release () ;

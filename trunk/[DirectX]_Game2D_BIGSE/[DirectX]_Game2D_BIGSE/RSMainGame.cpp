@@ -113,4 +113,5 @@ void RSMainGame::IntRS(LPDIRECT3DDEVICE9 _Device){
 	m_PirateDie =new Sprite(_Device,"data\\image\\PrivateDie.png",162,146,9);
 
 	m_Pharaon = new Sprite(_Device,"data\\image\\Pharaon.png",1010,517,4);
+	m_ItemHealth = new Sprite(_Device,"data\\image\\ItemHealth.png",85,78,4);
 }
