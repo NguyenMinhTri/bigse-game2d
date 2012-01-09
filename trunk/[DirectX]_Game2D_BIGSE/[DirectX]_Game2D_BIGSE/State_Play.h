@@ -16,12 +16,13 @@
 #include "Hero.h"
 #include "LoadMap.h"
 #include "Monster.h"
+#include "EffectFont.h"
 using namespace std;
 class State_Play :
 	public iState
 {
 	LoadMap* m_LoadMap;
-
+	EffectFont* m_NumTime;
 	std::vector<MyObject*> *m_ListItem;
 	std::vector<MyObject*> *m_ObjectsCamera;
 	std::vector<EffectSystem*> *m_ListEffect;
@@ -36,7 +37,8 @@ class State_Play :
 	Sprite* m_sLose;
 	Sprite* m_sStart;
 	Sprite* m_sTime;
-
+	Sprite* m_bar;
+	Sprite* m_barheath;
 	InfoSprite m_infoFlag;
 
 	int m_STT ;

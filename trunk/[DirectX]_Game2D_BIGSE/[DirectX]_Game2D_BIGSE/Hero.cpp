@@ -43,7 +43,7 @@ void Hero::Init()
 	m_skillManager->AddSkill(new Hero_Attack1(this));
 	m_skillManager->AddSkill(new Hero_Attack2(this));
 	m_skillManager->AddSkill(new Hero_Attack3(this));
-
+	CallPet();
 }
 void Hero::CallPet()
 {
