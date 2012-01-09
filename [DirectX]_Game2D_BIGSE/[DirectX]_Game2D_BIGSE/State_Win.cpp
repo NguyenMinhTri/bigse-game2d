@@ -115,4 +115,31 @@ void StateWin ::Draw()
 	}
 	m_Device->Present(NULL,NULL,NULL,NULL);
 }
-void StateWin ::Release(){}
+void StateWin ::Release()
+{
+	if (m_Handle!=NULL)
+	{
+		m_Handle->Release();
+		m_Handle = NULL;
+	}
+	if (m_Win!= NULL)
+	{
+		m_Win->Release();
+		delete m_Win;
+		m_Win = NULL;
+	}
+	if (m_Vector!= NULL)
+	{
+		m_Vector->Release();
+		delete m_Vector;
+		m_Vector = NULL;
+	}
+	for(int i=0;i<m_listEffect->size();i++)
+	{
+		Sprite* tem=m_listEffect->at(i)->m_Effect;
+		if(tem!=NULL)
+		{
+			tem->Release();
+		}
+	}
+}

@@ -134,4 +134,12 @@ void StateHelp ::Release()
 		m_Handle->Release();
 		m_Handle = NULL;
 	}
+	for(int i=0;i<m_listEffect->size();i++)
+	{
+		Sprite* tem=m_listEffect->at(i)->m_Effect;
+		if(tem!=NULL)
+		{
+			tem->Release();
+		}
+	}
 }

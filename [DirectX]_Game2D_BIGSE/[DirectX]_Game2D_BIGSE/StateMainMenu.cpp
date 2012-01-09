@@ -157,7 +157,7 @@ void StateMainMenu ::ProcessMouse(DIMOUSESTATE MouseState,POINT Positon)
 				&&Positon.y >= m_InfoButtonExit.getY()-20 && Positon.y <=m_InfoButtonExit.getY()+m_InfoButtonExit.m_Height)
 			{
 				m_InfoButtonExit.setScaleXY(0.9f,0.9f);	
-				m_iPlay->SetNextState(new StateWin(this->m_iPlay));
+				PostQuitMessage(0);
 			}
 			else
 				m_InfoButtonExit.setScaleXY(1,1);
@@ -327,5 +327,13 @@ void StateMainMenu ::Release()
 	{
 		m_Handle->Release();
 		m_Handle = NULL;
+	}
+	for(int i=0;i<m_listEffect->size();i++)
+	{
+		Sprite* tem=m_listEffect->at(i)->m_Effect;
+		if(tem!=NULL)
+		{
+			tem->Release();
+		}
 	}
 }

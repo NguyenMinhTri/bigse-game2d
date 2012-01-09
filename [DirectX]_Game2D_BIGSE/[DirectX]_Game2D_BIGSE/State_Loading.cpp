@@ -154,5 +154,28 @@ void State_Loading::Draw()
 }
 void State_Loading::Release()
 {
-
+	if (m_Handle!=NULL)
+	{
+		m_Handle->Release();
+		m_Handle = NULL;
+	}
+	if (m_Loading1!= NULL)
+	{
+		m_Loading1->Release();
+		delete m_Loading1;
+		m_Loading1 = NULL;
+	}
+	if (m_Loading2!= NULL)
+	{
+		m_Loading2->Release();
+		delete m_Loading2;
+		m_Loading2 = NULL;
+	}
+	if (m_Loading3!= NULL)
+	{
+		m_Loading3->Release();
+		delete m_Loading3;
+		m_Loading3 = NULL;
+	}
+	
 }

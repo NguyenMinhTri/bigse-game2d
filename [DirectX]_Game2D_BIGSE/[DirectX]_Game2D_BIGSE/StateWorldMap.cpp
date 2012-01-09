@@ -301,7 +301,32 @@ void StateWorldMap ::Draw()
 	}
 	m_Device->Present(NULL,NULL,NULL,NULL);
 }
-void StateWorldMap ::Release(){}
+void StateWorldMap ::Release()
+{
+	if (m_Character!= NULL)
+	{
+		m_Character->Release();
+		delete m_Character;
+		m_Character = NULL;
+	}
+	if (m_CharacterAttack!= NULL)
+	{
+		m_CharacterAttack->Release();
+		delete m_CharacterAttack;
+		m_CharacterAttack = NULL;
+	}
+	if (m_WorldMap!= NULL)
+	{
+		m_WorldMap->Release();
+		delete m_WorldMap;
+		m_WorldMap = NULL;
+	}
+	if (m_Handle!=NULL)
+	{
+		m_Handle->Release();
+		m_Handle = NULL;
+	}
+}
 
 	 
 

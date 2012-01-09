@@ -3,7 +3,8 @@
 #include "RSMainGame.h"
 #include "ManagerObject.h"
 #include "StateMainMenu.h"
-
+#include "State_Lose.h"
+#include "State_Win.h"
 State_Play::State_Play(iPlay* GamePlay)
 	:iState(GamePlay)
 {
@@ -88,10 +89,20 @@ void State_Play::OnKeyDown(int KeyCode)
 {
 	if (m_Flag != 0)
 	{
-		if (m_Flag ==1 || m_Flag ==3 || m_Flag==4 || m_Flag==5)
+		if (m_Flag ==1 )
 		{
 			if(KeyCode==DIK_SPACE)
 				m_iPlay->SetNextState(new StateMainMenu(m_iPlay));
+		}
+		if ( m_Flag ==3 || m_Flag==4 )
+		{
+			if(KeyCode==DIK_SPACE)
+				m_iPlay->SetNextState(new StateLose(m_iPlay));
+		}
+		if ( m_Flag ==5 )
+		{
+			if(KeyCode==DIK_SPACE)
+				m_iPlay->SetNextState(new StateWin(m_iPlay));
 		}
 		if (m_Flag==1)
 		{
