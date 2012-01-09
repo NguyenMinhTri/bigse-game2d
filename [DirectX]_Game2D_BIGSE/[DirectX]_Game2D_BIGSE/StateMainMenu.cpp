@@ -267,4 +267,65 @@ void StateMainMenu ::Draw()
 	}
 	m_Device->Present(NULL,NULL,NULL,NULL);
 }
-void StateMainMenu ::Release(){}
+void StateMainMenu ::Release()
+{
+	if (m_MainMenu!= NULL)
+	{
+		m_MainMenu->Release();
+		delete m_MainMenu;
+		m_MainMenu = NULL;
+	}
+	if (m_Bird1!= NULL)
+	{
+		m_Bird1->Release();
+		delete m_Bird1;
+		m_Bird1 = NULL;
+	}
+	if (m_Bird2!= NULL)
+	{
+		m_Bird2->Release();
+		delete m_Bird2;
+		m_Bird2 = NULL;
+	}
+	if (m_Logo!= NULL)
+	{
+		m_Logo->Release();
+		delete m_Logo;
+		m_Logo = NULL;
+	}
+	if (m_ButtonStart!= NULL)
+	{
+		m_ButtonStart->Release();
+		delete m_ButtonStart;
+		m_ButtonStart = NULL;
+	}
+	if (m_ButtonSetting!= NULL)
+	{
+		m_ButtonSetting->Release();
+		delete m_ButtonSetting;
+		m_ButtonSetting = NULL;
+	}
+	if (m_ButtonHelp!= NULL)
+	{
+		m_ButtonHelp->Release();
+		delete m_ButtonHelp;
+		m_ButtonHelp = NULL;
+	}
+	if (m_ButtonExit!= NULL)
+	{
+		m_ButtonExit->Release();
+		delete m_ButtonExit;
+		m_ButtonExit = NULL;
+	}
+	/*if (m_listHoldButton!= NULL)
+	{
+		m_listHoldButton->Release();
+		delete m_listHoldButton;
+		m_listHoldButton = NULL;
+	}*/
+	if (m_Handle!=NULL)
+	{
+		m_Handle->Release();
+		m_Handle = NULL;
+	}
+}

@@ -38,5 +38,6 @@ public:
 	void Draw (D3DMATRIX _World,InfoSprite _info,LPD3DXSPRITE _Handler);
 	void Draw (InfoSprite _info,LPD3DXSPRITE _Handler);
 	void DrawCenter (InfoSprite _info,LPD3DXSPRITE _Handler) ;
+	void Release ();
 };
 #endif

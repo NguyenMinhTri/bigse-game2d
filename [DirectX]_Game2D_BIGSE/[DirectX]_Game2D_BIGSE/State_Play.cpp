@@ -2,6 +2,7 @@
 #include "Global.h"
 #include "RSMainGame.h"
 #include "ManagerObject.h"
+#include "StateMainMenu.h"
 
 State_Play::State_Play(iPlay* GamePlay)
 	:iState(GamePlay)
@@ -17,6 +18,13 @@ State_Play::~State_Play(void)
 
 void State_Play::Init()
 {
+	m_Flag =0;
+	m_FlagAni =0;
+	m_infoFlag.setDepth(0.9f);
+	m_sWin=new Sprite(m_Device,"data\\image\\Win.png",461,442,5);
+	m_sStart=new Sprite(m_Device,"data\\image\\start.png",545,414,5);
+	m_sLose=new Sprite(m_Device,"data\\image\\lose.png",484,324,5);
+	m_sTime=new Sprite(m_Device,"data\\image\\timeout.png",553,247,4);
 
 	m_ListItem = ManagerObject::Instance()->getListItem();
 	m_ObjectsCamera = ManagerObject::Instance()->getObjects();
@@ -54,6 +62,10 @@ void State_Play::Init()
 }
 void State_Play::IsKeyDown(int KeyCode)
 {
+	if (m_Flag != 0)
+	{
+		return;
+	} 	
 	switch(KeyCode)
 	{
 	
@@ -74,9 +86,25 @@ void State_Play::IsKeyDown(int KeyCode)
 
 void State_Play::OnKeyDown(int KeyCode)
 {
-	switch(KeyCode)
+	if (m_Flag != 0)
 	{
-	
+		if (m_Flag ==1 || m_Flag ==3 || m_Flag==4 || m_Flag==5)
+		{
+			if(KeyCode==DIK_SPACE)
+				m_iPlay->SetNextState(new StateMainMenu(m_iPlay));
+		}
+		if (m_Flag==1)
+		{
+			if(KeyCode== DIK_ESCAPE)
+				m_Flag = 0;
+		}
+		return;
+	} 	
+	switch(KeyCode)
+	{	
+	case DIK_ESCAPE:
+		m_Flag =1;
+		break;
 	case DIK_H:
 		m_Hero->ActiveSkill(0);
 		break ;
@@ -115,8 +143,7 @@ void State_Play::OnKeyDown(int KeyCode)
 						m_Hero->setXY((*f)->getX(),(*f)->getY()-40);
 						return;
 					}
-				}
-				
+				}				
 
 			}
 
@@ -128,6 +155,10 @@ void State_Play::OnKeyDown(int KeyCode)
 
 void State_Play::OnKeyUp(int KeyCode)
 {
+	if (m_Flag != 0)
+	{
+		return;
+	} 	
 	switch(KeyCode)
 	{
 	
@@ -171,7 +202,87 @@ void State_Play::Update(float _Time)
 	}
 	
 	m_mtWorld = m_Camera->getMatrixTransform();
+	/************************************************************************/
+	/*  Update Effect in camera                                             */
+	/************************************************************************/	
+	for (std::vector<EffectSystem*>::iterator i = m_ListEffect->begin();i!= m_ListEffect->end();)
+	{
+		(*i)->Update(_Time);
+		if( (*i)->m_iLife == false)
+		{
+			(*i)->Release();
+			i = m_ListEffect->erase(i);
+			continue;
+		}
+		i++;		
+	}
+	/************************************************************************/
+	/*                                                                      */
+	/************************************************************************/
+	if (m_Flag!=0)
+	{
+		m_FlagAni+= _Time;
+		if (m_FlagAni>=0.15f)
+		{
+			m_FlagAni -= 0.15f;
+			switch(m_Flag)
+			{
+			case 1:
+				m_infoFlag.NextFrame(15,15);
+				break;
+			case 2:
+				m_infoFlag.NextFrame(0,30);
+				break;
+			case 3:
+				m_infoFlag.NextFrame(0,17);
+				break;
+			case 4:
+				m_infoFlag.NextFrame(0,20);
+				break;
+			case 5:
+				m_infoFlag.NextFrame(0,18);
+				break;
+			}
+		}
+		return;
+	}
 
+	/************************************************************************/
+	/* Check win                                                           */
+	/************************************************************************/
+	bool iWin = true;
+	for (std::vector<MyObject*>::iterator i = m_ListBoss->begin();i!= m_ListBoss->end();i++)
+	{
+		if( (*i)->m_iLife == true)
+		{
+			iWin = false;
+			m_infoFlag.setCurFrame(0);
+			m_FlagAni =0;
+			break;
+		}
+	}
+	if (iWin==true)
+	{
+		m_Flag = 5;
+	}
+	/************************************************************************/
+	/* Check lose                                                           */
+	/************************************************************************/
+	bool iLose = true;
+	for (std::vector<MyObject*>::iterator i = m_ObjectsCamera->begin();i!= m_ObjectsCamera->end();i++)
+	{
+		if( (*i)->m_iLife == true)
+		{
+			iLose = false;
+			m_infoFlag.setCurFrame(0);
+			m_FlagAni =0;
+			break;
+		}
+	}
+	if (iLose==true)
+	{
+		m_Flag = 4;
+	}
 	/************************************************************************/
 	/*  Update QuadTree                                                     */
 	/************************************************************************/
@@ -211,12 +322,12 @@ void State_Play::Update(float _Time)
 	for (std::vector<MyObject*>::iterator i = m_ObjectsCamera->begin();i!= m_ObjectsCamera->end();)
 	{
 		(*i)->Update(_Time,m_Map->getTerrain(),m_Map->getWidth()*g_CELL,m_Map->getHeight()*g_CELL);
-// 		if( (*i)->getLife() == false)
-// 		{
-// 			(*i)->Release();
-// 			i = m_ObjectsCamera->erase(i);
-// 			continue;
-// 		}
+		/*if( (*i)->getLife() == false)
+		{
+			(*i)->Release();
+			i = m_ObjectsCamera->erase(i);
+			continue;
+		}*/
 		i++;		
 	}
 	/************************************************************************/
@@ -233,21 +344,6 @@ void State_Play::Update(float _Time)
 		}
 		i++;		
 	}
-	
-	/************************************************************************/
-	/*  Update Effect in camera                                             */
-	/************************************************************************/	
-	for (std::vector<EffectSystem*>::iterator i = m_ListEffect->begin();i!= m_ListEffect->end();)
-	{
-		(*i)->Update(_Time);
-		if( (*i)->m_iLife == false)
-		{
-			(*i)->Release();
-			i = m_ListEffect->erase(i);
-			continue;
-		}
-		i++;		
-	}	
 	/************************************************************************/
 	/*  Collision Object vs Monster                                        */
 	/************************************************************************/	
@@ -303,6 +399,24 @@ void State_Play::Draw()
 			(*i)->Draw(m_mtWorld,m_Handle);			
 		}
 		
+		switch(m_Flag)
+		{
+		case 1:
+			m_sStart->Draw(239,153,m_infoFlag.getCurFrame(),m_Handle);
+			break;
+		case 2:
+			m_sStart->Draw(239,153,m_infoFlag.getCurFrame(),m_Handle);
+			break;
+		case 3:
+			m_sTime->Draw(235,236,m_infoFlag.getCurFrame(),m_Handle);
+			break;
+		case 4:
+			m_sLose->Draw(270,198,m_infoFlag.getCurFrame(),m_Handle);
+			break;
+		case 5:
+			m_sWin->Draw(281,139,m_infoFlag.getCurFrame(),m_Handle);
+			break;
+		}
 		
 		m_Handle->End();
 		m_Device->EndScene();
@@ -311,5 +425,34 @@ void State_Play::Draw()
 }
 void State_Play::Release()
 {
+	if (m_sWin!= NULL)
+	{
+		m_sWin->Release();
+		delete m_sWin;
+		m_sWin = NULL;
+	}
+	if (m_sLose!= NULL)
+	{
+		m_sLose->Release();
+		delete m_sLose;
+		m_sLose = NULL;
+	}
+	if (m_sStart!= NULL)
+	{
+		m_sStart->Release();
+		delete m_sStart;
+		m_sStart = NULL;
+	}
+	if (m_sTime!= NULL)
+	{
+		m_sTime->Release();
+		delete m_sTime;
+		m_sTime = NULL;
+	}
+	if (m_Handle!=NULL)
+	{
+		m_Handle->Release();
+		m_Handle = NULL;
+	}
 
 }

@@ -29,6 +29,16 @@ class State_Play :
 	std::vector<MyObject*> *m_ListBoss ;
 	std::vector<MyObject*> *m_SpecialObject ;
 
+	int m_Flag;// 1=Pause | 2=Effect | 3=TimeOver | 4=Lose | 5=Win
+	float m_Time;
+	float m_FlagAni;
+	Sprite* m_sWin;
+	Sprite* m_sLose;
+	Sprite* m_sStart;
+	Sprite* m_sTime;
+
+	InfoSprite m_infoFlag;
+
 	int m_STT ;
 	QuadTree* m_QuadTree;
 
