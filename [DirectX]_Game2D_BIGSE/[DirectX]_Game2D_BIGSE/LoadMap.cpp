@@ -173,7 +173,7 @@ void LoadMap::TranslateMap()
 			if (r == 4)
 			{
 				SnakeMans* _Snakemens = new SnakeMans() ;
-				_Snakemens->setXY(i*50,650);
+				_Snakemens->setXY(i*50,j*50-200);
 				ManagerObject::Instance()->getListBoss()->push_back(_Snakemens);
 				ManagerObject::Instance()->getQuadTree()->Insert(_Snakemens);
 			}
