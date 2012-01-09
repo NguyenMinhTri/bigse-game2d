@@ -155,4 +155,41 @@ void StatePlayer ::Draw()
 	}
 	m_Device->Present(NULL,NULL,NULL,NULL);
 }
-void StatePlayer::Release(){}
+void StatePlayer::Release()
+{
+	if (m_Handle!=NULL)
+	{
+		m_Handle->Release();
+		m_Handle = NULL;
+	}
+	if (m_BackGround!= NULL)
+	{
+		m_BackGround->Release();
+		delete m_BackGround;
+		m_BackGround = NULL;
+	}
+	if (m_SwordMan!= NULL)
+	{
+		m_SwordMan->Release();
+		delete m_SwordMan;
+		m_SwordMan = NULL;
+	}
+	if (m_Magician!= NULL)
+	{
+		m_Magician->Release();
+		delete m_Magician;
+		m_Magician = NULL;
+	}
+	if (m_Punch!= NULL)
+	{
+		m_Punch->Release();
+		delete m_Punch;
+		m_Punch = NULL;
+	}
+	if (m_Flag!= NULL)
+	{
+		m_Flag->Release();
+		delete m_Flag;
+		m_Flag = NULL;
+	}
+}

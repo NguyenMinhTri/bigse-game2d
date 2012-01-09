@@ -180,4 +180,43 @@ void StateSetting ::Draw()
 	}
 	m_Device->Present(NULL,NULL,NULL,NULL);
 }
-void StateSetting ::Release(){}
+void StateSetting ::Release()
+{
+	if (m_Setting!= NULL)
+	{
+		m_Setting->Release();
+		delete m_Setting;
+		m_Setting = NULL;
+	}
+	if (m_Vector!= NULL)
+	{
+		m_Vector->Release();
+		delete m_Vector;
+		m_Vector = NULL;
+	}
+	if (m_Button!= NULL)
+	{
+		m_Button->Release();
+		delete m_Button;
+		m_Button = NULL;
+	}
+	if (m_Tick!= NULL)
+	{
+		m_Tick->Release();
+		delete m_Tick;
+		m_Tick = NULL;
+	}
+	if (m_Handle!=NULL)
+	{
+		m_Handle->Release();
+		m_Handle = NULL;
+	}
+	for(int i=0;i<m_listEffect->size();i++)
+	{
+		Sprite* tem=m_listEffect->at(i)->m_Effect;
+		if(tem!=NULL)
+		{
+			tem->Release();
+		}
+	}
+}

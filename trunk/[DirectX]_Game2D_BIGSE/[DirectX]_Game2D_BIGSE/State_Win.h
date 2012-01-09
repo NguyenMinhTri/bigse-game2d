@@ -29,6 +29,6 @@ public:
 	void Update(float _Time);
 	void Draw();
 	void Release();
-	void ProcessMouse(DIMOUSESTATE MouseState,POINT Positon) ;
+	void ProcessMouse(DIMOUSESTATE MouseState,POINT Positon);
 };
 
