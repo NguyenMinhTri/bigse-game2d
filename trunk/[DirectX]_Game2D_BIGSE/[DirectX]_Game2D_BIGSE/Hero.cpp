@@ -36,7 +36,7 @@ void Hero::Init()
 	m_Pet=new Pet_Hero(this);
 	setSize(79,90);
 	m_STT=ACTIVE;
-	m_HP=500 ;
+	m_HP=50000 ;
 	m_skillManager = new SkillManager();
 	m_Test_Die=false;
 	m_skillManager->AddSkill(new Hero_Attack4(this));
