@@ -15,7 +15,7 @@ Frenzy::~Frenzy(void)
 }
 void Frenzy::Init(){
 	m_iCollision = false;
-	m_Damage = 400;
+	m_Damage = 1500;
 	m_Combo = 0;
 	m_STT = READY;
 	m_InfoSprite.setSize(435,419);
