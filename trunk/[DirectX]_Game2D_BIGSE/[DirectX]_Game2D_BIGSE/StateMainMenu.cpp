@@ -4,6 +4,8 @@
 #include "State_Play.h"
 #include "StateHelp.h"
 #include "State_Setting.h"
+#include "State_Lose.h"
+#include "State_Win.h"
 
 StateMainMenu::StateMainMenu(iPlay* GamePlay): iState(GamePlay)
 {
@@ -154,7 +156,8 @@ void StateMainMenu ::ProcessMouse(DIMOUSESTATE MouseState,POINT Positon)
 			if(Positon.x >m_InfoButtonExit.getX() && Positon.x <=m_InfoButtonExit.getX()+m_InfoButtonExit.m_Width
 				&&Positon.y >= m_InfoButtonExit.getY()-20 && Positon.y <=m_InfoButtonExit.getY()+m_InfoButtonExit.m_Height)
 			{
-				m_InfoButtonExit.setScaleXY(0.9f,0.9f);		
+				m_InfoButtonExit.setScaleXY(0.9f,0.9f);	
+				m_iPlay->SetNextState(new StateWin(this->m_iPlay));
 			}
 			else
 				m_InfoButtonExit.setScaleXY(1,1);

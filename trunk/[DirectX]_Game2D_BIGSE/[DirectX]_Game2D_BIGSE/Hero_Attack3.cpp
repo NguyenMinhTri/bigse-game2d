@@ -75,7 +75,10 @@ void Hero_Attack3::Animation(float _Time)
 			m_Hero_Attack3InfoSprite.NextFrame(0,19);			
 			if(m_Hero_Attack3InfoSprite.getCurFrame()>=15)
 			{
-				m_iCollision=true;
+				if(m_Hero_Attack3InfoSprite.getCurFrame()==15)
+					m_iCollision=true;
+				else
+					m_iCollision=false;
 				m_VBallFly+=30;
 				m_Hero_Attack3_BallInfoSprite.NextFrame(0,6);
 				m_TestBallFly=true;

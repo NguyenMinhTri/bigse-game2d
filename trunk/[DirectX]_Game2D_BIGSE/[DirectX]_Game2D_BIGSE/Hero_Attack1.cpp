@@ -79,7 +79,10 @@ void Hero_Attack1::Animation(float _Time)
 				m_VBallFly+=100;
 				m_Hero_Attack1_BallInfoSprite.NextFrame(0,4);
 				m_TestBallFly=true;
-				m_iCollision=true;
+				if(m_Hero_Attack1InfoSprite.getCurFrame()==8)
+					m_iCollision=true;
+				else
+					m_iCollision=false;
 				if(m_Hero_Attack1_BallInfoSprite.getCurFrame()>=3)
 				{
 					m_TestBallFly=false;
