@@ -84,7 +84,7 @@ void SnowManAttack ::ProcessCollision(MyObject *_Obj)
 		_Obj->setActive(false);
 
 		_Obj->setHp(_Obj->getHp() - m_Damage);
-		if(_Obj->getHp() == 0)
+		if(_Obj->getHp() <= 0)
 		{
 			_Obj->setLife(false); 
 		}	
