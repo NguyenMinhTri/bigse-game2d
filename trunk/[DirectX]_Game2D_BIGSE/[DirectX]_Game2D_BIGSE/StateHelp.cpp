@@ -115,4 +115,23 @@ void StateHelp ::Draw()
 	}
 	m_Device->Present(NULL,NULL,NULL,NULL);
 }
-void StateHelp ::Release(){}
+void StateHelp ::Release()
+{
+	if (m_Help!= NULL)
+	{
+		m_Help->Release();
+		delete m_Help;
+		m_Help = NULL;
+	}
+	if (m_Vector!= NULL)
+	{
+		m_Vector->Release();
+		delete m_Vector;
+		m_Vector = NULL;
+	}
+	if (m_Handle!=NULL)
+	{
+		m_Handle->Release();
+		m_Handle = NULL;
+	}
+}

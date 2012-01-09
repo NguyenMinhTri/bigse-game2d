@@ -31,9 +31,21 @@ Sprite::Sprite(LPDIRECT3DDEVICE9 _Device,char* filename,int _width,int _height,
 
 Sprite::~Sprite(void)
 {
-	m_Image->Release();
+	if (m_Image!=NULL)
+	{
+		m_Image->Release();
+		m_Image=NULL;
+	}
+	
 }
-
+void Sprite::Release ()
+{
+	if (m_Image!=NULL)
+	{
+		m_Image->Release();
+		m_Image=NULL;
+	}
+}
 RECT Sprite::getRect(int Curframe)
 {
 	RECT rect;
