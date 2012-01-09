@@ -37,7 +37,7 @@ void Pet_Hero ::Active()
 	if(p_stt==P_HIDE)
 	{
 		p_stt=P_MOVE;
-		setXY(600,m_Character->getY()-200);
+		setXY(m_Character->getX(),m_Character->getY()-200);
 		m_InfoSprite_Move.setCurFrame(0);
 		m_Sprite_Pet=m_Sprite_Move;
 		m_InfoSprite_Pet=m_InfoSprite_Move;

@@ -122,15 +122,6 @@ void Character::Draw(D3DXMATRIX _MWorld,LPD3DXSPRITE _Handler)
 		return ;
 	}
 	m_skillManager->Draw(_MWorld,_Handler);
-
-	if( getActive() ==false)
-	{
-		if (timeGetTime()%400 >200)
-		{
-			return ;
-		}
-	}
-
 	if (m_skillManager->getSkill(0)->getSTT()==ACTIVE)
 	{
 		m_InfoSprite.setCurFrame(m_skillManager->getSkill(0)->getInfoSprite().getCurFrame());

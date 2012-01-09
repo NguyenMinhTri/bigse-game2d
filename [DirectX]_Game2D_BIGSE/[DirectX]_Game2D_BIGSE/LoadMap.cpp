@@ -142,7 +142,12 @@ void LoadMap::TranslateMap()
 		{
 			D3DCOLOR color = (pColor[j][i]);
 			int r = (color&0x00ff0000) >> 16;
-
+			if (i==0 && j==0)
+			{
+				int a=(color&0xff000000)>>24;
+				a*=10;
+				ManagerObject::Instance()->setTime(a);
+			}
 			if(r>=200 && r<=204)
 			{
 				m_Terrain[i][j] = 1;

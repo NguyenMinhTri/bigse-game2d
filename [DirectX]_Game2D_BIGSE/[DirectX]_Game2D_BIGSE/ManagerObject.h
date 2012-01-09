@@ -16,6 +16,7 @@ private:
 	std::vector<MyObject*> *m_ListBoss ;
 	std::vector<MyObject*> *m_SpecialObject ;
 	std::vector<EffectSystem*> *m_ListEffect ;
+	float m_Time;
 	QuadTree* m_QuadTree;
 
 	Terrain* m_Map;
@@ -49,7 +50,14 @@ public:
 	{
 		m_Map = _Map;
 	}
-
+	void setTime  (float _Time)
+	{
+		m_Time = _Time;
+	}
+	int getTime ()
+	{
+		return m_Time;
+	}
 	Terrain* getMap() 
 	{
 		return m_Map;
