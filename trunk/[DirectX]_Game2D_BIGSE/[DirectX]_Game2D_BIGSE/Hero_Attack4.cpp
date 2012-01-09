@@ -21,7 +21,7 @@ void Hero_Attack4::Init()
 	m_TestBallFly=false;
 	m_VBallFly=100;
 	m_iCollision=false;
-	m_Damage = 5000;
+	m_Damage = 2000;
 	m_CountBall=10;
 	m_STT = READY;
 	setSize(212,251);

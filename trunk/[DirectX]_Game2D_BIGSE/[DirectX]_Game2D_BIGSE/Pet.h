@@ -14,6 +14,7 @@ protected:
 		P_END 
 	};
 	int p_stt;
+	int m_Damage ;
 	float  m_TimeLife ;
 	float m_TimeCoolDown;
 	MyObject *m_Character ;

@@ -3,6 +3,7 @@
 #include "RSMainGame.h"
 #include "Global.h"
 
+
 Pet ::Pet(MyObject*  _Character)
 {
 	Init();
@@ -17,6 +18,7 @@ void Pet :: Init()
 {
 	m_TimeLife = 50;
 	m_TimeCoolDown = 5;
+	m_Damage = 300 ;
 	m_Partner = RSMainGame::get()->getPartner();
 	m_InfoSprite.setSize(100,80);
 	setSize(62,62);
@@ -250,7 +252,7 @@ void Pet :: ProcessCollision(MyObject* _Obj)
 			return ;
 		}//true la chua trung
 		_Obj->setActive(false);
-		_Obj->setHp(_Obj->getHp() - getDamage());
+		_Obj->setHp(_Obj->getHp() - m_Damage);
 		if(_Obj->getHp() == 0)
 		{
 			_Obj->setLife(false); 
