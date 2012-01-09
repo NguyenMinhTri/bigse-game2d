@@ -99,7 +99,7 @@ void Thunder::UpdateStatus(float _Time)
 	{
 	case COOLDOWN:
 		m_TimeUpdate+= _Time;
-		if(m_TimeUpdate > 1)
+		if(m_TimeUpdate > 15)
 		{
 			m_STT = READY;
 			m_TimeUpdate = 0;
