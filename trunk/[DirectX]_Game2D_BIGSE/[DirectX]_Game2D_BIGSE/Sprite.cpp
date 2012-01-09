@@ -3,6 +3,7 @@
 #include <d3d9types.h>
 #include "InfoSprite.h"
 #include "Global.h"
+#include "DXManager.h"
 
 
 Sprite::Sprite(LPDIRECT3DDEVICE9 _Device,char* filename,int _width,int _height,
@@ -25,6 +26,7 @@ Sprite::Sprite(LPDIRECT3DDEVICE9 _Device,char* filename,int _width,int _height,
 		D3DX_DEFAULT,_tran,	&info,	NULL,&m_Image);
 	if (result!=D3D_OK) 
 	{
+		MessageBox(DXManager::Instance()->getHWND(),"Load texture fail","Error",MB_OK);
 		return;
 	}
 }
