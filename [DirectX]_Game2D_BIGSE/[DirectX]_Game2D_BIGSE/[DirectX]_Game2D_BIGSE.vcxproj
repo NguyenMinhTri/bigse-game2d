@@ -169,8 +169,10 @@
     <ClCompile Include="StatePlayer.cpp" />
     <ClCompile Include="StateWorldMap.cpp" />
     <ClCompile Include="State_Loading.cpp" />
+    <ClCompile Include="State_Lose.cpp" />
     <ClCompile Include="State_Play.cpp" />
     <ClCompile Include="State_Setting.cpp" />
+    <ClCompile Include="State_Win.cpp" />
     <ClCompile Include="Terrain.cpp" />
     <ClCompile Include="Thunder.cpp" />
     <ClCompile Include="Trap.cpp" />
@@ -273,8 +275,10 @@
     <ClInclude Include="StatePlayer.h" />
     <ClInclude Include="StateWorldMap.h" />
     <ClInclude Include="State_Loading.h" />
+    <ClInclude Include="State_Lose.h" />
     <ClInclude Include="State_Play.h" />
     <ClInclude Include="State_Setting.h" />
+    <ClInclude Include="State_Win.h" />
     <ClInclude Include="Terrain.h" />
     <ClInclude Include="Thunder.h" />
     <ClInclude Include="Trap.h" />

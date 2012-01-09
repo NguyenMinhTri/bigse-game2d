@@ -110,6 +110,8 @@
     <ClCompile Include="State_Setting.cpp" />
     <ClCompile Include="Effect_Setting.cpp" />
     <ClCompile Include="Pharaon.cpp" />
+    <ClCompile Include="State_Lose.cpp" />
+    <ClCompile Include="State_Win.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Angle.h" />
@@ -223,6 +225,8 @@
     <ClInclude Include="State_Setting.h" />
     <ClInclude Include="Effect_Setting.h" />
     <ClInclude Include="Pharaon.h" />
+    <ClInclude Include="State_Lose.h" />
+    <ClInclude Include="State_Win.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="data\image\callpet.png">
