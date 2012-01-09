@@ -12,6 +12,7 @@ protected:
 	
 
 public:
+	int a ; //cong. them damage 
 	SkillManager *m_skillManager ;
 	Character(void);
 	virtual ~Character(void);

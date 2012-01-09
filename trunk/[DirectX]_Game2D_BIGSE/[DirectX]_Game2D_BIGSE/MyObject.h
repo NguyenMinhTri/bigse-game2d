@@ -56,6 +56,8 @@ public:
 	bool m_iFire;
 	bool m_iLife;
 	bool m_iActive ;
+	bool m_IncreaseDamage ;
+	bool m_CheckDamage ;
 	MyObject(void);
 	virtual ~MyObject(void);
  	CRECT getRect(){

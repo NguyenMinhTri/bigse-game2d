@@ -6,6 +6,7 @@ class Hero :
 	public Character
 {
 public:
+	int a ; //cong. damage 
 	bool m_Test_Die;
 	Pet_Hero* m_Pet;
 	Sprite* m_SpriteHero;
@@ -24,6 +25,7 @@ public:
 	virtual void Animation(float _Time);
 	virtual void Update(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight);
 	virtual void Draw(D3DXMATRIX _MWorld,LPD3DXSPRITE _Handler);
+	virtual void UpdateStatus(float _Time);
 
 };
 

@@ -9,6 +9,7 @@
 #include "ElephantDie.h"
 #include "EffectInfoEle.h"
 #include "ItemSkull.h"
+#include "ItemDamage.h"
 Monster::Monster(void)
 {
 	m_HP = 2100;
@@ -222,8 +223,9 @@ void Monster::UpdateStatus(float _Time)
 	{
 		ItemSkull *_itemSkull = new ItemSkull(m_X,m_Y);
 		Item *_item = new Item(m_X,m_Y);
+		ItemDamage *_ItemDamage = new ItemDamage(m_X,m_Y);
 		int random ;
-		random = rand() % 6 ;
+		random = rand() % 3;
 		switch(random)
 		{
 		case  0 :
@@ -233,6 +235,9 @@ void Monster::UpdateStatus(float _Time)
 			ManagerObject::Instance()->getListItem()->push_back(_itemSkull);
 			break ;
 
+		case 2 :
+			ManagerObject::Instance()->getListItem()->push_back(_ItemDamage);
+			break ;
 		}
 
 		ElephantDie *_EffectDie = new ElephantDie (m_X,m_Y);

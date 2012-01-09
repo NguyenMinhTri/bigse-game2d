@@ -23,7 +23,7 @@ GodLike_Attack4::~GodLike_Attack4(void)
 
 void GodLike_Attack4 ::Init()
 {
-	m_Damage = 1600 ;
+	m_Damage = 2500 ;
 	count =0;
 	m_Attack4_1 = RSMainGame::get()->getGodLikeAttack4_1() ;
 	m_Attack4_2 = RSMainGame::get()->getGodLikeAttack4_2() ;
