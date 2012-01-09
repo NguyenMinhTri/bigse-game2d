@@ -105,6 +105,7 @@ private:
 
 	Sprite* m_Pharaon ;
 	Sprite* m_ItemHealth ;
+	Sprite* m_Skull ;
 	RSMainGame(void);
 public:
 
@@ -449,6 +450,10 @@ public:
 	Sprite* getItemHealth()
 	{
 		return m_ItemHealth ;
+	}
+	Sprite* getSkull()
+	{
+		return m_Skull ;
 	}
 };
 

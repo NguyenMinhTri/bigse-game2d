@@ -130,6 +130,7 @@
     <ClCompile Include="iPlay.cpp" />
     <ClCompile Include="iState.cpp" />
     <ClCompile Include="Item.cpp" />
+    <ClCompile Include="ItemSkull.cpp" />
     <ClCompile Include="LoadMap.cpp" />
     <ClCompile Include="Magician.cpp" />
     <ClCompile Include="ManagerObject.cpp" />
@@ -235,6 +236,7 @@
     <ClInclude Include="iPlay.h" />
     <ClInclude Include="iState.h" />
     <ClInclude Include="Item.h" />
+    <ClInclude Include="ItemSkull.h" />
     <ClInclude Include="LoadMap.h" />
     <ClInclude Include="Magician.h" />
     <ClInclude Include="ManagerObject.h" />
