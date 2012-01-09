@@ -84,7 +84,10 @@ void Hero_Attack4::Animation(float _Time)
 			m_Hero_Attack4InfoSprite.NextFrame(0,18);			
  			if(m_Hero_Attack4InfoSprite.getCurFrame()>=8)
  			{
- 				m_iCollision=true;
+				if(m_Hero_Attack4InfoSprite.getCurFrame()==8)
+ 					m_iCollision=true;
+				else
+					m_iCollision=false;
 				m_TestBallFly=true;
 				for (std::vector<InfoSprite>::iterator i = m_ListHero_Attack4_BallInfoSprite->begin();i<m_ListHero_Attack4_BallInfoSprite->end();i++)
 				{

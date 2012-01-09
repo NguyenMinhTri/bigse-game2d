@@ -66,10 +66,12 @@ void Hero_Attack2::Animation(float _Time)
 		{
 			m_TimeAni-= 0.12f;
 			m_Hero_Attack2InfoSprite.NextFrame(0,14);			
-			if(m_Hero_Attack2InfoSprite.getCurFrame()>=7)
+			if(m_Hero_Attack2InfoSprite.getCurFrame()==7)
 			{
 				m_iCollision=true;
 			}
+			else
+				m_iCollision=false;
 			if(m_Hero_Attack2InfoSprite.getCurFrame()>=13)
 			{
 // 				if (m_Direct<0)
