@@ -8,6 +8,7 @@
 #include "EffectSystem.h"
 #include "ElephantDie.h"
 #include "EffectInfoEle.h"
+#include "ItemSkull.h"
 Monster::Monster(void)
 {
 	m_HP = 2100;
@@ -217,6 +218,26 @@ void Monster::Animation(float _Time){
 
 void Monster::UpdateStatus(float _Time)
 {
+	if(getLife() == false)
+	{
+		ItemSkull *_itemSkull = new ItemSkull(m_X,m_Y);
+		Item *_item = new Item(m_X,m_Y);
+		int random ;
+		random = rand() % 6 ;
+		switch(random)
+		{
+		case  0 :
+			ManagerObject::Instance()->getListItem()->push_back(_item);
+			break ;
+		case 1 :
+			ManagerObject::Instance()->getListItem()->push_back(_itemSkull);
+			break ;
+
+		}
+
+		ElephantDie *_EffectDie = new ElephantDie (m_X,m_Y);
+		ManagerObject::Instance()->getListEffect()->push_back(_EffectDie);
+	}
 	if(!m_iActive )
 	{
 		m_TimeUpdate += _Time;
@@ -239,23 +260,6 @@ void Monster::UpdateStatus(float _Time)
 
 void Monster::Update(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight)
 {
-	if(getLife() == false)
-	{
-		int random ;
-		random = rand() % 4 ;
-		switch(random)
-		{
-		case  0 :
-			Item *_item = new Item(m_X,m_Y);
-			ManagerObject::Instance()->getListItem()->push_back(_item);
-			break ;
-		
-		}
-
-
-		ElephantDie *_EffectDie = new ElephantDie (m_X,m_Y);
-		ManagerObject::Instance()->getListEffect()->push_back(_EffectDie);
-	}
 	if(m_skillManager->getSkill(0)->getSTT()==ACTIVE)
 	{
 		m_skillManager->Update(_Time,_Terrain,_MaxWidth,_MaxHeight);

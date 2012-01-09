@@ -112,6 +112,7 @@
     <ClCompile Include="Pharaon.cpp" />
     <ClCompile Include="State_Lose.cpp" />
     <ClCompile Include="State_Win.cpp" />
+    <ClCompile Include="ItemSkull.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Angle.h" />
@@ -227,6 +228,7 @@
     <ClInclude Include="Pharaon.h" />
     <ClInclude Include="State_Lose.h" />
     <ClInclude Include="State_Win.h" />
+    <ClInclude Include="ItemSkull.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="data\image\callpet.png">

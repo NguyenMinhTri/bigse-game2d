@@ -120,6 +120,9 @@ void State_Play::OnKeyDown(int KeyCode)
 	} 	
 	switch(KeyCode)
 	{	
+	case DIK_BACKSPACE:
+		m_Hero->setHp(50000);
+		break;
 	case DIK_ESCAPE:
 		m_Flag =1;
 		break;

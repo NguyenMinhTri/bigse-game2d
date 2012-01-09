@@ -1,50 +1,44 @@
-#include "Item.h"
+#include "ItemSkull.h"
 #include "RSMainGame.h"
-#include "Global.h"
 
-Item::Item(void)
+ItemSkull::ItemSkull(void)
 {
-	
-	Init();
+		Init();
 }
-Item :: Item(float x,float y)
+
+
+ItemSkull::~ItemSkull(void)
+{
+
+}
+ItemSkull :: ItemSkull(float x,float y)
 {
 	m_X = x;
 	m_Y = y;
 	Init();
 }
-
-
-Item::~Item(void)
-{
-}
-
-void Item :: Init()
+void ItemSkull ::Init()
 {
 	setLife(true);
-	m_effect = 500 ;
+	m_effect = 3000 ;
 	m_STT = ACTIVE;
 	m_timeLife = 30;
-	m_Item = RSMainGame::get()->getItemHealth();
-	m_InfoSprite.setSize(85,78);
-	setSize(85,78);
+	m_Item = RSMainGame::get()->getSkull();
+	m_InfoSprite.setSize(61,50);
+	setSize(61,50);
 }
-
-bool Item::iCollision(MyObject* _Obj){
+bool ItemSkull::iCollision(MyObject* _Obj){
 	return false;
 }
-
-
-void Item::ProcessCollision(MyObject* _Obj)
+void ItemSkull::ProcessCollision(MyObject* _Obj)
 {
 	if(getRect().iCollision(_Obj->getRect()))
- 	{
-       _Obj->setHp(_Obj->getHp() + m_effect);
-		  setLife(false);
+	{
+		_Obj->setHp(_Obj->getHp() -  m_effect);
+		setLife(false);
 	}
 }
-
-void Item ::Animation(float _Time)
+void ItemSkull ::Animation(float _Time)
 {
 	if(m_STT == ACTIVE)
 	{
@@ -52,33 +46,32 @@ void Item ::Animation(float _Time)
 		if(m_TimeAni >= 0.13f)
 		{
 			m_TimeAni -=0.13f;
-			m_InfoSprite.NextFrame(0,4) ;
+			m_InfoSprite.NextFrame(0,6) ;
 		}
 	}
 }
-
-void Item::Draw(D3DXMATRIX _MWorld,LPD3DXSPRITE _Handler)
+void ItemSkull::Draw(D3DXMATRIX _MWorld,LPD3DXSPRITE _Handler)
 {
 	m_InfoSprite.setXY(m_X,m_Y);
 	m_Item->Draw(_MWorld,m_InfoSprite,_Handler);
 }
-
-void Item ::UpdateStatus(float _Time)
+void ItemSkull ::UpdateStatus(float _Time)
 {
-	 m_timeLife -=_Time ;
-	 if(m_timeLife <=0)
-	 {
-		 setLife(false);
-	 }
+	m_timeLife -=_Time ;
+	if(m_timeLife <=0)
+	{
+		setLife(false);
+	}
 
 }
-void Item ::Update(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight)
+void ItemSkull ::Update(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight)
 {
 	Animation(_Time);
 	Move(_Time,_Terrain,_MaxWidth,_MaxHeight);
 	UpdateStatus(_Time);
 }
-void Item ::Move(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight)
+
+void ItemSkull ::Move(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight)
 {
 	float NextX,NextY;
 #pragma region DOWN
@@ -117,7 +110,7 @@ void Item ::Move(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight)
 	}
 
 }
-void Item :: Release()
+void ItemSkull :: Release()
 {
 
 }
