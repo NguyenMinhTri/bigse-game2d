@@ -21,6 +21,8 @@ MyObject::MyObject(void)
 	m_iLife = true;
 	m_iActive = true;
 	m_iThunder = false ;
+	m_IncreaseDamage = false ;
+	m_CheckDamage = false ;
 
 	m_ID		= PLAYER;
 	m_STT		= ACTIVE;

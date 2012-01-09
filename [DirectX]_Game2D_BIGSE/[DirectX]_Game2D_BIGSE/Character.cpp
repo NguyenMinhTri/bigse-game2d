@@ -24,6 +24,7 @@ void Character::ActiveSkill(int _Index){
 }
 
 void Character::Init(){
+		
 	m_SCharater = RSMainGame::get()->getCharacter();
 	m_InfoSprite.setSize(300,200);
 	m_InfoSprite.setDepth(0.2);
@@ -35,6 +36,8 @@ void Character::Init(){
 	m_skillManager->AddSkill(new Frenzy());
 	m_skillManager->AddSkill(new Pet(this));
 	m_skillManager->AddSkill(new Thunder());
+
+	a = m_skillManager->getSkill(0)->m_Damage ;
 }
 
 bool Character::iCollision(MyObject* _Obj){
@@ -92,6 +95,21 @@ void Character::UpdateStatus(float _Time)
 			 m_TimeUpdate =0;
 		 }
 	 }
+	 if(m_IncreaseDamage == true)
+	 {
+		 if(m_skillManager->getSkill(0)->getDamage() ==a)
+		 {
+			 m_skillManager->getSkill(0)->setDamage(m_skillManager->getSkill(0)->getDamage() + 500);
+		 }
+		 m_TimePrivate += _Time;
+		 if(m_TimePrivate > 20)
+		 {
+			 m_IncreaseDamage = false ;
+			 m_TimePrivate =0;
+			 m_skillManager->getSkill(0)->setDamage(a);
+		 }
+	 }
+
 	 if(m_iThunder== true)
 	 {
 		 m_TimeUpdate += _Time;

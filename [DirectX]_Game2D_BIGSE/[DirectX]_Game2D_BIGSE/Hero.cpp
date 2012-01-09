@@ -44,6 +44,8 @@ void Hero::Init()
 	m_skillManager->AddSkill(new Hero_Attack2(this));
 	m_skillManager->AddSkill(new Hero_Attack3(this));
 	CallPet();
+
+	 a = m_skillManager->getSkill(0)->m_Damage ;
 }
 void Hero::CallPet()
 {
@@ -171,5 +173,49 @@ void Hero::Draw(D3DXMATRIX _MWorld,LPD3DXSPRITE _Handler)
 		
 		}
 		m_Pet->Draw(_MWorld,_Handler);
+	}
+}
+void Hero ::UpdateStatus(float _Time)
+{
+	if(!m_iActive )
+	{
+		m_TimeUpdate += _Time;
+		if(m_TimeUpdate > 1 )
+		{
+			m_iActive = true ;
+			m_TimeUpdate =0;
+		}
+	}
+	if(getFrenzy() == true)
+	{
+		m_TimeUpdate += _Time;
+		if(m_TimeUpdate > 1.95)
+		{
+			setFrenzey(false);
+			m_TimeUpdate =0;
+		}
+	}
+	if(m_IncreaseDamage == true)
+	{
+		if(m_skillManager->getSkill(0)->getDamage() ==a)
+		{
+			m_skillManager->getSkill(0)->setDamage(m_skillManager->getSkill(0)->getDamage() + 500);
+		}
+		m_TimePrivate += _Time;
+		if(m_TimePrivate > 20)
+		{
+			m_IncreaseDamage = false ;
+			m_TimePrivate =0;
+			m_skillManager->getSkill(0)->setDamage(a);
+		}
+	}
+	if(m_iThunder== true)
+	{
+		m_TimeUpdate += _Time;
+		if(m_TimeUpdate > 0.5)
+		{
+			m_iThunder =false ;
+			m_TimeUpdate =0;
+		}
 	}
 }

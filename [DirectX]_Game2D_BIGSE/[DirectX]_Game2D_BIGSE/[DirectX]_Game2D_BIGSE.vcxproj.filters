@@ -113,6 +113,7 @@
     <ClCompile Include="State_Lose.cpp" />
     <ClCompile Include="State_Win.cpp" />
     <ClCompile Include="ItemSkull.cpp" />
+    <ClCompile Include="ItemDamage.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Angle.h" />
@@ -229,6 +230,7 @@
     <ClInclude Include="State_Lose.h" />
     <ClInclude Include="State_Win.h" />
     <ClInclude Include="ItemSkull.h" />
+    <ClInclude Include="ItemDamage.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="data\image\callpet.png">
