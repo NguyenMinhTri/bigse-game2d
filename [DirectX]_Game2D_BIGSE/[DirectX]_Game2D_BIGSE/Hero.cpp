@@ -36,9 +36,9 @@ void Hero::Init()
 	m_Pet=new Pet_Hero(this);
 	setSize(79,90);
 	m_STT=ACTIVE;
-	m_HP=50000 ;
+	m_HP=500 ;
 	m_skillManager = new SkillManager();
-	
+	m_Test_Die=false;
 	m_skillManager->AddSkill(new Hero_Attack4(this));
 	m_skillManager->AddSkill(new Hero_Attack1(this));
 	m_skillManager->AddSkill(new Hero_Attack2(this));
@@ -100,7 +100,7 @@ void Hero::Animation(float _Time)
 
 void Hero::Update(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight)
 {
-	if(getLife()==false)
+	if(getLife()==false&&m_Test_Die==false)
 	{
 		if (m_Direct<0)
 		{
@@ -116,6 +116,7 @@ void Hero::Update(float _Time, int** _Terrain,float _MaxWidth,float _MaxHeight)
 
 			ManagerObject::Instance()->getListEffect()->push_back(m_HeroDie);
 		}
+		m_Test_Die=true;
 	}
 	else{
 		if(m_skillManager->getSkill(0)->getSTT()==ACTIVE||m_skillManager->getSkill(1)->getSTT()==ACTIVE||m_skillManager->getSkill(2)->getSTT()==ACTIVE||m_skillManager->getSkill(3)->getSTT()==ACTIVE)

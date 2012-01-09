@@ -6,6 +6,7 @@ class Hero :
 	public Character
 {
 public:
+	bool m_Test_Die;
 	Pet_Hero* m_Pet;
 	Sprite* m_SpriteHero;
 	Sprite* m_Hero_Die;
