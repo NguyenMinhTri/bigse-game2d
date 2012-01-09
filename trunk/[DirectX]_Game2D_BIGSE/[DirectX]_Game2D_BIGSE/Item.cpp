@@ -18,10 +18,11 @@ Item :: Item(float x,float y)
 Item::~Item(void)
 {
 }
+
 void Item :: Init()
 {
 	setLife(true);
-	m_effect = 2 ;
+	m_effect = 500 ;
 	m_STT = ACTIVE;
 	m_Item = RSMainGame::get()->getMedicine();
 	m_InfoSprite.setSize(52,63);
@@ -37,7 +38,7 @@ void Item::ProcessCollision(MyObject* _Obj)
 {
 	if(getRect().iCollision(_Obj->getRect()))
  	{
-       _Obj->setHp(_Obj->getHp() +2);
+       _Obj->setHp(_Obj->getHp() + m_effect);
 		  setLife(false);
 	}
 }

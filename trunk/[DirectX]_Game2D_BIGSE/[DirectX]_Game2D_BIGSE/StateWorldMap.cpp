@@ -114,7 +114,7 @@ void StateWorldMap ::ProcessMouse(DIMOUSESTATE MouseState,POINT Positon)
 		{
 			if(Positon.y > 310 && Positon.y < 340)
 			{
-				/*m_iPlay->SetNextState(new State_Play(this->m_iPlay));*/
+				m_iPlay->SetNextState(new State_Loading(this->m_iPlay,"data\\map\\6.png",m_IDHero));
 			}
 		}
 		if(Positon.x > 48 && Positon.x < 158) //kerningplatz
@@ -217,7 +217,7 @@ void StateWorldMap ::Update(float _Time)
 	}
 	if(r.iCollision(Kerningstadt) == true  && m_STT == READY  && m_InfoAttack.getCurFrame()>5)
 	{
-		m_iPlay->SetNextState(new StateMainMenu(this->m_iPlay));
+		m_iPlay->SetNextState(new State_Loading(this->m_iPlay,"data\\map\\6.png",m_IDHero));
 	}
 	if(r.iCollision(Kerningplatz) == true  && m_STT == READY  && m_InfoAttack.getCurFrame()>5)
 	{

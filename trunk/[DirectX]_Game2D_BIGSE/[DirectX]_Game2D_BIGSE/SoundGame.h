@@ -24,6 +24,7 @@ private:
 	CSound* m_Pharaon ;
 	CSound* m_AngleXetXet;
 	CSound* m_MusicPlayer ;
+	CSound* m_State_Play ;
 	SoundGame();
 	
 public:
@@ -58,6 +59,7 @@ void Init(HWND _hwnd);
 	void PlayPharaon();
 	void PlayAngleXetXet() ;
 	void PlayMusicPlayer();
+	void PlayStatePlay() ;
 	void StopBackGame ();
 	void StopMainMeNu() ;
 	void StopSoundSetting();

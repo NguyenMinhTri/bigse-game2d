@@ -55,6 +55,7 @@ void SoundGame::Init(HWND _hwnd)
 	m_Pharaon = SDev->LoadSound("data\\sound\\Pharaon.wav");
 	m_AngleXetXet = SDev->LoadSound("data\\sound\\teleport.wav");
 	m_MusicPlayer = SDev->LoadSound("data\\sound\\MusicChoosePlayer.wav");
+	m_State_Play = SDev->LoadSound("data\\sound\\SkyForest.wav");
 }
 
 void SoundGame::PlayBackGame()
@@ -162,6 +163,13 @@ void SoundGame :: PlayMusicPlayer()
 		m_MusicPlayer->Play();
 	}
 }
+void SoundGame ::PlayStatePlay()
+{
+	if(EffActi)
+	{
+		m_State_Play->Play();
+	}
+}
 void SoundGame::StopBackGame() 
 {
 	SBackGame->Stop();
@@ -175,6 +183,7 @@ void SoundGame :: StopMainMeNu()
 {
 	SBackGame->Stop() ;
 	m_MusicPlayer->Stop();
+	m_State_Play->Stop() ;
 }
 
 void SoundGame::PlaySoundSetting()
