@@ -5,7 +5,6 @@
 #include "StateMainMenu.h"
 #include "State_Lose.h"
 #include "State_Win.h"
-#include "SoundGame.h"
 State_Play::State_Play(iPlay* GamePlay)
 	:iState(GamePlay)
 {
@@ -20,14 +19,17 @@ State_Play::~State_Play(void)
 
 void State_Play::Init()
 {
-	SoundGame ::Instance()->StopMainMeNu() ;
+	m_Time = ManagerObject::Instance()->getTime();
 	m_Flag =0;
 	m_FlagAni =0;
 	m_infoFlag.setDepth(0.9f);
+	m_NumTime = new EffectFont(900,20,m_Time);
 	m_sWin=new Sprite(m_Device,"data\\image\\Win.png",461,442,5);
 	m_sStart=new Sprite(m_Device,"data\\image\\start.png",545,414,5);
 	m_sLose=new Sprite(m_Device,"data\\image\\lose.png",484,324,5);
 	m_sTime=new Sprite(m_Device,"data\\image\\timeout.png",553,247,4);
+	m_bar=new Sprite(m_Device,"data\\image\\bar.png",299,144,1);
+	m_barheath=new Sprite(m_Device,"data\\image\\barheath.png",203,39,1);
 
 	m_ListItem = ManagerObject::Instance()->getListItem();
 	m_ObjectsCamera = ManagerObject::Instance()->getObjects();
@@ -296,6 +298,11 @@ void State_Play::Update(float _Time)
 	{
 		m_Flag = 4;
 	}
+	m_Time-= _Time;
+	if (m_Time<0)
+	{
+		m_Flag=3;
+	}
 	/************************************************************************/
 	/*  Update QuadTree                                                     */
 	/************************************************************************/
@@ -392,6 +399,19 @@ void State_Play::Draw()
 		
  		m_Map->Draw(m_Camera,m_mtWorld,m_Handle);
 
+		m_NumTime->SetDamage(m_Time);
+		m_NumTime->Draw(m_Handle);
+		m_bar->Draw(0,0,0,m_Handle);
+		RECT rect;
+		rect.top=0;
+		rect.bottom=39;
+		rect.left = 0;
+		rect.right =((float)m_Hero->getHp()/(float)50000.0f)*203;
+		D3DXMATRIX mtFinal; //
+		D3DXMatrixIdentity(&mtFinal);
+		m_Handle->SetTransform(&mtFinal);
+		m_Handle->Draw(m_barheath->GetImage(),&rect,NULL,&D3DXVECTOR3(82,48,0),D3DCOLOR_ARGB(255,255,255,255));
+		//m_barheath->Draw(0,0,0,m_Handle);
 		for (std::vector<MyObject*>::iterator i = m_ObjectsCamera->begin();i!= m_ObjectsCamera->end();i++)
 		{
 			(*i)->Draw(m_mtWorld,m_Handle);			
