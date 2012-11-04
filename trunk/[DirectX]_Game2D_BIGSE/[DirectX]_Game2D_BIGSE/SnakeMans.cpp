@@ -23,7 +23,7 @@ void SnakeMans::Init()
 	setSize(202,269);
 	m_STT = ACTIVE ;
 	m_VMove=50;
-	m_HP=60000;
+	m_HP=18000;
 	m_skillManager = new SkillManager();
 	m_skillManager->AddSkill(new SnakeMens_Attack1(this));
 	m_skillManager->AddSkill(new SnakeMens_Attack2(this));

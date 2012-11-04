@@ -7,7 +7,6 @@
     <ClCompile Include="CallPet.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Character.cpp" />
-    <ClCompile Include="DXDevice.cpp" />
     <ClCompile Include="Effect.cpp" />
     <ClCompile Include="EffectDieSnow.cpp" />
     <ClCompile Include="EffectFont.cpp" />
@@ -23,7 +22,6 @@
     <ClCompile Include="ElephantDie.cpp" />
     <ClCompile Include="Frenzy.cpp" />
     <ClCompile Include="FrenzyTime.cpp" />
-    <ClCompile Include="GameApp.cpp" />
     <ClCompile Include="GamePlay.cpp" />
     <ClCompile Include="GodLike_Attack1.cpp" />
     <ClCompile Include="GodLike_Attack2.cpp" />
@@ -75,8 +73,6 @@
     <ClCompile Include="State_Play.cpp" />
     <ClCompile Include="Terrain.cpp" />
     <ClCompile Include="Thunder.cpp" />
-    <ClCompile Include="Winform.cpp" />
-    <ClCompile Include="WinMain.cpp" />
     <ClCompile Include="Trap.cpp" />
     <ClCompile Include="GateSpace.cpp" />
     <ClCompile Include="Bear.cpp">
@@ -98,7 +94,6 @@
     </ClCompile>
     <ClCompile Include="EffectDiePrivate.cpp" />
     <ClCompile Include="StatePlayer.cpp" />
-    <ClCompile Include="dsutil.cpp" />
     <ClCompile Include="DXManager.cpp" />
     <ClCompile Include="Effect_MainMenu.cpp" />
     <ClCompile Include="SoundDev.cpp" />
@@ -114,6 +109,21 @@
     <ClCompile Include="State_Win.cpp" />
     <ClCompile Include="ItemSkull.cpp" />
     <ClCompile Include="ItemDamage.cpp" />
+    <ClCompile Include="DXDevice.cpp">
+      <Filter>Environment</Filter>
+    </ClCompile>
+    <ClCompile Include="dsutil.cpp">
+      <Filter>Environment</Filter>
+    </ClCompile>
+    <ClCompile Include="GameApp.cpp">
+      <Filter>Environment</Filter>
+    </ClCompile>
+    <ClCompile Include="WinMain.cpp">
+      <Filter>Environment</Filter>
+    </ClCompile>
+    <ClCompile Include="Winform.cpp">
+      <Filter>Environment</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Angle.h" />
@@ -122,7 +132,6 @@
     <ClInclude Include="CallPet.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Character.h" />
-    <ClInclude Include="DXDevice.h" />
     <ClInclude Include="Effect.h" />
     <ClInclude Include="EffectDieSnow.h" />
     <ClInclude Include="EffectFont.h" />
@@ -138,7 +147,6 @@
     <ClInclude Include="ElephantDie.h" />
     <ClInclude Include="Frenzy.h" />
     <ClInclude Include="FrenzyTime.h" />
-    <ClInclude Include="GameApp.h" />
     <ClInclude Include="GamePlay.h" />
     <ClInclude Include="Global.h" />
     <ClInclude Include="GodLike_Attack1.h" />
@@ -192,7 +200,6 @@
     <ClInclude Include="State_Play.h" />
     <ClInclude Include="Terrain.h" />
     <ClInclude Include="Thunder.h" />
-    <ClInclude Include="Winform.h" />
     <ClInclude Include="Trap.h" />
     <ClInclude Include="GateSpace.h" />
     <ClInclude Include="Bear.h">
@@ -214,9 +221,7 @@
     </ClInclude>
     <ClInclude Include="EffectDiePrivate.h" />
     <ClInclude Include="StatePlayer.h" />
-    <ClInclude Include="dsutil.h" />
     <ClInclude Include="DXManager.h" />
-    <ClInclude Include="dxutil.h" />
     <ClInclude Include="Effect_MainMenu.h" />
     <ClInclude Include="SoundDev.h" />
     <ClInclude Include="SoundGame.h" />
@@ -231,6 +236,21 @@
     <ClInclude Include="State_Win.h" />
     <ClInclude Include="ItemSkull.h" />
     <ClInclude Include="ItemDamage.h" />
+    <ClInclude Include="DXDevice.h">
+      <Filter>Environment</Filter>
+    </ClInclude>
+    <ClInclude Include="dxutil.h">
+      <Filter>Environment</Filter>
+    </ClInclude>
+    <ClInclude Include="dsutil.h">
+      <Filter>Environment</Filter>
+    </ClInclude>
+    <ClInclude Include="GameApp.h">
+      <Filter>Environment</Filter>
+    </ClInclude>
+    <ClInclude Include="Winform.h">
+      <Filter>Environment</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="data\image\callpet.png">
@@ -273,6 +293,9 @@
     </Filter>
     <Filter Include="Pirate">
       <UniqueIdentifier>{bbebd34d-8c95-4c86-80b2-5667609d49fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Environment">
+      <UniqueIdentifier>{c13f3d27-c75d-45b4-814a-03b82458ba12}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -30,7 +30,7 @@ void  Camera::Update(Character* _Character,float _MaxWidth,float _MaxHeight)
 	{
 		m_X = (_MaxWidth-m_Width)-1;
 	}
-	m_Y = _Character->getY() - (g_SCREEN_HEIGHT - _Character->getHeight())/2 ;
+	m_Y = _Character->getY() - (g_SCREEN_HEIGHT - _Character->getHeight())*3/4 ;
 	if (m_Y<=0)
 	{
 		m_Y = 0;
