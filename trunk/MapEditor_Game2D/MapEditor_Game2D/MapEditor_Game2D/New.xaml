@@ -1,0 +1,28 @@
+﻿<Window x:Class="MapEditor_Game2D.New"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="New" Height="300" Width="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Label Content="Parameter map"/>
+        
+        <Label Grid.Row="1" Content="Width" Margin="0,10,210,8" />
+        <TextBox Name="Width_tb" Grid.Row="1" Margin="65,9,0,8" LostFocus="Width_tb_LostFocus" />
+
+        <Label Grid.Row="2" Content="Height" Margin="0,10,210,8" />
+        <TextBox Name="Height_tb" Grid.Row="2" Margin="65,9,0,8" LostFocus="Height_tb_LostFocus" />
+
+        <Label Grid.Row="3" Content="Time" Margin="0,10,210,8" />
+        <TextBox Name="Time_tb" Grid.Row="3" Margin="65,9,0,8" LostFocus="Time_tb_LostFocus" />
+
+        <Button Grid.Row="5"  Content="Cancel" Click="Button_Click_1" Margin="24,6,139,6" />
+        <Button Grid.Row="5"  Content="OK" Click="Button_Click" Margin="160,6,12,6" />
+    </Grid>
+</Window>
