@@ -1,0 +1,236 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{AE9F82ED-EA6B-48C9-AA44-9870A5F20671}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MapEditor_Game2D</RootNamespace>
+    <AssemblyName>MapEditor_Game2D</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="RibbonControlsLibrary" />
+    <Reference Include="Microsoft.Windows.Shell" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="New.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="New.xaml.cs">
+      <DependentUpon>New.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\LargeIcon.png" />
+    <Resource Include="Images\SmallIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\0.png" />
+    <Resource Include="Images\2.png" />
+    <Resource Include="Images\3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\200.png" />
+    <Resource Include="Images\201.png" />
+    <Resource Include="Images\202.png" />
+    <Resource Include="Images\203.png" />
+    <Resource Include="Images\204.png" />
+    <Resource Include="Images\205.png" />
+    <Resource Include="Images\206.png" />
+    <Resource Include="Images\207.png" />
+    <Resource Include="Images\208.png" />
+    <Resource Include="Images\209.png" />
+    <Resource Include="Images\210.png" />
+    <Resource Include="Images\211.png" />
+    <Resource Include="Images\212.png" />
+    <Resource Include="Images\213.png" />
+    <Resource Include="Images\214.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\220.png" />
+    <Resource Include="Images\221.png" />
+    <Resource Include="Images\222.png" />
+    <Resource Include="Images\223.png" />
+    <Resource Include="Images\224.png" />
+    <Resource Include="Images\225.png" />
+    <Resource Include="Images\226.png" />
+    <Resource Include="Images\227.png" />
+    <Resource Include="Images\228.png" />
+    <Resource Include="Images\229.png" />
+    <Resource Include="Images\230.png" />
+    <Resource Include="Images\231.png" />
+    <Resource Include="Images\232.png" />
+    <Resource Include="Images\233.png" />
+    <Resource Include="Images\234.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\13.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\14.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\15.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\17.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\100.png" />
+    <Resource Include="Images\102.png" />
+    <Resource Include="Images\103.png" />
+    <Resource Include="Images\104.png" />
+    <Resource Include="Images\105.png" />
+    <Resource Include="Images\106.png" />
+    <Resource Include="Images\107.png" />
+    <Resource Include="Images\108.png" />
+    <Resource Include="Images\109.png" />
+    <Resource Include="Images\110.png" />
+    <Resource Include="Images\111.png" />
+    <Resource Include="Images\112.png" />
+    <Resource Include="Images\113.png" />
+    <Resource Include="Images\114.png" />
+    <Resource Include="Images\115.png" />
+    <Resource Include="Images\116.png" />
+    <Resource Include="Images\117.png" />
+    <Resource Include="Images\118.png" />
+    <Resource Include="Images\119.png" />
+    <Resource Include="Images\120.png" />
+    <Resource Include="Images\121.png" />
+    <Resource Include="Images\122.png" />
+    <Resource Include="Images\123.png" />
+    <Resource Include="Images\124.png" />
+    <Resource Include="Images\125.png" />
+    <Resource Include="Images\126.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\101.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\127.png" />
+    <Resource Include="Images\128.png" />
+    <Resource Include="Images\129.png" />
+    <Resource Include="Images\130.png" />
+    <Resource Include="Images\131.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\90.png" />
+    <Resource Include="Images\91.png" />
+    <Resource Include="Images\92.png" />
+    <Resource Include="Images\93.png" />
+    <Resource Include="Images\94.png" />
+    <Resource Include="Images\95.png" />
+    <Resource Include="Images\96.png" />
+    <Resource Include="Images\97.png" />
+    <Resource Include="Images\98.png" />
+    <Resource Include="Images\99.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
